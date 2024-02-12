@@ -1,0 +1,39 @@
+.products {
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 3.5rem;
+    }
+
+    .heading-wrapper {
+        &__subtitle {}
+        &__title{
+            font-size: 3.5rem;
+            line-height: 120%;
+            max-width: 680px;
+        }
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: row;
+        gap: 2.5rem;
+    }
+
+    .product {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+
+        &__image {
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        &__details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+    }
+}

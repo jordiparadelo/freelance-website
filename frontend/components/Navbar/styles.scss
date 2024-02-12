@@ -1,0 +1,16 @@
+.navbar {
+    --color: black;
+    position: sticky;
+    top: 0;
+    padding-inline: 2rem;
+    padding-block: 1rem;
+    color: var(--color);
+    z-index: 100;
+    
+    .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}

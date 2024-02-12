@@ -1,0 +1,10 @@
+import Link from "next/link"
+import './styles.scss' 
+
+const Footer = () => {
+  return (
+    <footer className="footer">Footer</footer>
+  )
+}
+
+export default Footer

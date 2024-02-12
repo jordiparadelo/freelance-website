@@ -1,0 +1,43 @@
+.about {
+	&__wrapper {
+		display: flex;
+		flex-direction: column;
+		gap: 3rem;
+
+		@media screen and (min-width: 768px) {
+			flex-direction: row;
+		}
+	}
+
+	.divider {
+		--color: rgba(0, 0, 0, 0.1);
+		min-width: 1px;
+		min-height: 1px;
+		background-color: var(--color);
+
+	}
+
+	&__title {
+		font-size: clamp(2.5rem, 5vw, 3rem);
+		text-wrap: pretty;
+		
+		@media screen and (min-width: 768px) {
+			flex-basis: 680px;
+			flex-grow: 1;
+		}
+	}
+
+	&__services {
+		display: flex;
+		flex-direction: column;
+		gap: 3.5rem;
+
+		@media screen and (min-width: 1200px) {
+			flex-basis: 380px;
+		}
+	}
+
+	&__services-title {
+		font-size: 1.5rem;
+	}
+}

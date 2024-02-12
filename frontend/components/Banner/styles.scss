@@ -1,0 +1,15 @@
+.banner {
+    padding-block: 1.25rem;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    font-size: 0.75rem;
+
+    &__wrapper {
+        display: flex;
+        gap: 1.25rem;
+        justify-content: space-between;
+
+        @media screen and (min-width: 768px) {
+            flex-direction: row;
+        }
+    }
+}

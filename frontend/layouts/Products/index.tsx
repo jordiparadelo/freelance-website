@@ -1,0 +1,57 @@
+import React from "react";
+import Image from "next/image";
+import "./styles.scss";
+import Link from "next/link";
+
+const Products = async () => {
+	const URL_PRODUCTS = `${process.env.API_URL}/products`;
+	const numberOfProducts: number = 3;
+	const products: ProductType[] = await fetch(URL_PRODUCTS)
+		.then((response) => response.json())
+		.then((products: ProductType[]) => products.slice(0, numberOfProducts));
+
+	return (
+		<section
+			id='products'
+			className='products'
+		>
+			<div className='container'>
+				<div className='products__wrapper'>
+
+					<header className='section-header'>
+						<p className='section-header__subtitle'>Our Products</p>
+						<h2 className='section-header__title'>
+							Boost your project with ready templates
+						</h2>
+					</header>
+
+					<div className='products__list'>
+						{products.map((item: ProductType) => (
+							<Link
+								href={item.href}
+								key={item.id}
+							>
+								<figure className='product'>
+									<div className='product__image'>
+										<Image
+											src={item.image.src}
+											alt={item.image.alt}
+											width={item.image.width}
+											height={item.image.height}
+										/>
+									</div>
+									<figcaption className='product__details'>
+										<h3 className='product__title'>{item.title}</h3>
+										<p className='product__price'>{item.price}</p>
+									</figcaption>
+								</figure>
+							</Link>
+						))}
+					</div>
+				</div>
+			</div>
+		</section>
+	);
+};
+
+export default Products;

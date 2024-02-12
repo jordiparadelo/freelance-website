@@ -1,0 +1,47 @@
+.gallery {
+    position: relative;
+    background-color: white;
+    padding-block: 0.5rem;
+
+    &__top-shape {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        fill: white;
+    }
+
+    &__bottom-shape {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        fill: white;
+        transform: rotate(180deg);
+    }
+
+	&__slideshow {
+		display: flex;
+		flex-direction: row;
+		place-content: center;
+        gap: 1.5rem;
+
+        @media screen and (min-width: 480px) {
+            gap: 2.5rem;
+        }
+	}
+
+	&__slide {
+		display: flex;
+		flex-direction: column;
+		min-width: 256px;
+
+        @media screen and (min-width: 480px) {
+            min-width: 50vw;
+        }
+
+		img {
+			min-width: 100%;
+		}
+	}
+}
