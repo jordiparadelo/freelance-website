@@ -125,21 +125,20 @@ export const PRODUCTS_ITEMS = [
 // PROJECTS
 export const PROJECTS_ITEMS = [
 	{
-		id: "product-1",
-		href: '/products/product-1',
+		id: "project-1",
+		href: '/products/project-1',
 		image: {
 			src: galleryImage1,
-			alt: "Project website 1",
+			alt: "Project website 32",
 			width: 568,
 			height: 456,
 		},
 		title: "Project website 1",
 		details: "12 high resolution mockup scenes",
-		category: "Website",
 		preview: 'https://www.jordiparadelo.com/',
-		softwares: [
-			'figma',
-			'code'
+		categories: [
+			'Ui/Ux',
+			'Website'
 		],
 		likes: 2,
 		comments: [
@@ -149,8 +148,8 @@ export const PROJECTS_ITEMS = [
 		price: 29.99,
 	},
 	{
-		id: "product-2",
-		href: '/products/product-2',
+		id: "project-2",
+		href: '/products/project-2',
 		image: {
 			src: galleryImage2,
 			alt: "Project website 2",
@@ -159,11 +158,10 @@ export const PROJECTS_ITEMS = [
 		},
 		title: "Project website 2",
 		details: "12 high resolution mockup scenes",
-		category: "Website",
 		preview: 'https://www.jordiparadelo.com/',
-		softwares: [
-			'figma',
-			'code'
+		categories: [
+			'Ui/Ux',
+			'Website'
 		],
 		likes: 2,
 		comments: [
@@ -173,8 +171,8 @@ export const PROJECTS_ITEMS = [
 		price: 29.99,
 	},
 	{
-		id: "product-3",
-		href: '/products/product-3',
+		id: "project-3",
+		href: '/products/project-3',
 		image: {
 			src: galleryImage3,
 			alt: "Project website 3",
@@ -183,11 +181,10 @@ export const PROJECTS_ITEMS = [
 		},
 		title: "Project website 3",
 		details: "12 high resolution mockup scenes",
-		category: "Website",
 		preview: 'https://www.jordiparadelo.com/',
-		softwares: [
-			'figma',
-			'code'
+		categories: [
+			'Ui/Ux',
+			'Website'
 		],
 		likes: 2,
 		comments: [

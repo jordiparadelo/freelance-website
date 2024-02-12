@@ -33,7 +33,7 @@ type ProjectsType = {
     details: string,
     category: string,
     preview: string,
-    softwares: string[],
+    categories: string[],
     likes: number,
     comments: {
         id: number,

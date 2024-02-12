@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles.scss";
 
-const URL_PRODUCTS = `${process.env.API_URL}/products`;
+const URL_PRODUCTS = `http://localhost:3000/api/projects`;
 
 export async function generateStaticParams() {
 	const products = await fetch(URL_PRODUCTS).then((res) => res.json());

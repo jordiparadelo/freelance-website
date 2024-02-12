@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useMenu } from "@/context/MenuContexts";
+import { useMenu } from "@/context/MenuContext";
 import "./styles.scss";
 
 interface NavMenuProps {

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Navbar , Footer } from "@/components";
+import { Navbar , Footer, Modal } from "@/components";
 import { Manrope } from 'next/font/google'
-import { MenuProvider } from "@/context/MenuContexts";
+import { MenuProvider } from "@/context/MenuContext";
 
 
 export const metadata: Metadata = {
@@ -31,6 +31,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer/>
+        <Modal/>
         </MenuProvider>
         </body>
     </html>

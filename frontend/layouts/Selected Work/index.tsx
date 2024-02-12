@@ -3,7 +3,7 @@ import { Button, ProjectsList } from "@/components";
 import "./styles.scss";
 
 const SelectedWork = async () => {
-	const URL_PROJECTS = `${process.env.API_URL}/projects`;
+	const URL_PROJECTS = `http://localhost:3000/api/projects`;
 	const numberOfProjects: number = 4;
 	const projects: ProjectsType[] = await fetch(URL_PROJECTS)
 		.then((response) => response.json())
