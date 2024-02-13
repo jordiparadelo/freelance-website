@@ -7,6 +7,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-block-start: 7.5rem;
+    padding-block-end: 15rem;
+    padding-inline: 2.5rem;
+
 
     &__container {
         display: flex;

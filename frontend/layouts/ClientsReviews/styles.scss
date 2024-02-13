@@ -1,0 +1,16 @@
+.client-reviews {
+	&__wrapper {
+		display: flex;
+		flex-direction: column;
+		gap: 5rem;
+	}
+
+	.section-header {
+		&__heading {
+			padding-block-end: 2.5rem;
+			border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+		}
+		&__title {
+		}
+	}
+}

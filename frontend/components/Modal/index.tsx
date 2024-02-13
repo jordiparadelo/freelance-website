@@ -1,22 +1,22 @@
 "use client";
-import React , {useEffect, useState} from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
-import {ProjectDetail} from '@/components'
-import './styles.scss'
+import { ProjectDetail } from "@/components";
+import "./styles.scss";
 
 const Modal = () => {
-	const [open, setOpen] = useState(false)
+	const [open, setOpen] = useState(false);
 	// usePreserveScroll();
 
 	const searchParams = useSearchParams();
 	const modal = searchParams.get("modal");
 	const id = searchParams.get("id");
 	const pathname = usePathname();
-	const router = useRouter()
+	const router = useRouter();
 
 	useEffect(() => {
-		setOpen((prevState) => !prevState);
-	},[modal])
+		window.document.body.style.overflow = modal ? "hidden" : "auto";
+	}, [modal]);
 
 	function closeModal() {
 		router.push(pathname, { scroll: false });
@@ -24,13 +24,17 @@ const Modal = () => {
 
 	return (
 		<>
-			{open && (
+			{modal && (
 				<>
-				<div className="modal">
-				{id && <ProjectDetail id={id}/>}
-				<div className="modal__overlay" onClick={closeModal}>	
-				</div>
-				</div>
+					<div className='modal'>
+						<Suspense fallback={<div>Loading...</div>}>
+							{id && <ProjectDetail id={id} />}
+						</Suspense>
+						<div
+							className='modal__overlay'
+							onClick={closeModal}
+						></div>
+					</div>
 				</>
 			)}
 		</>

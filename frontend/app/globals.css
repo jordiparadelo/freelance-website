@@ -162,7 +162,7 @@ body {
   margin-inline: auto;
 }
 
-section, header {
+section {
   --padding-inline: 1.5rem;
   --padding-block: 2.5rem;
   padding-inline: var(--padding-inline);

@@ -41,3 +41,15 @@ type ProjectsType = {
     }[],
     price: number,
 }
+
+type ReviewsType = {
+    id: string,
+    image: {
+        src: string,
+        alt: string,
+        width: number,
+        height: number,
+    },
+    title: string,
+    description: string,
+}

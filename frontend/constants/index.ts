@@ -1,7 +1,12 @@
 import galleryImage1 from "@/public/image-gallery-1.webp";
 import galleryImage2 from "@/public/image-gallery-2.webp";
 import galleryImage3 from "@/public/image-gallery-3.webp";
+import reviewLogo1 from "@/public/review-logo-1.svg";
+import reviewLogo2 from "@/public/review-logo-2.svg";
+import reviewLogo3 from "@/public/review-logo-3.svg";
+import reviewLogo4 from "@/public/review-logo-4.svg";
 
+// NAVIGATION
 // NAVIGATION
 export const NAV_LINKS = [
 	{
@@ -192,6 +197,60 @@ export const PROJECTS_ITEMS = [
 			comment: 'Love it ❤️'}
 		],
 		price: 29.99,
+	},
+];
+
+// PROJECTS
+export const REVIEWS = [
+	{
+		id: "review-1",
+		image: {
+			src: reviewLogo1,
+			width: 40,
+			height: 40,
+		},
+		title: "Garriot",
+		description: "With a solid track record in designing websites and apps, I deliver strong and user-friendly digital designs. Solid company branding is the foundation of any succesful website.",
+	},
+	{
+		id: "review-2",
+		image: {
+			src: reviewLogo2,
+			width: 40,
+			height: 40,
+		},
+		title: "Oster",
+		description: "With a solid track record in designing websites and apps, I deliver strong and user-friendly digital designs. Solid company branding is the foundation of any succesful website.",
+	},
+	{
+		id: "review-2",
+		image: {
+			src: reviewLogo3,
+			width: 40,
+			height: 40,
+		},
+		title: "Oak",
+		description: "With a solid track record in designing websites and apps, I deliver strong and user-friendly digital designs. Solid company branding is the foundation of any succesful website.",
+	},
+	{
+		id: "review-3",
+		image: {
+			src: reviewLogo4,
+			width: 40,
+			height: 40,
+		},
+		title: "Denny",
+		description: "With a solid track record in designing websites and apps, I deliver strong and user-friendly digital designs. Solid company branding is the foundation of any succesful website.",
+	},
+	{
+		id: "review-4",
+		image: {
+			src: reviewLogo1,
+			width: 40,
+			height: 40,
+		},
+		title: "Stiff",
+		description: "With a solid track record in designing websites and apps, I deliver strong and user-friendly digital designs. Solid company branding is the foundation of any succesful website.",
 	},
 ];
 

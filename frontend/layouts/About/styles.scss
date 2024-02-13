@@ -18,7 +18,7 @@
 	}
 
 	&__title {
-		font-size: clamp(1.875rem, 5vw, 3rem);
+		font-size: clamp(1.875rem, 5vw, 2.5rem);
 		text-wrap: pretty;
 		
 		@media screen and (min-width: 768px) {

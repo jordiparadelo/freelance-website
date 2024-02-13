@@ -28,7 +28,7 @@ const Project = ({ project }: { project: ProjectsType }) => {
 					<p className='project__details'>{project.details}</p>
 				</div>
 
-				<p className='project__details'>{project.details}</p>
+				<p className='project__description'>{project.details}</p>
 
 				<ul className='project__categories'>
 					{project.categories?.map((category) => (

@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, ProjectsList } from "@/components";
+import { Button, Curves, ProjectsList } from "@/components";
 import "./styles.scss";
 
 const SelectedWork = async () => {
@@ -14,6 +14,8 @@ const SelectedWork = async () => {
 			id='selected-work'
 			className='selected-work'
 		>
+			<Curves orientation='top' fill="#101214"/>
+
 			<div className='container'>
 				<header className='section-header'>
 					<div className='section-header__heading'>
@@ -27,6 +29,8 @@ const SelectedWork = async () => {
 
 				<ProjectsList projects={projects} />
 			</div>
+
+			<Curves orientation='bottom' fill="#101214"/>
 		</section>
 	);
 };
