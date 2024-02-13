@@ -207,3 +207,12 @@ h1 {
   line-height: 120%;
   max-width: 680px;
 }
+
+/* DIVIDER */
+.divider {
+  min-width: 1px;
+  min-height: 1px;
+  background-color: var(--back-color, inherit);
+  filter:invert(1);
+  opacity: 0.1;
+}

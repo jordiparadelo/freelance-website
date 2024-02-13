@@ -254,3 +254,37 @@ export const REVIEWS = [
 	},
 ];
 
+// SOCIAL LINKS
+export const SOCIAL_LINKS = [
+	{
+		id: "behance",
+		icon: {
+			src: reviewLogo1,
+			width: 40,
+			height: 40,
+		},
+		title: "Behance",
+		href: "https://www.behance.net/Jordi_Paradelo",
+	},
+	{
+		id: "dribbble",
+		icon: {
+			src: reviewLogo2,
+			width: 40,
+			height: 40,
+		},
+		title: "Dribbble",
+		href: "https://dribbble.com/jordiparadelo",
+	},
+	{
+		id: "linkedin",
+		icon: {
+			src: reviewLogo3,
+			width: 40,
+			height: 40,
+		},
+		title: "Linkedin",
+		href: "https://www.linkedin.com/in/jordiparadelo/",
+	}
+];
+

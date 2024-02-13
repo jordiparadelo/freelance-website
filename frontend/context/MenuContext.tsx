@@ -20,6 +20,7 @@ export const useMenuContext = () => {
 export const MenuProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
 
+  //TODO: Add logic to restart based on resize
   useEffect(() => {
     const pageHeight = document.body.scrollHeight - window.innerHeight
 
