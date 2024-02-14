@@ -1,8 +1,7 @@
 import { NextResponse } from 'next/server'
-import { PRODUCTS_ITEMS } from '@/constants'
-// import type { NextApiRequest, NextApiResponse } from 'next'
+import { REVIEWS } from '@/constants'
 
-const DATA_SOURCE = PRODUCTS_ITEMS
+const DATA_SOURCE = REVIEWS
 const API_KEY = process.env.DATA_API_KEY
  
 
@@ -10,4 +9,4 @@ export async function GET() {
   const res = DATA_SOURCE
 
   return NextResponse.json(res)
-}
+} 
