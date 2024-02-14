@@ -14,9 +14,9 @@ const SectionLabel = ({ label, animationData }: SectionLabelType) => {
 	const iconRef = useRef<LottieRefCurrentProps>(null);
 
 	const [ref, entry] = useIntersectionObserver({
-		threshold: 0,
+		threshold: 0.5,
 		root: null,
-		rootMargin: "-200px",
+		rootMargin: "-150px",
 	  });
 
 

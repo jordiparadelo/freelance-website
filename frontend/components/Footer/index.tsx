@@ -7,13 +7,12 @@ import "./styles.scss";
 const Footer = () => {
 	return (
 		<footer className='footer'>
-			<div className='container'>
 				<div className='footer__wrapper'>
 					<ul className='footer__social-links'>
 						{SOCIAL_LINKS.map((link) => (
 							<li
 								key={link.href}
-                className='footer__social-links__item'
+								className='footer__social-links__item'
 							>
 								<a
 									href={link.href}
@@ -27,9 +26,9 @@ const Footer = () => {
 											alt={link.title}
 										/>
 									</div>
-                  <div className="footer__social-links__item-title">
-                    {link.title}
-                  </div>
+									<div className='footer__social-links__item-title'>
+										{link.title}
+									</div>
 								</a>
 							</li>
 						))}
@@ -37,7 +36,7 @@ const Footer = () => {
 							<button>Book a Meeting</button>
 						</li>
 					</ul>
-          <div className="divider"></div>
+					<div className='divider'></div>
 					<div className='footer__contact'>
 						<h2 className='footer__contact__title'>Let’s collaborate</h2>
 						<Button className='footer__contact__button'>Start Now</Button>
@@ -55,7 +54,6 @@ const Footer = () => {
 					</a>
 					<button className='footer__back-to-top'>back to top</button>
 				</div>
-			</div>
 		</footer>
 	);
 };
