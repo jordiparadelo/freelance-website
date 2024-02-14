@@ -53,5 +53,5 @@ const ProjectDetail = ({ id }: { id: string }) => {
 		)
 	);
 };
-
+ 
 export default ProjectDetail;
