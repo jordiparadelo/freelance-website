@@ -2,8 +2,6 @@ import { NextResponse } from 'next/server'
 import { PROJECTS_ITEMS } from '@/constants'
 
 const DATA_SOURCE = PROJECTS_ITEMS
-const API_KEY = process.env.DATA_API_KEY
- 
 
 export async function GET() {
   const res = DATA_SOURCE
