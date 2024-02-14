@@ -10,4 +10,4 @@ export async function GET() {
   const res = DATA_SOURCE
 
   return NextResponse.json(res)
-}
+} 
