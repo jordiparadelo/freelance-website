@@ -25,10 +25,10 @@ export default async function ProductPage({
 }: {
 	params: { id: string };
 }) {
-	const product: ProductType | any = await getProduct(params.id);
+	const product = await getProduct(params.id);
 
 	return (
-		<section className='product-page'>
+		product && <section className='product-page'>
 			<header className='product-page__header'>
 				<div className='product-page__heading-wrapper'>
 					<h1>{product?.title}</h1>
