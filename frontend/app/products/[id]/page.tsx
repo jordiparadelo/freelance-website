@@ -14,7 +14,7 @@ export async function generateStaticParams() {
 async function getProduct(id: string) {
 	const response = await fetch(URL_PRODUCTS);
 	const data = await response.json();
-	const selectedProduct: ProductType = data.find(
+	const selectedProduct: ProductType | any = data.find(
 		(product: ProductType) => product.id === id
 	);
 	return selectedProduct;
@@ -25,7 +25,7 @@ export default async function ProductPage({
 }: {
 	params: { id: string };
 }) {
-	const product = await getProduct(params.id);
+	const product: ProductType | any = await getProduct(params.id);
 
 	return (
 		<section className='product-page'>
