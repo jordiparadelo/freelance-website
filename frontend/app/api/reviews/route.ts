@@ -11,9 +11,3 @@ export async function GET() {
 
   return NextResponse.json(res)
 }
-
-export async function GET_REVIEW(id: string) {
-  const res = DATA_SOURCE.find((review) => review.id === id)
-
-  return NextResponse.json(res)
-}
