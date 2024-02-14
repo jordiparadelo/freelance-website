@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { Navbar, Footer, Modal } from "@/components";
 import { Manrope } from "next/font/google";
@@ -25,9 +26,11 @@ export default function RootLayout({
 			<body className={manrope.className}>
 				<MenuProvider>
 					<Navbar />
-					<main >{children}</main>
+					<main>{children}</main>
 					<Footer />
-					<Modal />
+					<Suspense fallback={<div>Loading...</div>}>
+						<Modal />
+					</Suspense>
 				</MenuProvider>
 			</body>
 		</html>

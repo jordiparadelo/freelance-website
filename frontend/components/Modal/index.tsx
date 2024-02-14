@@ -27,9 +27,7 @@ const Modal = () => {
 			{modal && (
 				<>
 					<div className='modal'>
-						<Suspense fallback={<div>Loading...</div>}>
-							{id && <ProjectDetail id={id} />}
-						</Suspense>
+						{id && <ProjectDetail id={id} />}
 						<div
 							className='modal__overlay'
 							onClick={closeModal}
