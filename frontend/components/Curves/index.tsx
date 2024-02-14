@@ -23,7 +23,6 @@ const Curves = ({ className, orientation, fill }: CurvesProps) => {
             style={{
                 transform: transform,
 				width: '100vw',
-                alignSelf: 'center',
                 position: 'absolute',
                 top: (orientation === "top") ? 0 : undefined,
                 left: 0,
