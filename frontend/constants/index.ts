@@ -223,7 +223,7 @@ export const REVIEWS = [
 		description: "With a solid track record in designing websites and apps, I deliver strong and user-friendly digital designs. Solid company branding is the foundation of any succesful website.",
 	},
 	{
-		id: "review-2",
+		id: "review-3",
 		image: {
 			src: reviewLogo3,
 			width: 40,
@@ -233,7 +233,7 @@ export const REVIEWS = [
 		description: "With a solid track record in designing websites and apps, I deliver strong and user-friendly digital designs. Solid company branding is the foundation of any succesful website.",
 	},
 	{
-		id: "review-3",
+		id: "review-4",
 		image: {
 			src: reviewLogo4,
 			width: 40,
@@ -243,7 +243,7 @@ export const REVIEWS = [
 		description: "With a solid track record in designing websites and apps, I deliver strong and user-friendly digital designs. Solid company branding is the foundation of any succesful website.",
 	},
 	{
-		id: "review-4",
+		id: "review-5",
 		image: {
 			src: reviewLogo1,
 			width: 40,

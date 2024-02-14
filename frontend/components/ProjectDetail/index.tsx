@@ -1,5 +1,5 @@
 "use client";
-import React, { Suspense } from "react";
+import React from "react";
 import useFetchProjects from "@/hooks/useFetchProjects";
 import Image from "next/image";
 import "./styles.scss";
