@@ -11,6 +11,8 @@ const Curves = ({ className, orientation, fill }: CurvesProps) => {
         top: "rotate(180deg) translateY(calc(100% - 1px))",
         bottom: " translateY(calc(100% - 1px))"
     }
+
+	const transform = orientation ? TRANSFORM_OPTIONS[orientation] : undefined;
     
 	return (
 		<svg
@@ -19,8 +21,8 @@ const Curves = ({ className, orientation, fill }: CurvesProps) => {
 			xmlns='http://www.w3.org/2000/svg'
 			className={className}
             style={{
-                transform: TRANSFORM_OPTIONS[orientation] || undefined,
-                width: '100vw',
+                transform: transform,
+				width: '100vw',
                 alignSelf: 'center',
                 position: 'absolute',
                 top: (orientation === "top") ? 0 : undefined,
