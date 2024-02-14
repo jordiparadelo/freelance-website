@@ -24,12 +24,16 @@
 		padding: 0.75rem;
 		background-color: var(--background);
 		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-		aspect-ratio: 1/1;
-
+		min-height: 120px;
+		
 		will-change: box-shadow;
 		transition: box-shadow 0.3s ease, background-color 0.3s ease;
-
+		
 		cursor: pointer;
+		
+		@media screen and (min-width: 960px) {
+			aspect-ratio: 1/1;
+		}
 
 		// STATES
 		&:not(:has(input:checked)) {

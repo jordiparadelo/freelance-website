@@ -13,13 +13,26 @@
 		--back-color: white;
 	}
 
-	&__title {
-		font-size: clamp(1.875rem, 5vw, 2.5rem);
-		text-wrap: pretty;
+	&__header{
+		display: flex;
+		flex-direction: column;
+		place-items: center;
+		place-content: center;
 		
 		@media screen and (min-width: 768px) {
 			flex-basis: 680px;
 			flex-grow: 1;
+			min-height: 100%;
+		}
+	}
+	
+	&__title {
+		font-size: clamp(1.875rem, 5vw, 2.5rem);
+		text-wrap: pretty;
+
+		@media screen and (min-width: 768px) {
+			position: sticky;
+			top: 90px;
 		}
 	}
 

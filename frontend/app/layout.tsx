@@ -25,7 +25,7 @@ export default function RootLayout({
 			<body className={manrope.className}>
 				<MenuProvider>
 					<Navbar />
-					<main className='relative overflow-x-hidden'>{children}</main>
+					<main >{children}</main>
 					<Footer />
 					<Modal />
 				</MenuProvider>
