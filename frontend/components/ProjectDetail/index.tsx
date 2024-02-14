@@ -5,7 +5,7 @@ import Image from "next/image";
 import "./styles.scss";
 
 const ProjectDetail = ({ id }: { id: string }) => {
-	const project: ProjectsType | null = useFetchProjects(id);
+	const project: ProjectsType | any = useFetchProjects(id);
 
 	return (
 		project && (
