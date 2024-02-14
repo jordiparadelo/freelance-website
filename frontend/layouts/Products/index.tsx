@@ -1,11 +1,14 @@
 import React from "react";
 import Image from "next/image";
-import "./styles.scss";
 import Link from "next/link";
+import { SectionLabel } from "@/components";
+import ShoppingCart from "@/public/animated-icons/shopping-cart.json";
+import "./styles.scss";
 
 const Products = async () => {
 	const URL_PRODUCTS = `${process.env.API_URL}/products`;
 	const numberOfProducts: number = 3;
+
 	const products: ProductType[] = await fetch(URL_PRODUCTS)
 		.then((response) => response.json())
 		.then((products: ProductType[]) => products.slice(0, numberOfProducts));
@@ -17,9 +20,8 @@ const Products = async () => {
 		>
 			<div className='container'>
 				<div className='products__wrapper'>
-
 					<header className='section-header'>
-						<p className='section-header__subtitle'>Our Products</p>
+						<SectionLabel label='Our Products' animationData={ShoppingCart}/>
 						<h2 className='section-header__title'>
 							Boost your project with ready templates
 						</h2>

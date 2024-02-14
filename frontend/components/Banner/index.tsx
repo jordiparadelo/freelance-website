@@ -3,13 +3,13 @@
 import { useEffect, useState, useRef, MouseEvent } from "react";
 import Lottie, { LottieRefCurrentProps } from "lottie-react";
 import useLiveClock from "@/hooks/useLiveClock";
-import GlobeLottie from "@/public/animated-icons/Global_lottie.json";
+import GlobeLottie from "@/public/animated-icons/global.json";
 import "./styles.scss";
 
 const Banner = () => {
 	const [isAvailable, setIsAvailable] = useState(false);
 	const [isClockVisible, setIsClockVisible] = useState(false);
-	const [iconAnimationPlay, setIconAnimationPlay] = useState(false);
+
 	const currentTime = useLiveClock();
 	const globeIconRef = useRef<LottieRefCurrentProps>(null);
 
@@ -43,18 +43,15 @@ const Banner = () => {
 	}
 
 	function handleWorldwideHover(event: MouseEvent<HTMLElement>) {
-		// const icon:LottieRefCurrentProps = globeIconRef.current!
 
 		const EVENT_STATES: { [key: string]: () => void } = {
 			mouseenter: () =>{
         console.log('mouse enter')
-        // globeIconRef.current?.setDirection(1);
          globeIconRef.current?.play();
         },
 			mouseleave: () => {
 				globeIconRef.current?.goToAndStop(0, true);
 			},
-			// 'mouseleave': () => globeIconRef.current?.goToAndStop(0,true),
 		};
 
 		EVENT_STATES[event.type]();

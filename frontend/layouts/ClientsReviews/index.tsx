@@ -1,5 +1,6 @@
 import React from "react";
-import ReviewsList from "@/components/ReviewList";
+import { ReviewsList, SectionLabel } from "@/components";
+import Stars from "@/public/animated-icons/stars.json";
 import "./styles.scss";
 
 const ClientsReviews = async () => {
@@ -15,9 +16,11 @@ const ClientsReviews = async () => {
 			<div className='container'>
 				<div className='client-reviews__wrapper'>
 					<header className='section-header'>
-						<div className='section-header__heading'>
-							<h2 className='section-header__title'>Clients have commented</h2>
-						</div>
+						<SectionLabel
+							label='Reviews'
+							animationData={Stars}
+						/>
+						<h2 className='section-header__title'>Clients have commented</h2>
 					</header>
 					<ReviewsList reviews={reviews} />
 				</div>
