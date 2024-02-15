@@ -12,7 +12,9 @@ const Modal = () => {
 	const router = useRouter();
 
 	useEffect(() => {
-		window.document.body.style.overflow = modal ? "hidden" : "auto";
+		if (typeof window !== "undefined") {
+			document.body.style.overflow = modal ? "hidden" : "auto";
+		}
 	}, [modal]);
 
 	function closeModal() {

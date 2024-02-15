@@ -1,16 +1,23 @@
-import { Hero, About, SelectedWork, Gallery, ClientsReviews, Products } from "@/layouts";
+import {
+	Hero,
+	About,
+	SelectedWork,
+	Gallery,
+	ClientsReviews,
+	Products,
+} from "@/layouts";
 import { Banner } from "@/components";
 
 export default function Home() {
 	return (
 		<>
 			<Hero />
-			<Banner/>
+			<Banner />
 			<About />
 			<Gallery />
 			<Products />
 			<SelectedWork />
 			<ClientsReviews />
-			</>
+		</>
 	);
 }
