@@ -1,13 +1,34 @@
-import React from "react";
+"use client";
+
+import React, { useRef, useLayoutEffect } from "react";
+
+// Next.js
 import Link from "next/link";
 import Image from "next/image";
+
+// Libs
+import { useGSAP } from "@gsap/react";
+
+// Animations
+import { listItemAnimation } from "./animations";
+
+// Styles
 import "./styles.scss";
 
 const ProjectsList = ({ projects }: { projects: ProjectsType[] }) => {
+	const componentRef = useRef(null);
+
+	useGSAP(() => {
+		listItemAnimation(componentRef?.current!);
+	});
+
 	return (
-		<ul className='projects-list'>
-			{projects?.map((project: ProjectsType) => (
-				<li key={project.id}>
+		<ul
+			className='projects-list'
+			ref={componentRef}
+		>
+			{projects?.map((project: ProjectsType, index) => (
+				<li key={project.title + "-" + index}>
 					<Project project={project} />
 				</li>
 			))}
@@ -19,10 +40,13 @@ export default ProjectsList;
 
 const Project = ({ project }: { project: ProjectsType }) => {
 	return (
-		<article className='project' >
+		<article className='project'>
 			<header className='project__header'>
 				<div className='project__heading-wrapper'>
-					<Link href={`?modal=true&id=${project.id}`} scroll={false}>
+					<Link
+						href={`?modal=true&id=${project.id}`}
+						scroll={false}
+					>
 						<h3 className='project__title'>{project.title}</h3>
 					</Link>
 					<p className='project__details'>{project.details}</p>
@@ -32,17 +56,23 @@ const Project = ({ project }: { project: ProjectsType }) => {
 
 				<ul className='project__categories'>
 					{project.categories?.map((category) => (
-						<li className='project__category'><span>{category}</span></li>
+						<li className='project__category'>
+							<span>{category}</span>
+						</li>
 					))}
 				</ul>
 			</header>
-			<Link href={`?modal=true&id=${project.id}`} scroll={false}>
-				<div className='project__image'>
-					<Image
-						src={project.image.src}
-						alt={project.image.alt}
-					/>
-				</div>
+			<Link
+				href={`?modal=true&id=${project.id}`}
+				scroll={false}
+				className='project__image-link'
+			>
+					<div className='project__image'>
+						<Image
+							src={project.image.src}
+							alt={project.image.alt}
+						/>
+					</div>
 			</Link>
 		</article>
 	);

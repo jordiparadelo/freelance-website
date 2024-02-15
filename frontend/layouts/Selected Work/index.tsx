@@ -1,6 +1,9 @@
 import React from "react";
+// Components
 import { Button, Curves, ProjectsList, SectionLabel } from "@/components";
+// Assets
 import Computer from "@/public/animated-icons/selected-work.json";
+// Styles
 import "./styles.scss";
 
 const SelectedWork = async () => {

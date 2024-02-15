@@ -108,6 +108,13 @@
 			z-index: 0;
 		}
 	}
+
+	&__link {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
 	&__image {
 		display: flex;
 		flex-direction: column;

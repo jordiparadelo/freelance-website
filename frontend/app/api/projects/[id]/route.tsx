@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server'
 import { PROJECTS_ITEMS } from '@/constants'
 
+
 export async function GET(request: Request, context: any) {
   const { params } = context
-  console.log(params)
   const data = PROJECTS_ITEMS
-  const res = data
+  const project = data.filter(project => project.id === params.id.toString())
 
-  return NextResponse.json(res)
+  return NextResponse.json({project})
 }
