@@ -1,26 +1,37 @@
-import React from "react";
+"use client";
+
+import React, {useRef} from "react";
 import Image from "next/image";
+
+// Components
+import { Curves } from "@/components";
+
+// Libs
+import { useGSAP } from "@gsap/react";
+
+// Constants
 import { GALLERY_IMAGES } from "@/constants";
+
+// Animations
+import { galleryAnimations } from "./animations";
+
+// Styles
 import "./styles.scss";
 
 const Gallery = () => {
+	const componentRef = useRef(null)
+
+	useGSAP(() => {
+		galleryAnimations(componentRef?.current!);
+	});
+
 	return (
 		<section
 			id='gallery'
 			className='gallery'
+			ref={componentRef}
 		>
-			<svg
-				viewBox='0 0 1440 55'
-				fill='currentColor'
-				xmlns='http://www.w3.org/2000/svg'
-				className='gallery__top-shape'
-			>
-				<path
-					fillRule='evenodd'
-					clipRule='evenodd'
-					d='M1440 30.2502C1242.59 45.7375 992.086 55 719.5 55C447.374 55 197.257 45.7688 0 30.3286L0 0H1440V30.2502Z'
-				/>
-			</svg>
+			<Curves fill="white" className="gallery__curves--top"/>
 
 			<div className='gallery__slideshow'>
 				{GALLERY_IMAGES.map((image) => (
@@ -36,18 +47,7 @@ const Gallery = () => {
 				))}
 			</div>
 
-			<svg
-				viewBox='0 0 1440 55'
-				fill='currentColor'
-				xmlns='http://www.w3.org/2000/svg'
-				className='gallery__bottom-shape'
-			>
-				<path
-					fillRule='evenodd'
-					clipRule='evenodd'
-					d='M1440 30.2502C1242.59 45.7375 992.086 55 719.5 55C447.374 55 197.257 45.7688 0 30.3286L0 0H1440V30.2502Z'
-				/>
-			</svg>
+			<Curves fill="white" className="gallery__curves--bottom"/>
 		</section>
 	);
 };

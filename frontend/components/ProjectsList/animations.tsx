@@ -44,14 +44,6 @@ export const listItemAnimation = (element: Element) => {
 		: maxHeigh + itemHeight;
 		// const scrollEndOffset = index >= 0 ? (maxHeigh + itemHeight) * index : (maxHeigh + itemHeight);
 
-		console.log({
-			index,
-			maxHeigh,
-			itemHeight,
-			scrollStartOffset,
-			scrollEndOffset,
-		});
-
 		animation
 			.from(paragraph, {
 				opacity: 0,
@@ -89,7 +81,7 @@ export const listItemAnimation = (element: Element) => {
 		start: `top-=${scrollStartOffset} center`,
 		end: "bottom-=20% center",
 		scrub: true,
-		markers: true,
+		// markers: true,
 	});
 
 	return masterTl;

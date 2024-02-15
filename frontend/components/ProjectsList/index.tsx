@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useLayoutEffect } from "react";
+import React, { useRef } from "react";
 
 // Next.js
 import Link from "next/link";
@@ -18,9 +18,7 @@ import "./styles.scss";
 const ProjectsList = ({ projects }: { projects: ProjectsType[] }) => {
 	const componentRef = useRef(null);
 
-	useGSAP(() => {
-		listItemAnimation(componentRef?.current!);
-	});
+	
 
 	return (
 		<ul

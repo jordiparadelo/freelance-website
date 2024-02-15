@@ -7,6 +7,8 @@ import { useGSAP } from "@gsap/react";
 
 // Animations
 import { paragraphAnimation } from "./animations";
+
+// Styles
 import "./styles.scss";
 
 type AnimatedParagraphType = {
@@ -24,7 +26,7 @@ const AnimatedParagraph = ({ className, children }: AnimatedParagraphType) => {
 	return (
 		<p
 			className={
-				className ? "animated-paragraph" : `animated-paragraph ${className}`
+				className ? `animated-paragraph ${className}` : "animated-paragraph" 
 			}
 			ref={componentRef}
 			aria-label={children}

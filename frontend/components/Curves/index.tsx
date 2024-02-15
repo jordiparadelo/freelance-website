@@ -1,4 +1,12 @@
-import React from "react";
+"use client";
+
+import React, { useRef } from "react";
+
+// Libs
+import { useGSAP } from "@gsap/react";
+
+// Animations
+import {curveAnimation} from './animations'
 
 type CurvesProps = {
 	className?: string;
@@ -7,6 +15,7 @@ type CurvesProps = {
 };
 
 const Curves = ({ className, orientation, fill }: CurvesProps) => {
+	const componentRef = useRef(null)
     const TRANSFORM_OPTIONS = {
         top: "rotate(180deg) translateY(calc(100% - 1px))",
         bottom: " translateY(calc(100% - 1px))"
@@ -20,9 +29,11 @@ const Curves = ({ className, orientation, fill }: CurvesProps) => {
 			fill={fill || 'currentColor'}
 			xmlns='http://www.w3.org/2000/svg'
 			className={className}
+			ref={componentRef}
             style={{
                 transform: transform,
-				width: '100vw',
+				maxWidth: '100vw',
+				overflow: 'hidden',
                 position: 'absolute',
                 top: (orientation === "top") ? 0 : undefined,
                 left: 0,
