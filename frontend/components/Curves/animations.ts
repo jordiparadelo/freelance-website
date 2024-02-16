@@ -1,6 +1,8 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+gsap.registerPlugin(ScrollTrigger);
+
 export const curveAnimation = (element: Element, orientation:string) => {
     
     const animation = gsap.timeline().to(element, {

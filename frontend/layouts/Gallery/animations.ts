@@ -1,6 +1,8 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+gsap.registerPlugin(ScrollTrigger);
+
 export const galleryAnimations = (element: Element) => {
     const OFFSET_TRANSLATION = 20
     const gallery = element.querySelector(".gallery__slideshow");

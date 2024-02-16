@@ -20,10 +20,14 @@ import "./styles.scss";
 
 const Gallery = () => {
 	const componentRef = useRef(null)
-
+	
 	useGSAP(() => {
 		galleryAnimations(componentRef?.current!);
 	});
+
+	// const handleAnimation = () => {
+	// 	galleryAnimations(componentRef?.current!);
+	// };
 
 	return (
 		<section
@@ -35,9 +39,8 @@ const Gallery = () => {
 
 			<div className='gallery__slideshow'>
 				{GALLERY_IMAGES.map((image) => (
-					<figure className='gallery__slide'>
+					<figure className='gallery__slide' key={image.key}>
 						<Image
-							key={image.key}
 							src={image.src}
 							alt={image.alt}
 							width={image.width}

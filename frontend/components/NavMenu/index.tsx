@@ -33,7 +33,7 @@ const NavMenu = ({ navLinks }: NavMenuProps) => {
 				/>
 			</button>
 			{isOpen && (
-				<menu>
+				<menu className='navmenu__menu'>
 					<ul>
 						{navLinks.map((link: NavLink) => (
 							<li key={link.key}>

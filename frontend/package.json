@@ -21,6 +21,7 @@
     "react-dom": "^18",
     "sass": "^1.70.0",
     "scss": "^0.2.4",
+    "split-type": "^0.3.4",
     "splitting": "^1.0.6"
   },
   "devDependencies": {

@@ -1,4 +1,9 @@
 import React from 'react'
+
+// Components
+import { Button } from '@/components';
+
+// Styles
 import "./styles.scss"
 
 interface ContactButton {
@@ -9,7 +14,7 @@ interface ContactButton {
 
 const ContactButton = (props: ContactButton) => {
   return (
-    <button className="contactButton">{props.label}</button>
+    <Button className="contactButton">{props.label}</Button>
   )
 }
 

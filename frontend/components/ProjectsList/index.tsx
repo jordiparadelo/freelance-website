@@ -6,19 +6,11 @@ import React, { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-// Libs
-import { useGSAP } from "@gsap/react";
-
-// Animations
-import { listItemAnimation } from "./animations";
-
 // Styles
 import "./styles.scss";
 
 const ProjectsList = ({ projects }: { projects: ProjectsType[] }) => {
 	const componentRef = useRef(null);
-
-	
 
 	return (
 		<ul
@@ -26,8 +18,8 @@ const ProjectsList = ({ projects }: { projects: ProjectsType[] }) => {
 			ref={componentRef}
 		>
 			{projects?.map((project: ProjectsType, index) => (
-				<li key={project.title + "-" + index}>
-					<Project project={project} />
+				<li key={project.title + '-' + index}>
+					<Project project={project} key={index}/>
 				</li>
 			))}
 		</ul>
@@ -38,7 +30,7 @@ export default ProjectsList;
 
 const Project = ({ project }: { project: ProjectsType }) => {
 	return (
-		<article className='project'>
+		<article className='project' key={project.title}>
 			<header className='project__header'>
 				<div className='project__heading-wrapper'>
 					<Link
@@ -54,7 +46,7 @@ const Project = ({ project }: { project: ProjectsType }) => {
 
 				<ul className='project__categories'>
 					{project.categories?.map((category) => (
-						<li className='project__category'>
+						<li className='project__category' key={category}>
 							<span>{category}</span>
 						</li>
 					))}
