@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, Suspense } from "react";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { ProjectDetail } from "@/components";
 import "./styles.scss";
@@ -26,7 +26,9 @@ const Modal = () => {
 			{modal && (
 				<>
 					<div className='modal'>
+					<Suspense fallback={<div>Loading...</div>}>
 						{id && <ProjectDetail id={id} />}
+					</Suspense>
 						<div
 							className='modal__overlay'
 							onClick={closeModal}

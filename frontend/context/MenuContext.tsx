@@ -1,6 +1,8 @@
 "use client";
 
+import { usePathname } from 'next/navigation';
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { useWindowSize } from "@uidotdev/usehooks";
 
 interface MenuContextProps {
 	scrollPosition: number;
@@ -21,8 +23,9 @@ export const MenuProvider: React.FC<{ children: React.ReactNode }> = ({
 	children,
 }) => {
 	const [scrollPosition, setScrollPosition] = useState(0);
+	const size = useWindowSize();
+	const pathname = usePathname();
 
-	//TODO: Add logic to restart based on resize
 	useEffect(() => {
 		let pageHeight: number;
 
@@ -40,7 +43,7 @@ export const MenuProvider: React.FC<{ children: React.ReactNode }> = ({
 		return () => {
 			window.removeEventListener("scroll", handleScroll);
 		};
-	}, []);
+	}, [size, pathname]);
 
 	return (
 		<MenuContext.Provider value={{ scrollPosition, setScrollPosition }}>

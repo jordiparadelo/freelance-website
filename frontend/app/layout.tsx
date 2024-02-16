@@ -1,9 +1,10 @@
-import { Suspense } from "react";
 import type { Metadata } from "next";
 import { Navbar, Footer, Modal } from "@/components";
 import { Manrope } from "next/font/google";
 import { MenuProvider } from "@/context/MenuContext";
+import { motion, AnimatePresence } from "framer-motion";
 import "./globals.css";
+import { ModalProvider } from "@/context/ModalContext";
 
 export const metadata: Metadata = {
 	title: "Freelancer | Designer | Developer",
@@ -23,15 +24,18 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='en'>
-			<body className={manrope.className}>
-				<MenuProvider>
-					<Navbar />
-					<main>{children}</main>
-					<Footer />
-					<Suspense fallback={<div>Loading...</div>}>
+			<body
+				className={manrope.className}
+				suppressHydrationWarning={true}
+			>
+				<ModalProvider>
+					<MenuProvider>
+						<Navbar />
+						<main>{children}</main>
+						<Footer />
 						<Modal />
-					</Suspense>
-				</MenuProvider>
+					</MenuProvider>
+				</ModalProvider>
 			</body>
 		</html>
 	);

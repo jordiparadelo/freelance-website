@@ -2,8 +2,15 @@
 
 import { useState } from "react";
 import Link from "next/link";
+// Context
 import { useMenu } from "@/context/MenuContext";
+// Lib
+import {motion, AnimatePresence} from 'framer-motion';
+// Animations
+import {animationProps} from './animations';
+// Styles
 import "./styles.scss";
+import { useModal } from "@/context/ModalContext";
 
 interface NavMenuProps {
 	navLinks: NavLink[];
@@ -17,32 +24,36 @@ interface NavLink {
 
 const NavMenu = ({ navLinks }: NavMenuProps) => {
 	const { scrollPosition } = useMenu();
+	const {toggleModal}  = useModal();
 
 	const [isOpen, setIsOpen] = useState(false);
 
 	function handleClick() {
 		setIsOpen(!isOpen);
+		toggleModal && toggleModal();
 	}
 
 	return (
 		<div className='navmenu'>
-			<button onClick={handleClick}>
+			<button onClick={handleClick} className="navmenu__button">
 				<CircleLine
 					percentage={scrollPosition}
-					size={35}
+					size={40}
 				/>
 			</button>
+			<AnimatePresence>
 			{isOpen && (
-				<menu className='navmenu__menu'>
-					<ul>
+				<menu className='navmenu__menu-wrapper' onClick={() => setIsOpen((current) => !current)}>
+					<motion.ul className="navmenu__menu" {...animationProps} key='navmenu'>
 						{navLinks.map((link: NavLink) => (
 							<li key={link.key}>
 								<Link href={link.href}>{link.label}</Link>
 							</li>
 						))}
-					</ul>
+					</motion.ul>
 				</menu>
 			)}
+			 </AnimatePresence>
 		</div>
 	);
 };
@@ -76,8 +87,9 @@ const CircleLine: React.FC<{ percentage: number; size: number }> = ({
 				shapeRendering='geometricPrecision'
 			/>
 			<rect
-				x='8'
-				y='13'
+				x={size/4.375}
+				// x={'8'}
+				y={size/2.69}
 				width={size / 2}
 				height={strokeWidth}
 				strokeLinecap='round'
@@ -85,8 +97,8 @@ const CircleLine: React.FC<{ percentage: number; size: number }> = ({
 				fill='currentColor'
 			/>
 			<rect
-				x='8'
-				y='21'
+				x={size/4.375}
+				y={size/1.6}
 				width={size / 2}
 				height={strokeWidth}
 				strokeLinecap='round'
