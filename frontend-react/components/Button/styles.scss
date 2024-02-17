@@ -1,0 +1,60 @@
+.button {
+	--color: inherit;
+	--size: 40px;
+
+	// box-sizing: border-box;
+
+	display: grid;
+	grid-template-rows: var(--size) var(--size);
+    position: relative;
+	align-items: center;
+	place-items: center;
+	max-width: fit-content;
+	white-space: nowrap;
+	font-size: 0.75rem;
+	line-height: 100%;
+	min-width: var(--size);
+	max-height: var(--size);
+	padding-inline: 2em;
+	border: unset;
+	border-radius: 999px;
+	overflow: hidden;
+	transition: transform 0.3s ease-in-out;
+    background-color: black;
+	cursor: pointer;
+    color: white;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 105%;
+        aspect-ratio: 1/1;
+        background-image: inherit;
+        border-radius: 999px;
+        z-index: 0;
+        background-color: white;
+        transform: translateY(0%) ;
+        transition: transform 0.3s ease-out 0.1s, top 0.3s ease;
+        // filter: invert(1);
+    }
+
+	&:hover {
+		transform: scale(1.1);
+        box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
+
+        &::before {
+            top: 50%;
+            transform: translateY(-50%) ;
+        }
+	}
+
+	&__label {
+		line-height: var(--size);
+
+        &:nth-child(2) {
+            filter: invert(1);
+        }
+	}
+}
