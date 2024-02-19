@@ -29,4 +29,25 @@
             gap: 1rem;
         }
     }
+
+    &__curves {
+        
+        &--top {
+            --initialScale: 2;
+            --progress: calc(var(--initialScale) - calc(var(--scaleY) * var(--initialScale)) );
+
+            scale: 1 var(--progress);
+            transform-origin: top;
+            transform: unset!important;
+            transition: scale 0s ease-out;
+        }
+        &--bottom {
+            --initialScale: 1;
+            --progress: calc(var(--initialScale) + calc(var(--scaleY) * var(--initialScale)) );
+
+            scale: 1 var(--progress);
+            transform-origin: bottom;
+            transition: scale 0s ease-out;
+        }
+    }
 }

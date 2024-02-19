@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server'
-import { PROJECTS_ITEMS } from '../../../constants'
+import { PROJECTS_ITEMS } from "../../../constants";
 
 export async function GET(request, context) {
-  const { params } = context
+  // const { params } = context
   const data = PROJECTS_ITEMS
   const res = data
 

@@ -23,6 +23,16 @@ export const NAV_LINKS = [
 		label: "Contact",
 		href: "/contact",
 	},
+	{
+		key: "products",
+		label: "products",
+		href: "/products",
+	},
+	{
+		key: "projects",
+		label: "projects",
+		href: "/projects",
+	},
 ];
 
 // GALLERY

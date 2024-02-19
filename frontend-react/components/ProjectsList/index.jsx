@@ -6,7 +6,7 @@ import React, { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useModal } from "@/context/ModalContext";
-import {ProjectDetail} from "@/components";
+import {ProjectModal} from "@/components";
 
 // Styles
 import "./styles.scss";
@@ -31,10 +31,10 @@ const ProjectsList = ({ projects }) => {
 export default ProjectsList;
 
 const Project = ({ project }) => {
-	const {openModal} = useModal(<ProjectDetail/>);
+	const {openModal} = useModal(<ProjectModal/>);
 
 	const handleClick = () => {
-		setModalComponent(<ProjectDetail/>);
+		setModalComponent(<ProjectModal/>);
 		openModal();
 	}
 
@@ -43,9 +43,10 @@ const Project = ({ project }) => {
 			<header className='project__header'>
 				<div className='project__heading-wrapper'>
 					<Link
-						href={`?modal=true&id=${project.id}`}
+						href={`?modal=true&type=project&id=${project.id}`}
 						scroll={false}
-						onClick={handleClick}
+						rel="preload"
+						// onClick={handleClick}
 					>
 						<h3 className='project__title'>{project.title}</h3>
 					</Link>
@@ -63,10 +64,11 @@ const Project = ({ project }) => {
 				</ul>
 			</header>
 			<Link
-				href={`?modal=true&id=${project.id}`}
+				href={`?modal=true&type=project&id=${project.id}`}
 				scroll={false}
 				className='project__image-link'
-				onClick={handleClick}
+				rel="preload"
+				// onClick={handleClick}
 			>
 					<div className='project__image'>
 						<Image

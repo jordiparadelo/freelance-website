@@ -1,21 +1,21 @@
 import Link from "next/link";
 import React from "react";
 
-async function getProjects() {
+async function getProducts() {
 	const res = await fetch(`http://localhost:3000/api/products`);
 	return res.json();
 }
 
-const ProjectsPage = async () => {
-	const projects = await getProjects();
+const ProductsPage = async () => {
+	const products = await getProducts();
 
 	return (
 		<section>
 			<ul>
-				{projects.map((product) => (
+				{products.map((product) => (
 					<li key={product.id}>
 						<Link href={`/products/${product.id}`}>
-							<h1 key={product.id}>{product.title}</h1>
+							<h1 key={product.id}>Product: {product.title}</h1>
 						</Link>
 					</li>
 				))}
@@ -24,4 +24,4 @@ const ProjectsPage = async () => {
 	);
 };
 
-export default ProjectsPage;
+export default ProductsPage;

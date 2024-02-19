@@ -2,7 +2,7 @@
     position: relative;
     background-color: white;
     padding-block: 0.5rem;
-    overflow-x: hidden;
+    overflow: hidden;
 
     &__top-shape {
         position: absolute;
@@ -49,14 +49,17 @@
     &__curves {
         &--top {
             z-index: 10;
-            transform: scaleY(var(--scaleY , 1));
+            transform: unset!important;
+            scale: 1 1.25;
             transform-origin: center top;
         }
         &--bottom{
             z-index: 10;
-            transform: scaleY(var(--scaleY, 1)) rotate(180deg) translateY(100%);
+            rotate: 180deg !important;
             transform-origin: center bottom;
             bottom: 0;
+            transform: translateY(100%)!important;
+            scale: 1 1.25;
         }
     }
 }

@@ -85,7 +85,6 @@ const CircleLine = ({ percentage, size }) => {
 			/>
 			<rect
 				x={size / 4.375}
-				// x={'8'}
 				y={size / 2.69}
 				width={size / 2}
 				height={strokeWidth}

@@ -21,6 +21,7 @@ const SelectedWork = async () => {
 			<Curves
 				orientation='top'
 				fill='#101214'
+				className='selected-work__curves--top'
 			/>
 
 			<div className='container'>
@@ -43,6 +44,7 @@ const SelectedWork = async () => {
 			<Curves
 				orientation='bottom'
 				fill='#101214'
+				className='selected-work__curves--bottom'
 			/>
 		</section>
 	);

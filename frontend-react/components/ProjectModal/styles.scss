@@ -19,10 +19,14 @@
 	flex-direction: column;
 	gap: 3.5rem;
 
+	.container {
+		--container-size: 900px;
+	}
+
 	&__wrapper {
 		display: flex;
 		flex-direction: column;
-		gap: 2rem;
+		gap: 2.5rem;;
 	}
 
 	&__header {
@@ -51,12 +55,13 @@
 		img {
 			flex-grow: 1;
 			min-height: 100%;
+			min-width: 100%;
 			object-fit: cover;
 			object-position: center;
 		}
 	}
 
-	&__content {
+	&__content-wrapper {
 		display: flex;
 		flex-direction: column;
 		gap: 2rem;
@@ -67,6 +72,13 @@
 			max-width: 900px;
 			margin-inline: auto;
 		}
+	}
+	&__content {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+		flex-basis: 600px;
+		flex-grow: 1;
 	}
 
     &__description {

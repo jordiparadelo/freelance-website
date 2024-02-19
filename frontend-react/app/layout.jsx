@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
 						<Navbar />
 						<main>{children}</main>
 						<Footer />
-						{/* <Modal /> */}
+						<Modal />
 					</MenuProvider>
 				</ModalProvider>
 			</body>

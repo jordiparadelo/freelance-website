@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef, MouseEvent } from "react";
-import Lottie, { LottieRefCurrentProps } from "lottie-react";
+import Lottie from "lottie-react";
 import useLiveClock from "@/hooks/useLiveClock";
 import GlobeLottie from "@/public/animated-icons/global.json";
 import "./styles.scss";
@@ -11,7 +11,7 @@ const Banner = () => {
 	const [isClockVisible, setIsClockVisible] = useState(false);
 
 	const currentTime = useLiveClock();
-	const globeIconRef = useRef < LottieRefCurrentProps > null;
+	const globeIconRef = useRef();
 
 	const GlobeIconProps = {
 		animationData: GlobeLottie,
