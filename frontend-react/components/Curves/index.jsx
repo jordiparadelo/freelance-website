@@ -12,6 +12,7 @@ const Curves = ({ className, orientation, fill }) => {
 	useGSAP(() => {
 		componentRef && curveAnimation(componentRef.current)
 	})
+
 	return (
 		<svg
 			viewBox='0 0 1440 55'

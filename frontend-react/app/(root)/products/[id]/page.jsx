@@ -5,8 +5,20 @@ async function getProduct(productId) {
     return res.json()
 }
 
-export async function generateMetadata({params})  {
+export async function generateMetadata({ params, searchParams }) {
+	// read route params
+	const id = params.id;
 
+	// fetch data
+	const product = await getProduct(id);
+
+	// optionally access and extend (rather than replace) parent metadata
+	// const previousImages = product.images.src
+
+	return {
+		title: product.title,
+    description: product.details
+	};
 }
 
 
