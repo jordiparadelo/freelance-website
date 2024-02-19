@@ -1,6 +1,10 @@
 .client-reviews {
 	max-width: 100vw;
 	overflow: hidden;
+
+	@media screen and (min-width: 1200px) {
+        padding-block-start: 12rem;
+    }
 	
 	&__wrapper {
 		display: flex;

@@ -12,11 +12,6 @@ const About = () => {
 			<div className='container'>
 				<div className='about__wrapper'>
 					<header className='about__header'>
-						{/* <h2 className='about__title'>
-							Freelancer, focused on develop digital products from scratch.
-							Always align with design trends and technologies to solve business
-							needs.
-						</h2> */}
 						<AnimatedParagraph className="about__title">
 							Freelancer, focused on develop digital products from scratch.
 							Always align with design trends and technologies to solve business

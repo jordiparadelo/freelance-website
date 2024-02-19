@@ -1,11 +1,11 @@
 "use client";
-import { ProjectModal, ProjectModalLoading } from "@/components";
+import { ContactModal, ProjectModal, ProjectModalLoading } from "@/components";
 // import useFetchProjects from "@/hooks/useFetchProjects";
 
 import React, { Suspense, useEffect } from "react";
 
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
-
+// Styles
 import "./styles.scss";
 
 //Animation
@@ -36,6 +36,10 @@ const Modal = (props) => {
 		},
 		product: {
 			component: "<p>ProductModal</p>",
+			loading: "ProjectModal",
+		},
+		contact: {
+			component: <ContactModal />,
 			loading: "ProjectModal",
 		},
 	};

@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@/components": ["./components"],
+      "@/layouts": ["./layouts"],
+      "@/hooks": ["./hooks"],
+      "@/constants": ["./constants"],
     }
   }
 }

@@ -5,6 +5,7 @@ import { Button, Curves, ProjectsList, SectionLabel } from "@/components";
 import Computer from "@/public/animated-icons/selected-work.json";
 // Styles
 import "./styles.scss";
+import Link from "next/link";
 
 const SelectedWork = async () => {
 	const URL_PROJECTS = `http://localhost:3000/api/projects`;
@@ -35,7 +36,7 @@ const SelectedWork = async () => {
 							Check out the last projects
 						</h2>
 					</div>
-					<Button>See more projects</Button>
+					<Link href="/projects"><Button>See more projects</Button></Link>
 				</header>
 
 				<ProjectsList projects={projects} />

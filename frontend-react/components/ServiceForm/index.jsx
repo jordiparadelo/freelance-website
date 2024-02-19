@@ -2,36 +2,43 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import "./styles.scss";
+import { Button } from "..";
+import Link from "next/link";
 
 const ServiceForm = () => {
 	const [activeButtons, setActiveButtons] = useState(false);
+	const [services, setServices] = useState([]);
 	const formRef = useRef(null);
 
 	useEffect(() => {
-		if(activeButtons === false) {
+		if (activeButtons === false) {
 			formRef.current?.reset();
 		}
+	}, [activeButtons]);
 
-	},[activeButtons])
-
-	//TODO: Fix mapping over checkboxes -> not working well
 	const handleChange = (e) => {
 		const formElements = formRef.current ? formRef.current.elements : null;
 
-		if (!formElements) return;
+		const checkedInputs = Object.keys(formElements).filter(
+			(key) => formElements[key].checked
+		);
+		const selectedInputs = checkedInputs
+			.slice(0, checkedInputs.length / 2)
+			.map((key) => {
+				return formElements[key].value;
+			});
+
+		setServices(selectedInputs.join(","));
 
 		for (let i = 0; i < formElements.length; i++) {
-			if (
-				formElements[i].type === "checkbox" &&
-				formElements[i].checked
-			) {
+
+			if (formElements[i].type === "checkbox" && formElements[i].checked) {
 				setActiveButtons(true);
 				break;
 			} else {
-                setActiveButtons(false);
-            }
+				setActiveButtons(false);
+			}
 		}
-
 	};
 
 	return (
@@ -99,13 +106,21 @@ const ServiceForm = () => {
 
 			{activeButtons && (
 				<div className='services-form__actions'>
-					<button type='submit' className="services-form__submit">
-						<span>Ready to start your project</span>
-					</button>
+					<Link
+						href={`?modal=true&type=contact&services=${services}`}
+						scroll={false}
+					>
+						<Button
+							type='submit'
+							// className='services-form__submit'
+						>
+							Ready to start your project
+						</Button>
+					</Link>
 					<button
 						type='reset'
 						aria-label='Reset'
-						className="services-form__reset"
+						className='services-form__reset'
 					>
 						Reset
 					</button>

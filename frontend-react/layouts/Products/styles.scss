@@ -1,4 +1,9 @@
 .products {
+
+    @media screen and (min-width: 1200px) {
+        padding-block-end: 12rem;
+    }
+
     &__wrapper {
         display: flex;
         flex-direction: column;

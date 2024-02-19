@@ -7,6 +7,7 @@ import Image from "next/image";
 import useFetchProjects from "@/hooks/useFetchProjects";
 // Styles
 import "./styles.scss";
+import { Button } from "..";
 
 const ProjectModal = () => {
 	const searchParams = useSearchParams();
@@ -14,7 +15,6 @@ const ProjectModal = () => {
 
 	const project = useFetchProjects(id);
 
-	// const showModal = searchParams.get("modal");
 	return (
 		project && (
 			<article className='project-detail'>
@@ -22,6 +22,9 @@ const ProjectModal = () => {
 					<div className='container'>
 						<h2 className='project-detail__title'>{project?.title}</h2>
 						<p className='project-detail__details'>{project?.details}</p>
+						<Button href={project?.preview}>
+							Live view
+						</Button>
 					</div>
 				</header>
 				<div className='container'>
@@ -59,7 +62,12 @@ const ProjectModal = () => {
 								</p>
 							</div>
 							<aside className='project-detail__aside'>
-								<h4>Likes {project?.likes}</h4>
+								<div className="project-detail__aside__block">
+								<h4>Responsibilities</h4>
+								</div>
+								<div className="project-detail__aside__block">
+								<h4>Technology</h4>
+								</div>
 							</aside>
 						</div>
 					</div>

@@ -33,7 +33,7 @@
     &__curves {
         
         &--top {
-            --initialScale: 2;
+            --initialScale: 1.25;
             --progress: calc(var(--initialScale) - calc(var(--scaleY) * var(--initialScale)) );
 
             scale: 1 var(--progress);
