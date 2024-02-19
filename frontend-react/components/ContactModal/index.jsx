@@ -10,7 +10,7 @@ import { Button } from "..";
 const ContactModal = () => {
 	const searchParams = useSearchParams();
 	const services = searchParams.get("services");
-	const contactModalRef = useRef();
+	const contactModalRef = useRef(null);
 
 	function setServices(services) {
 		if (!services) return;
@@ -35,7 +35,7 @@ const ContactModal = () => {
 	return (
 		<div className='contact-modal'>
 			<form
-				action='POST'
+				// action='POST'
 				className='contact-modal__form'
 				ref={contactModalRef}
 			>
@@ -66,53 +66,53 @@ const ContactModal = () => {
 				<div className='form__group services-form__wrapper'>
 					<label htmlFor='services'>What services are you looking for?</label>
 					<label
-						htmlFor='service_development'
+						htmlFor='contact-service_development'
 						className='services-form__group'
 					>
 						<input
 							type='checkbox'
 							value='development'
-							name='services'
-							id='service_development'
+							name='services_contact'
+							id='contact-service_development'
 						/>
 						<span className='active-light'></span>
 						<h4>Development</h4>
 					</label>
 					<label
-						htmlFor='service_product-design'
+						htmlFor='contact-service_product-design'
 						className='services-form__group'
 					>
 						<input
 							type='checkbox'
 							value='product-design'
 							name='services'
-							id='service_product-design'
+							id='contact-service_product-design'
 						/>
 						<span className='active-light'></span>
 						<h4>Product Design</h4>
 					</label>
 					<label
-						htmlFor='service_branding'
+						htmlFor='contact-service_branding'
 						className='services-form__group'
 					>
 						<input
 							type='checkbox'
 							value='branding'
 							name='services'
-							id='service_branding'
+							id='contact-service_branding'
 						/>
 						<span className='active-light'></span>
 						<h4>Branding</h4>
 					</label>
 					<label
-						htmlFor='service_graphic-design'
+						htmlFor='contact-service_graphic-design'
 						className='services-form__group'
 					>
 						<input
 							type='checkbox'
 							value='graphic-design'
 							name='services'
-							id='service_graphic-design'
+							id='contact-service_graphic-design'
 						/>
 						<span className='active-light'></span>
 						<h4>Graphic design</h4>
