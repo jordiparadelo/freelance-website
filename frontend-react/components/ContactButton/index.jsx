@@ -1,15 +1,21 @@
-import React from 'react'
+import React from "react";
 
 // Components
-import { Button } from '@/components';
+import Link from "next/link";
+import { Button } from "@/components";
 
 // Styles
-import "./styles.scss"
+import "./styles.scss";
 
 const ContactButton = (props) => {
-  return (
-    <Button className="contactButton">{props.label}</Button>
-  )
-}
+	return (
+		<Link
+			href='?modal=true&type=contact'
+			scroll={false}
+		>
+			<Button className='contactButton'>{props.label}</Button>
+		</Link>
+	);
+};
 
-export default ContactButton
+export default ContactButton;

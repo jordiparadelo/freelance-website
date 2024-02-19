@@ -1,9 +1,6 @@
 "use client";
 
-import React, { ReactNode, useLayoutEffect, useRef } from "react";
-
-import SplitType from "split-type";
-import gsap from "gsap";
+import React, { useRef } from "react";
 
 // Animations
 import { buttonAnimation } from "./animations";
