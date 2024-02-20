@@ -50,8 +50,8 @@ const Button = ({ children, href, type, className }) => {
 			type={type}
 			ref={componentRef}
 		>
-			<span className='button__label'>{children}</span>
-			<span className='button__label'>{children}</span>
+			<span className='button__label' aria-label={children}>{children}</span>
+			<span className='button__label' aria-hidden='true'>{children}</span>
 		</button>
 	);
 };

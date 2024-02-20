@@ -1,11 +1,11 @@
 import React from "react";
+import Link from "next/link";
 // Components
 import { Button, Curves, ProjectsList, SectionLabel } from "@/components";
 // Assets
 import Computer from "@/public/animated-icons/selected-work.json";
 // Styles
 import "./styles.scss";
-import Link from "next/link";
 
 const SelectedWork = async () => {
 	const URL_PROJECTS = `http://localhost:3000/api/projects`;
@@ -16,13 +16,13 @@ const SelectedWork = async () => {
 
 	return (
 		<section
-			id='selected-work'
-			className='selected-work'
+			id='selected-works'
+			className='selected-works'
 		>
 			<Curves
 				orientation='top'
 				fill='#101214'
-				className='selected-work__curves--top'
+				className='selected-works__curves--top'
 			/>
 
 			<div className='container'>
@@ -45,7 +45,7 @@ const SelectedWork = async () => {
 			<Curves
 				orientation='bottom'
 				fill='#101214'
-				className='selected-work__curves--bottom'
+				className='selected-works__curves--bottom'
 			/>
 		</section>
 	);

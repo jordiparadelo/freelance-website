@@ -5,8 +5,6 @@ import React, { useRef } from "react";
 // Next.js
 import Link from "next/link";
 import Image from "next/image";
-import { useModal } from "@/context/ModalContext";
-import {ProjectModal} from "@/components";
 
 // Styles
 import "./styles.scss";
@@ -31,12 +29,6 @@ const ProjectsList = ({ projects }) => {
 export default ProjectsList;
 
 const Project = ({ project }) => {
-	const {openModal} = useModal(<ProjectModal/>);
-
-	const handleClick = () => {
-		setModalComponent(<ProjectModal/>);
-		openModal();
-	}
 
 	return (
 		<article className='project' key={project.title}>
@@ -46,7 +38,6 @@ const Project = ({ project }) => {
 						href={`?modal=true&type=project&id=${project.id}`}
 						scroll={false}
 						rel="preload"
-						// onClick={handleClick}
 					>
 						<h3 className='project__title'>{project.title}</h3>
 					</Link>

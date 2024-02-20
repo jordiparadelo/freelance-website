@@ -1,0 +1,106 @@
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 1.75rem;
+
+	&__group {
+		display: flex;
+		flex-direction: column;
+		gap: 0.875rem;
+	}
+    
+	&__row {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 1.25rem;
+	}
+
+	&__checkbox {
+		--size: 48px;
+
+		min-height: var(--size);
+		min-width: var(--size);
+		border-radius: 999px;
+		border: 1px solid rgba(0, 0, 0, 0.2);
+		display: flex;
+		flex-direction: row;
+		gap: 0.875rem;
+		place-content: center;
+		place-items: center;
+		cursor: pointer;
+        overflow: hidden;
+        transition: color 0.3s ease 0.3s;
+
+		.active-light {
+			--size: 8px;
+
+			width: var(--size);
+			height: var(--size);
+			border-radius: 999px;
+			background-color: #313131;
+			transition: scale 0.2s ease;
+            position: relative;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: inherit;
+                border-radius: 999px;
+                scale: 0;
+                z-index: -1;
+                background-color: #fff;
+                transition: scale 0.4s ease, background-color 0s linear 0.5s;
+            }
+		}
+
+		&:has(input:checked) {
+			// background-color: #313131;
+			color: white;
+            transition: color 0.3s ease;
+
+			.active-light {
+                background-color: #fff;
+
+                &::before {
+                    scale: 50;
+                    transition: scale 0.6s ease;
+                    background-color: #313131;
+                }
+			}
+		}
+
+		&:hover {
+			&:not(:has(input:checked)) {
+				.active-light {
+					scale: 1.2;
+				}
+			}
+		}
+
+		input {
+			display: none;
+		}
+	}
+
+	input, textarea {
+		--size: 48px;
+
+		min-height: var(--size);
+		min-width: var(--size);
+		border-radius: 6px;
+		padding-inline: 1rem;
+		border: 1px solid rgba(0, 0, 0, 0.2);
+	}
+
+    textarea {
+        padding-block: 1rem;
+    }
+
+    p {
+        position: relative;
+    }
+}

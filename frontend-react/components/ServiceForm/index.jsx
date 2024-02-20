@@ -61,7 +61,7 @@ const ServiceForm = () => {
 						id='service_development'
 					/>
 					<span className='active-light'></span>
-					<h4>Development</h4>
+					<p>Development</p>
 				</label>
 				<label
 					htmlFor='service_product-design'
@@ -74,7 +74,7 @@ const ServiceForm = () => {
 						id='service_product-design'
 					/>
 					<span className='active-light'></span>
-					<h4>Product Design</h4>
+					<p>Product Design</p>
 				</label>
 				<label
 					htmlFor='service_branding'
@@ -87,7 +87,7 @@ const ServiceForm = () => {
 						id='service_branding'
 					/>
 					<span className='active-light'></span>
-					<h4>Branding</h4>
+					<p>Branding</p>
 				</label>
 				<label
 					htmlFor='service_graphic-design'
@@ -100,7 +100,7 @@ const ServiceForm = () => {
 						id='service_graphic-design'
 					/>
 					<span className='active-light'></span>
-					<h4>Graphic design</h4>
+					<p>Graphic design</p>
 				</label>
 			</div>
 

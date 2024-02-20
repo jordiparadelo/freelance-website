@@ -1,10 +1,8 @@
-
 import { Navbar, Footer, Modal } from "@/components";
 import { Manrope } from "next/font/google";
 import { MenuProvider } from "@/context/MenuContext";
-import { motion, AnimatePresence } from "framer-motion";
 import "./globals.css";
-import '@unocss/reset/tailwind.css'
+// import '@unocss/reset/tailwind.css'
 import { ModalProvider } from "@/context/ModalContext";
 
 export const metadata = {
@@ -25,14 +23,10 @@ export default function RootLayout({ children }) {
 				className={manrope.className}
 				suppressHydrationWarning={true}
 			>
-				<ModalProvider>
-					<MenuProvider>
-						<Navbar />
-						<main>{children}</main>
-						<Footer />
-						<Modal />
-					</MenuProvider>
-				</ModalProvider>
+				<Navbar />
+				<main>{children}</main>
+				<Footer />
+				<Modal />
 			</body>
 		</html>
 	);

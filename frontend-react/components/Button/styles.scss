@@ -1,6 +1,6 @@
 .button {
 	--color: inherit;
-	--size: 40px;
+	--size: 32px;
 
 	// box-sizing: border-box;
 
@@ -57,4 +57,8 @@
             filter: invert(1);
         }
 	}
+
+    @media screen and (min-width: 480px) {
+        --size: 40px;
+    }
 }

@@ -1,11 +1,21 @@
+"use client";
+
 import React from "react";
+// Next.js
 import Image from "next/image";
-import { Button } from "@/components";
-import { SOCIAL_LINKS } from "@/constants";
-import "./styles.scss";
 import Link from "next/link";
+// Constants
+import { SOCIAL_LINKS } from "@/constants";
+// Component
+import { Button } from "@/components";
+// Hooks
+import  usePageScroll  from "@/hooks/usePageScroll";
+// Styles
+import "./styles.scss";
 
 const Footer = () => {
+	const { scrollToElement } = usePageScroll();
+
 	return (
 		<footer className='footer'>
 			<div className='footer__wrapper'>
@@ -55,7 +65,7 @@ const Footer = () => {
 				>
 					Download Design
 				</a>
-				<button className='footer__back-to-top'>back to top</button>
+				<button className='footer__back-to-top' onClick={() => scrollToElement('body')}>back to top</button>
 			</div>
 		</footer>
 	);

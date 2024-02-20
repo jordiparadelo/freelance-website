@@ -1,30 +1,48 @@
 "use client";
 
 import { useState } from "react";
+// Next.js
 import Link from "next/link";
-// Context
-import { useMenu } from "@/context/MenuContext";
+import { usePathname } from "next/navigation";
+import Image from "next/image";
 // Lib
 import { motion, AnimatePresence } from "framer-motion";
+// Hooks
+import usePageScroll from "@/hooks/usePageScroll";
 // Animations
 import { animationProps } from "./animations";
-import { useModal } from "@/context/ModalContext";
+// Assets
+import crossIcon from "@/public/cross.svg";
+import arrowIcon from "@/public/arrow.svg";
 // Styles
 import "./styles.scss";
 
 const NavMenu = ({ navLinks }) => {
-	const { scrollPosition } = useMenu();
-	const { toggleModal } = useModal();
-
 	const [isOpen, setIsOpen] = useState(false);
+	const { scrollPosition, scrollToElement } = usePageScroll();
+	const pathname = usePathname();
+
+	const pageSections =
+		navLinks.find((link) => link.href === pathname)?.sections || null;
 
 	function handleClick() {
 		setIsOpen(!isOpen);
-		toggleModal && toggleModal();
 	}
 
 	return (
 		<div className='navmenu'>
+			{pageSections && (
+				<div className='navmenu__sections'>
+					{pageSections.map((section, index) => (
+						<button
+							key={section.key}
+							onClick={() => scrollToElement(section.href)}
+						>
+							{section.label}
+						</button>
+					))}
+				</div>
+			)}
 			<button
 				onClick={handleClick}
 				className='navmenu__button'
@@ -36,21 +54,53 @@ const NavMenu = ({ navLinks }) => {
 			</button>
 			<AnimatePresence>
 				{isOpen && (
-					<menu
-						className='navmenu__menu-wrapper'
-						onClick={() => setIsOpen((current) => !current)}
-					>
-						<motion.ul
+					<menu className='navmenu__menu-wrapper'>
+						<motion.div
 							className='navmenu__menu'
 							{...animationProps}
-							key='navmenu'
+							key={"navmenu"}
 						>
-							{navLinks.map((link) => (
-								<li key={link.key}>
-									<Link href={link.href}>{link.label}</Link>
-								</li>
-							))}
-						</motion.ul>
+							<header className='navmenu__menu-header'>
+								<button
+									className='navmenu__close-button'
+									onClick={() => setIsOpen((current) => !current)}
+								>
+									<Image
+										src={crossIcon}
+										alt='Close menu'
+										width='1em'
+										height='1em'
+									/>
+									Close
+								</button>
+							</header>
+							<ul className='navmenu__menu-list'>
+								{navLinks.map((link, index) => (
+									<li
+										key={index}
+										className='navmenu__menu-list-i'
+									>
+										<Image
+											src={arrowIcon}
+											alt='Arrow icon'
+											width='1em'
+											height='1em'
+										/>
+										<Link
+											href={link.href}
+											key={link.label}
+											aria-label={`Go to ${link.label} page`}
+										>
+											{link.label}
+										</Link>
+									</li>
+								))}
+							</ul>
+						</motion.div>
+						<div
+							className='navmenu__menu-overlay'
+							onClick={() => setIsOpen((current) => !current)}
+						></div>
 					</menu>
 				)}
 			</AnimatePresence>

@@ -7,7 +7,7 @@ import Image from "next/image";
 import useFetchProjects from "@/hooks/useFetchProjects";
 // Styles
 import "./styles.scss";
-import { Button } from "..";
+import { Button, CloseModalButton } from "..";
 
 const ProjectModal = () => {
 	const searchParams = useSearchParams();
@@ -22,9 +22,8 @@ const ProjectModal = () => {
 					<div className='container'>
 						<h2 className='project-detail__title'>{project?.title}</h2>
 						<p className='project-detail__details'>{project?.details}</p>
-						<Button href={project?.preview}>
-							Live view
-						</Button>
+						<Button href={project?.preview}>Live view</Button>
+						<CloseModalButton>Close</CloseModalButton>
 					</div>
 				</header>
 				<div className='container'>
@@ -62,11 +61,11 @@ const ProjectModal = () => {
 								</p>
 							</div>
 							<aside className='project-detail__aside'>
-								<div className="project-detail__aside__block">
-								<h4>Responsibilities</h4>
+								<div className='project-detail__aside__block'>
+									<h4>Responsibilities</h4>
 								</div>
-								<div className="project-detail__aside__block">
-								<h4>Technology</h4>
+								<div className='project-detail__aside__block'>
+									<h4>Technology</h4>
 								</div>
 							</aside>
 						</div>

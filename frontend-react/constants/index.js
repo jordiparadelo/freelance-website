@@ -12,6 +12,33 @@ export const NAV_LINKS = [
 		key: "home",
 		label: "Home",
 		href: "/",
+		sections: [
+			{
+				key: "about",
+				label: "About",
+				href: "#about",
+			},
+			{
+				key: "gallery",
+				label: "Gallery",
+				href: "#gallery",
+			},
+			{
+				key: "products",
+				label: "Products",
+				href: "#products",
+			},
+			{
+				key: "projects",
+				label: "Projects",
+				href: "#selected-works",
+			},
+			{
+				key: "reviews",
+				label: "Reviews",
+				href: "#client-reviews",
+			},
+		]
 	},
 	{
 		key: "about",
@@ -25,12 +52,12 @@ export const NAV_LINKS = [
 	},
 	{
 		key: "products",
-		label: "products",
+		label: "Products",
 		href: "/products",
 	},
 	{
 		key: "projects",
-		label: "projects",
+		label: "Projects",
 		href: "/projects",
 	},
 ];
