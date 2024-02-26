@@ -52,13 +52,12 @@ const NavMenu = ({ navLinks }) => {
 					size={40}
 				/>
 			</button>
-			<AnimatePresence>
+			<AnimatePresence >
 				{isOpen && (
-					<menu className='navmenu__menu-wrapper'>
+					<motion.menu  className='navmenu__menu-wrapper' key={'navmenu'}>
 						<motion.div
 							className='navmenu__menu'
 							{...animationProps}
-							key={"navmenu"}
 						>
 							<header className='navmenu__menu-header'>
 								<button
@@ -90,6 +89,7 @@ const NavMenu = ({ navLinks }) => {
 											href={link.href}
 											key={link.label}
 											aria-label={`Go to ${link.label} page`}
+											onClick={() => setIsOpen((current) => !current)}
 										>
 											{link.label}
 										</Link>
@@ -101,7 +101,7 @@ const NavMenu = ({ navLinks }) => {
 							className='navmenu__menu-overlay'
 							onClick={() => setIsOpen((current) => !current)}
 						></div>
-					</menu>
+					</motion.menu>
 				)}
 			</AnimatePresence>
 		</div>

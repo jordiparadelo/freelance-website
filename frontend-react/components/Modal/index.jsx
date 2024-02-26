@@ -7,7 +7,7 @@ import {
 } from "@/components";
 // import useFetchProjects from "@/hooks/useFetchProjects";
 
-import React, { Suspense, useEffect } from "react";
+import React, { Suspense } from "react";
 // Next.js
 // import { useSearchParams, usePathname, useRouter } from "next/navigation";
 // Hooks
@@ -64,66 +64,5 @@ const Modal = (props) => {
 		)
 	);
 };
-// const Modal = (props) => {
-// 	const router = useRouter();
-// 	const searchParams = useSearchParams();
-// 	const showModal = searchParams.get("modal");
-// 	const type = searchParams.get("type");
-// 	const pathname = usePathname();
-
-// 	const MODAL_CHILD_TYPE = {
-// 		project: {
-// 			component: <ProjectModal />,
-// 			loading: <ProjectModalLoading />,
-// 		},
-// 		product: {
-// 			component: "<p>ProductModal</p>",
-// 			loading: "ProjectModal",
-// 		},
-// 		contact: {
-// 			component: <ContactModal />,
-// 			loading: "ProjectModal",
-// 		}
-// 	};
-
-// 	const component = MODAL_CHILD_TYPE[type]?.component || null;
-// 	const loading = MODAL_CHILD_TYPE[type]?.loading || <p>Loading...</p>;
-
-// 	// Methods
-// 	function closeModal() {
-// 		router.push(pathname, { scroll: false });
-// 	}
-
-// 	useEffect(() => {
-// 		const handleKeyDown = (event) => {
-// 			if (event.key === "Escape") closeModal();
-// 		};
-
-// 		if (showModal) {
-// 			document.body.style.overflow = "hidden";
-// 			window.addEventListener("keydown", handleKeyDown);
-// 		} else {
-// 			document.body.style.overflow = "auto";
-// 		}
-
-// 		return () => {
-// 			window.removeEventListener("keydown", handleKeyDown);
-// 		};
-// 	}, [showModal]);
-
-// 	return (
-// 		showModal && (
-// 			<>
-// 				<div className='modal'>
-// 					{component && <Suspense fallback={loading}>{component}</Suspense>}
-// 					<div
-// 						className='modal__overlay'
-// 						onClick={closeModal}
-// 					></div>
-// 				</div>
-// 			</>
-// 		)
-// 	);
-// };
 
 export default Modal;

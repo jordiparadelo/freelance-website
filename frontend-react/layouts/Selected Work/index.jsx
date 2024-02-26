@@ -40,6 +40,10 @@ const SelectedWork = async () => {
 				</header>
 
 				<ProjectsList projects={projects} />
+
+				<div className="selected-works__actions">
+					<Link href="/projects"><Button color='secondary'>See more projects</Button></Link>
+				</div>
 			</div>
 
 			<Curves

@@ -30,6 +30,14 @@
         }
     }
 
+    &__actions {
+        display: flex;
+        place-items: center;
+        place-content: center;
+        padding-block-start: var(--padding-base);
+        
+    }
+
     &__curves {
         
         &--top {

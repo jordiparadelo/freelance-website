@@ -2,10 +2,6 @@
     display: flex;
     flex-direction: column;
     padding: 2.5rem;
-    position: absolute;
-    top: calc(50% + 90px);
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
     border-radius: 20px;
     background: white;
     z-index: 12;

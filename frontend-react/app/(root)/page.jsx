@@ -5,6 +5,7 @@ import {
 	Gallery,
 	ClientsReviews,
 	Products,
+	Inner,
 } from "@/layouts";
 import { Banner } from "@/components";
 
