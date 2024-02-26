@@ -1,15 +1,10 @@
 "use client";
 import {
 	ContactModal,
-	NavMenu,
 	ProjectModal,
 	ProjectModalLoading,
 } from "@/components";
-// import useFetchProjects from "@/hooks/useFetchProjects";
-
 import React, { Suspense } from "react";
-// Next.js
-// import { useSearchParams, usePathname, useRouter } from "next/navigation";
 // Hooks
 import useModal from "@/hooks/useModal";
 // Styles
