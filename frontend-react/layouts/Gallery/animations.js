@@ -3,7 +3,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const galleryAnimations = (element: Element) => {
+export const galleryAnimations = (element) => {
     const OFFSET_TRANSLATION = 20
     const gallery = element.querySelector(".gallery__slideshow");
     const screenHeight = window.innerHeight

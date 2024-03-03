@@ -23,7 +23,7 @@ const Gallery = () => {
 	
 	useGSAP(() => {
 		galleryAnimations(componentRef?.current);
-	});
+	}, {scope: componentRef});
 
 	// const handleAnimation = () => {
 	// 	galleryAnimations(componentRef?.current);

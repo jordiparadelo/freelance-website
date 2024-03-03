@@ -11,7 +11,7 @@ const Curves = ({ className, orientation, fill }) => {
 
 	useGSAP(() => {
 		componentRef && curveAnimation(componentRef.current)
-	})
+	}, {scope: componentRef})
 
 	return (
 		<svg

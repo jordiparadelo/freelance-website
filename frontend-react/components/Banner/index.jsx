@@ -45,7 +45,6 @@ const Banner = () => {
 	function handleWorldwideHover(event) {
 		const EVENT_STATES = {
 			mouseenter: () => {
-				console.log("mouse enter");
 				globeIconRef.current?.play();
 			},
 			mouseleave: () => {

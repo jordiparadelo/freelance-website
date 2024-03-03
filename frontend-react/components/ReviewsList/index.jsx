@@ -1,16 +1,53 @@
-import React from "react";
+"use client";
+
+import React, { useRef } from "react";
+// Next.js
 import Image from "next/image";
+// Libs
+import { useGSAP } from "@gsap/react";
+import { useWindowSize } from "@uidotdev/usehooks";
+import { motion, useScroll } from "framer-motion"
+
+// Animations
+import { reviewAnimation } from "./animations";
+// Styles
 import "./styles.scss";
 
+// TODO: Fix drag event
+
 const ReviewsList = ({ reviews }) => {
+	const componentRef = useRef(null);
+	const animation = useRef(null);
+	const size = useWindowSize();
+	const { scrollY } = useScroll({
+		container: componentRef,
+		offset: ["start end", "end end"]
+	})
+
+
+	useGSAP(() => {
+		animation.current = reviewAnimation(componentRef.current);
+		console.log({size})
+	},{ dependencies: [size] , scope: componentRef});
+
+	function handleSlider(event) {
+		const scrubValue = event.target.value;
+		animation.current?.seek(scrubValue);
+	}
+
 	return (
-		<ul className="reviews-list">
-			{reviews?.map((review) => (
-				<li key={review.id}>
-					<Review review={review} />
-				</li>
-			))}
-		</ul>
+		<div className='reviews-list' ref={componentRef}>
+			<motion.ul
+				className='reviews-list__wrapper'
+				style={{transform: `translateX(-${scrollY}px)`}}
+			>
+				{reviews?.map((review) => (
+					<li key={review.id} className='reviews-list__item'>
+						<Review review={review} />
+					</li>
+				))}
+			</motion.ul>
+		</div>
 	);
 };
 

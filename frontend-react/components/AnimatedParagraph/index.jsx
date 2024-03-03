@@ -16,7 +16,7 @@ const AnimatedParagraph = ({ className, children }) => {
 
 	useGSAP(() => {
 		paragraphAnimation(componentRef?.current);
-	});
+	}, {scope: componentRef});
 
 	return (
 		<p
