@@ -27,7 +27,6 @@ const ReviewsList = ({ reviews }) => {
 
 	useGSAP(() => {
 		animation.current = reviewAnimation(componentRef.current);
-		console.log({size})
 	},{ dependencies: [size] , scope: componentRef});
 
 	function handleSlider(event) {

@@ -5,6 +5,7 @@ import {
 	Gallery,
 	ClientsReviews,
 	Products,
+	Services,
 	Inner,
 } from "@/layouts";
 import { Banner } from "@/components";
@@ -16,6 +17,7 @@ export default function Home() {
 			<Banner />
 			<About />
 			<Gallery />
+			<Services />
 			<Products />
 			<SelectedWork />
 			<ClientsReviews />

@@ -236,6 +236,79 @@ export const PROJECTS_ITEMS = [
 	},
 ];
 
+// SERVICES
+export const SERVICES = [
+	{
+		id: "project-1",
+		href: '/products/project-1',
+		image: {
+			src: galleryImage1,
+			alt: "Project website 32",
+			width: 568,
+			height: 456,
+		},
+		title: "Project website 1",
+		details: "12 high resolution mockup scenes",
+		preview: 'https://www.jordiparadelo.com/',
+		categories: [
+			'Ui/Ux',
+			'Website'
+		],
+		likes: 2,
+		comments: [
+			{id: 1,
+			comment: 'Love it ❤️'}
+		],
+		price: 29.99,
+	},
+	{
+		id: "project-2",
+		href: '/products/project-2',
+		image: {
+			src: galleryImage2,
+			alt: "Project website 2",
+			width: 568,
+			height: 456,
+		},
+		title: "Project website 2",
+		details: "12 high resolution mockup scenes",
+		preview: 'https://www.jordiparadelo.com/',
+		categories: [
+			'Ui/Ux',
+			'Website'
+		],
+		likes: 2,
+		comments: [
+			{id: 1,
+			comment: 'Love it ❤️'}
+		],
+		price: 29.99,
+	},
+	{
+		id: "project-3",
+		href: '/products/project-3',
+		image: {
+			src: galleryImage3,
+			alt: "Project website 3",
+			width: 568,
+			height: 456,
+		},
+		title: "Project website 3",
+		details: "12 high resolution mockup scenes",
+		preview: 'https://www.jordiparadelo.com/',
+		categories: [
+			'Ui/Ux',
+			'Website'
+		],
+		likes: 2,
+		comments: [
+			{id: 1,
+			comment: 'Love it ❤️'}
+		],
+		price: 29.99,
+	},
+];
+
 // PROJECTS
 export const REVIEWS = [
 	{

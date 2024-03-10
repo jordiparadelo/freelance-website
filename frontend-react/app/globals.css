@@ -134,7 +134,7 @@ small,
 .divider {
 	min-width: 1px;
 	min-height: 1px;
-	background-color: var(--back-color, inherit);
+	background-color: var(--background-color, inherit);
 	filter: invert(1);
-	opacity: 0.1;
+	/* opacity: 0.1; */
 }

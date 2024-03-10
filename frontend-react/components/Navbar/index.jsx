@@ -15,10 +15,12 @@ const Navbar = () => {
 			ref={navbarRef}
 			className='navbar'
 		>
-			<Logo />
-			<div className='navbar__action'>
-				<NavMenu navLinks={NAV_LINKS} />
-				<ContactButton label='Get in touch' />
+			<div className='container'>
+				<Logo />
+				<div className='navbar__action'>
+					<NavMenu navLinks={NAV_LINKS} />
+					<ContactButton label='Get in touch' />
+				</div>
 			</div>
 		</nav>
 	);

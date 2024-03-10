@@ -13,6 +13,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin-block-end: calc(var(--navbar-size) * -1);
     
     .container {
         display: flex;
