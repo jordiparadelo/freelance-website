@@ -5,7 +5,7 @@ import { SERVICES } from "@/constants";
 // Components
 import { SectionLabel } from "@/components";
 // Assets
-import ShoppingCart from "@/public/animated-icons/shopping-cart.json";
+import Box from "@/public/animated-icons/services.json";
 // Styles
 import "./styles.scss";
 
@@ -17,13 +17,18 @@ const Services = () => {
 		>
 			<div className='container'>
 				<div className='products__wrapper'>
-					<header className='section-header'>
-						<SectionLabel
-							label='Services'
-							animationData={ShoppingCart}
-						/>
-						<h2 className='section-header__title'>A breakdown of what we do</h2>
-						<p>
+					<header className='section-header --horizontal'>
+						<div className='section-header__wrapper'>
+							<SectionLabel
+								label='Services'
+								animationData={Box}
+							/>
+
+							<h2 className='section-header__title'>
+								A breakdown of what we do
+							</h2>
+						</div>
+						<p className='section-header__subtitle'>
 							Your go-to solution for web and mobile apps, like many founders,
 							startups, and agencies do.
 						</p>

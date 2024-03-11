@@ -35,7 +35,7 @@ const Gallery = () => {
 			className='gallery'
 			ref={componentRef}
 		>
-			<Curves fill="white" className="gallery__curves--top"/>
+			<Curves fill="#101214" className="gallery__curves--top"/>
 
 			<div className='gallery__slideshow'>
 				{GALLERY_IMAGES.map((image) => (
@@ -50,7 +50,7 @@ const Gallery = () => {
 				))}
 			</div>
 
-			<Curves fill="white" className="gallery__curves--bottom"/>
+			<Curves fill="#101214" className="gallery__curves--bottom"/>
 		</section>
 	);
 };

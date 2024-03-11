@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 // Components
-import { Logo, NavMenu, ContactButton } from "@/components";
+import { Logo, NavMenu, ContactButton, NavIndex } from "@/components";
 // Lib
 import { NAV_LINKS } from "@/constants";
 // Styles
@@ -16,11 +16,9 @@ const Navbar = () => {
 			className='navbar'
 		>
 			<div className='container'>
+				<NavIndex/>
 				<Logo />
-				<div className='navbar__action'>
-					<NavMenu navLinks={NAV_LINKS} />
-					<ContactButton label='Get in touch' />
-				</div>
+				<NavMenu navLinks={NAV_LINKS} />
 			</div>
 		</nav>
 	);

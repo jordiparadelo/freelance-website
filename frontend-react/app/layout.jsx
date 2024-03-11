@@ -1,6 +1,7 @@
-import {Suspense} from 'react'
+import { Suspense } from "react";
 // Components
-import { Navbar, Footer, Modal, Inner } from "@/components";
+import { AnimatePresence } from "framer-motion";
+import { Navbar, Footer, Modal, InteractiveBackground } from "@/components";
 // Fonts
 import { Manrope } from "next/font/google";
 // Styles
@@ -18,6 +19,7 @@ const manrope = Manrope({
 });
 
 export default function RootLayout({ children }) {
+	
 	return (
 		<html lang='en'>
 			<body
@@ -25,11 +27,12 @@ export default function RootLayout({ children }) {
 				suppressHydrationWarning={true}
 			>
 				<Navbar />
-				<main>{children}</main>
+					<main>{children}</main>
 				<Footer />
 				<Suspense fallback={null}>
 					<Modal />
 				</Suspense>
+				{/* <InteractiveBackground /> */}
 			</body>
 		</html>
 	);

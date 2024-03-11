@@ -9,18 +9,21 @@ import {
 	Inner,
 } from "@/layouts";
 import { Banner } from "@/components";
+import { TransitionPage } from "../components";
 
-export default function Home() {
+const Home = () => {
 	return (
 		<>
 			<Hero />
 			<Banner />
-			<About />
 			<Gallery />
+			<About />
 			<Services />
 			<Products />
 			<SelectedWork />
 			<ClientsReviews />
 		</>
 	);
-}
+};
+
+export default Home; //Home;

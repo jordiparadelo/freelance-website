@@ -1,14 +1,15 @@
 "use client";
-
 import React from "react";
 // Libs
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
+// Styles
+import "./styles.scss";
 
-const Template = ({ children }) => {
+const TransitionPage = ({ children }) => {
 	return (
 		<>
-			{children}
-			{/* <motion.div
+		{children}
+			<motion.div
 				className='slide-in'
 				initial={{ scaleY: 0 }}
 				animate={{ scaleY: 0 }}
@@ -21,9 +22,9 @@ const Template = ({ children }) => {
 				animate={{ scaleY: 0 }}
 				exit={{ scaleY: 0 }}
 				transition={{ delay: 1, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-			></motion.div> */}
+			></motion.div>
 		</>
 	);
 };
 
-export default Template;
+export default TransitionPage;

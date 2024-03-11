@@ -1,5 +1,5 @@
 import React from "react";
-import { ServiceForm, SectionLabel, AnimatedParagraph } from "@/components";
+import { ServiceForm, SectionLabel, AnimatedParagraph, Curves } from "@/components";
 import Box from "@/public/animated-icons/services.json";
 import "./styles.scss";
 
@@ -20,10 +20,6 @@ const About = () => {
 					</header>
 					<span className='divider'></span>
 					<div className='about__services'>
-						<SectionLabel
-							label='Services'
-							animationData={Box}
-						/>
 						<h3 className='about__services-title'>
 							Unlock your design potential with{" "}
 						</h3>
@@ -31,6 +27,7 @@ const About = () => {
 					</div>
 				</div>
 			</div>
+			<Curves fill="#101214" orientation="bottom"/>
 		</section>
 	);
 };

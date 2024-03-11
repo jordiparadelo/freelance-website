@@ -1,8 +1,8 @@
 .gallery {
     position: relative;
-    background-color: white;
     padding-block: 0.5rem;
     overflow: hidden;
+    color: var(--background-color);
 
     &__top-shape {
         position: absolute;

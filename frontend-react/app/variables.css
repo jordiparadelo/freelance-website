@@ -29,13 +29,16 @@
     --color-primary: #007bff;
     --color-secondary: #6c757d;
     --color-text: #333333;
-    --color-background: #ffffff;
+    --color-light: hsl(0, 0%, 90%);
+    --color-background: #101214;
+    --color-background-light: #EBECEF;
 
     /* Sizes */
     --header-height: 64px;
     --button-size: 48px;
     --input-size: 48px;
     --container-size: 1200px;
+    --section-label-size: 2.5rem;
   
     /* Breakpoints */
     --breakpoint-xs: 0px;
@@ -44,6 +47,18 @@
     --breakpoint-lg: 992px;
     --breakpoint-xl: 1200px;
 
+    /* Corners */
+    --radius-sm: 4px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-rounded: 999px;
+
     /* Navbar */
     --navbar-size: 90px;
+
+    /* Shadows */
+    --box-shadow-sm: 0px 0px 14px 0px rgba(255, 255, 255, 255, 0.3);
+    --box-shadow-md: 0px 0px 0px 2px rgba(0, 0, 0, 0.5);
+    --box-shadow-lg: 0px 0px 0px 4px rgba(0, 0, 0, 0.5);
+    --box-shadow-xl: 0px 0px 0px 8px rgba(0, 0, 0, 0.5);
   }

@@ -3,7 +3,6 @@
 import { useState } from "react";
 // Next.js
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import Image from "next/image";
 // Lib
 import { motion, AnimatePresence } from "framer-motion";
@@ -17,13 +16,9 @@ import arrowIcon from "@/public/arrow.svg";
 // Styles
 import "./styles.scss";
 
-const NavMenu = ({ navLinks }) => {
+const NavMenu = ({navLinks}) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const { scrollPosition, scrollToElement } = usePageScroll();
-	const pathname = usePathname();
-
-	const pageSections =
-		navLinks.find((link) => link.href === pathname)?.sections || null;
 
 	function handleClick() {
 		setIsOpen(!isOpen);
@@ -31,18 +26,6 @@ const NavMenu = ({ navLinks }) => {
 
 	return (
 		<div className='navmenu'>
-			{pageSections && (
-				<div className='navmenu__sections'>
-					{pageSections.map((section, index) => (
-						<button
-							key={section.key}
-							onClick={() => scrollToElement(section.href)}
-						>
-							{section.label}
-						</button>
-					))}
-				</div>
-			)}
 			<button
 				onClick={handleClick}
 				className='navmenu__button'

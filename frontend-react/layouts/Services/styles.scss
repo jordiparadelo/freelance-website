@@ -1,3 +1,10 @@
 .services {
-    
+    background-color: var(--color-background-light);
+
+
+    @media screen and (min-width: 768px) {
+        .section-header__subtitle {
+            margin-block-start: calc(var(--section-label-size) + 2rem);
+        }
+    }
 }

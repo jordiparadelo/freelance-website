@@ -12,7 +12,7 @@
 
 	&__icon {
 		--background: rgba(0, 0, 0, 0.05);
-		--size: 2.25em;
+		--size: var(--section-label-size);
 
 		height: var(--size);
 		width: var(--size);

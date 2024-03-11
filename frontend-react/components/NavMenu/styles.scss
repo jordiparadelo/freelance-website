@@ -12,8 +12,9 @@
 		place-content: center;
 		place-items: center;
 
-		background: rgba(0, 0, 0, 0.1);
+		background: var(--color-background);
 		border-radius: 999px;
+		box-shadow: var(--box-shadow-sm);
 
 		&:hover {
 			rect {

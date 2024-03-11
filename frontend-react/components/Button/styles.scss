@@ -28,16 +28,16 @@
         content: "";
         position: absolute;
         top: 100%;
-        left: 0;
-        width: 105%;
+        left: -5%;
+        width: 110%;
         aspect-ratio: 1/1;
         background-image: inherit;
         border-radius: 999px;
         z-index: 0;
-        background-color: white;
+        background-color: inherit;
         transform: translateY(0%) ;
         transition: transform 0.3s ease-out 0.1s, top 0.3s ease;
-        // filter: invert(1);
+        filter: invert(1);
     }
 
 	&:hover {
@@ -54,6 +54,7 @@
 		line-height: var(--size);
 
         &:nth-child(2) {
+            color: inherit;
             filter: invert(1);
         }
 	}
