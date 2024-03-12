@@ -1,21 +1,25 @@
 import { formatString } from "@/utils";
 
-import { useEffect, useState } from "react";
-
 import { usePathname } from "next/navigation";
 
+import { useEffect, useState } from "react";
+
+
 const useSectionList = () => {
+	// const [sectionList, setSectionList] = useState([]);
 	const [sectionList, setSectionList] = useState([]);
-	// const pathname = usePathname();
+
+	const pathname = usePathname();
 
 	useEffect(() => {
+		// Get all sections
 		const sectionsWithId = Array.from(document.querySelectorAll("section"))
 			.filter(({ id }) => id)
 			.map(({ id }) => ({ label: formatString(id), id }));
 
-        setSectionList(sectionsWithId);
-		console.log({ sectionsWithId, sectionList });
-	}, []);
+			setSectionList(sectionsWithId);
+
+	}, [pathname]); // You might need to add dependencies here if necessary
 
 	return sectionList;
 };

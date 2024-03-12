@@ -24,12 +24,14 @@
     --padding-block-tablet: 5rem;
     --padding-inline-desktop: 4rem;
     --padding-block-desktop: 7.5rem;
+    --padding-block-desktop-lg: 10rem;
   
     /* Colors */
     --color-primary: #007bff;
     --color-secondary: #6c757d;
     --color-text: #333333;
     --color-light: hsl(0, 0%, 90%);
+    --color-white: #fff;
     --color-background: #101214;
     --color-background-light: #EBECEF;
 
@@ -38,6 +40,7 @@
     --button-size: 48px;
     --input-size: 48px;
     --container-size: 1200px;
+    --container-size-lg: 1440px;
     --section-label-size: 2.5rem;
   
     /* Breakpoints */

@@ -34,27 +34,12 @@ const Services = () => {
 						</p>
 					</header>
 
-					<div className='products__list'>
-						{SERVICES.map((item) => (
-							<Link
-								href={item.href}
-								key={item.id}
-							>
-								<figure className='product'>
-									<div className='product__image'>
-										<Image
-											src={item.image.src}
-											alt={item.image.alt}
-											width={item.image.width}
-											height={item.image.height}
-										/>
-									</div>
-									<figcaption className='product__details'>
-										<h3 className='product__title'>{item.title}</h3>
-										<p className='product__price'>{item.price}</p>
-									</figcaption>
-								</figure>
-							</Link>
+					<div className='services__list'>
+						{SERVICES.map((service) => (
+							<ServiceCard
+								service={service}
+								key={service.id}
+							/>
 						))}
 					</div>
 				</div>
@@ -64,3 +49,35 @@ const Services = () => {
 };
 
 export default Services;
+
+export const ServiceCard = ({ service }) => {
+	return (
+		<figure
+			className='service-card'
+			data-type={service.type}
+		>
+			<figcaption className='service-card__details'>
+				<div className='service-card__title-wrapper'>
+					<SectionLabel
+						label=''
+						animationData={Box}
+					/>
+					<h3 className='service-card__title'>{service.title}</h3>
+				</div>
+				<p className='service-card__description'>{service.description}</p>
+			</figcaption>
+			<div className='service-card__image-container'>
+				{service.gallery.map((image) => (
+					<Image
+						src={image.src}
+						alt={image.alt}
+						width={image.width}
+						height={image.height}
+						key={image.alt}
+						className='service-card__image'
+					/>
+				))}
+			</div>
+		</figure>
+	);
+};

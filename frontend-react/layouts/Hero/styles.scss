@@ -1,62 +1,54 @@
 .hero {
-
 	color: white;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	padding-block-start: 7.5rem;
-	padding-block-end: 2.5rem;
+
+	padding-block-start: 10rem;
+	padding-block-end:4rem;
 	padding-inline: 2.5rem;
+
 	position: relative;
 	overflow: hidden;
 
 	&__container {
 		display: flex;
+		gap: 4rem;
 		flex-direction: column;
+		place-content: center;
+		place-items: center;
 		z-index: 1;
 
 		gap: 6rem;
 
 		@media screen and (min-width: 768px) {
-			align-items: flex-end;
 		}
 	}
 
 	&__heading-wrapper {
+		display: flex;
+		flex-direction: column;
+		text-align: center;
 		flex-grow: 1;
 		flex-shrink: 0;
 		width: 100%;
 	}
 
-	&_heading-row {
+	&__label {
+		--size: 32px;
+
 		display: flex;
-		flex-direction: row;
+		place-content: center;
 		place-items: center;
-		gap: 2rem;
-		min-width: 100%;
+		align-self: center;
 
-		.divider {
-			--size: 0.08em;
-			min-width: var(--size);
-			min-height: var(--size);
-			max-width: 2ch;
-			width: 100%;
-			transform: translateY(50%);
-		}
-
-		// Middle Row
-		&:nth-child(2) {
-			place-content: center;
-			// max-height: 0.5em;
-		}
-		// Last Row
-		&:last-child {
-			place-content: flex-end;
-			text-align: right;
-		}
+		border-radius: var(--radius-rounded);
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		
+		padding-inline: var(--spacing-2);
+		min-height: var(--size);
 	}
-
 	&__title {
 		display: flex;
 		flex-direction: column;
@@ -70,35 +62,31 @@
 		}
 	}
 
-	.scene--box {
-		transition: transform 0.5s ease;
-
-		&:not(:hover) {
-
-			.request-box {
-				--rotate-y: -90deg;
-			}
-
-
-		}
-		.request-box {
-			font-size: 1.25rem;
-		}
-	}
-
 	&__details {
 		display: flex;
 		flex-direction: column;
-		padding-block-start: 2.5rem;
-		gap: 1.25rem;
+		gap: 2rem;
 		flex-grow: 1;
 		place-items: center;
 
-		h2 {
-			font-size: 1.2rem;
+		p {
+			font-size: 1.25rem;
 			font-weight: 400;
-			max-width: 25ch;
+			text-wrap: pretty;
 		}
+
+		.button {
+			--size: 48px;
+			padding-inline: 3em;
+			font-size: 0.75rem;
+			
+			@media screen and (min-width: 768px) {
+				--size: 56px;
+				font-size: 0.875rem;
+			}
+		}
+
+
 	}
 }
 // .hero {

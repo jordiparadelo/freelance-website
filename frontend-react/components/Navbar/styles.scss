@@ -1,40 +1,45 @@
 .navbar {
-    --offset: 0.5rem;
-
-    position: sticky;
-    top: var(--offset);
-    margin-inline: var(--offset);
-    padding: var(--offset);
-    color: var(--color-light);
-    z-index: 100;
-    background-color: rgba(16, 18, 20, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(4px);
+	--offset: 0.5rem;
+	
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-block-end: calc(var(--navbar-size) * -1);
-    border-radius: var(--radius-md);
-    max-width: var(--container-size);
-    width: calc(100% - var(--offset) * 2);
-    
-    @media screen and (min-width: 1200px) {
-        width: 100%;
-        margin-inline: auto;
-    }
-    
-    .container {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
+	flex-direction: row;
+	
+    position: sticky;
+	top: var(--offset);
+	left: var(--offset);
+	right: var(--offset);
+	z-index: 100;
 
-    &__action {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 1rem;
-    }
+	margin-inline: auto;
+	padding: var(--offset);
+
+	color: var(--color-light);
+	background-color: rgba(16, 18, 20, 0.8);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: var(--radius-md);
+    
+	backdrop-filter: blur(4px);
+
+	margin-block-end: calc(var(--navbar-size) * -1);
+	max-width: var(--container-size);
+	width: calc(100% - var(--offset) * 2);
+
+	@media screen and (min-width: 1440px) {
+		max-width: var(--container-size-lg);
+	}
+
+	.container {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+        max-width: unset;
+	}
+
+	&__action {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 1rem;
+	}
 }

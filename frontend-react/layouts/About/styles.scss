@@ -12,10 +12,6 @@
 		}
 	}
 
-	.divider {
-		--back-color: white;
-	}
-
 	&__header {
 		display: flex;
 		flex-direction: column;
@@ -30,10 +26,11 @@
 	}
 
 	&__title {
-		font-size: clamp(1.875rem, 5vw, 2.5rem);
+		font-size: clamp(1.875rem, 5vw, 3.5rem);
 		text-wrap: pretty;
 
 		@media screen and (min-width: 768px) {
+			font-size: min(5vw, 4rem );
 			position: sticky;
 			top: 90px;
 		}
@@ -44,9 +41,10 @@
 		flex-direction: column;
 		gap: 3.5rem;
 		color: var(--color-light);
-
-		@media screen and (min-width: 1200px) {
+		
+		@media screen and (min-width: 768px) {
 			flex-basis: 380px;
+			align-self: center;
 		}
 	}
 

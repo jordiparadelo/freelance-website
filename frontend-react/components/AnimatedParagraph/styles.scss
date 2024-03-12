@@ -1,4 +1,6 @@
 .animated-paragraph {
+	position: relative;
+
 	&::before {
 		content: attr(aria-label);
 		position: absolute;

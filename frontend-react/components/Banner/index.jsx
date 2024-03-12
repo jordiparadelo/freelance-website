@@ -72,7 +72,7 @@ const Banner = () => {
 							{...GlobeIconProps}
 							lottieRef={globeIconRef}
 							className='icon'
-						/>{" "}
+						/>
 						Working Worldwide
 					</div>
 					<button

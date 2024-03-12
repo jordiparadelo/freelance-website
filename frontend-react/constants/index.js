@@ -38,7 +38,7 @@ export const NAV_LINKS = [
 				label: "Reviews",
 				href: "#client-reviews",
 			},
-		]
+		],
 	},
 	{
 		key: "about",
@@ -91,7 +91,7 @@ export const GALLERY_IMAGES = [
 export const PRODUCTS_ITEMS = [
 	{
 		id: "product-1",
-		href: '/products/product-1',
+		href: "/products/product-1",
 		image: {
 			src: galleryImage1,
 			alt: "Project website 1",
@@ -101,21 +101,15 @@ export const PRODUCTS_ITEMS = [
 		title: "Project website 1",
 		details: "12 high resolution mockup scenes",
 		category: "Website",
-		preview: 'https://www.jordiparadelo.com/',
-		softwares: [
-			'figma',
-			'code'
-		],
+		preview: "https://www.jordiparadelo.com/",
+		softwares: ["figma", "code"],
 		likes: 2,
-		comments: [
-			{id: 1,
-			comment: 'Love it ❤️'}
-		],
+		comments: [{ id: 1, comment: "Love it ❤️" }],
 		price: 29.99,
 	},
 	{
 		id: "product-2",
-		href: '/products/product-2',
+		href: "/products/product-2",
 		image: {
 			src: galleryImage2,
 			alt: "Project website 2",
@@ -125,21 +119,15 @@ export const PRODUCTS_ITEMS = [
 		title: "Project website 2",
 		details: "12 high resolution mockup scenes",
 		category: "Website",
-		preview: 'https://www.jordiparadelo.com/',
-		softwares: [
-			'figma',
-			'code'
-		],
+		preview: "https://www.jordiparadelo.com/",
+		softwares: ["figma", "code"],
 		likes: 2,
-		comments: [
-			{id: 1,
-			comment: 'Love it ❤️'}
-		],
+		comments: [{ id: 1, comment: "Love it ❤️" }],
 		price: 29.99,
 	},
 	{
 		id: "product-3",
-		href: '/products/product-3',
+		href: "/products/product-3",
 		image: {
 			src: galleryImage3,
 			alt: "Project website 3",
@@ -149,16 +137,10 @@ export const PRODUCTS_ITEMS = [
 		title: "Project website 3",
 		details: "12 high resolution mockup scenes",
 		category: "Website",
-		preview: 'https://www.jordiparadelo.com/',
-		softwares: [
-			'figma',
-			'code'
-		],
+		preview: "https://www.jordiparadelo.com/",
+		softwares: ["figma", "code"],
 		likes: 2,
-		comments: [
-			{id: 1,
-			comment: 'Love it ❤️'}
-		],
+		comments: [{ id: 1, comment: "Love it ❤️" }],
 		price: 29.99,
 	},
 ];
@@ -167,7 +149,7 @@ export const PRODUCTS_ITEMS = [
 export const PROJECTS_ITEMS = [
 	{
 		id: "project-1",
-		href: '/products/project-1',
+		href: "/products/project-1",
 		image: {
 			src: galleryImage1,
 			alt: "Project website 32",
@@ -176,21 +158,15 @@ export const PROJECTS_ITEMS = [
 		},
 		title: "Project website 1",
 		details: "12 high resolution mockup scenes",
-		preview: 'https://www.jordiparadelo.com/',
-		categories: [
-			'Ui/Ux',
-			'Website'
-		],
+		preview: "https://www.jordiparadelo.com/",
+		categories: ["Ui/Ux", "Website"],
 		likes: 2,
-		comments: [
-			{id: 1,
-			comment: 'Love it ❤️'}
-		],
+		comments: [{ id: 1, comment: "Love it ❤️" }],
 		price: 29.99,
 	},
 	{
 		id: "project-2",
-		href: '/products/project-2',
+		href: "/products/project-2",
 		image: {
 			src: galleryImage2,
 			alt: "Project website 2",
@@ -199,21 +175,15 @@ export const PROJECTS_ITEMS = [
 		},
 		title: "Project website 2",
 		details: "12 high resolution mockup scenes",
-		preview: 'https://www.jordiparadelo.com/',
-		categories: [
-			'Ui/Ux',
-			'Website'
-		],
+		preview: "https://www.jordiparadelo.com/",
+		categories: ["Ui/Ux", "Website"],
 		likes: 2,
-		comments: [
-			{id: 1,
-			comment: 'Love it ❤️'}
-		],
+		comments: [{ id: 1, comment: "Love it ❤️" }],
 		price: 29.99,
 	},
 	{
 		id: "project-3",
-		href: '/products/project-3',
+		href: "/products/project-3",
 		image: {
 			src: galleryImage3,
 			alt: "Project website 3",
@@ -222,16 +192,10 @@ export const PROJECTS_ITEMS = [
 		},
 		title: "Project website 3",
 		details: "12 high resolution mockup scenes",
-		preview: 'https://www.jordiparadelo.com/',
-		categories: [
-			'Ui/Ux',
-			'Website'
-		],
+		preview: "https://www.jordiparadelo.com/",
+		categories: ["Ui/Ux", "Website"],
 		likes: 2,
-		comments: [
-			{id: 1,
-			comment: 'Love it ❤️'}
-		],
+		comments: [{ id: 1, comment: "Love it ❤️" }],
 		price: 29.99,
 	},
 ];
@@ -239,73 +203,130 @@ export const PROJECTS_ITEMS = [
 // SERVICES
 export const SERVICES = [
 	{
-		id: "project-1",
-		href: '/products/project-1',
-		image: {
-			src: galleryImage1,
-			alt: "Project website 32",
-			width: 568,
-			height: 456,
-		},
-		title: "Project website 1",
-		details: "12 high resolution mockup scenes",
-		preview: 'https://www.jordiparadelo.com/',
-		categories: [
-			'Ui/Ux',
-			'Website'
+		id: "service-1",
+		gallery: [
+			{
+				src: galleryImage1,
+				alt: "service website 32",
+				width: 568,
+				height: 456,
+			},
+			{
+				src: galleryImage1,
+				alt: "service website 32",
+				width: 568,
+				height: 456,
+			},
+			{
+				src: galleryImage1,
+				alt: "service website 32",
+				width: 568,
+				height: 456,
+			},
 		],
-		likes: 2,
-		comments: [
-			{id: 1,
-			comment: 'Love it ❤️'}
-		],
-		price: 29.99,
+		type: "websites",
+		title: "Web apps ",
+		description:
+			"We design sleek and responsive web apps for any business challenge.",
 	},
 	{
-		id: "project-2",
-		href: '/products/project-2',
-		image: {
-			src: galleryImage2,
-			alt: "Project website 2",
-			width: 568,
-			height: 456,
-		},
-		title: "Project website 2",
-		details: "12 high resolution mockup scenes",
-		preview: 'https://www.jordiparadelo.com/',
-		categories: [
-			'Ui/Ux',
-			'Website'
+		id: "service-2",
+		gallery: [
+			{
+				src: galleryImage1,
+				alt: "service website 32",
+				width: 568,
+				height: 456,
+			},
+			{
+				src: galleryImage1,
+				alt: "service website 32",
+				width: 568,
+				height: 456,
+			},
+			{
+				src: galleryImage1,
+				alt: "service website 32",
+				width: 568,
+				height: 456,
+			},
+			{
+				src: galleryImage1,
+				alt: "service website 32",
+				width: 568,
+				height: 456,
+			},
 		],
-		likes: 2,
-		comments: [
-			{id: 1,
-			comment: 'Love it ❤️'}
-		],
-		price: 29.99,
+		type: "mobile",
+		title: "Mobile apps.",
+		description:
+			"We design, refine, and make your app shine above the competition.",
 	},
 	{
-		id: "project-3",
-		href: '/products/project-3',
-		image: {
-			src: galleryImage3,
-			alt: "Project website 3",
-			width: 568,
-			height: 456,
-		},
-		title: "Project website 3",
-		details: "12 high resolution mockup scenes",
-		preview: 'https://www.jordiparadelo.com/',
-		categories: [
-			'Ui/Ux',
-			'Website'
+		id: "service-3",
+		gallery: [
+			{
+				src: galleryImage1,
+				alt: "service website 32",
+				width: 568,
+				height: 456,
+			},
+			{
+				src: galleryImage1,
+				alt: "service website 32",
+				width: 568,
+				height: 456,
+			},
+			{
+				src: galleryImage1,
+				alt: "service website 32",
+				width: 568,
+				height: 456,
+			},
+			{
+				src: galleryImage1,
+				alt: "service website 32",
+				width: 568,
+				height: 456,
+			}
 		],
-		likes: 2,
-		comments: [
-			{id: 1,
-			comment: 'Love it ❤️'}
+		type: "design-system",
+		title: "Design system",
+		description:
+			"We build robust and cohesive design systems for easy scalability.",
+	},
+	{
+		id: "Consulting",
+		gallery: [
+			{
+				src: galleryImage1,
+				alt: "service website 32",
+				width: 568,
+				height: 456,
+			},
+			{
+				src: galleryImage1,
+				alt: "service website 32",
+				width: 568,
+				height: 456,
+			},
+			{
+				src: galleryImage1,
+				alt: "service website 32",
+				width: 568,
+				height: 456,
+			},
+			{
+				src: galleryImage1,
+				alt: "service website 32",
+				width: 568,
+				height: 456,
+			},
 		],
-		price: 29.99,
+		type: "consulting",
+		title: "Consulting.",
+		description:
+			"We'll tear apart your existing product and help you optimize your product for better results.",
 	},
 ];
 
@@ -319,7 +340,8 @@ export const REVIEWS = [
 			height: 40,
 		},
 		title: "Garriot",
-		description: "With a solid track record in designing websites and apps, I deliver strong and user-friendly digital designs. Solid company branding is the foundation of any succesful website.",
+		description:
+			"With a solid track record in designing websites and apps, I deliver strong and user-friendly digital designs. Solid company branding is the foundation of any succesful website.",
 	},
 	{
 		id: "review-2",
@@ -329,7 +351,8 @@ export const REVIEWS = [
 			height: 40,
 		},
 		title: "Oster",
-		description: "With a solid track record in designing websites and apps, I deliver strong and user-friendly digital designs. Solid company branding is the foundation of any succesful website.",
+		description:
+			"With a solid track record in designing websites and apps, I deliver strong and user-friendly digital designs. Solid company branding is the foundation of any succesful website.",
 	},
 	{
 		id: "review-3",
@@ -339,7 +362,8 @@ export const REVIEWS = [
 			height: 40,
 		},
 		title: "Oak",
-		description: "With a solid track record in designing websites and apps, I deliver strong and user-friendly digital designs. Solid company branding is the foundation of any succesful website.",
+		description:
+			"With a solid track record in designing websites and apps, I deliver strong and user-friendly digital designs. Solid company branding is the foundation of any succesful website.",
 	},
 	{
 		id: "review-4",
@@ -349,7 +373,8 @@ export const REVIEWS = [
 			height: 40,
 		},
 		title: "Denny",
-		description: "With a solid track record in designing websites and apps, I deliver strong and user-friendly digital designs. Solid company branding is the foundation of any succesful website.",
+		description:
+			"With a solid track record in designing websites and apps, I deliver strong and user-friendly digital designs. Solid company branding is the foundation of any succesful website.",
 	},
 	{
 		id: "review-5",
@@ -359,7 +384,8 @@ export const REVIEWS = [
 			height: 40,
 		},
 		title: "Stiff",
-		description: "With a solid track record in designing websites and apps, I deliver strong and user-friendly digital designs. Solid company branding is the foundation of any succesful website.",
+		description:
+			"With a solid track record in designing websites and apps, I deliver strong and user-friendly digital designs. Solid company branding is the foundation of any succesful website.",
 	},
 ];
 
@@ -394,6 +420,5 @@ export const SOCIAL_LINKS = [
 		},
 		title: "Linkedin",
 		href: "https://www.linkedin.com/in/jordiparadelo/",
-	}
+	},
 ];
-
