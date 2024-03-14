@@ -16,7 +16,7 @@ const Services = () => {
 			id='services'
 		>
 			<div className='container'>
-				<div className='products__wrapper'>
+				<div className='services__wrapper'>
 					<header className='section-header --horizontal'>
 						<div className='section-header__wrapper'>
 							<SectionLabel

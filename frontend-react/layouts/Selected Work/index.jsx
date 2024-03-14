@@ -26,23 +26,23 @@ const SelectedWork = async () => {
 			/>
 
 			<div className='container'>
-				<header className='section-header'>
-					<div className='section-header__heading'>
-						<SectionLabel
-							label='Selected projects'
-							animationData={Computer}
-						/>
-						<h2 className='section-header__title'>
-							Check out the last projects
-						</h2>
-					</div>
-					<Link href="/projects"><Button>See more projects</Button></Link>
-				</header>
+				<div className='section__wrapper'>
+					<header className='section-header'>
+						<div className='section-header__heading'>
+							<SectionLabel
+								label='Selected projects'
+								animationData={Computer}
+							/>
+							<h2 className='section-header__title'>
+								Check out the last projects
+							</h2>
+						</div>
+						<Link href='/projects'>
+							<Button style={{background: 'white', color: 'black'}}>See more projects</Button>
+						</Link>
+					</header>
 
-				<ProjectsList projects={projects} />
-
-				<div className="selected-works__actions">
-					<Link href="/projects"><Button color='secondary'>See more projects</Button></Link>
+					<ProjectsList projects={projects} />
 				</div>
 			</div>
 

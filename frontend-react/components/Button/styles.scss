@@ -62,4 +62,10 @@
     @media screen and (min-width: 480px) {
         --size: 40px;
     }
+
+    @media screen and (min-width: 765px) {
+        --size: 48px;
+        font-size: 0.875rem;
+        padding-inline: 2em;
+    }
 }

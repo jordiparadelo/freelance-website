@@ -5,8 +5,10 @@
 	&__button {
         --size: 35px;
 
-		border-radius: var(--radius-sm);
-        border: 1px solid var(--color-background-light);
+		// border-radius: var(--radius-sm);
+        // border: 1px solid var(--color-background-light);
+        background-color: var(--color-background-light);
+        color: var(--color-text);
         font-size: 0.8rem;
         padding-inline: 1.75em;
 	}

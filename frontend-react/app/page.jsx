@@ -21,7 +21,7 @@ const Home = () => {
 			<Services />
 			<Products />
 			<SelectedWork />
-			<ClientsReviews />
+			{/* <ClientsReviews /> */}
 		</>
 	);
 };
