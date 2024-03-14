@@ -1,15 +1,12 @@
-import {
-	Hero,
-	About,
-	SelectedWork,
-	Gallery,
-	ClientsReviews,
-	Products,
-	Services,
-	Inner,
-} from "@/layouts";
 import { Banner } from "@/components";
-import { TransitionPage } from "../components";
+import {
+	About,
+	Gallery,
+	Hero,
+	Products,
+	SelectedWork,
+	Services
+} from "@/layouts";
 
 const Home = () => {
 	return (

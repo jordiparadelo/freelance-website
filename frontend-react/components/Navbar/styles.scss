@@ -1,10 +1,10 @@
 .navbar {
 	--offset: 0.5rem;
-	
-    display: flex;
+
+	display: flex;
 	flex-direction: row;
-	
-    position: sticky;
+
+	position: sticky;
 	top: var(--offset);
 	left: var(--offset);
 	right: var(--offset);
@@ -14,11 +14,11 @@
 	padding: var(--offset);
 
 	color: var(--color-light);
-	background-color: rgba(16, 18, 20, 0.8);
+	background-color: rgba(0, 0, 0, 0.1);
 	border: 1px solid rgba(255, 255, 255, 0.1);
 	border-radius: var(--radius-md);
-    
-	backdrop-filter: blur(4px);
+
+	backdrop-filter: blur(10px);
 
 	margin-block-end: calc(var(--navbar-size) * -1);
 	max-width: var(--container-size);
@@ -33,7 +33,13 @@
 		flex-direction: row;
 		justify-content: space-between;
 		align-items: center;
-        max-width: unset;
+		max-width: unset;
+	}
+
+	.logo {
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
 	}
 
 	&__action {

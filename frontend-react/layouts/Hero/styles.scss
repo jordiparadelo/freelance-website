@@ -5,12 +5,23 @@
 	justify-content: center;
 	align-items: center;
 
-	padding-block-start: 10rem;
-	padding-block-end:4rem;
-	padding-inline: 2.5rem;
+	padding-block-start: var(--navbar-size);
+    padding-inline: var(--padding-inline-mobile);
+
+	max-height: 1024px;
+	height: max(600px, calc(100dvh - var(--navbar-size)));
 
 	position: relative;
 	overflow: hidden;
+
+	@media screen and (min-width: 480px) {
+		padding-inline: var(--padding-inline-tablet);
+		
+	}
+	@media screen and (min-width: 768px) {
+		padding-inline: var(--padding-inline-desktop);
+		
+	}
 
 	&__container {
 		display: flex;
@@ -19,8 +30,6 @@
 		place-content: center;
 		place-items: center;
 		z-index: 1;
-
-		gap: 6rem;
 
 		@media screen and (min-width: 768px) {
 		}
@@ -33,6 +42,7 @@
 		flex-grow: 1;
 		flex-shrink: 0;
 		width: 100%;
+		gap: 1rem;
 	}
 
 	&__label {
@@ -45,17 +55,39 @@
 
 		border-radius: var(--radius-rounded);
 		border: 1px solid rgba(255, 255, 255, 0.1);
-		
-		padding-inline: var(--spacing-2);
+
+		padding-inline: 1em;
 		min-height: var(--size);
+
+		backdrop-filter: blur(10px);
+		box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 10px 0px,
+			rgba(0, 0, 0, 0.05) 0px 4px 4px 0px,
+			rgba(255, 255, 255, 0.1) 0px 1px 22px 0px,
+			rgba(197, 204, 255, 0.2) 0px 0px 20px 0px inset,
+			rgba(198, 219, 255, 0.35) 0px 1px 3px 0px inset;
+		opacity: 1;
 	}
+
+	&__title-wrapper {
+		background-clip: text;
+		background-image: linear-gradient(
+			92.3243deg,
+			rgb(255, 255, 255) 0%,
+			rgba(255, 255, 255, 0) 100%
+		);
+		padding-bottom: 0.5em;
+	}
+
 	&__title {
 		display: flex;
 		flex-direction: column;
 		place-items: center;
 		font-size: clamp(3rem, 12vw, 7.5rem);
 		text-wrap: balance;
-		font-weight: 300;
+		color: transparent;
+		font-weight: 600;
+		line-height: 1.15;
+		min-width: fit-content;
 
 		@media screen and (min-width: 768px) {
 			font-size: min(9vw, 7.5rem);
@@ -68,6 +100,7 @@
 		gap: 2rem;
 		flex-grow: 1;
 		place-items: center;
+		text-align: center;
 
 		p {
 			font-size: 1.25rem;
@@ -79,64 +112,11 @@
 			--size: 48px;
 			padding-inline: 3em;
 			font-size: 0.75rem;
-			
+
 			@media screen and (min-width: 768px) {
 				--size: 56px;
 				font-size: 0.875rem;
 			}
 		}
-
-
 	}
 }
-// .hero {
-//     --background-color: #101214;
-
-//     background-color: var(--background-color);
-//     color: white;
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     align-items: center;
-//     padding-block-start: 7.5rem;
-//     padding-block-end: 15rem;
-//     padding-inline: 2.5rem;
-
-//     &__container {
-//         display: flex;
-//         flex-direction: column;
-
-//         gap: 2rem;
-
-//         @media screen and (min-width: 768px) {
-//             flex-direction: row;
-//             align-items: flex-end;
-//         }
-//     }
-
-//     &__heading-wrapper {
-//         flex-grow: 1;
-//         flex-shrink: 0;
-//         flex-basis: 75%;
-//     }
-
-//     &__title {
-//         font-size: clamp(3rem,12vw,7.5rem);
-//         text-wrap: balance;
-
-//         @media screen and (min-width: 768px) {
-//             font-size: min(9vw, 7.5rem);
-//         }
-//     }
-
-//     &__details {
-//         // flex-basis:  256px;
-//         line-break: strict;
-//         text-wrap: pretty;
-
-//         h2 {
-//             font-size: 1.25rem;
-//             font-weight: normal;
-//         }
-//     }
-// }

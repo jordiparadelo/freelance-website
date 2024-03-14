@@ -67,13 +67,13 @@ export const ServiceCard = ({ service }) => {
 				<p className='service-card__description'>{service.description}</p>
 			</figcaption>
 			<div className='service-card__image-container'>
-				{service.gallery.map((image) => (
+				{service.gallery.map((image, index) => (
 					<Image
 						src={image.src}
 						alt={image.alt}
 						width={image.width}
 						height={image.height}
-						key={image.alt}
+						key={image.alt + index}
 						className='service-card__image'
 					/>
 				))}

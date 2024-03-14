@@ -57,14 +57,14 @@ const NavIndex = () => {
 
     return (
         <div className='nav-index'>
-            <Button
-                className='nav-index__button'
+            <button
+                className='button nav-index__button'
                 aria-haspopup='true'
                 aria-expanded={state.isDropdownOpen}
                 onClick={toggleDropdown}
             >
                 {state.activeIndex}
-            </Button>
+            </button>
             <div className={`nav-index__dropdown ${state.isDropdownOpen ? "open" : ""}`}>
                 <div
                     className='navmenu__sections'

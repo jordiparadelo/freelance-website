@@ -2,17 +2,17 @@
 
 import { useState } from "react";
 // Next.js
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 // Lib
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 // Hooks
 import usePageScroll from "@/hooks/usePageScroll";
 // Animations
 import { animationProps } from "./animations";
 // Assets
-import crossIcon from "@/public/cross.svg";
 import arrowIcon from "@/public/arrow.svg";
+import crossIcon from "@/public/cross.svg";
 // Styles
 import "./styles.scss";
 

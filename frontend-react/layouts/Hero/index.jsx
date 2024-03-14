@@ -13,12 +13,14 @@ const Hero = () => {
 			<div className='container hero__container'>
 				<div className='hero__heading-wrapper'>
 					<div className='hero__label'>Design & Dev freelancer</div>
-					<h1
-						className='hero__title'
-						aria-label='digital design on demand'
-					>
-						Design for fast growing companies
-					</h1>
+					<div className='hero__title-wrapper'>
+						<h1
+							className='hero__title'
+							aria-label='digital design on demand'
+						>
+							Design for fast growing companies
+						</h1>
+					</div>
 				</div>
 				<div className='hero__details'>
 					<p>

@@ -13,7 +13,7 @@ const ContactButton = (props) => {
 			href='?modal=true&type=contact'
 			scroll={false}
 		>
-			<Button className='contactButton'>{props.label}</Button>
+			<Button className='contact-button'>{props.label}</Button>
 		</Link>
 	);
 };

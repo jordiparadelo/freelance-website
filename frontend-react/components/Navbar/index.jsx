@@ -2,8 +2,8 @@
 
 import { useRef } from "react";
 // Components
-import { Logo, NavMenu, ContactButton, NavIndex } from "@/components";
-// Lib
+import { Logo, NavIndex, NavMenu, ContactButton } from "@/components";;
+// Lib3
 import { NAV_LINKS } from "@/constants";
 // Styles
 import "./styles.scss";
@@ -16,9 +16,10 @@ const Navbar = () => {
 			className='navbar'
 		>
 			<div className='container'>
-				<NavIndex/>
-				<Logo />
 				<NavMenu navLinks={NAV_LINKS} />
+				{/* <NavIndex /> */}
+				<Logo />
+				<ContactButton label={'Contact'}/>
 			</div>
 		</nav>
 	);
