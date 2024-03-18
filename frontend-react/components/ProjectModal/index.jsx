@@ -9,6 +9,7 @@ import { Button, CloseModalButton, AnimatedParagraph } from "@/components";
 import { PROJECTS_ITEMS as projects } from "@/constants";
 // Styles
 import "./styles.scss";
+import {  useMemo } from "react";
 
 const ProjectModal = () => {
 	const searchParams = useSearchParams();
@@ -153,23 +154,80 @@ export const ProjectDetailsList = ({ details }) => {
 		</div>
 	);
 };
+ // Import useMemo hook
 
-export const ProjectGallery = ({ gallery }) => {
-	return (
-		<ul className='project__gallery'>
-			{gallery.map((galleryItem) => (
-				<li
-					key={galleryItem?.image?.alt}
-					className='project__gallery-item'
-				>
-					<Image
-						src={galleryItem?.image?.src}
-						alt={galleryItem?.image?.alt}
-						width={galleryItem?.image?.width}
-						height={galleryItem?.image?.height}
-					/>
-				</li>
-			))}
-		</ul>
-	);
+export const ProjectGallery = ({ gallery, numOfColumns = 2 }) => { // Corrected numOfColumns variable name
+
+  // Function to split the array into columns
+  const splitArray = (array, numberOfSplits) => {
+    const chunkSize = Math.ceil(array.length / numberOfSplits);
+    const splitArray = [];
+
+    for (let i = 0; i < array.length; i += chunkSize) {
+      const chunk = array.slice(i, i + chunkSize);
+      splitArray.push(chunk);
+    }
+
+    return splitArray;
+  };
+
+  // Memoize the splitArray function result to avoid unnecessary recalculations
+  const galleryByColumns = useMemo(() => splitArray(gallery, numOfColumns), [gallery, numOfColumns]);
+
+  return (
+    <div className='project-detail__gallery' style={{'--columns': numOfColumns}}>
+      {galleryByColumns?.map((galleryColumn, columnIndex) => ( // Added columnIndex to map function
+        <ul key={columnIndex} className='project-detail__gallery-column'> {/* Changed li to ul for better semantics */}
+          {galleryColumn.map((galleryItem, index) => (
+            <li key={index} className='project-detail__gallery-item'>
+              <Image
+                src={galleryItem?.src}
+                alt={galleryItem?.alt}
+                width={galleryItem?.width}
+                height={galleryItem?.height}
+              />
+            </li>
+          ))}
+        </ul>
+      ))}
+    </div>
+  );
 };
+
+
+// export const ProjectGallery = ({ gallery }) => {
+
+// 	function splitArray(array, numberOfSplits) {
+// 		const chunkSize = Math.ceil(array.length / numberOfSplits);
+// 		const splitArray = [];
+
+// 		for (let i = 0; i < array.length; i += chunkSize) {
+// 			const chunk = array.slice(i, i + chunkSize);
+// 			splitArray.push(chunk);
+// 		}
+
+// 		return splitArray;
+// 	}
+
+// 	const galleryByColumns = useMemo(() => splitArray(gallery, numOfcolumns));
+
+// 	return (
+// 		<div className='project-detail__gallery'>
+// 			{galleryByColumns?.map((galleryColumn) =>
+// 				galleryColumn.map((galleryItem, index) => (
+// 					<li
+// 						key={index}
+// 						className='project-detail__gallery-item'
+// 					>
+// 						<Image
+// 							src={galleryItem?.src}
+// 							alt={galleryItem?.alt}
+// 							width={galleryItem?.width}
+// 							height={galleryItem?.height}
+// 						/>
+// 					</li>
+// 				))
+// 			)}
+// 		</div>
+// 	);
+// };
