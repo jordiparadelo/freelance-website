@@ -2,9 +2,7 @@
 	--margin: 120px;
 
 	margin-top: var(--margin);
-	padding-inline: 2.5rem;
-	padding-block-start: 0;
-	padding-block-end: 2.5rem;
+	padding: 2.5rem;
 	position: absolute;
 	width: 100%;
 	height: calc(100% - var(--margin));
@@ -21,24 +19,56 @@
 
 	.container {
 		--container-size: 900px;
+		display: flex;
+		flex-direction: column;
+		gap: 3rem;
 	}
 
 	&__wrapper {
 		display: flex;
 		flex-direction: column;
-		gap: 2.5rem;;
+		gap: 3rem;
 	}
 
-	&__header {
-		position: sticky;
-		top: 0;
-		width: 100vw;
-		z-index: 10;
-		padding: 2.5rem;
-		background: white;
-		align-self: center;
-		padding-inline: 2.5rem;
-		border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+	&__details-wrapper {
+		--padding: var(--spacing-2);
+
+		display: grid;
+		border: 1px solid rgba(0, 0, 0, 0.05);
+		gap: var(--padding);
+		padding-inline: var(--padding);
+		padding-block: max(var(--spacing-1), calc(var(--padding) / 2));
+		border-radius: var(--radius-md);
+		grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
+
+		@media screen and (min-width: 768px) {
+			grid-template-columns: repeat(auto-fit, minmax(max(120px, 10%), 1fr));
+		}
+
+		&__col {
+			display: flex;
+			flex-direction: column;
+			flex-wrap: wrap;
+			gap: var(--spacing-1);
+		}
+
+		&__title {
+			font-size: 0.875rem;
+		}
+	}
+
+	.project__header {
+		--spacing: unset;
+		padding: unset;
+		position: static;
+		max-width: 100%;
+		width: 100%;
+
+		.action_wrapper {
+			display:flex;
+			flex-direction: row;
+			gap: 2rem
+		}
 	}
 
 	&__title {
@@ -52,6 +82,10 @@
 		overflow: hidden;
 		max-height: max(380px, 60vh);
 
+		@media screen and (min-width: 768px) {
+			max-height: 600px;
+		}
+
 		img {
 			flex-grow: 1;
 			min-height: 100%;
@@ -64,32 +98,47 @@
 	&__content-wrapper {
 		display: flex;
 		flex-direction: column;
-		gap: 2rem;
-		padding-inline: 2rem;
+		gap: 3rem;
 
-		@media screen and (min-width: 480px) {
+		@media screen and (min-width: 768px) {
 			flex-direction: row;
-			max-width: 900px;
-			margin-inline: auto;
+			padding-block-end: 2.5rem;
 		}
 	}
+
 	&__content {
 		display: flex;
 		flex-direction: column;
 		gap: 1.25rem;
-		flex-basis: 600px;
 		flex-grow: 1;
+
+		@media screen and (min-width: 768px) {
+			flex-basis: 600px;
+		}
 	}
 
-    &__description {
-        flex-grow: 1;
-        flex-basis: 320px;
-        text-wrap: pretty;
-        line-height: 170%;
-        font-size: 1rem;
-    }
+	&__description {
+		font-size: clamp(1.5rem, 5vw, 3.5rem);
+		text-wrap: pretty;
 
-    &__aside {
-        flex-basis: 320px;
-    }
+		@media screen and (min-width: 768px) {
+			font-size: min(5vw, 2.5rem);
+		}
+	}
+
+	&__aside {
+		display: flex;
+		gap: 1.25rem;
+		flex-direction: column;
+
+		@media screen and (min-width: 768px) {
+			flex-basis: 320px;
+		}
+
+		&__block {
+			display: flex;
+			flex-direction: column;
+			gap: 0.75rem;
+		}
+	}
 }

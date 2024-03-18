@@ -1,13 +1,14 @@
 "use client";
 
-import React from "react";
+// Next
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
+// Components
+import { Button, CloseModalButton, AnimatedParagraph } from "@/components";
 // Constants
 import { PROJECTS_ITEMS as projects } from "@/constants";
 // Styles
 import "./styles.scss";
-import { Button, CloseModalButton } from "..";
 
 const ProjectModal = () => {
 	const searchParams = useSearchParams();
@@ -22,21 +23,49 @@ const ProjectModal = () => {
 
 	const project = getProjectById(id);
 
-	console.log({project});
-
 	return (
 		project && (
 			<article className='project-detail'>
-				<header className='project-detail__header'>
-					<div className='container'>
-						<h2 className='project-detail__title'>{project?.title}</h2>
-						<p className='project-detail__details'>{project?.details}</p>
-						<Button href={project?.preview}>Live view</Button>
-						<CloseModalButton>Close</CloseModalButton>
-					</div>
-				</header>
+				{/* <header className='project-detail__header'> */}
 				<div className='container'>
+					<div className='project__header'>
+						<div className='project__heading-wrapper'>
+							<h3 className='project__title'>{project.title}</h3>
+						</div>
+						<div className='action_wrapper'>
+							<Button href={project?.preview}>Live view</Button>
+							<CloseModalButton>Close</CloseModalButton>
+						</div>
+					</div>
 					<div className='project-detail__wrapper'>
+						<div className='project-detail__content-wrapper'>
+							<div className='project-detail__content'>
+								<p className='project-detail__description'>
+									{project?.details.blob}
+								</p>
+							</div>
+
+							<aside className='project-detail__aside'>
+								<div className='project-detail__aside__block'>
+									<h4>Challenge</h4>
+									<p>{project?.challenge}</p>
+								</div>
+								<div className='project-detail__aside__block'>
+									<h4>Services</h4>
+									<ul className='project__categories'>
+										{project?.services?.map((service) => (
+											<li
+												className='project__category'
+												key={service}
+											>
+												{service}
+											</li>
+										))}
+									</ul>
+								</div>
+							</aside>
+						</div>
+
 						<div className='project-detail__image'>
 							<Image
 								src={project?.image?.src}
@@ -47,37 +76,9 @@ const ProjectModal = () => {
 							/>
 						</div>
 
-						<div className='project-detail__content-wrapper'>
-							<div className='project-detail__content'>
-								<h2>Overview</h2>
-								<p className='project-detail__description'>
-									let me introduce you to Segment - the ultimate Framer template
-									that will take your online presence to the next level of
-									awesomeness! Whether you are a seasoned designer with years of
-									experience or just starting out on your design journey,
-									Segment is the perfect foundation you need to create a
-									stunning portfolio website with ease. With its sleek and
-									versatile design, Segment offers you endless possibilities to
-									showcase your creativity and skills to the world. And the best
-									part? You don't need to be a tech genius to make it happen!
-									This template is so user-friendly that even your grandma could
-									create a website with it (well, maybe not your grandma, but
-									you get the point). So, if you're ready to wow your audience
-									with a website that is both visually stunning and easy to use,
-									Segment is the way to go. Trust us, your competitors will be
-									green with envy when they see the masterpiece you've created
-									with this template.
-								</p>
-							</div>
-							<aside className='project-detail__aside'>
-								<div className='project-detail__aside__block'>
-									<h4>Responsibilities</h4>
-								</div>
-								<div className='project-detail__aside__block'>
-									<h4>Technology</h4>
-								</div>
-							</aside>
-						</div>
+						<ProjectDetailsList details={project?.details} />
+
+						<ProjectGallery gallery={project?.gallery} />
 					</div>
 				</div>
 			</article>
@@ -86,3 +87,89 @@ const ProjectModal = () => {
 };
 
 export default ProjectModal;
+
+export const ProjectDetailsList = ({ details }) => {
+	const { client, type, industries, year, roles, collaboration } = details;
+
+	return (
+		<div className='project-detail__details-wrapper'>
+			<div className='project-detail__details-wrapper__col'>
+				<h4 className='project-detail__details-wrapper__title'>Year</h4>
+				<p>{year}</p>
+			</div>
+			<div className='project-detail__details-wrapper__col'>
+				<h4 className='project-detail__details-wrapper__title'>Client</h4>
+				<p>{client}</p>
+			</div>
+			<div className='project-detail__details-wrapper__col'>
+				<h4 className='project-detail__details-wrapper__title'>Project Type</h4>
+				<ul className='project__categories'>
+					{type?.map((type) => (
+						<li
+							className='project__category'
+							key={type}
+						>
+							{type}
+						</li>
+					))}
+				</ul>
+			</div>
+			<div className='project-detail__details-wrapper__col'>
+				<h4 className='project-detail__details-wrapper__title'>Industry</h4>
+				<p>
+					{industries?.map((industry) => (
+						<span key={industry}>{industry}</span>
+					))}
+				</p>
+			</div>
+			<div className='project-detail__details-wrapper__col'>
+				<h4 className='project-detail__details-wrapper__title'>Roles</h4>
+				<ul className='project__categories'>
+					{roles?.map((role) => (
+						<li
+							className='project__category'
+							key={role}
+						>
+							{role}
+						</li>
+					))}
+				</ul>
+			</div>
+			<div className='project-detail__details-wrapper__col'>
+				<h4 className='project-detail__details-wrapper__title'>
+					Collaboration
+				</h4>
+				<ul className='project__categories'>
+					{collaboration?.map((colaborator) => (
+						<li
+							className='project__category'
+							key={colaborator}
+						>
+							{colaborator}
+						</li>
+					))}
+				</ul>
+			</div>
+		</div>
+	);
+};
+
+export const ProjectGallery = ({ gallery }) => {
+	return (
+		<ul className='project__gallery'>
+			{gallery.map((galleryItem) => (
+				<li
+					key={galleryItem?.image?.alt}
+					className='project__gallery-item'
+				>
+					<Image
+						src={galleryItem?.image?.src}
+						alt={galleryItem?.image?.alt}
+						width={galleryItem?.image?.width}
+						height={galleryItem?.image?.height}
+					/>
+				</li>
+			))}
+		</ul>
+	);
+};
