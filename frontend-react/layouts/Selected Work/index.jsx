@@ -46,11 +46,11 @@ const SelectedWork = async () => {
 				</div>
 			</div>
 
-			<Curves
+			{/* <Curves
 				orientation='bottom'
 				fill='#101214'
 				className='selected-works__curves--bottom'
-			/>
+			/> */}
 		</section>
 	);
 };

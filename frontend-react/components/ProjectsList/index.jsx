@@ -18,9 +18,12 @@ import "./styles.scss";
 const ProjectsList = ({ projects }) => {
 	const componentRef = useRef(null);
 
-	useGSAP(() => {
-		projectsAnimation(componentRef.current);
-	}, { scope: componentRef });
+	useGSAP(
+		() => {
+			projectsAnimation(componentRef.current);
+		},
+		{ scope: componentRef }
+	);
 
 	return (
 		<ul
@@ -47,30 +50,25 @@ export const Project = ({ project }) => {
 			className='project'
 			key={project.title}
 		>
-			<header className='project__header'>
+			<div className='project__header'>
 				<div className='project__heading-wrapper'>
-					<Link
-						href={`?modal=true&type=project&id=${project.id}`}
-						scroll={false}
-						rel='preload'
-					>
-						<h3 className='project__title'>{project.title}</h3>
-					</Link>
+					<h3 className='project__title'>{project.title}</h3>
+					<ul className='project__categories'>
+						{project.categories?.map((category) => (
+							<li
+								className='project__category'
+								key={category}
+							>
+								<span>{category}</span>
+							</li>
+						))}
+					</ul>
 				</div>
 
-				<p className='project__description'>{project.details}</p>
+				<ButtonInfo id={project.id}/>
 
-				<ul className='project__categories'>
-					{project.categories?.map((category) => (
-						<li
-							className='project__category'
-							key={category}
-						>
-							<span>{category}</span>
-						</li>
-					))}
-				</ul>
-			</header>
+				{/* <p className='project__description'>{project.details}</p> */}
+			</div>
 			<Link
 				href={`?modal=true&type=project&id=${project.id}`}
 				scroll={false}
@@ -86,5 +84,17 @@ export const Project = ({ project }) => {
 				</div>
 			</Link>
 		</article>
+	);
+};
+
+export const ButtonInfo = ({id}) => {
+	return (
+		<Link
+			href={`?modal=true&type=project&id=${id}`}
+			scroll={false}
+			rel='preload'
+		>
+			info
+		</Link>
 	);
 };
