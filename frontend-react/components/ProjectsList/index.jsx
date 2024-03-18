@@ -12,6 +12,9 @@ import { useGSAP } from "@gsap/react";
 // Animations
 import { projectsAnimation } from "./animations";
 
+// Components
+import { ProjectModal } from "@/components";
+
 // Styles
 import "./styles.scss";
 
@@ -65,9 +68,9 @@ export const Project = ({ project }) => {
 					</ul>
 				</div>
 
-				<ButtonInfo id={project.id}/>
+				{/* <ProjectModal/> */}
 
-				{/* <p className='project__description'>{project.details}</p> */}
+				<ButtonInfo id={project.id}/>
 			</div>
 			<Link
 				href={`?modal=true&type=project&id=${project.id}`}

@@ -5,14 +5,16 @@ import { Button, Curves, ProjectsList, SectionLabel } from "@/components";
 // Assets
 import Computer from "@/public/animated-icons/selected-work.json";
 // Styles
+import { PROJECTS_ITEMS as projects } from "@/constants";
+// Styles
 import "./styles.scss";
 
 const SelectedWork = async () => {
 	const URL_PROJECTS = `http://localhost:3000/api/projects`;
 	const numberOfProjects = 4;
-	const projects = await fetch(URL_PROJECTS)
-		.then((response) => response.json())
-		.then((projects) => projects.slice(0, numberOfProjects));
+	// const projects = await fetch(URL_PROJECTS)
+	// 	.then((response) => response.json())
+	// 	.then((projects) => projects.slice(0, numberOfProjects));
 
 	return (
 		<section
@@ -42,15 +44,9 @@ const SelectedWork = async () => {
 						</Link>
 					</header>
 
-					<ProjectsList projects={projects} />
+					<ProjectsList projects={Fprojects} />
 				</div>
 			</div>
-
-			{/* <Curves
-				orientation='bottom'
-				fill='#101214'
-				className='selected-works__curves--bottom'
-			/> */}
 		</section>
 	);
 };

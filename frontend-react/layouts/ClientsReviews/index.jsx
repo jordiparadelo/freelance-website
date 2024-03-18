@@ -1,13 +1,16 @@
 import React from "react";
 import { ReviewsList, SectionLabel } from "@/components";
 import Stars from "@/public/animated-icons/stars.json";
+// Constants
+import { REVIEWS as reviews } from "@/constants";
+// Styles
 import "./styles.scss";
 
 const ClientsReviews = async () => {
 	const URL_REVIEWS = `http://localhost:3000/api/reviews`;
-	const reviews = await fetch(URL_REVIEWS).then((res) =>
-		res.json()
-	);
+	// const reviews = await fetch(URL_REVIEWS).then((res) =>
+	// 	res.json()
+	// );
 	return (
 		<section
 			id='client-reviews'
