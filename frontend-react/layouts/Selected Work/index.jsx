@@ -44,7 +44,7 @@ const SelectedWork = async () => {
 						</Link>
 					</header>
 
-					<ProjectsList projects={Fprojects} />
+					<ProjectsList projects={projects} />
 				</div>
 			</div>
 		</section>
