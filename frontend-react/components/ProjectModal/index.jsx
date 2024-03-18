@@ -3,8 +3,8 @@
 import React from "react";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
-// Hooks
-import useFetchProjects from "@/hooks/useFetchProjects";
+// Constants
+import { PROJECTS_ITEMS as projects } from "@/constants";
 // Styles
 import "./styles.scss";
 import { Button, CloseModalButton } from "..";
@@ -13,7 +13,16 @@ const ProjectModal = () => {
 	const searchParams = useSearchParams();
 	const id = searchParams.get("id");
 
-	const project = useFetchProjects(id);
+	// const project = useFetchProjects(id);
+	const projectsMap = new Map(projects.map((project) => [project.id, project]));
+
+	function getProjectById(id) {
+		return projectsMap.get(id);
+	}
+
+	const project = getProjectById(id);
+
+	console.log({project});
 
 	return (
 		project && (
