@@ -31,6 +31,7 @@
     --color-secondary: #6c757d;
     --color-text: #333333;
     --color-light: hsl(0, 0%, 90%);
+    --color-gray: hsl(0, 0%, 65%);
     --color-white: #fff;
     --color-background: #101214;
     --color-background-light: #EBECEF;

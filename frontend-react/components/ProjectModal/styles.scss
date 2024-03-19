@@ -2,7 +2,7 @@
 	--margin: 120px;
 
 	margin-top: var(--margin);
-	padding: 2.5rem;
+	padding: var(--padding-inline-mobile);
 	position: absolute;
 	width: 100%;
 	height: calc(100% - var(--margin));
@@ -17,6 +17,13 @@
 	flex-direction: column;
 	gap: 3.5rem;
 
+	@media screen and (min-width: 480px) {
+		padding: var(--padding-inline-tablet);
+	}
+	@media screen and (min-width: 768px) {
+		padding: var(--padding-inline-desktop);
+	}
+
 	.container {
 		--container-size: 900px;
 		display: flex;
@@ -30,10 +37,12 @@
 		gap: 3rem;
 	}
 
+	// Project Detail List
 	&__details-wrapper {
 		--padding: var(--spacing-2);
 
-		display: grid;
+		display: flex;
+		flex-direction: column;
 		border: 1px solid rgba(0, 0, 0, 0.05);
 		gap: var(--padding);
 		padding-inline: var(--padding);
@@ -42,7 +51,8 @@
 		grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
 
 		@media screen and (min-width: 768px) {
-			grid-template-columns: repeat(auto-fit, minmax(max(120px, 10%), 1fr));
+			flex-direction: row;
+			justify-content: space-between;
 		}
 
 		&__col {
@@ -53,7 +63,10 @@
 		}
 
 		&__title {
-			font-size: 0.875rem;
+			font-size: 0.6rem;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			color: var(--color-gray);
 		}
 	}
 
@@ -179,57 +192,4 @@
 			object-fit: cover;
 		}
 	}
-	// &__gallery {
-	// 	display: grid;
-	// 	grid-auto-columns: 1fr;
-	// 	grid-template-columns: 1fr 1fr;
-	// 	grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-	// 	gap: 24px 24px;
-	// 	grid-template-areas:
-	// 		"Aria-2 Aria-1"
-	// 		"Aria-2 Aria-1"
-	// 		"Aria-3 Aria-1"
-	// 		"Aria-3 Aria-4"
-	// 		"Aria-3 Aria-4"
-	// 		"Aria-6 Aria-5"
-	// 		"Aria-6 Aria-5"
-	// 		"Aria-6 Aria-Final";
-	// }
-
-	// &__gallery-item {
-	// 	display: flex;
-	// 	flex-direction: row;
-	// 	align-items: stretch;
-	// 	border-radius: var(--radius-lg);
-	// 	overflow: hidden;
-
-	// 	// Grid Order
-	// 	&:first-child {
-	// 		grid-area: Aria-1;
-	// 	}
-	// 	&:nth-child(2) {
-	// 		grid-area: Aria-2;
-	// 	}
-	// 	&:nth-child(3) {
-	// 		grid-area: Aria-3;
-	// 	}
-	// 	&:nth-child(4) {
-	// 		grid-area: Aria-4;
-	// 	}
-	// 	&:nth-child(5) {
-	// 		grid-area: Aria-5;
-	// 	}
-	// 	&:nth-child(6) {
-	// 		grid-area: Aria-6;
-	// 	}
-	// 	&:last-child {
-	// 		grid-area: Aria-Final;
-	// 	}
-
-	// 	img {
-	// 		width: 100%;
-	// 		max-width: 100%;
-	// 		object-fit: cover;
-	// 	}
-	// }
 }
