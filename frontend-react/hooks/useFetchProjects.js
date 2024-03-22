@@ -1,27 +1,26 @@
 import { useState, useEffect } from "react";
 
 const useFetchProjects = (id) => {
-	const [project, setProject] = useState(null);
-	const URL_PROJECTS = `http://localhost:3000/api/projects/${id}`;
+	const [projects, setProject] = useState(null);
+	const URL_PROJECTS = id
+		? `${window.location.href}api/projects?id=${id}`
+		: `${window.location.href}api/projects`;
 
 	const fetchData = async () => {
 		try {
 			const res = await fetch(URL_PROJECTS);
-			const project = await res.json();
-			// const selectedProject = data.find((project) => project.id === id);
-			setProject({ ...project });
+			const data = await res.json();
+			setProject(data);
 		} catch (error) {
 			console.error("Error fetching data:", error);
 		}
 	};
 
 	useEffect(() => {
-		if (!id) return;
-
 		fetchData();
 	}, [id]);
 
-	return project;
+	return projects;
 };
 
 export default useFetchProjects;

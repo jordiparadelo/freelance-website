@@ -1,7 +1,12 @@
-import React from "react";
+// "use client";
+
+import React, { Suspense } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 // Components
 import { Button, Curves, ProjectsList, SectionLabel } from "@/components";
+// Hooks
+// import useFetchProjects from "../../hooks/useFetchProjects";
 // Assets
 import Computer from "@/public/animated-icons/selected-work.json";
 // Styles
@@ -10,11 +15,9 @@ import { PROJECTS_ITEMS as projects } from "@/constants";
 import "./styles.scss";
 
 const SelectedWork = async () => {
-	const URL_PROJECTS = `http://localhost:3000/api/projects`;
-	const numberOfProjects = 4;
-	// const projects = await fetch(URL_PROJECTS)
-	// 	.then((response) => response.json())
-	// 	.then((projects) => projects.slice(0, numberOfProjects));
+	// const projects = useFetchProjects();
+
+	// const projects = await fetch('http://localhost:3000/api/projects').then((res) => res.json());
 
 	return (
 		<section
@@ -40,11 +43,17 @@ const SelectedWork = async () => {
 							</h2>
 						</div>
 						<Link href='/projects'>
-							<Button style={{background: 'white', color: 'black'}}>See more projects</Button>
+							<Button style={{ background: "white", color: "black" }}>
+								See more projects
+							</Button>
 						</Link>
 					</header>
 
-					<ProjectsList projects={projects} />
+					{/* <ProjectsList projects={projects} /> */}
+
+					<Suspense fallback={'...Loading'}>
+						<ProjectsList projects={projects} />
+					</Suspense>
 				</div>
 			</div>
 		</section>

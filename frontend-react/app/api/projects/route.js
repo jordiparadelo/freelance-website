@@ -40,49 +40,11 @@ export async function GET(request, context) {
 		return sortedProjects;
 	}
 
+    projectsData = PROJECTS_ITEMS;
+    
 	id && (projectsData = getProjectById(id));
 	limit && (projectsData = getLimitedProjects(limit));
 	order && (projectsData = getSortedProjects(order));
 
-	// const projects = await res.json(projectsData);
-
 	return NextResponse.json(projectsData);
 }
-
-// export async function GET(request, context) {
-//   const { params } = context
-//   const { id, limit, orderBy } = params
-
-//   let data = PROJECTS_ITEMS
-
-//   const PARAMS_HANDLERS = {
-//     id: (id) => {
-//       const item = PROJECTS_ITEMS.get(id)
-//       data = item ? [item] : []
-//     },
-//     limit: (limit) => {
-//       const limitNumber = parseInt(limit, 10)
-//       if (!isNaN(limitNumber) && limitNumber > 0) {
-//         data = Array.from(PROJECTS_ITEMS).slice(0, limitNumber).map(item => item[1])
-//       }
-//     },
-//     orderBy: (order) => {
-//       const sortOrder = order === 'dec' ? -1 : 1;
-//       data = Array.from(PROJECTS_ITEMS)
-//         .sort((a, b) => (a[1].year - b[1].year) * sortOrder)
-//         .map(item => item[1])
-//     },
-//   }
-
-//   Object.entries(params).forEach(([key, value]) => {
-//     if (key in PARAMS_HANDLERS) {
-//       PARAMS_HANDLERS[key](value)
-//     }
-//   })
-
-//   return NextResponse.json(data)
-// }
-
-const PROJECTS_ITEMS_MAP = new Map(
-	PROJECTS_ITEMS.map((item) => [item.id, item])
-);
