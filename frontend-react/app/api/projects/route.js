@@ -1,50 +1,98 @@
+// use supabese to get data instead constants
+import { supabase } from "@/lib/superbase";
 import { PROJECTS_ITEMS } from "@/constants";
 
 import { NextResponse } from "next/server";
 
 const ORDER_OPTIONS = {
-	asc: "asc",
-	desc: "desc",
-	default: "asc",
+	asc: true,
+	desc: false,
+	default: true,
 };
+
+export async function POST(request, context) {
+	const { body } = await request.json();
+	const { data, error } = await supabase.from("projects").insert([body]);
+
+	if (error) {
+		return NextResponse.json({ error: error.message }, { status: 500 });
+	}
+
+	return NextResponse.json({ data }, { status: 201 });
+}
+
+export async function PATCH(request, context) {
+	return NextResponse.json({ message: "PATCH" });
+}
+
+export async function DELETE(request, context) {
+	return NextResponse.json({ message: "DELETE" });
+}
 
 export async function GET(request, context) {
 	const { searchParams } = new URL(request.url);
-	let projectsData = [];
+	// get data from supabase
+	const { data, error } = await supabase.from("projects").select();
+
+	let projectsData = data;
 
 	const id = searchParams.get("id");
 	const limit = searchParams.get("limit");
 	const order = searchParams.get("order");
 
-	function getProjectById(id) {
-		const PROJECTS_ITEMS_MAP_BY_YEAR = new Map(
-			PROJECTS_ITEMS.map((item) => [item.id, item])
-		);
-		return PROJECTS_ITEMS_MAP_BY_YEAR.get(id);
+	async function getProjectById(id) {
+		const matchFilter = { client_name: id };
+		try {
+			const { data, error } = await supabase
+				.from("projects")
+				.select()
+				.match(matchFilter);
+			// const { data, error } = await supabase.from('projects').select().eq('client_name', id);
+			if (error) throw error;
+			return data;
+		} catch (error) {
+			console.error(error.hint);
+			return null;
+		}
 	}
 
-	function getLimitedProjects(limit) {
-		const limitedProjects = PROJECTS_ITEMS.slice(0, limit);
-		return limitedProjects;
+	async function getLimitedProjects(limit) {
+		try {
+			let { data, error } = await supabase
+				.from("projects")
+				.select("*")
+				.range(0, limit);
+
+			if (error) throw error;
+			return data;
+		} catch (error) {
+			console.error(error.hint);
+			return null;
+		}
 	}
 
-	function getSortedProjects(order) {
-		const sortOrder = order === ORDER_OPTIONS.desc ? -1 : 1;
-		const sortedProjects = PROJECTS_ITEMS.sort((a, b) => {
-			const yearA = parseInt(a.details.year);
-			const yearB = parseInt(b.details.year);
+	async function getSortedProjects(order) {
+		const orderOption = ORDER_OPTIONS[order] || ORDER_OPTIONS.default;
 
-			return sortOrder * (yearA - yearB);
-		});
-
-		return sortedProjects;
+		try {
+			const { data, error } = await supabase
+				.from("projects")
+				.select()
+				.order("details->year", { ascending: false });
+			if (error) throw error;
+			return data;
+		} catch (error) {
+			console.error(error.hint);
+			return null;
+		}
 	}
 
-    projectsData = PROJECTS_ITEMS;
-    
-	id && (projectsData = getProjectById(id));
-	limit && (projectsData = getLimitedProjects(limit));
-	order && (projectsData = getSortedProjects(order));
+	// projectsData = PROJECTS_ITEMS;
 
+	id && (projectsData = await getProjectById(id));
+	limit && (projectsData = await getLimitedProjects(limit));
+	order && (projectsData = await getSortedProjects(order));
+
+	// return NextResponse.json(data);
 	return NextResponse.json(projectsData);
 }

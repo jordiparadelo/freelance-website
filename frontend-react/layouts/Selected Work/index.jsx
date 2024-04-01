@@ -13,10 +13,9 @@ import Computer from "@/public/animated-icons/selected-work.json";
 import { PROJECTS_ITEMS as projects } from "@/constants";
 // Styles
 import "./styles.scss";
+import { supabase } from "@/lib/superbase";
 
 const SelectedWork = async () => {
-	// const projects = useFetchProjects();
-
 	// const projects = await fetch('http://localhost:3000/api/projects').then((res) => res.json());
 
 	return (
