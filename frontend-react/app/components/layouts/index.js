@@ -1,0 +1,11 @@
+export {default as About} from './About';
+export {default as ClientsReviews} from './ClientsReviews';
+export {default as Footer} from './Footer';
+export {default as Gallery} from './Gallery';
+export {default as Hero} from './Hero';
+export {default as Modal} from './Modal';
+export {default as Navbar} from './Navbar';
+export {default as Products} from './Products';
+export {default as SelectedWork} from './SelectedWork';
+export {default as Services} from './Services';
+export {default as Banner} from './Banner';

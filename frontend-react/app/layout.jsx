@@ -1,7 +1,6 @@
 import { Suspense } from "react";
 // Components
-import { AnimatePresence } from "framer-motion";
-import { Navbar, Footer, Modal, InteractiveBackground } from "@/components";
+import { Navbar, Footer, Modal } from "@/layouts";
 // Fonts
 import { Manrope } from "next/font/google";
 // Styles
