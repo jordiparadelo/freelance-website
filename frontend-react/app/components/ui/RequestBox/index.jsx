@@ -41,7 +41,6 @@ const RequestBox = ({frontFace, backFace, topFace, bottomFace, leftFace, rightFa
 					`--mouse-rotate-x : ${rotateX};
 				--mouse-rotate-y : ${rotateY}`
 				);
-				console.log({ rotateX, rotateY });
 			}
 
 			componentRef?.current.addEventListener("mouseenter", handleHover);

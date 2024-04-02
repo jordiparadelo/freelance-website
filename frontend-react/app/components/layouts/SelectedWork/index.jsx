@@ -6,12 +6,12 @@ import Link from "next/link";
 import { Button, Curves, ProjectsList, SectionLabel } from "@/ui";
 import Computer from "@/public/animated-icons/selected-work.json";
 // Styles
-import { PROJECTS_ITEMS as projects } from "@/constants";
-// Styles
 import "./styles.scss";
+// Lib
+import {getLimitedProjects} from '@/lib/actions'
 
 const SelectedWork = async () => {
-	// const projects = await fetch('http://localhost:3000/api/projects').then((res) => res.json());
+	const { data: projects } = await getLimitedProjects(3)
 
 	return (
 		<section
@@ -43,9 +43,7 @@ const SelectedWork = async () => {
 						</Link>
 					</header>
 
-					{/* <ProjectsList projects={projects} /> */}
-
-					<Suspense fallback={'...Loading'}>
+					<Suspense fallback={"...Loading"}>
 						<ProjectsList projects={projects} />
 					</Suspense>
 				</div>

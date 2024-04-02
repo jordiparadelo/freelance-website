@@ -1,39 +1,48 @@
 "use client";
 
 import { Button, CloseModalButton, ProjectDetailsList } from "@/ui";
-import { PROJECTS_ITEMS as projects } from "@/constants";
 import { splitArray } from "@/utils";
 
-import { useMemo } from "react";
+import { Suspense, useLayoutEffect, useMemo, useState } from "react";
 
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
-
+// Lib
+import { getProjectById } from "@/lib/actions";
+// Styles
 import "./styles.scss";
 
 const ProjectModal = () => {
+	const [project, setProject] = useState(null);
 	const searchParams = useSearchParams();
 	const id = searchParams.get("id");
 
-	// const project = useFetchProjects(id);
-	const projectsMap = new Map(projects.map((project) => [project.id, project]));
+	useLayoutEffect(() => {
+		const fetchData = async () => {
+			const data = await getProjectById(id);
+			return data;
+		};
 
-	function getProjectById(id) {
-		return projectsMap.get(id);
-	}
-
-	const project = getProjectById(id);
+		fetchData().then((data) => {
+			setProject(...data);
+		});
+	}, [id]);
 
 	return (
-		project && (
+		<Suspense fallback={<div>Loading...</div>}>
 			<article className='project-detail'>
 				<div className='container'>
 					<div className='project__header'>
 						<div className='project__heading-wrapper'>
-							<h3 className='project__title'>{project.title}</h3>
+							<h3 className='project__title'>{project?.title}</h3>
 						</div>
 						<div className='action_wrapper'>
-							<Button href={project?.preview} target='_blank'>Live view</Button>
+							<Button
+								href={project?.preview}
+								target='_blank'
+							>
+								Live view
+							</Button>
 							<CloseModalButton>Close</CloseModalButton>
 						</div>
 					</div>
@@ -41,7 +50,7 @@ const ProjectModal = () => {
 						<div className='project-detail__content-wrapper'>
 							<div className='project-detail__content'>
 								<p className='project-detail__description'>
-									{project?.details.blob}
+									{project?.details?.blob}
 								</p>
 							</div>
 
@@ -78,82 +87,15 @@ const ProjectModal = () => {
 
 						<ProjectDetailsList details={project?.details} />
 
-						<ProjectGallery gallery={project?.gallery} />
+						{project?.gallery && <ProjectGallery gallery={project?.gallery} />}
 					</div>
 				</div>
 			</article>
-		)
+		</Suspense>
 	);
 };
 
 export default ProjectModal;
-
-// export const ProjectDetailsList = ({ details }) => {
-// 	const { client, type, industries, year, roles, collaboration } = details;
-
-// 	return (
-// 		<div className='project-detail__details-wrapper'>
-// 			<div className='project-detail__details-wrapper__col'>
-// 				<h4 className='project-detail__details-wrapper__title'>Year</h4>
-// 				<p>{year}</p>
-// 			</div>
-// 			<div className='project-detail__details-wrapper__col'>
-// 				<h4 className='project-detail__details-wrapper__title'>Client</h4>
-// 				<p>{client}</p>
-// 			</div>
-// 			<div className='project-detail__details-wrapper__col'>
-// 				<h4 className='project-detail__details-wrapper__title'>Project Type</h4>
-// 				<ul className='project__categories'>
-// 					{type?.map((type) => (
-// 						<li
-// 							className='project__category'
-// 							key={type}
-// 						>
-// 							{type}
-// 						</li>
-// 					))}
-// 				</ul>
-// 			</div>
-// 			<div className='project-detail__details-wrapper__col'>
-// 				<h4 className='project-detail__details-wrapper__title'>Industry</h4>
-// 				<p>
-// 					{industries?.map((industry) => (
-// 						<span key={industry}>{industry}</span>
-// 					))}
-// 				</p>
-// 			</div>
-// 			<div className='project-detail__details-wrapper__col'>
-// 				<h4 className='project-detail__details-wrapper__title'>Roles</h4>
-// 				<ul className='project__categories'>
-// 					{roles?.map((role) => (
-// 						<li
-// 							className='project__category'
-// 							key={role}
-// 						>
-// 							{role}
-// 						</li>
-// 					))}
-// 				</ul>
-// 			</div>
-// 			<div className='project-detail__details-wrapper__col'>
-// 				<h4 className='project-detail__details-wrapper__title'>
-// 					Collaboration
-// 				</h4>
-// 				<ul className='project__categories'>
-// 					{collaboration?.map((colaborator) => (
-// 						<li
-// 							className='project__category'
-// 							key={colaborator}
-// 						>
-// 							{colaborator}
-// 						</li>
-// 					))}
-// 				</ul>
-// 			</div>
-// 		</div>
-// 	);
-// };
-// Import useMemo hook
 
 export const ProjectGallery = ({ gallery, numOfColumns = 2 }) => {
 	// Memoize the splitArray function result to avoid unnecessary recalculations

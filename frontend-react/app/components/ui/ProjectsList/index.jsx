@@ -12,8 +12,6 @@ import { useGSAP } from "@gsap/react";
 // Animations
 import { projectsAnimation } from "./animations";
 
-// Components
-import { ProjectModal } from "@/ui";
 
 // Styles
 import "./styles.scss";

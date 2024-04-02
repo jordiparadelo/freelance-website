@@ -13,7 +13,11 @@ export function formatString(inputString) {
 	return formattedString;
 }
 
-export function splitArray(array, numberOfSplits) {
+export function splitArray(array, numberOfSplits = 1) {
+	if(!array) return
+
+	// console.log({array})
+
 	const chunkSize = Math.ceil(array.length / numberOfSplits);
 	const splitArray = [];
 
