@@ -7,9 +7,9 @@ import Link from "next/link";
 // Libs
 import { useGSAP } from "@gsap/react";
 // Constants
-import { SOCIAL_LINKS } from "@/constants";
+import { SOCIAL_LINKS, NAV_LINKS } from "@/constants";
 // Component
-import { Button, CopyToClipboard } from "@/ui";
+import { CopyToClipboard } from "@/ui";
 // Hooks
 import usePageScroll from "@/hooks/usePageScroll";
 // Animations
@@ -21,26 +21,24 @@ const Footer = () => {
 	const { scrollToElement } = usePageScroll();
 	let componentRef = useRef(null);
 
-	useGSAP(() => {
-		footerAnimation(componentRef.current);
-	}, { scope: componentRef.current });
+	useGSAP(
+		() => {
+			footerAnimation(componentRef.current);
+		},
+		{ scope: componentRef.current }
+	);
 
 	return (
-		<footer className='footer' ref={componentRef}>
+		<footer
+			className='footer'
+			ref={componentRef}
+		>
 			<div className='footer__wrapper'>
-				<div className='footer__contact'>
-					<h2 className='footer__contact__title'>Let’s collaborate</h2>
-					<Link
-						href={"?modal=true&type=contact"}
-						scroll={false}
-					>
-						<Button className='footer__contact__button'>Start Now</Button>
-					</Link>
-				</div>
-
 				<div className='footer__work-links'>
 					<div className='footer__work-links__content'>
-						<h3 className='footer__work-links__content-title'>Whenever, wherever. We're meant to work together.</h3>
+						<h3 className='footer__work-links__content-title'>
+							Whenever, wherever. We're meant to work together.
+						</h3>
 						<p>
 							Get in touch with us for full-time job opportunities, freelance
 							projects, design advice, or simply to say hello.
@@ -82,30 +80,17 @@ const Footer = () => {
 					<div className='footer__useful-links__row'>
 						<div className='footer__useful-links__col --page-links'>
 							<h5>Explore</h5>
-							<ul className="footer__useful-links__list">
-								<li>
-									<Link href='/'>About me</Link>
-								</li>
-								<li>
-									<Link href='/'>Projects</Link>
-								</li>
-								<li>
-									<Link href='/'>Products</Link>
-								</li>
-							</ul>
-						</div>
-						<div className='footer__useful-links__col --page-links'>
-							<h5>Say Hello!</h5>
-							<ul className="footer__useful-links__list">
-								<li>
-									<Link href='/'>About me</Link>
-								</li>
-								<li>
-									<Link href='/'>Projects</Link>
-								</li>
-								<li>
-									<Link href='/'>Products</Link>
-								</li>
+							<ul className='footer__useful-links__list'>
+								{NAV_LINKS[0].sections.map((link) => (
+									<li key={link.key}>
+										<Link
+											href={link.href}
+											onClick={() => scrollToElement(link.href)}
+										>
+											{link.label}
+										</Link>
+									</li>
+								))}
 							</ul>
 						</div>
 					</div>

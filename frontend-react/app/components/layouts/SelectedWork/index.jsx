@@ -11,7 +11,7 @@ import "./styles.scss";
 import {getLimitedProjects} from '@/lib/actions'
 
 const SelectedWork = async () => {
-	const { data: projects } = await getLimitedProjects(3)
+	const { data: projects } = await getLimitedProjects(10)
 
 	return (
 		<section

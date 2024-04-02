@@ -15,6 +15,7 @@
 
 		background-color: black;
 		border-radius: var(--corners);
+		border: var(--border);
 		overflow: hidden;
 	}
 
@@ -66,7 +67,7 @@
 
 			cursor: pointer;
 			border-radius: 1.25rem;
-			background-color: rgba(255, 255, 255, 0.2);
+			background-color: var(--color-background);
 			padding: 1rem;
 			transition: background-color 0.3s ease;
 
@@ -150,7 +151,7 @@
 		place-content: center;
 		place-items: center;
 		padding-block: 2.5rem;
-		
+
 		@media screen and (min-width: 900px) {
 			padding-block: 4rem;
 			flex-basis: 600px;
@@ -181,6 +182,7 @@
 	&__useful-links {
 		display: flex;
 		flex-wrap: wrap;
+		place-items: center;
 		justify-content: space-between;
 		gap: var(--spacing-3);
 
@@ -197,21 +199,18 @@
 		}
 
 		&__row {
-			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
-			min-width: 50%;
+			display: flex;
+			flex-direction: column;
+			white-space: nowrap;
 			gap: 2rem;
 
+			
 			.--page-links {
-				display: flex;
-				flex-direction: column;
-				white-space: nowrap;
-
-				@media screen and (min-width: 320px) {
-					display: grid;
-					grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+				@media screen and (min-width: 768px) {
+					place-items: center;
+					gap: var(--spacing-3);
+					flex-direction: row;
 				}
-
 				@media screen and (min-width: 680px) {
 					flex-wrap: nowrap;
 					min-width: 256px;
@@ -221,8 +220,9 @@
 
 		&__list {
 			display: flex;
-			flex-direction: column;
-			gap: var(--spacing-1);
+			flex-wrap: nowrap;
+			flex-direction: row;
+			gap: var(--spacing-2);
 		}
 	}
 }

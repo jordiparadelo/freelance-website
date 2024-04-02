@@ -1,6 +1,6 @@
 .copy-to-clipboard {
 	--size: 48px;
-	border: 1px solid rgba(255, 255, 255, 0.2);
+	border: var(--border);
 	border-radius: 6px;
 	min-width: var(--size);
 	min-height: var(--size);
@@ -24,7 +24,7 @@
 		place-items: center;
 
 		border-radius: var(--radius-sm);
-		background-color: rgba(255, 255, 255, 0.2);
+		background-color: var(--color-background);
 		aspect-ratio: 1/1;
 		padding: 2px;
         height: 100%;

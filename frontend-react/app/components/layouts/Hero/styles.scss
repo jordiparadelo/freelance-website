@@ -54,7 +54,7 @@
 		align-self: center;
 
 		border-radius: var(--radius-rounded);
-		border: 1px solid rgba(255, 255, 255, 0.1);
+		border: var(--border);
 
 		padding-inline: 1em;
 		min-height: var(--size);

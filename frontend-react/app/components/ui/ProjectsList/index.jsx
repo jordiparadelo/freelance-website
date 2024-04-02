@@ -66,8 +66,6 @@ export const Project = ({ project }) => {
 					</ul>
 				</div>
 
-				{/* <ProjectModal/> */}
-
 				<ButtonInfo id={project.id}/>
 			</div>
 			<Link
@@ -75,7 +73,6 @@ export const Project = ({ project }) => {
 				scroll={false}
 				className='project__image-link'
 				rel='preload'
-				// onClick={handleClick}
 			>
 				<div className='project__image'>
 					<Image

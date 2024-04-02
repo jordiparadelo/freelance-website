@@ -26,7 +26,7 @@
 		&__wrapper {
 			border-radius: var(--radius-lg);
 			padding: 1.5rem;
-			border: 1px solid rgba(0, 0, 0, 0.1);
+			border: var(--border);
 			height: fit-content;
 		}
 
@@ -104,7 +104,7 @@
 			img {
 				border-radius: var(--radius-md);
 				overflow: hidden;
-				border: 1px solid rgba(0, 0, 0, 0.1);
+				border: var(--border);
 				width: 100%;
 				object-fit: cover;
 			}

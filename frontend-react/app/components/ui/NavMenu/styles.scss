@@ -81,7 +81,7 @@
 		align-items: center;
 		padding: unset;
 		padding-block-end: 0.875rem;
-		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+		border-bottom: var(--border);
 		max-width: 100%;
 		width: 100%;
 	}

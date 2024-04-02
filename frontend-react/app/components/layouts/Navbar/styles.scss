@@ -15,7 +15,7 @@
 
 	color: var(--color-light);
 	background-color: rgba(0, 0, 0, 0.1);
-	border: 1px solid rgba(255, 255, 255, 0.1);
+	border: var(--border);
 	border-radius: var(--radius-md);
 
 	backdrop-filter: blur(10px);
