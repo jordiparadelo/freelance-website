@@ -2,7 +2,7 @@
 
 import { Button, CloseModalButton, ProjectDetailsList } from "@/ui";
 import { PROJECTS_ITEMS as projects } from "@/constants";
-import { splitArray } from "@/lib/utils";
+import { splitArray } from "@/utils";
 
 import { useMemo } from "react";
 

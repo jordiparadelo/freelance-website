@@ -8,7 +8,7 @@
       "@/public/*": ["./public/*"],
       "@/constants": ["./app/lib/constants"],
       "@/utils": ["./app/lib/utils"],
-      "@/lib/*": ["./app/lib"],
+      "@/lib/*": ["./app/lib/*"],
     }
   },
   "files": [

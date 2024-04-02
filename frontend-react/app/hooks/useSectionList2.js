@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 // Utils
-import { formatString } from "@/lib/utils";
+import { formatString } from "@/utils";
 
 const useSectionList2 = () => {
     const [sectionList, setSectionList] = useState([]);

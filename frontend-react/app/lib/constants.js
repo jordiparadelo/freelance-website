@@ -147,7 +147,7 @@ export const PRODUCTS_ITEMS = [
 ];
 
 // PROJECTS
-export const PROJECTS_ITEMS = [
+export const PROJECTS = [
 	{
 		id: "modum",
 		href: "/products/modum",

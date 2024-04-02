@@ -24,3 +24,4 @@ export function splitArray(array, numberOfSplits) {
 
 	return splitArray;
 }
+

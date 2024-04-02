@@ -1,4 +1,4 @@
-import { formatString } from "@/lib/utils";
+import { formatString } from "@/utils";
 
 import { usePathname } from "next/navigation";
 
