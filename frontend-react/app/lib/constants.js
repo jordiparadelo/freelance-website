@@ -88,7 +88,7 @@ export const GALLERY_IMAGES = [
 ];
 
 // PRODUCTS
-export const PRODUCTS_ITEMS = [
+export const PRODUCTS = [
 	{
 		id: "product-1",
 		href: "/products/product-1",

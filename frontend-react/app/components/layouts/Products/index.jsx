@@ -4,19 +4,15 @@ import Link from "next/link";
 // Components
 import { SectionLabel, Button } from "@/ui";
 // Constants
-import { PRODUCTS_ITEMS as products } from "@/constants";
+// import { PRODUCTS as products } from "@/constants";
+import {getLimitedProducts} from '@/lib/actions'
 // Assets
 import ShoppingCart from "@/public/animated-icons/shopping-cart.json";
 // Styles
 import "./styles.scss";
 
 const Products = async () => {
-	// const URL_PRODUCTS = `${process.env.API_URL}/products`;
-	// const numberOfProducts = 3;
-
-	// const products = await fetch(URL_PRODUCTS)
-	// 	.then((response) => response.json())
-	// 	.then((products) => products.slice(0, numberOfProducts));
+	const { data: products } = await getLimitedProducts(3)
 
 	return (
 		<section
