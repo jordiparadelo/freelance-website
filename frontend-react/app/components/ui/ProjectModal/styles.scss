@@ -43,7 +43,7 @@
 
 		display: flex;
 		flex-direction: column;
-		border: 1px solid rgba(0, 0, 0, 0.05);
+		border: var(--border);
 		gap: var(--padding);
 		padding-inline: var(--padding);
 		padding-block: max(var(--spacing-1), calc(var(--padding) / 2));

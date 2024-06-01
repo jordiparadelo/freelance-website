@@ -18,19 +18,18 @@ const manrope = Manrope({
 });
 
 export default function RootLayout({ children }) {
-	
 	return (
 		<html lang='en'>
 			<body
 				className={manrope.className}
 				suppressHydrationWarning={true}
 			>
-				<Navbar />
+					<Navbar />
 					<main>{children}</main>
-				<Footer />
-				<Suspense fallback={null}>
-					<Modal />
-				</Suspense>
+					<Footer />
+					<Suspense fallback={null}>
+						<Modal />
+					</Suspense>
 				{/* <InteractiveBackground /> */}
 			</body>
 		</html>

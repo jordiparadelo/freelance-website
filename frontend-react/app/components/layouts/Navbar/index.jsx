@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 // Components
-import { Logo, NavMenu, ContactButton } from "@/ui";;
+import { Logo, NavMenu, ContactButton, NavIndex } from "@/ui";;
 // Lib3
 import { NAV_LINKS } from "@/constants";
 // Styles
