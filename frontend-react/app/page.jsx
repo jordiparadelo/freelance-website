@@ -7,7 +7,7 @@ import {
 	Products,
 	Services,
 	Banner
-} from "@/layouts"
+} from "@/layouts";
 
 const Home = () => {
 	return (

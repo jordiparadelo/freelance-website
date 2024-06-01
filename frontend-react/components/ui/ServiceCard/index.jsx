@@ -1,8 +1,6 @@
 
 // Components
 import {SectionLabel} from "@/ui";
-// Assets
-import Box from "@/public/animated-icons/services.json";
 import Image from "next/image";
 // Styles
 import styles from "./styles.module.scss";
@@ -12,12 +10,10 @@ const ServiceCard = ({ service }) => {
 		<figure
 			className={styles['service-card']}
 			data-type={service.type}
+			data-component="service-card"
 		>
 			<figcaption className={styles['service-card__details']}>
 				<div className={styles['service-card__title-wrapper']}>
-					<SectionLabel
-						animationData={Box}
-					/>
 					<h3 className={styles['service-card__title']}>{service.title}</h3>
 				</div>
 				<p className={styles['service-card__description']}>{service.description}</p>

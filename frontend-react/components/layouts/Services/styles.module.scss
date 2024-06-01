@@ -1,25 +1,31 @@
 .services {
 	background-color: var(--color-background-light);
-	overflow: hidden;
+	overflow: clip;
+	height: 150vh;
 
 	@media screen and (min-width: 768px) {
 		.section-header__subtitle {
-			margin-block-start: calc(var(--section-label-size) + 2rem);
+			// margin-block-start: calc(var(--section-label-size) + 2rem);
 		}
+	}
+
+	&__container {
+		position: sticky;
+		top: 90px;
 	}
 
 	&__wrapper {
 		display: flex;
         flex-direction: column;
-        gap: 3.5rem;
+        gap: 6rem;
+	}
 
-		.section-header {
-			gap: 1.5rem;
-
-			@media screen and (min-width: 768px) {
-				gap: 3rem;
-			}
-		}
+	&__header {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		text-align: center;
+		align-items: center;
 	}
 
 	&__list {
