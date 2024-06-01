@@ -30,7 +30,6 @@ export default function RootLayout({ children }) {
 					<Suspense fallback={null}>
 						<Modal />
 					</Suspense>
-				{/* <InteractiveBackground /> */}
 			</body>
 		</html>
 	);

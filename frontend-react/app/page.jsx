@@ -9,10 +9,6 @@ import {
 	Banner
 } from "@/layouts"
 
-
-
-
-
 const Home = () => {
 	return (
 		<>

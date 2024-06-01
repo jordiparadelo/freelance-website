@@ -23,21 +23,21 @@ export const NAV_LINKS = [
 				label: "Gallery",
 				href: "#gallery",
 			},
-			{
-				key: "products",
-				label: "Products",
-				href: "#products",
-			},
+			// {
+			// 	key: "products",
+			// 	label: "Products",
+			// 	href: "#products",
+			// },
 			{
 				key: "projects",
 				label: "Projects",
 				href: "#selected-works",
 			},
-			{
-				key: "reviews",
-				label: "Reviews",
-				href: "#client-reviews",
-			},
+			// {
+			// 	key: "reviews",
+			// 	label: "Reviews",
+			// 	href: "#client-reviews",
+			// },
 		],
 	},
 	{

@@ -2,13 +2,13 @@
   "compilerOptions": {
     "paths": {
       "@/*": ["./*"],
-      "@/ui": ["./app/components/ui"],
-      "@/layouts": ["./app/components/layouts"],
-      "@/hooks/*": ["./app/hooks/*"],
+      "@/ui": ["./components/ui"],
+      "@/layouts": ["./components/layouts"],
+      "@/hooks/*": ["./hooks/*"],
       "@/public/*": ["./public/*"],
-      "@/constants": ["./app/lib/constants"],
-      "@/utils": ["./app/lib/utils"],
-      "@/lib/*": ["./app/lib/*"],
+      "@/constants": ["./lib/constants"],
+      "@/utils": ["./lib/utils"],
+      "@/lib/*": ["./lib/*"],
     }
   },
   "files": [
