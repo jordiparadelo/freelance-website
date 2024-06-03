@@ -2,11 +2,10 @@
 .service-card {
 	display: flex;
 	flex-direction: column;
-	max-height: 400px;
-
-	border-radius: var(--radius-lg);
+	border-radius: var(--corners--radius-medium);
 	overflow: hidden;
-	background-color: var(--color-white);
+	background-color: var(--background-color--alternative);
+	color: var(--text-color--alternative);
 
 	&__details {
 		display: flex;
@@ -48,7 +47,7 @@
 	}
 
 	&__image {
-		border-radius: var(--radius-md);
+		border-radius: var(--corners--radius-medium);
 		overflow: hidden;
 	}
 
@@ -215,7 +214,7 @@
 					translateY(calc(var(--offset-x) * var(--index-image)))
 					rotate(calc(15deg * var(--index-image)));
 				box-shadow: 0px 20px 40px -30px rgba(0, 0, 0, 0.5);
-                transition: transform 0.4s ease, opacity 0.1s linear;
+				transition: transform 0.4s ease, opacity 0.1s linear;
 
 				&:nth-child(1) {
 					z-index: 3;
@@ -231,31 +230,31 @@
 				&:nth-child(4) {
 					--index-image: 2;
 					z-index: 0;
-                    opacity: 0;
+					opacity: 0;
 				}
 			}
 		}
 
-        // States
+		// States
 		@media screen and (hover: hover) {
 			&:not(:hover) {
 				.service-card__image-container {
-                    .service-card__image {
-                        &:nth-child(1) {
-                            --index-image: -1;
-                            opacity: 0;
-                        }
-                        &:nth-child(2) {
-                            --index-image: 0;
-                        }
-                        &:nth-child(3) {
-                            --index-image: 0.5;
-                        }
-                        &:nth-child(4) {
-                            --index-image: 1;
-                            opacity: 1;
-                        }
-                    }
+					.service-card__image {
+						&:nth-child(1) {
+							--index-image: -1;
+							opacity: 0;
+						}
+						&:nth-child(2) {
+							--index-image: 0;
+						}
+						&:nth-child(3) {
+							--index-image: 0.5;
+						}
+						&:nth-child(4) {
+							--index-image: 1;
+							opacity: 1;
+						}
+					}
 				}
 			}
 		}

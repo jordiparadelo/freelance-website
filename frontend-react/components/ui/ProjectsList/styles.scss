@@ -2,7 +2,7 @@
 .projects-list {
 	display: flex;
 	flex-direction: column;
-	gap: 2.5rem
+	gap: 2.5rem;
 }
 
 // PROJECT
@@ -12,7 +12,7 @@
 	gap: 2.5rem;
 
 	> * {
-		grid-area: 1/1
+		grid-area: 1/1;
 	}
 
 	@media screen and (min-width: 480px) {
@@ -20,24 +20,20 @@
 	}
 
 	&__header {
-		--size: var(--navbar-size);
-		--spacing: var(--spacing-2);
-
 		position: sticky;
-		top: calc(100% - var(--size) - var(--spacing) );
-
-		padding-block: var(--spacing-1);
-		padding-inline: var(--spacing-2);
-		margin: var(--spacing);
+		top: calc(100% - var(--navbar-size) - var(--section-padding--inline-small));
+		padding-block: var(--section-padding--inline-small);
+		padding-inline: var(--section-padding--inline-small);
+		margin: var(--section-padding--inline-small);
 		display: flex;
 		flex-direction: column;
 		gap: 2rem;
-		border-radius: var(--radius-md);
-		background-color: var(--color-white);
-		color: var(--color-text);
+		border-radius: var(--corners--radius-medium);
+		background-color: var(--background-color--alternative);
+		color: var(--text-color--alternative);
 		z-index: 2;
 		align-self: flex-start;
-		min-height: var(--navbar-size);
+		min-height: min-content;
 
 		@media screen and (min-width: 480px) {
 			flex-direction: row;
@@ -56,6 +52,8 @@
 	&__title {
 		font-size: 2.25rem;
 		font-weight: 600;
+		align-self: center;
+		line-height: 1;
 
 		@media screen and (min-width: 480px) {
 			font-size: 1.25rem;
@@ -84,15 +82,14 @@
 		gap: 0.5rem;
 	}
 	&__category {
-		--corners: var(--radius-rounded);
+		--corners: var(--corners--radius-round);
 
 		border-radius: var(--corners);
-		border: 1px solid rgba(0,0,0,0.2);
-		
+		border: 1px solid rgba(0, 0, 0, 0.2);
+
 		font-size: 0.875rem;
 		padding-block: 0.25rem;
 		padding-inline: 0.75rem;
-
 	}
 
 	&__link {

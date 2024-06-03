@@ -76,6 +76,7 @@ export const Project = ({ project }) => {
 			>
 				<div className='project__image'>
 					<Image
+					unoptimized
 						src={project.image.src}
 						alt={project.image.alt}
 					/>

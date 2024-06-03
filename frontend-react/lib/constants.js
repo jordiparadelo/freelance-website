@@ -168,8 +168,9 @@ export const PROJECTS = [
 			roles: ["Designer", "Developer"],
 			collaboration: ["Commute"],
 		},
-		challenge: "Modum was created with the aim of simplifying the process of managing health care. The company's mission is to deliver better healthcare services to patients.",
-		services: ['Design Website', 'Webflow Development', "CMS Integration"],
+		challenge:
+			"Modum was created with the aim of simplifying the process of managing health care. The company's mission is to deliver better healthcare services to patients.",
+		services: ["Design Website", "Webflow Development", "CMS Integration"],
 		preview: "https://www.modumsalud.com.ar/",
 		categories: ["Webflow", "Website"],
 		gallery: [
@@ -215,7 +216,7 @@ export const PROJECTS = [
 				width: 568,
 				height: 456,
 			},
-		]
+		],
 	},
 	{
 		id: "modo",
@@ -237,8 +238,9 @@ export const PROJECTS = [
 			roles: ["Designer", "Developer"],
 			collaboration: ["Commute"],
 		},
-		challenge: "Modo was a new modern banking app startup, that want to simplify the process of managing financial transactions. The company's mission is to deliver better banking services to its clients.",
-		services: ['Webflow Development', 'Animations'],
+		challenge:
+			"Modo was a new modern banking app startup, that want to simplify the process of managing financial transactions. The company's mission is to deliver better banking services to its clients.",
+		services: ["Webflow Development", "Animations"],
 		preview: "https://www.modo.com.ar/",
 		categories: ["Webflow", "Website"],
 		gallery: [
@@ -284,7 +286,7 @@ export const PROJECTS = [
 				width: 568,
 				height: 456,
 			},
-		]
+		],
 	},
 	{
 		id: "receeve",
@@ -306,8 +308,9 @@ export const PROJECTS = [
 			roles: ["Designer", "Developer"],
 			collaboration: ["Commute"],
 		},
-		challenge: "Receeve was created with the aim of simplifying the process of managing health care. The company's mission is to deliver better healthcare services to patients.",
-		services: ['Design Website', 'Webflow Development', "CMS Integration"],
+		challenge:
+			"Receeve was created with the aim of simplifying the process of managing health care. The company's mission is to deliver better healthcare services to patients.",
+		services: ["Design Website", "Webflow Development", "CMS Integration"],
 		preview: "https://www.receeve.com/",
 		categories: ["Webflow", "Website"],
 		gallery: [
@@ -353,7 +356,7 @@ export const PROJECTS = [
 				width: 568,
 				height: 456,
 			},
-		]
+		],
 	},
 	{
 		id: "cledara",
@@ -375,8 +378,9 @@ export const PROJECTS = [
 			roles: ["Designer", "Developer"],
 			collaboration: ["Commute", "Cledara"],
 		},
-		challenge: "Cledara want to update their actual site with a modern and modern design. Bring more of their brand identity to the site.",
-		services: ['Design Website', 'Webflow Development', "CMS Integration"],
+		challenge:
+			"Cledara want to update their actual site with a modern and modern design. Bring more of their brand identity to the site.",
+		services: ["Design Website", "Webflow Development", "CMS Integration"],
 		preview: "https://www.cledara.com/",
 		categories: ["Webflow", "Website", "Animations"],
 		gallery: [
@@ -422,7 +426,7 @@ export const PROJECTS = [
 				width: 568,
 				height: 456,
 			},
-		]
+		],
 	},
 	{
 		id: "kidscorp",
@@ -444,8 +448,9 @@ export const PROJECTS = [
 			roles: ["Developer"],
 			collaboration: ["Commute"],
 		},
-		challenge: "Kidscorp was created with the aim of simplifying the process of managing health care. The company's mission is to deliver better healthcare services to patients.",
-		services: ['Webflow Development'],
+		challenge:
+			"Kidscorp was created with the aim of simplifying the process of managing health care. The company's mission is to deliver better healthcare services to patients.",
+		services: ["Webflow Development"],
 		preview: "https://www.kidscorp.digital/",
 		categories: ["Webflow"],
 		gallery: [
@@ -491,9 +496,8 @@ export const PROJECTS = [
 				width: 568,
 				height: 456,
 			},
-		]
+		],
 	},
-	
 ];
 
 // SERVICES
@@ -716,5 +720,60 @@ export const SOCIAL_LINKS = [
 		},
 		title: "Linkedin",
 		href: "https://www.linkedin.com/in/jordiparadelo/",
+	},
+];
+
+export const PROCESS = [
+	{
+		id: "design",
+		category: "Design Visually",
+		title: "User-centric designs",
+		description:
+			"Crafting visually stunning and user-centric designs is at the heart of our process. We transform ideas into beautiful and intuitive interfaces that engage users and enhance their experience.",
+		cover: {
+			src: galleryImage1,
+			width: 600,
+			height: 400,
+			alt: "Image showing the process of Design Visually",
+		},
+	},
+	{
+		id: "cms-integration",
+		category: "CMS Integration",
+		title: "Manage and update content effortlessly",
+		description:
+			"A robust Content Management System (CMS) empowers clients to manage and update their content effortlessly. We integrate a powerful CMS that provides flexibility and control over the content, ensuring the site remains dynamic and relevant.",
+		cover: {
+			src: galleryImage2,
+			width: 600,
+			height: 400,
+			alt: "Image showing the process of CMS Integration",
+		},
+	},
+	{
+		id: "custom-code",
+		category: "Custom Code",
+		title: "Extend functionalities beyond defaults",
+		description:
+			"To meet unique project requirements, we leverage custom code, providing the flexibility to extend functionalities beyond standard capabilities. This ensures that every aspect of the application is tailored to the specific needs of the project.",
+		cover: {
+			src: galleryImage3,
+			width: 600,
+			height: 400,
+			alt: "Image showing the process of Custom Code",
+		},
+	},
+	{
+		id: "animations",
+		category: "Animations & Interactions",
+		title: "Engaging and enjoyable experiences",
+		description:
+			"Animations and interactions bring life to the application, making it more engaging and enjoyable for users. We use advanced animation techniques to create seamless, captivating experiences that enhance the overall user journey.",
+		cover: {
+			src: galleryImage1,
+			width: 600,
+			height: 400,
+			alt: "Image showing the process of Animations & Interactions",
+		},
 	},
 ];

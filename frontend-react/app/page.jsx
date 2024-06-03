@@ -6,7 +6,8 @@ import {
 	ClientsReviews,
 	Products,
 	Services,
-	Banner
+	Banner,
+	Process 
 } from "@/layouts";
 
 const Home = () => {
@@ -17,6 +18,7 @@ const Home = () => {
 			<Gallery />
 			<About />
 			<Services />
+			<Process />
 			{/* <Products /> */}
 			<SelectedWork />
 			{/* <ClientsReviews /> */}

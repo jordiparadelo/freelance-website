@@ -2,7 +2,7 @@
 	--margin: 120px;
 
 	margin-top: var(--margin);
-	padding: var(--padding-inline-mobile);
+	padding: var(--section-padding--inline-small);
 	position: absolute;
 	width: 100%;
 	height: calc(100% - var(--margin));
@@ -18,10 +18,10 @@
 	gap: 3.5rem;
 
 	@media screen and (min-width: 480px) {
-		padding: var(--padding-inline-tablet);
+		padding: var(--section-padding--block-medium);
 	}
 	@media screen and (min-width: 768px) {
-		padding: var(--padding-inline-desktop);
+		padding: var(--section-padding--inline-large);
 	}
 
 	.container {
@@ -47,7 +47,7 @@
 		gap: var(--padding);
 		padding-inline: var(--padding);
 		padding-block: max(var(--spacing-1), calc(var(--padding) / 2));
-		border-radius: var(--radius-md);
+		border-radius: var(--corners--radius-medium);
 		grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
 
 		@media screen and (min-width: 768px) {
@@ -183,7 +183,7 @@
 		gap: var(--gap);
 		flex-direction: column;
 		align-items: stretch;
-		border-radius: var(--radius-lg);
+		border-radius: var(--corners--radius-large);
 		overflow: hidden;
 
 		img {

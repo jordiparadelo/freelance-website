@@ -35,7 +35,7 @@ export const serviceAnimation = (element) => {
 		scrub: true,
 		start: `top+=20% center`,
 		end: `bottom-=20% center`,
-		markers: true,
+		// markers: true,
 	});
 
 	return animation;

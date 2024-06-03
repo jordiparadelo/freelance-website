@@ -59,6 +59,7 @@ export const Product = ({ product }) => {
 		<figure className='product'>
 			<div className='product__image'>
 				<Image
+				unoptimized
 					src={product.image.src}
 					alt={product.image.alt}
 					width={product.image.width}
@@ -81,6 +82,7 @@ export const Product = ({ product }) => {
 								key={formats}
 							>
 								<Image
+								unoptimized
 									key={formats}
 									src={`/${formats}.svg`}
 									width={32}

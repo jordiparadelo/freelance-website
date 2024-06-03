@@ -1,9 +1,9 @@
 .contact-button {
     --size: 40px;
 
-    border-radius: var(--radius-rounded);
-    background-color: var(--color-background);
-    color: var(--color-white);
+    border-radius: var(--corners--radius-round);
+    background-color: var(--background-color--base);
+    color: var(--background-color--alternative);
     border: var(--border);
     min-width: var(--size);
     min-height: var(--size);

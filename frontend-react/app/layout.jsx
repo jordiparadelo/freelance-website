@@ -19,7 +19,7 @@ const manrope = Manrope({
 
 export default function RootLayout({ children }) {
 	return (
-		<html lang='en'>
+		<html lang='en' data-theme="dark">
 			<body
 				className={manrope.className}
 				suppressHydrationWarning={true}

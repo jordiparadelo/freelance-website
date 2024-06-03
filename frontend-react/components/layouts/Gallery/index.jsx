@@ -35,12 +35,13 @@ const Gallery = () => {
 			className='gallery'
 			ref={componentRef}
 		>
-			<Curves fill="#101214" className="gallery__curves--top"/>
+			<Curves fill="var(--background-color--base)" className="gallery__curves--top"/>
 
 			<div className='gallery__slideshow'>
 				{GALLERY_IMAGES.map((image) => (
 					<figure className='gallery__slide' key={image.key}>
 						<Image
+						unoptimized
 							src={image.src}
 							alt={image.alt}
 							width={image.width}
@@ -50,7 +51,7 @@ const Gallery = () => {
 				))}
 			</div>
 
-			<Curves fill="#101214" className="gallery__curves--bottom"/>
+			<Curves fill="var(--background-color--base)" className="gallery__curves--bottom"/>
 		</section>
 	);
 };

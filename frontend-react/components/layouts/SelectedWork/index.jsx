@@ -20,7 +20,7 @@ const SelectedWork = async () => {
 		>
 			<Curves
 				orientation='top'
-				fill='#101214'
+				fill='var(--background-color--base)'
 				className='selected-works__curves--top'
 			/>
 

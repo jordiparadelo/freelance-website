@@ -1,6 +1,6 @@
 .footer {
 	--global-padding: 2rem;
-	--corners: var(--radius-lg);
+	--corners: var(--corners--radius-large);
 
 	color: var(--color-light);
 
@@ -67,7 +67,7 @@
 
 			cursor: pointer;
 			border-radius: 1.25rem;
-			background-color: var(--color-background);
+			background-color: var(--background-color--base);
 			padding: 1rem;
 			transition: background-color 0.3s ease;
 

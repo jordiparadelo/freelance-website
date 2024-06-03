@@ -77,6 +77,7 @@ const ProjectModal = () => {
 
 						<div className='project-detail__image'>
 							<Image
+							unoptimized
 								src={project?.image?.src}
 								alt={project?.image?.alt}
 								width={project?.image?.width}
@@ -126,6 +127,7 @@ export const ProjectGallery = ({ gallery, numOfColumns = 2 }) => {
 								className='project-detail__gallery-item'
 							>
 								<Image
+								unoptimized
 									src={galleryItem?.src}
 									alt={galleryItem?.alt}
 									width={galleryItem?.width}

@@ -57,6 +57,7 @@ const Review = ({ review }) => {
 		<article className='review'>
 			<header className='review__header'>
 				<Image
+				unoptimized
 					className='review__image'
 					src={review.image.src}
 					width={review.image.width}

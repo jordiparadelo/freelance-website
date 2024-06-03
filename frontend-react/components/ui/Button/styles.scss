@@ -5,7 +5,7 @@
 	// box-sizing: border-box;
 
 	display: grid;
-	grid-template-rows: var(--size) var(--size);
+	grid-template-rows: var(--button-size) var(--button-size);
     position: relative;
 	align-items: center;
 	place-items: center;
@@ -13,16 +13,16 @@
 	white-space: nowrap;
 	font-size: 0.75rem;
 	line-height: 100%;
-	min-width: var(--size);
-	max-height: var(--size);
+	min-width: var(--button-size);
+	max-height: var(--button-size);
 	padding-inline: 2em;
 	border: unset;
 	border-radius: 999px;
 	overflow: hidden;
 	transition: transform 0.3s ease-in-out;
-    background-color: black;
+    background-color: var(--background-color--alternative);
 	cursor: pointer;
-    color: white;
+    color: var(--text-color--alternative);
 
     &::before {
         content: "";
@@ -51,7 +51,7 @@
 	}
 
 	&__label {
-		line-height: var(--size);
+		line-height: var(--button-size);
 
         &:nth-child(2) {
             color: inherit;

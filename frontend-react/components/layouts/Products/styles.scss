@@ -24,7 +24,7 @@
 		padding: unset;
 
 		&__wrapper {
-			border-radius: var(--radius-lg);
+			border-radius: var(--corners--radius-large);
 			padding: 1.5rem;
 			border: var(--border);
 			height: fit-content;
@@ -66,7 +66,7 @@
 	&__list {
 		display: flex;
 		flex-direction: column;
-		gap: var(--padding-inline-mobile);
+		gap: var(--section-padding--inline-small);
 		flex-grow: 1;
 		flex-basis: 250px;
 		max-width: 100%;
@@ -79,8 +79,8 @@
 	.product {
 		display: flex;
 		flex-direction: column;
-		border-radius: var(--radius-lg);
-		background-color: var(--color-white);
+		border-radius: var(--corners--radius-large);
+		background-color: var(--background-color--alternative);
 		overflow: hidden;
 		flex-grow: 1;
 
@@ -102,7 +102,7 @@
 			max-height: 320px;
 
 			img {
-				border-radius: var(--radius-md);
+				border-radius: var(--corners--radius-medium);
 				overflow: hidden;
 				border: var(--border);
 				width: 100%;
@@ -116,7 +116,7 @@
 				max-height: unset;
 
 				img {
-					border-radius: var(--radius-lg);
+					border-radius: var(--corners--radius-large);
 					aspect-ratio: 3/2;
 					min-width: 600px;
 				}
@@ -178,7 +178,7 @@
 			width: var(--size);
 			height: var(--size);
 
-			border-radius: var(--radius-rounded);
+			border-radius: var(--corners--radius-round);
 			padding: calc(var(--size) * 0.125);
 			background-color: var(--color-background-light);
 			border: var(--border);

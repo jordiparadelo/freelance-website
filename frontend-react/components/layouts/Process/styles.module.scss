@@ -1,0 +1,120 @@
+// Process Section
+.process {
+	min-height: 400vh;
+	overflow: clip;
+
+	&__container {
+		position: sticky;
+		top: calc(var(--navbar-size) * 2);
+	}
+
+	&__layout {
+		display: flex;
+		flex-flow: row;
+		align-items: stretch;
+		gap: 0.75rem;
+		height: max(calc(100vh - var(--navbar-size) * 4), 600px);
+		
+	}
+
+	// ASIDE
+	&__aside {
+		display: flex;
+		flex-flow: column;
+		flex: 1 1 min-content;
+		padding: 2rem 1.5rem;
+		border-radius: var(--corners--radius-large);
+		background-color: var(--background-color--dark);
+	}
+
+	&__header {
+		display: flex;
+		flex-flow: column;
+		overflow: hidden;
+		max-height: 1000px;
+		height: 100%;
+	}
+
+	&__nav-list {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr;
+		flex-direction: column;
+		gap: 0.25rem;
+		// margin-block-start: auto;
+
+		&__item {
+			display: flex;
+			flex-direction: column;
+			align-items: stretch;
+			background-color: inherit;
+		}
+
+		&__category {
+			display: flex;
+			flex-direction: row;
+			gap: 0.5rem;
+			align-items: center;
+			padding-inline: 0.75rem;
+			min-height: 2.5rem;
+			border-radius: var(--corners--radius-small);
+			background: var(--background-color--base);
+		}
+
+		&__content {
+			max-height: 1000px;
+			overflow: hidden;
+			padding-inline: 0.75rem;
+			display: flex;
+			flex-flow: column;
+			gap: 1rem;
+		}
+
+		&__content-heading {
+			display: flex;
+			flex-flow: column;
+			gap: 0.75rem;
+			padding-block: 0.75rem;
+		}
+	}
+	&__nav-category {
+		display: flex;
+		flex-flow: row;
+		gap: 0.5rem;
+	}
+
+	// IMAGE CONTAINER
+	&__image-container {
+		display: flex;
+		flex-direction: column;
+		flex: 1 1 60%;
+		background-color: var(--background-color--alternative);
+		border-radius: var(--corners--radius-large);
+		align-self: stretch;
+		min-height: min-content;
+		overflow: hidden;
+
+		&__list {
+			align-self: stretch;
+			display: grid;
+			grid-template-columns: 1fr;
+			grid-template-rows: 1fr;
+			width: 100%;
+			height: 100%;
+		}
+
+		&__item {
+			grid-area: 1/1;
+			display: grid;
+			grid-template-columns: 1fr;
+			grid-template-rows: 1fr;
+
+			img {
+				width: 100%;
+				object-fit: cover;
+				height: 100%;
+				
+			}
+		}
+	}
+}

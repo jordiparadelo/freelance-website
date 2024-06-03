@@ -27,7 +27,7 @@ const About = () => {
 					</div>
 				</div>
 			</div>
-			<Curves fill="#101214" orientation="bottom"/>
+			<Curves fill="var(--background-color--base)" orientation="bottom"/>
 		</section>
 	);
 };

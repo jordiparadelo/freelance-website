@@ -9,3 +9,4 @@ export {default as Products} from './Products';
 export {default as SelectedWork} from './SelectedWork';
 export {default as Services} from './Services';
 export {default as Banner} from './Banner';
+export {default as Process} from './Process';

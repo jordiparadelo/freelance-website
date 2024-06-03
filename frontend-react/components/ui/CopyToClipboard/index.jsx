@@ -1,6 +1,6 @@
 "use client";
 
-import {useState} from "react";
+import { useState } from "react";
 import Image from "next/image";
 
 // Styles
@@ -31,20 +31,30 @@ const CopyToClipboard = ({ children }) => {
 	}
 
 	return (
-		<form onSubmit={handleSubmit} className='copy-to-clipboard' data-alert={isCopied}>
-            <button
-                name='button'
+		<form
+			onSubmit={handleSubmit}
+			className='copy-to-clipboard'
+			data-alert={isCopied}
+		>
+			<button
+				name='button'
 				aria-label='Copy to clipboard'
 				type='submit'
-                className='copy-to-clipboard__button'
+				className='copy-to-clipboard__button'
 			>
-				<Image src={'/copy.svg'} width={16} height={16} alt='Copy to clipboard'/>
+				<Image
+					unoptimized
+					src={"/copy.svg"}
+					width={16}
+					height={16}
+					alt='Copy to clipboard'
+				/>
 			</button>
 			<input
 				name='clipboard'
 				type='text'
 				value={children}
-                className='copy-to-clipboard__input'
+				className='copy-to-clipboard__input'
 				placeholder={children}
 				disabled
 				readOnly

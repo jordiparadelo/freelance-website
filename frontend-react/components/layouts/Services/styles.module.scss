@@ -1,13 +1,6 @@
+// Services Section
 .services {
-	background-color: var(--color-background-light);
-	overflow: clip;
-	height: 150vh;
-
-	@media screen and (min-width: 768px) {
-		.section-header__subtitle {
-			// margin-block-start: calc(var(--section-label-size) + 2rem);
-		}
-	}
+	min-height: 150vh;
 
 	&__container {
 		position: sticky;
@@ -16,8 +9,8 @@
 
 	&__wrapper {
 		display: flex;
-        flex-direction: column;
-        gap: 6rem;
+		flex-direction: column;
+		gap: 6rem;
 	}
 
 	&__header {
@@ -29,14 +22,23 @@
 	}
 
 	&__list {
-		display: flex;
-		flex-direction: row;
-		gap: 1.5rem;
+		display: grid;
+		grid-auto-rows: 1fr;
+		gap: 1rem;
 
-		> * {
-			flex-grow: 1;
-			flex-shrink: 0;
-			flex-basis: clamp(256px, 50vw, 300px);
+		@media screen and (min-width: 425px) {
+			grid-template-columns: repeat(auto-fit, minmax(33%, 1fr));
+			gap: 0.75rem;
+
+			> * {
+				flex-grow: 1;
+				flex-basis: 20ch;
+			}
+		}
+
+		@media screen and (min-width: 991px) {
+			display: flex;
+			flex-direction: row;
 		}
 	}
 }

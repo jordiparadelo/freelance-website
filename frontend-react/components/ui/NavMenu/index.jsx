@@ -16,7 +16,7 @@ import crossIcon from "@/public/cross.svg";
 // Styles
 import "./styles.scss";
 
-const NavMenu = ({navLinks}) => {
+const NavMenu = ({ navLinks }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const { scrollPosition, scrollToElement } = usePageScroll();
 
@@ -35,9 +35,12 @@ const NavMenu = ({navLinks}) => {
 					size={40}
 				/>
 			</button>
-			<AnimatePresence >
+			<AnimatePresence>
 				{isOpen && (
-					<motion.menu  className='navmenu__menu-wrapper' key={'navmenu'}>
+					<motion.menu
+						className='navmenu__menu-wrapper'
+						key={"navmenu"}
+					>
 						<motion.div
 							className='navmenu__menu'
 							{...animationProps}
@@ -48,6 +51,7 @@ const NavMenu = ({navLinks}) => {
 									onClick={() => setIsOpen((current) => !current)}
 								>
 									<Image
+										unoptimized
 										src={crossIcon}
 										alt='Close menu'
 										width='1em'
@@ -63,6 +67,7 @@ const NavMenu = ({navLinks}) => {
 										className='navmenu__menu-list-i'
 									>
 										<Image
+											unoptimized
 											src={arrowIcon}
 											alt='Arrow icon'
 											width='1em'

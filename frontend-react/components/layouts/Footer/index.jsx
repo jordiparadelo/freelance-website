@@ -56,6 +56,7 @@ const Footer = () => {
 								>
 									<div className='footer__work-links__item-avatar'>
 										<Image
+											unoptimized
 											src={link.icon.src}
 											width={link.icon.width}
 											height={link.icon.height}
