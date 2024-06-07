@@ -1,7 +1,8 @@
 // Process Section
 .process {
-	min-height: 400vh;
+	min-height: 600vh;
 	overflow: clip;
+	display: grid;
 
 	&__container {
 		position: sticky;
@@ -24,7 +25,10 @@
 		flex: 1 1 min-content;
 		padding: 2rem 1.5rem;
 		border-radius: var(--corners--radius-large);
-		background-color: var(--background-color--dark);
+		border: 1px solid var(--border-color--base);
+		overflow: hidden;
+		width: min-content;
+		flex-shrink: 0;
 	}
 
 	&__header {
@@ -32,7 +36,8 @@
 		flex-flow: column;
 		overflow: hidden;
 		max-height: 1000px;
-		height: 100%;
+		height: min-content;
+		flex-shrink: 0;
 	}
 
 	&__nav-list {
@@ -58,7 +63,7 @@
 			padding-inline: 0.75rem;
 			min-height: 2.5rem;
 			border-radius: var(--corners--radius-small);
-			background: var(--background-color--base);
+			background: var(--border-color--base);
 		}
 
 		&__content {

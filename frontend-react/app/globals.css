@@ -69,34 +69,34 @@ main {
 }
 
 /* Set section dimensions */
-section {
+/* section {
 	position: relative;
-	padding-inline: var(--section-padding--inline-small);
+	padding-inline: var(--section-padding--inline-medium);
 	padding-block: var(--padding-block-mobile);
-}
+} */
 
 /* Set larger section dimensions */
-@media screen and (min-width: 425px) {
+/* @media screen and (min-width: 425px) {
 	section {
 		padding-inline: var(--section-padding--block-medium);
 		padding-block: var(--padding-block-tablet);
 	}
-}
+} */
 
 /* Set even larger section dimensions */
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) {
 	section {
 		padding-inline: var(--section-padding--inline-large);
 		padding-block: var(--section-padding--block-large);
 	}
-}
+} */
 
 /* Set even larger section dimensions */
-@media screen and (min-width: 1440px) {
+/* @media screen and (min-width: 1440px) {
 	section {
 		padding-block: var(--padding-block-desktop-lg);
 	}
-}
+} */
 
 /* Set heading styles */
 h1,
@@ -172,6 +172,45 @@ h5,
 /* ==========================================================================
    SECTION STYLES
    ========================================================================== */
+
+.padding-global {
+	padding-inline: var(--section-padding--inline-medium);
+}
+
+.padding-global.--section-large {
+	padding-block: var(--section-padding--block-small);
+}
+.padding-global.--section-medium {
+	padding-block: var(--section-padding--block-tiny);
+}
+.padding-global.--section-small {
+	padding-block: var(--section-padding--block-tiny);
+}
+
+@media screen and (min-width: 425px) {
+	.padding-global {
+		padding-inline: var(--section-padding--inline-large);
+	}
+
+	.padding-global.--section-large {
+		padding-block: var(--section-padding--block-medium);
+	}
+	.padding-global.--section-medium {
+		padding-block: var(--section-padding--block-small);
+	}
+	.padding-global.--section-small {
+		padding-block: var(--section-padding--block-small);
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.padding-global.--section-large {
+		padding-block: var(--section-padding--block-large);
+	}
+	.padding-global.--section-medium {
+		padding-block: var(--section-padding--block-medium);
+	}
+}
 
 /* Set section wrapper styles */
 .section__wrapper {

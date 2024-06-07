@@ -56,7 +56,8 @@
 
 	/* Section Padding */
 	--section-padding--inline-large: 2.5rem;
-	--section-padding--inline-small: 1.25rem;
+	--section-padding--inline-medium: 1.25rem;
+	--section-padding--inline-small: 1rem;
 	--section-padding--block-large: 8rem;
 	--section-padding--block-medium: 6rem;
 	--section-padding--block-small: 4rem;

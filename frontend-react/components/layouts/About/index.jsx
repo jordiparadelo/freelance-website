@@ -9,25 +9,26 @@ const About = () => {
 			id='about'
 			className='about'
 		>
-			<div className='container'>
-				<div className='about__wrapper'>
-					<header className='about__header'>
-						<AnimatedParagraph className="about__title">
-							Freelancer, focused on develop digital products from scratch.
-							Always align with design trends and technologies to solve business
-							needs.
-						</AnimatedParagraph>
-					</header>
-					<span className='divider'></span>
-					<div className='about__services'>
-						<h3 className='about__services-title'>
-							Unlock your design potential with{" "}
-						</h3>
-						<ServiceForm />
+			<div className='padding-global --section-large'>
+				<div className='container'>
+					<div className='about__wrapper'>
+						<div className='about__header'>
+							<AnimatedParagraph className='about__title'>
+								Freelancer, focused on develop digital products from scratch.
+								Always align with design trends and technologies to solve
+								business needs.
+							</AnimatedParagraph>
+						</div>
+						<div className='about__services'>
+							<h3 className='about__services-title'>
+								Unlock your design potential with{" "}
+							</h3>
+							<ServiceForm />
+						</div>
 					</div>
 				</div>
 			</div>
-			<Curves fill="var(--background-color--base)" orientation="bottom"/>
+			{/* <Curves fill="var(--background-color--base)" orientation="bottom"/> */}
 		</section>
 	);
 };

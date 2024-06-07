@@ -8,10 +8,10 @@ import Computer from "@/public/animated-icons/selected-work.json";
 // Styles
 import "./styles.scss";
 // Lib
-import {getLimitedProjects} from '@/lib/actions'
+import { getLimitedProjects } from "@/lib/actions";
 
 const SelectedWork = async () => {
-	const { data: projects } = await getLimitedProjects(10)
+	const { data: projects } = await getLimitedProjects(10);
 
 	return (
 		<section
@@ -23,29 +23,30 @@ const SelectedWork = async () => {
 				fill='var(--background-color--base)'
 				className='selected-works__curves--top'
 			/>
+			<div className='padding-global --section-large'>
+				<div className='container'>
+					<div className='section__wrapper'>
+						<header className='section-header'>
+							<div className='section-header__heading'>
+								<SectionLabel
+									label='Selected projects'
+									animationData={Computer}
+								/>
+								<h2 className='section-header__title'>
+									Check out the last projects
+								</h2>
+							</div>
+							<Link href='/projects'>
+								<Button style={{ background: "white", color: "black" }}>
+									See more projects
+								</Button>
+							</Link>
+						</header>
 
-			<div className='container'>
-				<div className='section__wrapper'>
-					<header className='section-header'>
-						<div className='section-header__heading'>
-							<SectionLabel
-								label='Selected projects'
-								animationData={Computer}
-							/>
-							<h2 className='section-header__title'>
-								Check out the last projects
-							</h2>
-						</div>
-						<Link href='/projects'>
-							<Button style={{ background: "white", color: "black" }}>
-								See more projects
-							</Button>
-						</Link>
-					</header>
-
-					<Suspense fallback={"...Loading"}>
-						<ProjectsList projects={projects} />
-					</Suspense>
+						<Suspense fallback={"...Loading"}>
+							<ProjectsList projects={projects} />
+						</Suspense>
+					</div>
 				</div>
 			</div>
 		</section>

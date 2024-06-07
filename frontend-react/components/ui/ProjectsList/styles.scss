@@ -21,10 +21,10 @@
 
 	&__header {
 		position: sticky;
-		top: calc(100% - var(--navbar-size) - var(--section-padding--inline-small));
-		padding-block: var(--section-padding--inline-small);
-		padding-inline: var(--section-padding--inline-small);
-		margin: var(--section-padding--inline-small);
+		top: calc(100% - var(--navbar-size) - var(--section-padding--inline-medium));
+		padding-block: var(--section-padding--inline-medium);
+		padding-inline: var(--section-padding--inline-medium);
+		margin: var(--section-padding--inline-medium);
 		display: flex;
 		flex-direction: column;
 		gap: 2rem;

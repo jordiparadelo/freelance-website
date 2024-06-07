@@ -4,23 +4,11 @@
 	justify-content: center;
 	align-items: center;
 
-	padding-block-start: var(--navbar-size);
-    padding-inline: var(--section-padding--inline-small);
-
 	max-height: 1024px;
 	height: max(600px, calc(100dvh - var(--navbar-size)));
 
 	position: relative;
 	overflow: hidden;
-
-	@media screen and (min-width: 480px) {
-		padding-inline: var(--section-padding--block-medium);
-		
-	}
-	@media screen and (min-width: 768px) {
-		padding-inline: var(--section-padding--inline-large);
-		
-	}
 
 	&__container {
 		display: flex;
@@ -105,16 +93,6 @@
 			font-size: 1.25rem;
 			font-weight: 400;
 			text-wrap: pretty;
-		}
-
-		.button {
-			background-color: var(--background-color--alternative);
-			color: var(--text-color--alternative);
-
-			@media screen and (min-width: 768px) {
-				--size: 56px;
-				font-size: 0.875rem;
-			}
 		}
 	}
 }
