@@ -4,7 +4,7 @@ import { Navbar, Footer, Modal } from "@/layouts";
 // Fonts
 import { Manrope } from "next/font/google";
 // Styles
-import "./globals.css";
+import "@/styles/globals.css";
 
 export const metadata = {
 	title: "Freelancer | Designer | Developer",
