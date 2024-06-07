@@ -6,7 +6,7 @@ import { SERVICES } from "@/constants";
 // Components
 import { SectionLabel, ServiceCard } from "@/ui";
 // Assets
-import Box from "@/public/animated-icons/services.json";
+import Box from "@/public/assets/animated-icons/services.json";
 // Styles
 import styles from "./styles.module.scss";
 // Libs

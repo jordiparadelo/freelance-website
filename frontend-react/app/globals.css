@@ -8,6 +8,13 @@
 /* Import variables */
 @import url("./variables.css");
 
+@font-face {
+	font-family: 'Vercetti';
+	src: url('/fonts/Vercetti-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+  }
+
 /* Reset styles */
 * {
 	margin: unset;
@@ -67,36 +74,6 @@ main {
 		max-width: var(--container-size-lg);
 	}
 }
-
-/* Set section dimensions */
-/* section {
-	position: relative;
-	padding-inline: var(--section-padding--inline-medium);
-	padding-block: var(--padding-block-mobile);
-} */
-
-/* Set larger section dimensions */
-/* @media screen and (min-width: 425px) {
-	section {
-		padding-inline: var(--section-padding--block-medium);
-		padding-block: var(--padding-block-tablet);
-	}
-} */
-
-/* Set even larger section dimensions */
-/* @media screen and (min-width: 768px) {
-	section {
-		padding-inline: var(--section-padding--inline-large);
-		padding-block: var(--section-padding--block-large);
-	}
-} */
-
-/* Set even larger section dimensions */
-/* @media screen and (min-width: 1440px) {
-	section {
-		padding-block: var(--padding-block-desktop-lg);
-	}
-} */
 
 /* Set heading styles */
 h1,

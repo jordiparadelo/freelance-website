@@ -11,13 +11,13 @@
 	}
 
 	&__icon {
-		--background: rgba(0, 0, 0, 0.05);
 		--size: var(--section-label-size);
 
 		height: var(--size);
 		width: var(--size);
 		border-radius: 999px;
 		background: var(--background-color--alternative);
+		color: var(--color-text--font);
 		transition: height 0.2s ease, width 0.2s ease;
 		padding: 0.3rem;
 	}

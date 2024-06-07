@@ -1,6 +1,6 @@
 import React from "react";
 import { ReviewsList, SectionLabel } from "@/ui";
-import Stars from "@/public/animated-icons/stars.json";
+import Stars from "@/public/assets/animated-icons/stars.json";
 // Constants
 import { REVIEWS as reviews } from "@/constants";
 // Styles

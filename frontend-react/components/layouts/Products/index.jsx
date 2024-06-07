@@ -7,7 +7,7 @@ import { SectionLabel, Button } from "@/ui";
 // import { PRODUCTS as products } from "@/constants";
 import {getLimitedProducts} from '@/lib/actions'
 // Assets
-import ShoppingCart from "@/public/animated-icons/shopping-cart.json";
+import ShoppingCart from "@/public/assets/animated-icons/shopping-cart.json";
 // Styles
 import "./styles.scss";
 

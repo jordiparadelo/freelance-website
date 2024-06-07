@@ -21,7 +21,7 @@
 		gap: 1.25rem;
 		border-radius: 20px;
 		padding: 0.75rem;
-		background-color: var(--background-color--alternative);
+		background-color: var(--text-color--font);
 		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
 		min-height: 120px;
 		opacity: 1;
@@ -92,6 +92,7 @@
 		place-content: center;
 		place-items: center;
 		gap: 1.25rem;
+	
 	}
 
 	&__submit {
@@ -108,5 +109,7 @@
 		color: white;
 	}
 
-	&__reset {}
+	&__reset {
+		color: var(--text-color--font);
+	}
 }

@@ -29,7 +29,8 @@
 		flex-direction: column;
 		gap: 2rem;
 		border-radius: var(--corners--radius-medium);
-		background-color: var(--background-color--alternative);
+		background-color: var(--text-color--font);
+		border: 1px solid var(--border-color--base);
 		color: var(--text-color--alternative);
 		z-index: 2;
 		align-self: flex-start;

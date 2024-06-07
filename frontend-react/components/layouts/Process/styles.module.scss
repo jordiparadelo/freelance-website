@@ -23,7 +23,7 @@
 		display: flex;
 		flex-flow: column;
 		flex: 1 1 min-content;
-		padding: 2rem 1.5rem;
+		padding: 1em;
 		border-radius: var(--corners--radius-large);
 		border: 1px solid var(--border-color--base);
 		overflow: hidden;
@@ -38,6 +38,7 @@
 		max-height: 1000px;
 		height: min-content;
 		flex-shrink: 0;
+		flex-grow: 1;
 	}
 
 	&__nav-list {
@@ -63,7 +64,7 @@
 			padding-inline: 0.75rem;
 			min-height: 2.5rem;
 			border-radius: var(--corners--radius-small);
-			background: var(--border-color--base);
+			box-shadow: var(--box-shadow-glow);
 		}
 
 		&__content {

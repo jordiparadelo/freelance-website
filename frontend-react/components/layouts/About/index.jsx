@@ -1,6 +1,6 @@
 import React from "react";
 import { ServiceForm, SectionLabel, AnimatedParagraph, Curves } from "@/ui";
-// import Box from "@/public/animated-icons/services.json";
+// import Box from "@/public/assets/animated-icons/services.json";
 import "./styles.scss";
 
 const About = () => {

@@ -14,7 +14,7 @@
 	--base-color-system--focus-state: #2d62ff;
 
 	/* Typography */
-	--font-family--body: "Arial", sans-serif;
+	--font-family--body: "Vercetti", sans-serif;
 	--font-family--heading: "Manrope", sans-serif;
 
 	/* Colors */
@@ -74,12 +74,11 @@
 	/* Ui */
 	--border: 1px solid var(--color-border);
 
-  /* Max Widths */
+	/* Max Widths */
 	--max-width--small: 48rem;
 	--max-width--medium: 64rem;
 	--max-width--large: 80rem;
 	--max-width--xl: 1200px;
-
 
 	/* Breakpoints */
 	--breakpoint-xs: 0px;
@@ -103,6 +102,11 @@
 	--box-shadow-md: 0px 0px 0px 2px rgba(0, 0, 0, 0.5);
 	--box-shadow-lg: 0px 0px 0px 4px rgba(0, 0, 0, 0.5);
 	--box-shadow-xl: 0px 0px 0px 8px rgba(0, 0, 0, 0.5);
+	--box-shadow-glow: rgba(0, 0, 0, 0.1) 0px 10px 10px 0px,
+		rgba(0, 0, 0, 0.05) 0px 4px 4px 0px,
+		rgba(255, 255, 255, 0.1) 0px 1px 22px 0px,
+		rgba(197, 204, 255, 0.2) 0px 0px 20px 0px inset,
+		rgba(198, 219, 255, 0.35) 0px 1px 3px 0px inset;
 }
 
 /* COLOR THEME SUPPORT */
@@ -130,16 +134,16 @@
 		--text-color--font: var(--text-color--light);
 		--text-color--alternative: var(--text-color--dark);
 		--background-color--alternative: var(--background-color--light);
-		--background-color--base: var(--background-color--dark);;
+		--background-color--base: var(--background-color--dark);
 		--border-color--base: rgba(255, 255, 255, 0.1);
 	}
 
 	/* Light Mode */
 	[data-theme="light"] {
-		--text-color--font: var(--text-color--dark);
+		--text-color--font: #212631;
 		--text-color--alternative: var(--text-color--light);
 		--background-color--base: var(--background-color--light);
-		--background-color--alternative: var(--background-color--dark);
+		--background-color--alternative: var(--text-color--font);
 		--border-color--base: rgba(0, 0, 0, 0.1);
 	}
 }
@@ -154,7 +158,7 @@
 
 /* Light Mode */
 [data-theme="light"] {
-	--text-color--font: var(--text-color--dark);
+	--text-color--font: #212631;
 	--text-color--alternative: var(--text-color--light);
 	--background-color--base: var(--background-color--light);
 	--background-color--alternative: var(--background-color--dark);

@@ -4,7 +4,7 @@ import React, { Suspense } from "react";
 import Link from "next/link";
 // Components
 import { Button, Curves, ProjectsList, SectionLabel } from "@/ui";
-import Computer from "@/public/animated-icons/selected-work.json";
+import Computer from "@/public/assets/animated-icons/selected-work.json";
 // Styles
 import "./styles.scss";
 // Lib

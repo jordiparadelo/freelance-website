@@ -6,7 +6,7 @@ import Lottie from "lottie-react";
 // Hooks
 import useLiveClock from "@/hooks/useLiveClock";
 // Assets
-import GlobeLottie from "@/public/animated-icons/global.json";
+import GlobeLottie from "@/public/assets/animated-icons/global.json";
 // Styles
 import "./styles.scss";
 
@@ -73,11 +73,11 @@ const Banner = () => {
 						onMouseEnter={handleWorldwideHover}
 						onMouseLeave={handleWorldwideHover}
 					>
-						{/* <Lottie
+						<Lottie
 							{...GlobeIconProps}
 							lottieRef={globeIconRef}
 							className='icon'
-						/> */}
+						/>
 						Working Worldwide
 					</div>
 					<button

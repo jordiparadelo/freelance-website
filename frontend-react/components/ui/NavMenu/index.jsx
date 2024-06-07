@@ -11,8 +11,8 @@ import usePageScroll from "@/hooks/usePageScroll";
 // Animations
 import { animationProps } from "./animations";
 // Assets
-import arrowIcon from "@/public/arrow.svg";
-import crossIcon from "@/public/cross.svg";
+import arrowIcon from "@/public/assets/arrow.svg";
+import crossIcon from "@/public/assets/cross.svg";
 // Styles
 import "./styles.scss";
 

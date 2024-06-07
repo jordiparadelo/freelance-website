@@ -6,7 +6,7 @@ import styles from "./styles.module.scss";
 // Components
 import { SectionLabel } from "@/ui";
 // Assets
-import Box from "@/public/animated-icons/services.json";
+import Box from "@/public/assets/animated-icons/services.json";
 // Constants
 import { PROCESS } from "@/constants";
 // Libs

@@ -1,10 +1,10 @@
-import galleryImage1 from "@/public/image-gallery-1.webp";
-import galleryImage2 from "@/public/image-gallery-2.webp";
-import galleryImage3 from "@/public/image-gallery-3.webp";
-import reviewLogo1 from "@/public/review-logo-1.svg";
-import reviewLogo2 from "@/public/review-logo-2.svg";
-import reviewLogo3 from "@/public/review-logo-3.svg";
-import reviewLogo4 from "@/public/review-logo-4.svg";
+import galleryImage1 from "@/public/assets/image-gallery-1.webp";
+import galleryImage2 from "@/public/assets/image-gallery-2.webp";
+import galleryImage3 from "@/public/assets/image-gallery-3.webp";
+import reviewLogo1 from "@/public/assets/review-logo-1.svg";
+import reviewLogo2 from "@/public/assets/review-logo-2.svg";
+import reviewLogo3 from "@/public/assets/review-logo-3.svg";
+import reviewLogo4 from "@/public/assets/review-logo-4.svg";
 
 // NAVIGATION
 export const NAV_LINKS = [
