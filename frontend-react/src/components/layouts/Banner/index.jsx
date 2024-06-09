@@ -7,13 +7,13 @@ import Lottie from "lottie-react";
 import useLiveClock from "@/hooks/useLiveClock";
 // Assets
 import GlobeLottie from "@/public/assets/animated-icons/global.json";
+import { ReactComponent as GlobeIcon } from "@/public/assets/globe.svg";
 // Styles
 import "./styles.scss";
 
 const Banner = () => {
 	const [isAvailable, setIsAvailable] = useState(false);
 	const [isClockVisible, setIsClockVisible] = useState(false);
-
 
 	const currentTime = useLiveClock();
 	const globeIconRef = useRef();
@@ -70,14 +70,7 @@ const Banner = () => {
 				<div className='banner__wrapper'>
 					<div
 						className='banner__worldwide'
-						onMouseEnter={handleWorldwideHover}
-						onMouseLeave={handleWorldwideHover}
 					>
-						<Lottie
-							{...GlobeIconProps}
-							lottieRef={globeIconRef}
-							className='icon'
-						/>
 						Working Worldwide
 					</div>
 					<button

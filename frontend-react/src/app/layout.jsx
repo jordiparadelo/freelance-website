@@ -50,10 +50,9 @@ export default function RootLayout({ children }) {
 			data-theme='dark'
 		>
 			<body
-				className={manrope.className}
 				suppressHydrationWarning={true}
 			>
-				<Navbar />
+				{/* <Navbar /> */}
 				<main>{children}</main>
 				<Footer />
 				<Suspense fallback={null}>

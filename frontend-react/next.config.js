@@ -6,6 +6,21 @@
  * @type {import('next').NextConfig}
  */
 module.exports = {
+    webpack(config) {
+        config.module.rules.push({
+          test: /\.svg$/,
+          use: [
+            {
+              loader: '@svgr/webpack',
+              options: {
+                icon: true,
+              },
+            },
+          ],
+        });
+    
+        return config;
+      },
     // Next.js Image Optimization Configuration
     // https://nextjs.org/docs/api-reference/next/image#configuration
     images: {

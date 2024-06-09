@@ -6,7 +6,6 @@ import {
 	ClientsReviews,
 	Products,
 	Services,
-	Banner,
 	Process 
 } from "@/layouts";
 
@@ -14,7 +13,6 @@ const Home = () => {
 	return (
 		<>
 			<Hero />
-			<Banner />
 			<Gallery />
 			<About />
 			<Services />
