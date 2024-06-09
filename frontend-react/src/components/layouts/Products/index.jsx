@@ -9,34 +9,32 @@ import {getLimitedProducts} from '@/lib/actions'
 // Assets
 import ShoppingCart from "@/public/assets/animated-icons/shopping-cart.json";
 // Styles
-import "./styles.scss";
+import styles from "./styles.module.scss";
 
 const Products = async () => {
 	const { data: products } = await getLimitedProducts(3)
 
 	return (
-		<section
-			id='products'
-			className='products'
-		>
-			<div className='container'>
-				<div className='products__wrapper'>
-					<header className='section-header'>
-						<div className='section-header__wrapper'>
+		<section id='products' className={styles.products}>
+			<div className={styles.container}>
+				<div className={styles.products__wrapper}>
+					<header className={styles.section_header}>
+						<div className={styles.section_header__wrapper}>
 							<SectionLabel
 								label='Products'
 								animationData={ShoppingCart}
+								className={styles.section_label}
 							/>
-							<h2 className='section-header__title'>
+							<h2 className={styles.section_header__title}>
 								Boost your project with ready templates
 							</h2>
-							<div className='actions_wrapper'>
+							<div className={styles.actions_wrapper}>
 								<Button>See more products</Button>
 							</div>
 						</div>
 					</header>
 
-					<div className='products__list'>
+					<div className={styles.products__list}>
 						{products.map((product) => (
 							<Link
 								href={product.href}
@@ -56,45 +54,45 @@ export default Products;
 
 export const Product = ({ product }) => {
 	return (
-		<figure className='product'>
-			<div className='product__image'>
+		<figure className={styles.product}>
+			<div className={styles.product__image}>
 				<Image
-				unoptimized
+					unoptimized
 					src={product.image.src}
 					alt={product.image.alt}
 					width={product.image.width}
 					height={product.image.height}
 				/>
 			</div>
-			<figcaption className='product__content'>
-				<div className='product__heading'>
-					<p className='product__category'>{product.category}</p>
-					<h3 className='product__title'>{product.title}</h3>
+			<figcaption className={styles.product__content}>
+				<div className={styles.product__heading}>
+					<p className={styles.product__category}>{product.category}</p>
+					<h3 className={styles.product__title}>{product.title}</h3>
 				</div>
-				<p className='product__details'>{product.details}</p>
+				<p className={styles.product__details}>{product.details}</p>
 
-				<div className='product__content-block'>
+				<div className={styles.product__content_block}>
 					<h4>Format</h4>
-					<ul className='product__format-list'>
+					<ul className={styles.product__format_list}>
 						{product.formats.map((formats) => (
 							<li
-								className='product__format'
+								className={styles.product__format}
 								key={formats}
 							>
 								<Image
-								unoptimized
+									unoptimized
 									key={formats}
 									src={`/${formats}.svg`}
 									width={32}
 									height={32}
 									alt={`${formats}`}
-									className='product__format-icon'
+									className={styles.product__format_icon}
 								/>
 							</li>
 						))}
 					</ul>
 				</div>
-				<p className='product__price'>{product.price}</p>
+				<p className={styles.product__price}>{product.price}</p>
 			</figcaption>
 		</figure>
 	);

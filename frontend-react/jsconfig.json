@@ -1,18 +1,31 @@
 {
+  // Path aliases for import statements
   "compilerOptions": {
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@/styles/*": ["./src/styles/*"],
+      "@/styles": ["./src/styles"],
       "@/ui": ["./src/components/ui"],
       "@/layouts": ["./src/components/layouts"],
-      "@/hooks/*": ["./src/hooks/*"],
+      "@/hooks": ["./src/hooks"],
       "@/public/*": ["./public/*"],
       "@/constants": ["./src/lib/constants"],
       "@/utils": ["./src/lib/utils"],
-      "@/lib/*": ["./src/lib/*"],
+      "@/lib": ["./src/lib"]
     }
   },
+
+  // Include GSAP's types to avoid errors
   "files": [
     "node_modules/gsap/types/index.d.ts"
+  ],
+
+  // Include comments in the JSON file
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    "./src/**/*.js",
+    "./src/**/*.jsx"
   ]
 }
+
