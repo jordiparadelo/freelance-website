@@ -4,8 +4,9 @@
 	flex-direction: column;
 	border-radius: var(--corners--radius-medium);
 	overflow: hidden;
-	background-color: var(--text-color--font);
-	color: var(--text-color--alternative);
+	backdrop-filter: blur(10px);
+	color: var(--text-color--font);
+	border: 1px solid var(--border-color--base);
 
 	&__details {
 		display: flex;

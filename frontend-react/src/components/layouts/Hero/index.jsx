@@ -11,7 +11,6 @@ import styles from "./styles.module.scss";
 import HeroBackground from "./HeroBackground";
 // Animations
 
-
 const Hero = () => {
 	return (
 		<header
@@ -28,7 +27,6 @@ const Hero = () => {
 							<span className={styles["hero__frame-top-bar__dot"]}></span>
 						</div>
 					</div>
-					<div className={styles["hero__label"]}>Design & Dev freelancer</div>
 					<div className={styles["hero__frame-top-bar__about"]}>
 						<div className={styles["hero__frame-top-bar__avatar"]}>
 							{/* <Image 
@@ -42,6 +40,9 @@ const Hero = () => {
 					<HeroBackground className={styles["hero__background"]} />
 					<div className={styles["hero__layout"]}>
 						<div className={styles["hero__heading-wrapper"]}>
+							<div className={styles["hero__label"]}>
+								Design & Dev freelancer
+							</div>
 							<div className={styles["hero__title-wrapper"]}>
 								<h1
 									className={styles["hero__title"]}
@@ -51,17 +52,13 @@ const Hero = () => {
 								</h1>
 							</div>
 						</div>
-						<div className={styles["hero__details"]}>
-							<p className={styles["hero__details-text"]}>
-								Launch your next project in <strong>no-time.</strong>{" "}
-							</p>
-							<div className={styles["hero__actions"]}>
-								<Link href='/projects'>
-									<Button className='button--primary'>
-										Start a new Project
-									</Button>
-								</Link>
-							</div>
+						<p className={styles["hero__details-text"]}>
+							Launch your next project in <strong>no-time.</strong>{" "}
+						</p>
+						<div className={styles["hero__actions"]}>
+							<Link href='/projects'>
+								<Button className='button--primary'>Start a new Project</Button>
+							</Link>
 						</div>
 					</div>
 

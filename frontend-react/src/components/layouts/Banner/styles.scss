@@ -1,12 +1,10 @@
 .banner {
-    display: flex;
+	display: flex;
 	padding-block: unset;
-	// border-bottom: var(--border);
 	font-size: 0.875rem;
 	line-height: 100%;
 	place-items: center;
 	place-content: center;
-	min-height: 64px;
 	color: var(--color-light);
 
 	&__wrapper {
@@ -26,18 +24,6 @@
 		flex-direction: row;
 		place-items: center;
 		gap: 0.5rem;
-        // width: 100%;
-        // max-width: 200px;
-
-		// &:not(:hover) {
-		// 	.icon {
-		// 		--size: 0.55em;
-
-		// 		svg {
-		// 			opacity: 0;
-		// 		}
-		// 	}
-		// }
 
 		.icon {
 			--size: 2em;
@@ -46,7 +32,7 @@
 			width: var(--size);
 			transform: scale(1);
 			border-radius: 999px;
-            background: var(--color-background-light);
+			background: var(--color-background-light);
 			transition: height 0.2s ease, width 0.2s ease;
 		}
 	}
@@ -62,15 +48,13 @@
 			span {
 				transition: transform 0.25s ease;
 			}
-	
+
 			&:hover {
 				span {
 					transform: translateY(-100%);
 				}
 			}
-
 		}
-
 	}
 	&__availability {
 		--light-color: inherit;

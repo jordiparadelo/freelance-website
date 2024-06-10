@@ -11,17 +11,19 @@ import Box from "@/public/assets/animated-icons/services.json";
 import styles from "./styles.module.scss";
 // Libs
 import { useGSAP } from "@gsap/react";
+import { useWindowSize } from "@uidotdev/usehooks";
 // Animations
 import { serviceAnimation } from "./animations.js";
 
 const Services = () => {
 	let componentRef = useRef(null);
+	const windowSize = useWindowSize();
 
 	useGSAP(
 		() => {
 			serviceAnimation(componentRef.current);
 		},
-		{ scope: componentRef.current }
+		{ scope: componentRef.current, dependencies: windowSize }
 	);
 
 	return (
