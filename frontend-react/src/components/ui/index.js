@@ -11,7 +11,6 @@ export {default as CopyToClipboard} from './CopyToClipboard';
 export {default as Curves} from './Curves';
 export {default as ContactForm} from './ContactForm';
 export {default as Inner} from './Inner';
-export {default as InteractiveBackground} from './InteractiveBackground';
 export {default as NavIndex} from './NavIndex';
 export {default as NavMenu} from './NavMenu';
 export {default as ProjectDetailsList} from './ProjectDetailsList';

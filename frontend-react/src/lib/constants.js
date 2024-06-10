@@ -19,9 +19,14 @@ export const NAV_LINKS = [
 				href: "#about",
 			},
 			{
-				key: "gallery",
-				label: "Gallery",
-				href: "#gallery",
+				key: "services",
+				label: "Services",
+				href: "#services",
+			},
+			{
+				key: "process",
+				label: "How It Done",
+				href: "#process",
 			},
 			// {
 			// 	key: "products",

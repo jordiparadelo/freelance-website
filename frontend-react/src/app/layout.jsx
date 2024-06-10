@@ -9,7 +9,9 @@ import { Manrope } from "next/font/google";
 // Styles
 import "@/styles/globals.css";
 // Images
-import ogImage from '@/public/assets/open-graph.png';
+import ogImage from "@/public/assets/open-graph.png";
+// Context
+import ScrollProvider from "@/context/ScrollContext";
 
 export const metadata = {
 	title: "Freelancer | Web Designer & Developer",
@@ -36,7 +38,6 @@ export const metadata = {
 	},
 };
 
-
 // Fonts
 const manrope = Manrope({
 	subsets: ["latin"],
@@ -49,15 +50,15 @@ export default function RootLayout({ children }) {
 			lang='en'
 			data-theme='dark'
 		>
-			<body
-				suppressHydrationWarning={true}
-			>
-				{/* <Navbar /> */}
-				<main>{children}</main>
-				<Footer />
-				<Suspense fallback={null}>
-					<Modal />
-				</Suspense>
+			<body suppressHydrationWarning={true}>
+				<ScrollProvider>
+					{/* <Navbar /> */}
+					<main>{children}</main>
+					<Footer />
+					<Suspense fallback={null}>
+						<Modal />
+					</Suspense>
+				</ScrollProvider>
 			</body>
 		</html>
 	);
