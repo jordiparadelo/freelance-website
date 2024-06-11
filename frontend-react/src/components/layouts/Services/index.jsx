@@ -17,13 +17,13 @@ import { serviceAnimation } from "./animations.js";
 
 const Services = () => {
 	let componentRef = useRef(null);
-	const windowSize = useWindowSize();
+	const {width: windowWidth} = useWindowSize();
 
 	useGSAP(
 		() => {
 			serviceAnimation(componentRef.current);
 		},
-		{ scope: componentRef.current, dependencies: windowSize }
+		{ scope: componentRef.current, dependencies: [windowWidth]}
 	);
 
 	return (

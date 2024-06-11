@@ -1,16 +1,18 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import Link from "next/link";
 // Styles
 import styles from "./styles.module.scss";
 // Components
 import { Button } from "@/ui";
 import { Banner } from "@/layouts";
-import HeroBackground from "./HeroBackground";
+const HeroBackground = lazy(() => import("./HeroBackground")); 
 
 const HeroFrameContainer = () => {
 	return (
 		<div className={styles["hero__frame-container"]}>
-			<HeroBackground className={styles["hero__background"]} />
+			<Suspense fallback={<div>Loading...</div>}>
+				<HeroBackground className={styles["hero__background"]} />
+			</Suspense>
 			<div className={styles["hero__layout"]}>
 				<div className={styles["hero__heading-wrapper"]}>
 					<div className={styles["hero__label"]}>Design & Dev freelancer</div>
