@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 
 export const useColorTheme = () => {
-	const [theme, setColorTheme] = useState(
-		localStorage.getItem("theme") || "light"
-	);
+	const [theme, setColorTheme] = useState("dark");
 
 	useEffect(() => {
 		document.body.dataset.theme = theme;
-		localStorage.setItem("theme", theme);
+		window?.localStorage.setItem("theme", theme);
 	}, [theme]);
 
 	const toggleTheme = () => {
@@ -16,4 +14,3 @@ export const useColorTheme = () => {
 
 	return [theme, setColorTheme, toggleTheme];
 };
-

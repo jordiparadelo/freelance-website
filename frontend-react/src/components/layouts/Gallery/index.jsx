@@ -42,10 +42,12 @@ const Gallery = () => {
 					<figure className='gallery__slide' key={image.key}>
 						<Image
 						unoptimized
+						priority={true}
 							src={image.src}
 							alt={image.alt}
 							width={image.width}
 							height={image.height}
+							sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 						/>
 					</figure>
 				))}

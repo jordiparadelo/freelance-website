@@ -88,6 +88,8 @@ const Process = () => {
 												alt={item.cover.alt}
 												width={item.cover.width}
 												height={item.cover.height}
+												priority={true}
+												sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 											/>
 										</li>
 									);
