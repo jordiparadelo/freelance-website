@@ -5,7 +5,7 @@
  *
  * @type {import('next').NextConfig}
  */
-module.exports = {
+const nextConfig = {
 	module: {
 		rules: [
 			{
@@ -50,3 +50,5 @@ module.exports = {
 		formats: ["image/avif", "image/webp"],
 	},
 };
+
+module.exports = nextConfig;

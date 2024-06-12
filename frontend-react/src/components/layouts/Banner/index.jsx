@@ -1,13 +1,10 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-// Libs
-import Lottie from "lottie-react";
 // Hooks
 import useLiveClock from "@/hooks/useLiveClock";
 // Assets
 import GlobeLottie from "@/public/assets/animated-icons/global.json";
-import { ReactComponent as GlobeIcon } from "@/public/assets/globe.svg";
 // Styles
 import "./styles.scss";
 
@@ -62,7 +59,7 @@ const Banner = () => {
 
 	useEffect(() => {
 		setIsAvailable(isBetweenAvailableTime);
-	}, []);
+	}, [isBetweenAvailableTime]);
 
 	return (
 		<section className='banner'>

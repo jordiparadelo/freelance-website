@@ -32,7 +32,7 @@ const Services = () => {
 			id='services'
 			ref={componentRef}
 		>
-			<div className='padding-global --section-large'>
+			<div className='padding-global --section-medium'>
 				<div className={`'container' ${styles["services__container"]}`}>
 					<div className={styles["services__wrapper"]}>
 						<header className={styles["services__header"]}>

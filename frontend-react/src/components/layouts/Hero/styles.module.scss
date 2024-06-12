@@ -48,7 +48,7 @@
 				background-color: var(--background-color--base);
 			}
 
-			&[aria-expanded="true"] {
+			&[data-expanded="true"] {
 				border: 1px solid var(--border-color--base);
 			}
 		}
@@ -107,11 +107,11 @@
 		overflow: hidden;
 		transition: max-width 2s cubic-bezier(0.22, 1, 0.36, 1);
 
-		&[aria-expanded="false"] {
+		&[data-expanded="false"] {
 			max-width: 0;
 			transition-duration: 1s;
 		}
-		&[aria-expanded="true"] {
+		&[data-expanded="true"] {
 			max-width: 1000px;
 		}
 	}
@@ -156,7 +156,7 @@
 				border-color: var(--border-color--base);
 			}
 
-			&[aria-selected="true"] {
+			&[data-selected="true"] {
 				box-shadow: var(--box-shadow--glow);
 			}
 		}

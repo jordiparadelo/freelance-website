@@ -53,7 +53,7 @@ const HeroTopBar = () => {
 					className={styles["hero__frame-top-bar__sidebar-button"]}
 					onClick={toggleMenu}
 					aria-label='Toggle sidebar'
-					aria-expanded={isOpen}
+					data-expanded={isOpen}
 				>
 					{/* <MySvg width="32" height="32" /> */}
 					<SidebarIcon isOpen={isOpen} />

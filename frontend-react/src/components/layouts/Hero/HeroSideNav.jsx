@@ -40,7 +40,7 @@ const HeroSideNav = () => {
 	return (
 		<aside
 			className={styles["hero__frame-nav-wrapper"]}
-			aria-expanded={isOpen}
+			data-expanded={isOpen}
 		>
 			<nav className={styles["hero__frame-nav"]}>
 				<div className={styles["hero__frame-nav__block"]}>
@@ -95,7 +95,7 @@ const HeroSideNav = () => {
 						className={styles["hero__frame-nav__switch-button"]}
 						onClick={() => setColorTheme("dark")}
 						aria-label="Change to Dark theme"
-						aria-selected={theme === "dark"}
+						data-selected={theme === "dark"}
 					>
 						Dark
 					</button>
@@ -103,7 +103,7 @@ const HeroSideNav = () => {
 						className={styles["hero__frame-nav__switch-button"]}
 						onClick={() => setColorTheme("light")}
 						aria-label="Change to Light theme"
-						aria-selected={theme === "light"}
+						data-selected={theme === "light"}
 					>
 						Light
 					</button>
