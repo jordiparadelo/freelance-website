@@ -156,6 +156,35 @@ h6,
 	line-height: 1.2;
 }
 
+.text-color-font {
+	color: var(--text-color--font);
+}
+
+.text-color-alternative {
+	color: var(--text-color--alternative);
+}
+.text-color-light {
+	color: var(--text-color--light);
+}
+.text-color-dark {
+	color: var(--text-color--dark);
+}
+.text-color-gray {
+	color: var(--text-color--gray);
+}
+
+.text-color-brand-primary {
+	color: var(--base-color-brand--primary);
+}
+
+.text-color-brand-secondary {
+	color: var(--base-color-brand--secondary);
+}
+
+.text-color-brand-accent {
+	color: var(--base-color-brand--accent);
+}
+
 /* ==========================================================================
    SECTION STYLES
    ========================================================================== */

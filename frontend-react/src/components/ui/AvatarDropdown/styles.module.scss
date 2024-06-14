@@ -1,0 +1,79 @@
+// Drodpown
+.avatar-dropdown {
+	position: relative;
+
+	&[aria-expanded="true"] {
+		.avatar-dropdown__button {
+			border-color: var(--border-color--base);
+			svg {
+				max-width: 1000px;
+			}
+		}
+	}
+
+	&__button {
+		display: flex;
+		place-content: center;
+		place-items: center;
+		cursor: pointer;
+		padding: 0.25rem;
+		border-radius: var(--corners--radius-round);
+		border: 1px solid transparent;
+
+		svg {
+			will-change: max-width;
+			transition: max-width 1.2s ease-in;
+			max-width: 1000px;
+		}
+
+		&:hover {
+			border-color: var(--border-color--base);
+		}
+
+		&:not(:hover) {
+			svg {
+				transition-duration: 0.8s;
+				transition-timing-function: ease;
+				max-width: 0px;
+			}
+		}
+	}
+
+	&__avatar {
+		--avatar-size: 2.5rem;
+
+		width: var(--avatar-size);
+		height: var(--avatar-size);
+		border-radius: var(--corners--radius-round);
+		border: 1px solid var(--border-color--base);
+		background-color: var(--background-color--alternative);
+	}
+	&__menu {
+		display: flex;
+		position: absolute;
+		top: calc(100% + 0.5rem);
+		right: 0;
+		background-color: var(--background-color--base);
+		color: var(--text-color--font);
+		border: 1px solid var(--border-color--base);
+		border-radius: var(--corners--radius-medium);
+		padding: var(--section-padding--inline-small);
+		z-index: 10;
+		min-width: 200px;
+		gap: 0.5rem;
+		flex-direction: column;
+
+		&:not([aria-hidden="false"]) {
+			display: none;
+		}
+	}
+
+    &__menu-actions {
+        display: flex;
+
+        button {
+            flex-grow: 1;
+            max-width: unset;
+        }
+    }
+}

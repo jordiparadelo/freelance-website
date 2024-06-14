@@ -82,15 +82,8 @@
 		&__about {
 		}
 
-		&__avatar {
-			--avatar-size: 2.5rem;
 
-			width: var(--avatar-size);
-			height: var(--avatar-size);
-			border-radius: var(--corners--radius-round);
-			border: 1px solid var(--border-color--base);
-			background-color: var(--background-color--alternative);
-		}
+		
 	}
 
 	// Frame Container Wrapper
