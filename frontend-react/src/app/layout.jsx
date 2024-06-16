@@ -4,8 +4,6 @@ import { Suspense } from "react";
 
 // Components
 import { Navbar, Footer, Modal } from "@/layouts";
-// Fonts
-import { Manrope } from "next/font/google";
 // Styles
 import "@/styles/globals.css";
 // Images
@@ -37,12 +35,6 @@ export const metadata = {
 		},
 	},
 };
-
-// Fonts
-const manrope = Manrope({
-	subsets: ["latin"],
-	display: "swap",
-});
 
 export default function RootLayout({ children }) {
 	return (

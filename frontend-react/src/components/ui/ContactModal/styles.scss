@@ -3,7 +3,8 @@
     flex-direction: column;
     padding: 2.5rem;
     border-radius: 20px;
-    background: white;
+    background: var(--background-color--alternative);
+    color: var(--text-color--alternative);
     z-index: 12;
     gap: 1.5rem;
     overflow-y: auto;

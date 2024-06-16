@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { Button, ContactForm } from "@/ui";
 
 // Styles
+import styles from "./styles.module.scss";
 import "./styles.scss";
 
 const ContactModal = () => {
@@ -34,10 +35,10 @@ const ContactModal = () => {
 	}, [services]);
 
 	return (
-		<div className='contact-modal'>
-			<h2 className='contact-modal__title'>Got an idea? Let's discuss!</h2>
+		<div className={styles['contact-modal']}>
+			<h2 className={styles['contact-modal__title']}>Got an idea? Let's discuss!</h2>
 			<ContactForm
-				className='contact-modal__form'
+				className={styles['contact-modal__form']}
 				ref={contactModalRef}
 			>
 					<div className='form__row'>

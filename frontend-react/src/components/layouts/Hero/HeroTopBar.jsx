@@ -2,13 +2,14 @@ import React from "react";
 import Link from "next/link";
 // Styles
 import styles from "./styles.module.scss";
+// libs
+import { useMediaQuery } from "@uidotdev/usehooks";
 // Context
 import { useHero } from "@/context/HeroContext";
 // Constants
 import { NAV_LINKS } from "@/lib/constants";
 // Components
 import { AvatarDropdown } from "@/components/ui";
-
 
 const SidebarIcon = ({ isOpen }) => (
 	<svg
@@ -52,14 +53,26 @@ const SidebarIcon = ({ isOpen }) => (
 		)}
 	</svg>
 );
-
-{
-	/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path fill="currentColor" d="M6 21a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3zM18 5h-8v14h8a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1"/></svg>
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm5-2v16"/></svg> */
-}
+const DesktopMenu = () => (
+	<menu className={styles["hero__frame-top-bar__menu"]}>
+		{NAV_LINKS.map((link) => (
+			<Link
+				key={link.key}
+				href={link.href}
+				className={styles["hero__frame-top-bar__menu-link"]}
+			>
+				{link.label}
+			</Link>
+		))}
+	</menu>
+);
+const MobileMenu = () => (
+	<menu className={styles["hero__frame-top-bar__menu"]}>Menu</menu>
+);
 
 const HeroTopBar = () => {
 	const { isOpen, toggleMenu } = useHero();
+	const isSmallDevice = useMediaQuery("only screen and (max-width: 768px)");
 
 	return (
 		<div className={styles["hero__frame-top-bar"]}>
@@ -74,19 +87,11 @@ const HeroTopBar = () => {
 					<SidebarIcon isOpen={isOpen} />
 				</button>
 			</div>
-			<menu className={styles["hero__frame-top-bar__menu"]}>
-				{NAV_LINKS.map((link) => (
-					<Link
-						key={link.key}
-						href={link.href}
-						className={styles["hero__frame-top-bar__menu-link"]}
-					>
-						{link.label}
-					</Link>
-				))}
-			</menu>
+
+			{isSmallDevice ? <MobileMenu/> : <DesktopMenu/>}
+
 			<div className={styles["hero__frame-top-bar__about"]}>
-				<AvatarDropdown/>
+				<AvatarDropdown />
 			</div>
 		</div>
 	);
