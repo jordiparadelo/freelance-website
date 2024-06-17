@@ -1,24 +1,24 @@
-// Drodpown
+/* Avatar Dropdown */
 .avatar-dropdown {
 	position: relative;
 
-	&[aria-expanded="true"] {
-		.avatar-dropdown__button {
-			border-color: var(--border-color--base);
-			svg {
-				max-width: 1000px;
-			}
+	&[aria-expanded="true"] .avatar-dropdown__button {
+		border-color: var(--border-color--base);
+
+		svg {
+			max-width: 1000px;
 		}
 	}
 
 	&__button {
 		display: flex;
-		place-content: center;
-		place-items: center;
+		justify-content: center;
+		align-items: center;
 		cursor: pointer;
 		padding: 0.25rem;
 		border-radius: var(--corners--radius-round);
 		border: 1px solid transparent;
+		transition: border-color 0.2s ease-in;
 
 		svg {
 			will-change: max-width;
@@ -30,12 +30,10 @@
 			border-color: var(--border-color--base);
 		}
 
-		&:not(:hover) {
-			svg {
-				transition-duration: 0.8s;
-				transition-timing-function: ease;
-				max-width: 0px;
-			}
+		&:not(:hover) svg {
+			transition-duration: 0.8s;
+			transition-timing-function: ease;
+			max-width: 0px;
 		}
 	}
 
@@ -47,7 +45,9 @@
 		border-radius: var(--corners--radius-round);
 		border: 1px solid var(--border-color--base);
 		background-color: var(--background-color--alternative);
+		overflow: hidden;
 	}
+
 	&__menu {
 		display: flex;
 		position: absolute;
@@ -59,21 +59,72 @@
 		border-radius: var(--corners--radius-medium);
 		padding: var(--section-padding--inline-small);
 		z-index: 10;
-		min-width: 200px;
-		gap: 0.5rem;
+		min-width: 256px;
+		gap: 1.25rem;
 		flex-direction: column;
 
-		&:not([aria-hidden="false"]) {
+		&[aria-hidden="true"] {
 			display: none;
 		}
 	}
 
-    &__menu-actions {
-        display: flex;
+	&__menu-block {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
 
-        button {
-            flex-grow: 1;
-            max-width: unset;
-        }
-    }
+	&__menu-link {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		transition: all 0.2s ease;
+
+		&:not(:hover) {
+			gap: 0;
+			&::before {
+				transform: scale(0);
+			}
+		}
+
+		&::before {
+			--dot-size: 0.25rem;
+			content: "";
+			width: var(--dot-size);
+			height: var(--dot-size);
+			border-radius: var(--corners--radius-round);
+			background-color: currentColor;
+			display: block;
+			flex-shrink: 0;
+			transform: scale(1) translateX(0%);
+			transition: all 0.5s ease;
+		}
+	}
+
+	&__menu-list {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	&__menu-list-item {
+		flex-grow: 1;
+		font-size: var(--font-size--regular);
+	}
+
+	&__menu-title {
+		font-size: var(--font-size--tiny);
+		text-transform: uppercase;
+		color: var(--text-color--gray);
+	}
+
+	&__menu-actions {
+		display: flex;
+		padding-top: 1rem;
+
+		button {
+			flex-grow: 1;
+			max-width: unset;
+		}
+	}
 }

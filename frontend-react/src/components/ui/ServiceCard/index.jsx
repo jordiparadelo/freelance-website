@@ -19,7 +19,7 @@ const ServiceCard = ({ service }) => {
 					{service.description}
 				</p>
 			</figcaption>
-			<div className={styles["service-card__image-container"]}>
+			<div className={styles["service-card__image-container"]} height={300}>
 				{service.gallery.map((image, index) => (
 					<Image
 						unoptimized

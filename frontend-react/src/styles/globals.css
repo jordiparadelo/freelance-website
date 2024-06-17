@@ -185,6 +185,30 @@ h6,
 	color: var(--base-color-brand--accent);
 }
 
+
+.text-weight-bold {
+  font-weight: bold;
+}
+
+.text-weight-semibold {
+  font-weight: 600;
+}
+
+.text-weight-lighter {
+  font-weight: lighter;}
+
+.text-transform-uppercase {
+  text-transform: uppercase;
+}
+
+.text-transform-lowercase {
+  text-transform: lowercase;
+}
+
+.text-transform-capitalize {
+  text-transform: capitalize;
+}
+
 /* ==========================================================================
    SECTION STYLES
    ========================================================================== */

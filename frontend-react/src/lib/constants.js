@@ -5,6 +5,7 @@ import reviewLogo1 from "@/public/assets/review-logo-1.svg";
 import reviewLogo2 from "@/public/assets/review-logo-2.svg";
 import reviewLogo3 from "@/public/assets/review-logo-3.svg";
 import reviewLogo4 from "@/public/assets/review-logo-4.svg";
+import avatarPic from "@/public/assets/avatar-pic.jpeg";
 
 // NAVIGATION
 export const NAV_LINKS = [
@@ -50,16 +51,16 @@ export const NAV_LINKS = [
 		label: "About",
 		href: "/about",
 	},
-	{
-		key: "contact",
-		label: "Contact",
-		href: "/contact",
-	},
-	{
-		key: "products",
-		label: "Products",
-		href: "/products",
-	},
+	// {
+	// 	key: "contact",
+	// 	label: "Contact",
+	// 	href: "/contact",
+	// },
+	// {
+	// 	key: "products",
+	// 	label: "Products",
+	// 	href: "/products",
+	// },
 	{
 		key: "projects",
 		label: "Projects",
@@ -782,3 +783,41 @@ export const PROCESS = [
 		},
 	},
 ];
+
+export const ABOUT = {
+	id: "contact-info",
+	avatar: avatarPic,
+	title: "Contact Information",
+	description:
+		"For any inquiries, please reach out to us at the following contact information:",
+	contact: [{
+		id: 'email',
+		props: {
+			href: "mailto:hello@jordiparadelo.com",
+		},
+		label: "hello@jordiparadelo.com",
+	}, {
+		id: 'fiverr',
+		props: {
+			href: "https://www.fiverr.com/s/2KpAx9e",
+		},
+		label: "Fiverr",
+	}],
+	business: {
+		name: "Jordi Angel Paradelo Palazzo",
+		vatId: "55141044Q",
+		location: "Valencia, Spain",
+	},
+	socials: [
+		{
+			id: "linkedin",
+			icon: {
+				src: reviewLogo3,
+				width: 40,
+				height: 40,
+			},
+			title: "Linkedin",
+			href: "https://www.linkedin.com/in/jordiparadelo/",
+		}
+	]
+};

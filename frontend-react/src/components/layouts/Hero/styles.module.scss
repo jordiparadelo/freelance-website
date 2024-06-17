@@ -15,6 +15,11 @@
 		gap: 0.5rem;
 		flex-direction: column;
 		width: 100%;
+
+		&:has(.hero__frame-top-bar__sidebar-button:hover:not([data-expanded="true"]))
+			.hero__frame-nav-wrapper {
+			max-width: 5%;
+		}
 	}
 
 	&__frame-top-bar {
@@ -60,6 +65,9 @@
 			padding: 0.25rem;
 			display: flex;
 			font-size: var(--font-size--small);
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
 		}
 
 		&__menu-link {
@@ -81,9 +89,6 @@
 		// About
 		&__about {
 		}
-
-
-		
 	}
 
 	// Frame Container Wrapper
@@ -154,7 +159,6 @@
 				box-shadow: var(--box-shadow--glow);
 			}
 		}
-
 
 		&__title {
 			padding-inline: 0.75rem;

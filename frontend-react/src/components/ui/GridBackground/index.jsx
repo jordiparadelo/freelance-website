@@ -1,7 +1,7 @@
 "use client";
 import React, { memo, useRef, useEffect } from "react";
 
-const HeroBackground = memo((props) => {
+const GridBackground = memo((props) => {
 	const canvasRef = useRef(null);
 
 	useEffect(() => {
@@ -103,5 +103,4 @@ const HeroBackground = memo((props) => {
 	);
 });
 
-export default HeroBackground;
-
+export default GridBackground;

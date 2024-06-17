@@ -16,11 +16,6 @@ const SelectedWork = async () => {
 			id='selected-works'
 			className={styles["selected-works"]}
 		>
-			<Curves
-				orientation='top'
-				fill='var(--background-color--base)'
-				className={styles["selected-works__curves--top"]}
-			/>
 			<div className="padding-global --section-large">
 				<div className="container">
 					<div className="section__wrapper">
@@ -35,7 +30,7 @@ const SelectedWork = async () => {
 								</h2>
 							</div>
 							<Link href='/projects'>
-								<Button style={{ background: "white", color: "black" }}>
+								<Button>
 									See more projects
 								</Button>
 							</Link>

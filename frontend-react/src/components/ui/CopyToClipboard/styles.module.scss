@@ -1,7 +1,7 @@
 .copy-to-clipboard {
 	--size: 48px;
-	border: var(--border);
-	border-radius: 6px;
+	border: 1px solid var(--border-color--base);
+	border-radius: var(--corners--radius-small);
 	min-width: var(--size);
 	min-height: var(--size);
 	display: flex;
@@ -10,6 +10,7 @@
 	place-items: center;
 	max-width: fit-content;
 	position: relative;
+	backdrop-filter: blur(2px);
 
 	&__input {
         font-size: 1rem;

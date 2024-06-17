@@ -30,7 +30,7 @@ const Process = () => {
 			ref={processRef}
 		>
 			<div className='padding-global --section-large'>
-				<div className={styles["process__container"]}>
+				<div className={`${styles["process__container"]} container`}>
 					<div className={styles["process__layout"]}>
 						<div className={styles["process__aside"]}>
 							<div

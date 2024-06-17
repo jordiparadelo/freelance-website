@@ -7,9 +7,9 @@ import styles from "./styles.module.scss";
 // Context
 import { HeroProvider } from "@/context/HeroContext";
 // Components
-import HeroTopBar from "./HeroTopBar";
-import HeroSideNav from "./HeroSideNav";
-import HeroFrameContainer from "./HeroFrameContainer";
+import TopBar from "./TopBar";
+import SideNav from "./SideNav";
+import Frame from "./Frame";
 
 const Hero = () => {
 	return (
@@ -19,13 +19,10 @@ const Hero = () => {
 		>
 			<HeroProvider>
 				<div className={styles["hero__frame"]}>
-					{/* TOP BAR */}
-					<HeroTopBar />
-
-					{/* FRAME CONTAINER */}
+					<TopBar />
 					<div className={styles["hero__frame-container-wrapper"]}>
-						<HeroSideNav />
-						<HeroFrameContainer />
+						<SideNav />
+						<Frame />
 					</div>
 				</div>
 			</HeroProvider>

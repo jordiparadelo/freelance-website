@@ -2,7 +2,7 @@
 
 import React, { useEffect } from "react";
 // Styles
-import styles from "./styles.module.scss";
+import styles from "../styles.module.scss";
 // Context
 import { useHero } from "@/context/HeroContext";
 import { useScroll } from "@/context/ScrollContext";
@@ -10,7 +10,7 @@ import { useColorTheme } from "@/hooks/useColorTheme";
 // Constants
 import { NAV_LINKS, SOCIAL_LINKS } from "@/constants";
 
-const HeroSideNav = () => {
+const SideNav = () => {
 	const { isOpen, setIsOpen } = useHero();
 	const scrollTo = useScroll();
 	const [theme, setColorTheme] = useColorTheme();
@@ -113,4 +113,4 @@ const HeroSideNav = () => {
 	);
 };
 
-export default HeroSideNav;
+export default SideNav;

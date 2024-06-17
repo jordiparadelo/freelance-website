@@ -1,8 +1,11 @@
 import React from "react";
 import Link from "next/link";
 // Styles
-import styles from "./styles.module.scss";
-// libs
+import styles from "../styles.module.scss";
+// Assets
+import SidebarOpen from "@/public/assets/sidebar-open.svg";
+import SidebarClose from "@/public/assets/sidebar-close.svg";
+// Libs
 import { useMediaQuery } from "@uidotdev/usehooks";
 // Context
 import { useHero } from "@/context/HeroContext";
@@ -11,48 +14,6 @@ import { NAV_LINKS } from "@/lib/constants";
 // Components
 import { AvatarDropdown } from "@/components/ui";
 
-const SidebarIcon = ({ isOpen }) => (
-	<svg
-		width='24'
-		height='24'
-		viewBox='0 0 24 24'
-		xmlns='http://www.w3.org/2000/svg'
-	>
-		{isOpen ? (
-			<g
-				fill='none'
-				stroke='currentColor'
-				strokeLinecap='round'
-				strokeLinejoin='round'
-				strokeWidth='1.5'
-				color='currentColor'
-			>
-				<path
-					fill='currentColor'
-					d='M6 21a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3zM18 5h-8v14h8a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1'
-				/>
-			</g>
-		) : (
-			<g
-				fill='none'
-				stroke='currentColor'
-				strokeLinecap='round'
-				strokeLinejoin='round'
-				strokeWidth='1.5'
-				color='currentColor'
-			>
-				<path
-					fill='none'
-					stroke='currentColor'
-					strokeLinecap='round'
-					strokeLinejoin='round'
-					strokeWidth='2'
-					d='M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm5-2v16'
-				/>
-			</g>
-		)}
-	</svg>
-);
 const DesktopMenu = () => (
 	<menu className={styles["hero__frame-top-bar__menu"]}>
 		{NAV_LINKS.map((link) => (
@@ -70,7 +31,7 @@ const MobileMenu = () => (
 	<menu className={styles["hero__frame-top-bar__menu"]}>Menu</menu>
 );
 
-const HeroTopBar = () => {
+const TopBar = () => {
 	const { isOpen, toggleMenu } = useHero();
 	const isSmallDevice = useMediaQuery("only screen and (max-width: 768px)");
 
@@ -83,12 +44,12 @@ const HeroTopBar = () => {
 					aria-label='Toggle sidebar'
 					data-expanded={isOpen}
 				>
-					{/* <MySvg width="32" height="32" /> */}
-					<SidebarIcon isOpen={isOpen} />
+					{/* <SidebarIcon isOpen={isOpen} /> */}
+					{isOpen ? <SidebarOpen/> : <SidebarClose/>}
 				</button>
 			</div>
 
-			{isSmallDevice ? <MobileMenu/> : <DesktopMenu/>}
+			{isSmallDevice ? <MobileMenu /> : <DesktopMenu />}
 
 			<div className={styles["hero__frame-top-bar__about"]}>
 				<AvatarDropdown />
@@ -97,4 +58,4 @@ const HeroTopBar = () => {
 	);
 };
 
-export default HeroTopBar;
+export default TopBar;

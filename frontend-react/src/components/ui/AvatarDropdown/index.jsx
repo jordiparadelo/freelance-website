@@ -1,13 +1,17 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 // Styles
 import styles from "./styles.module.scss";
 // Assets
 import ArrowDownIcon from "@/public/assets/chevron-down.svg";
 import { Button } from "..";
+// Constants
+import { ABOUT } from "@/lib/constants";
 
 const AvatarDropdown = () => {
+	// State to manage dropdown open/close status
 	const [dropdownOpen, setDropdownOpen] = useState(false);
 	const dropdownRef = useRef(null);
 
@@ -18,7 +22,7 @@ const AvatarDropdown = () => {
 		}
 	};
 
-	// Function to handle Escape key press
+	// Function to handle Escape key press to close the dropdown
 	const handleEscDropdown = (event) => {
 		if (event.key === "Escape") {
 			setDropdownOpen(false);
@@ -60,7 +64,13 @@ const AvatarDropdown = () => {
 				className={styles["avatar-dropdown__button"]}
 			>
 				<div className={styles["avatar-dropdown__avatar"]}>
-					{/* <Avatar /> */}
+					<Image
+						src={ABOUT.avatar}
+						height={64}
+						width={64}
+						alt='Jordi Paradelo - Freelance Designer & Developer'
+						className={styles["avatar-dropdown__avatar-image"]}
+					/>
 				</div>
 				<ArrowDownIcon />
 			</button>
@@ -71,12 +81,67 @@ const AvatarDropdown = () => {
 				hidden={!dropdownOpen}
 				className={styles["avatar-dropdown__menu"]}
 			>
-				{/* <Menu /> */}
-				<div className={styles["avatar-dropdown__menu-header"]}>
-					<p>Jordi Paradelo Palazzo</p>
-					<p className="text-size-small text-color-gray">im.jordiparadelo@gmail.com</p>
+				{/* Contact Details */}
+				<div className={styles["avatar-dropdown__menu-block"]}>
+					<h2 className={styles["avatar-dropdown__menu-title"]}>
+						Contact details
+					</h2>
+					<ul className={styles["avatar-dropdown__menu-list"]}>
+						{ABOUT.contact.map((contact) => (
+							<li
+								key={contact.id}
+								className={styles["avatar-dropdown__menu-list-item"]}
+							>
+								<a
+									className={styles["avatar-dropdown__menu-link"]}
+									{...contact.props}
+								>
+									{contact.label}
+								</a>
+							</li>
+						))}
+					</ul>
 				</div>
 
+				{/* Business Details */}
+				<div className={styles["avatar-dropdown__menu-block"]}>
+					<h2 className={styles["avatar-dropdown__menu-title"]}>
+						Business details
+					</h2>
+					<ul className={styles["avatar-dropdown__menu-list"]}>
+						<li className={styles["avatar-dropdown__menu-list-item"]}>
+							<span>{ABOUT.business.name}</span>
+						</li>
+						<li className={styles["avatar-dropdown__menu-list-item"]}>
+							<span>Vat ID: {ABOUT.business.vatId}</span>
+						</li>
+						<li className={styles["avatar-dropdown__menu-list-item"]}>
+							<span>Location: {ABOUT.business.location}</span>
+						</li>
+					</ul>
+				</div>
+
+				{/* Social Media Links */}
+				<div className={styles["avatar-dropdown__menu-block"]}>
+					<h2 className={styles["avatar-dropdown__menu-title"]}>Socials</h2>
+					<ul className={styles["avatar-dropdown__menu-list"]}>
+						{ABOUT.socials.map((contact) => (
+							<li
+								key={contact.id}
+								className={styles["avatar-dropdown__menu-list-item"]}
+							>
+								<a
+									className={styles["avatar-dropdown__menu-link"]}
+									href={contact.href}
+								>
+									{contact.title}
+								</a>
+							</li>
+						))}
+					</ul>
+				</div>
+
+				{/* Additional Actions */}
 				<div className={styles["avatar-dropdown__menu-actions"]}>
 					<Button>Download CV</Button>
 				</div>

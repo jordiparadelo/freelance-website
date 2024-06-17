@@ -20,3 +20,4 @@ export {default as RequestBox} from './RequestBox';
 export {default as ReviewsList} from './ReviewsList';
 export {default as ServiceCard} from './ServiceCard';
 export {default as AvatarDropdown} from './AvatarDropdown';
+export {default as GridBackground} from './GridBackground';
