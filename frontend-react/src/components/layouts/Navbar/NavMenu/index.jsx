@@ -1,7 +1,8 @@
 'use client'
+
 import Link from "next/link";
 // Libs
-import { useMediaQuery } from "@uidotdev/usehooks";
+import useMediaQuery  from "@/hooks/useMediaQuery";
 // Constants
 import { NAV_LINKS } from "@/lib/constants";
 // Styles
@@ -23,11 +24,11 @@ const DesktopMenu = () => (
 const MobileMenu = () => <menu className={styles["navbar-menu"]}>Menu</menu>;
 
 const NavMenu = () => {
-	// const isSmallDevice = useMediaQuery("only screen and (max-width: 768px)");
+	const isSmallDevice = useMediaQuery("only screen and (max-width: 768px)")
 
-	return <DesktopMenu />
+	// return <DesktopMenu />
 
-	// return isSmallDevice ? <MobileMenu /> : <DesktopMenu />;
+	return isSmallDevice ? <MobileMenu /> : <DesktopMenu />;
 };
 
 export default NavMenu;
