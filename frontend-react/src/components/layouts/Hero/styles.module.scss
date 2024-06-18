@@ -58,37 +58,6 @@
 			}
 		}
 
-		// Menu
-		&__menu {
-			border-radius: var(--corners--radius-round);
-			border: 1px solid var(--border-color--base);
-			padding: 0.25rem;
-			display: flex;
-			font-size: var(--font-size--small);
-			position: absolute;
-			left: 50%;
-			transform: translateX(-50%);
-		}
-
-		&__menu-link {
-			--link-size: 32px;
-
-			padding-inline: 0.75rem;
-			line-height: 0.5;
-			min-height: var(--link-size);
-			display: flex;
-			place-content: center;
-			place-items: center;
-			border-radius: inherit;
-
-			&:hover {
-				box-shadow: var(--box-shadow--glow);
-			}
-		}
-
-		// About
-		&__about {
-		}
 	}
 
 	// Frame Container Wrapper

@@ -6,7 +6,7 @@ import { useGSAP } from "@gsap/react";
 // Constants
 import { SOCIAL_LINKS, ABOUT } from "@/constants";
 // Component
-import { Button, CopyToClipboard } from "@/ui";
+import { Button,ContactButton, CopyToClipboard } from "@/ui";
 const GridBackground = lazy(() => import("../../ui/GridBackground"));
 // Hooks
 import usePageScroll from "@/hooks/usePageScroll";
@@ -45,7 +45,7 @@ const Footer = () => {
 								<h2 className={styles["footer__banner__title"]}>
 									Let’s create something great together
 								</h2>
-								<Button>Get in touch</Button>
+								<ContactButton label={"Get in touch"} />
 
 								<div className={styles["footer__banner__actions"]}>
 									<p className='text-size-small'> Or reach me by email at</p>

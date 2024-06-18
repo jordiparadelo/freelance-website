@@ -1,11 +1,10 @@
 import React from 'react'
-import {SelectedWork} from '@/layouts'
+import {SelectedWork, Hero} from '@/layouts'
+import TopBar from '@/components/layouts/Hero/TopBar'
 
 const Projects = () => {
   return (
     <>
-    {/* <Hero /> */}
-    <h1>Projects</h1>
     <SelectedWork />
     </>
   )

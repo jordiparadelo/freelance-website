@@ -49,6 +49,18 @@ export function processAnimations(component) {
 		start: "top+=5% center",
 		end: "bottom-=20% center",
 		scrub: true,
+		// onUpdate: (self) => {
+		// 	const progress = self.progress;
+		// 	const index = Math.floor(
+		// 		navListItems.length * progress
+		// 	);
+		// 	goToTimelineStep(index);
+		// }
+		// onToggle: (self, direction) => {
+		// 	const index = direction === 1 ? 0 : navListItems.length - 1;
+		// 	console.log(index)
+		// 	goToTimelineStep(index);
+		// },
 		// markers: true,
 	});
 }

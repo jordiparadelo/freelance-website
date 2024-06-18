@@ -3,7 +3,7 @@
 import { Button, CloseModalButton, ProjectDetailsList } from "@/ui";
 import { splitArray } from "@/utils";
 
-import { Suspense, useLayoutEffect, useMemo, useState } from "react";
+import { useLayoutEffect, useMemo, useState } from "react";
 
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
@@ -29,7 +29,6 @@ const ProjectModal = () => {
 	}, [id]);
 
 	return (
-		<Suspense fallback={<div>Loading...</div>}>
 			<article className='project-detail'>
 				<div className='container'>
 					<div className='project__header'>
@@ -92,7 +91,6 @@ const ProjectModal = () => {
 					</div>
 				</div>
 			</article>
-		</Suspense>
 	);
 };
 

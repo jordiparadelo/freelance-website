@@ -3,7 +3,7 @@ import Link from "next/link";
 // Styles
 import styles from "../styles.module.scss";
 // Components
-import { Button } from "@/ui";
+import { Button, ContactButton } from "@/ui";
 import { Banner } from "@/layouts";
 const GridBackground = lazy(() => import("../../../ui/GridBackground")); 
 
@@ -29,9 +29,7 @@ const Frame = () => {
 					Launch your next project in <strong>no-time.</strong>{" "}
 				</p>
 				<div className={styles["hero__actions"]}>
-					<Link href='/projects'>
-						<Button className='button--primary'>Start a new Project</Button>
-					</Link>
+					<ContactButton label={"Get in touch"} />
 				</div>
 			</div>
 

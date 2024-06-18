@@ -12,7 +12,7 @@ import {
 const Home = () => {
 	return (
 		<>
-			<Hero />
+			<Hero/>
 			<Gallery />
 			<About />
 			<Services />
