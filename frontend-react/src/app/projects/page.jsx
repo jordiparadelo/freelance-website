@@ -1,6 +1,7 @@
+'use client'
+
 import React from 'react'
-import {SelectedWork, Hero} from '@/layouts'
-import TopBar from '@/components/layouts/Hero/TopBar'
+import {SelectedWork} from '@/layouts'
 
 const Projects = () => {
   return (

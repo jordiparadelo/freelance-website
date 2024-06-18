@@ -1,5 +1,3 @@
-import React from "react";
-
 // Components
 import Link from "next/link";
 import { Button } from "@/ui";

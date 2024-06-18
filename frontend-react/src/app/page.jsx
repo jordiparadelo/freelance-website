@@ -6,13 +6,13 @@ import {
 	ClientsReviews,
 	Products,
 	Services,
-	Process 
+	Process,
 } from "@/layouts";
 
 const Home = () => {
 	return (
 		<>
-			<Hero/>
+			<Hero />
 			<Gallery />
 			<About />
 			<Services />

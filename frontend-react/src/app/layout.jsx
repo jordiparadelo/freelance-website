@@ -1,9 +1,7 @@
-
 import { Suspense } from "react";
-// import  {  Head } from "next/document";
 
 // Components
-import { Navbar, Footer, Modal } from "@/layouts";
+import { Footer, Modal } from "@/layouts";
 // Styles
 import "@/styles/globals.css";
 import "@/styles/lenis.css";
