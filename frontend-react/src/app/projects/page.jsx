@@ -1,11 +1,12 @@
 import React from 'react'
-import {Hero} from '@/layouts'
+import {SelectedWork} from '@/layouts'
 
 const Projects = () => {
   return (
     <>
-    <Hero />
+    {/* <Hero /> */}
     <h1>Projects</h1>
+    <SelectedWork />
     </>
   )
 }

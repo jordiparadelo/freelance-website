@@ -7,7 +7,7 @@ import { Button } from "@/ui";
 import { Banner } from "@/layouts";
 const GridBackground = lazy(() => import("../../../ui/GridBackground")); 
 
-const HeroFrameContainer = () => {
+const Frame = () => {
 	return (
 		<div className={styles["hero__frame-container"]}>
 			<Suspense fallback={<div>Loading...</div>}>
@@ -40,4 +40,4 @@ const HeroFrameContainer = () => {
 	);
 };
 
-export default HeroFrameContainer;
+export default Frame;

@@ -6,6 +6,7 @@ import { Suspense } from "react";
 import { Navbar, Footer, Modal } from "@/layouts";
 // Styles
 import "@/styles/globals.css";
+import "@/styles/lenis.css";
 // Images
 import ogImage from "@/public/assets/open-graph.png";
 // Context
