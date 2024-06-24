@@ -29,68 +29,68 @@ const ProjectModal = () => {
 	}, [id]);
 
 	return (
-			<article className='project-detail'>
-				<div className='container'>
-					<div className='project__header'>
-						<div className='project__heading-wrapper'>
-							<h3 className='project__title'>{project?.title}</h3>
-						</div>
-						<div className='action_wrapper'>
-							<Button
-								href={project?.preview}
-								target='_blank'
-							>
-								Live view
-							</Button>
-							<CloseModalButton>Close</CloseModalButton>
-						</div>
+		<article className='project-detail'>
+			<div className='container'>
+				<div className='project__header'>
+					<div className='project__heading-wrapper'>
+						<h3 className='project__title'>{project?.title}</h3>
 					</div>
-					<div className='project-detail__wrapper'>
-						<div className='project-detail__content-wrapper'>
-							<div className='project-detail__content'>
-								<p className='project-detail__description'>
-									{project?.details?.blob}
-								</p>
-							</div>
-
-							<aside className='project-detail__aside'>
-								<div className='project-detail__aside__block'>
-									<h4>Challenge</h4>
-									<p>{project?.challenge}</p>
-								</div>
-								<div className='project-detail__aside__block'>
-									<h4>Services</h4>
-									<ul className='project__categories'>
-										{project?.services?.map((service) => (
-											<li
-												className='project__category'
-												key={service}
-											>
-												{service}
-											</li>
-										))}
-									</ul>
-								</div>
-							</aside>
-						</div>
-
-						<div className='project-detail__image'>
-							<Image
-							unoptimized
-								src={project?.image?.src}
-								alt={project?.image?.alt}
-								width={project?.image?.width}
-								height={project?.image?.height}
-								priority={true}
-							/>
-						</div>
-
-						<ProjectDetailsList details={project?.details} />
-
-						{project?.gallery && <ProjectGallery gallery={project?.gallery} />}
+					<div className='action_wrapper'>
+						<Button
+							href={project?.preview}
+							target='_blank'
+						>
+							Live view
+						</Button>
+						<CloseModalButton>Close</CloseModalButton>
 					</div>
 				</div>
-			</article>
+				<div className='project-detail__wrapper'>
+					<div className='project-detail__content-wrapper'>
+						<div className='project-detail__content'>
+							<p className='project-detail__description'>
+								{project?.details?.blob}
+							</p>
+						</div>
+
+						<aside className='project-detail__aside'>
+							<div className='project-detail__aside__block'>
+								<h4>Challenge</h4>
+								<p>{project?.challenge}</p>
+							</div>
+							<div className='project-detail__aside__block'>
+								<h4>Services</h4>
+								<ul className='project__categories'>
+									{project?.services?.map((service) => (
+										<li
+											className='project__category'
+											key={service}
+										>
+											{service}
+										</li>
+									))}
+								</ul>
+							</div>
+						</aside>
+					</div>
+
+					<div className='project-detail__image'>
+						<Image
+							unoptimized
+							src={project?.image?.src}
+							alt={project?.image?.alt}
+							width={project?.image?.width}
+							height={project?.image?.height}
+							priority={true}
+						/>
+					</div>
+
+					<ProjectDetailsList details={project?.details} />
+
+					{project?.gallery && <ProjectGallery gallery={project?.gallery} />}
+				</div>
+			</div>
+		</article>
 	);
 };
 
@@ -125,7 +125,7 @@ export const ProjectGallery = ({ gallery, numOfColumns = 2 }) => {
 								className='project-detail__gallery-item'
 							>
 								<Image
-								unoptimized
+									unoptimized
 									src={galleryItem?.src}
 									alt={galleryItem?.alt}
 									width={galleryItem?.width}

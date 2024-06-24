@@ -1,0 +1,27 @@
+.contact-modal {
+	display: flex;
+	flex-direction: column;
+	padding: 2.5rem;
+	border-radius: 20px;
+	background: var(--background-color--alternative);
+	color: var(--text-color--alternative);
+	z-index: 12;
+	gap: 1.5rem;
+	overflow-y: auto;
+	max-height: calc(100vh - 90px);
+	min-width: 280px;
+	max-width: 800px;
+	width: 100%;
+
+	&__title {
+		font-size: 2rem;
+	}
+	&__form {
+	}
+	&__services {
+	}
+	&__services-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+	}
+}

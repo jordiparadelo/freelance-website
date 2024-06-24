@@ -27,7 +27,7 @@ const lenisConfig = {
 };
 
 const ScrollProvider = ({ children }) => {
-	const lenis = useRef(null);
+	let lenis = useRef(null);
 
 	useEffect(() => {
 		// Initialize Lenis
@@ -65,8 +65,9 @@ const ScrollProvider = ({ children }) => {
 		return () => {
 			lenis.current.destroy();
 			ScrollTrigger.removeEventListener("refresh", () => lenis.current.resize());
+			console.log("Lenis destroyed");
 		};
-	}, []);
+	}, [lenis]);
 
 	// Scroll to function
 	const scrollTo = (target, options) => {

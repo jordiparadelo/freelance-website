@@ -6,6 +6,7 @@ import reviewLogo2 from "@/public/assets/review-logo-2.svg";
 import reviewLogo3 from "@/public/assets/review-logo-3.svg";
 import reviewLogo4 from "@/public/assets/review-logo-4.svg";
 import avatarPic from "@/public/assets/avatar-pic.jpeg";
+import modumImage from "@/public/assets/images/image_cover_modum.webp";
 
 // NAVIGATION
 export const NAV_LINKS = [
@@ -158,7 +159,7 @@ export const PROJECTS = [
 		id: "modum",
 		href: "/products/modum",
 		image: {
-			src: galleryImage1,
+			src: modumImage,
 			alt: "Project website 32",
 			width: 568,
 			height: 456,

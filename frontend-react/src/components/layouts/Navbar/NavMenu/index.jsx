@@ -8,9 +8,9 @@ import { NAV_LINKS } from "@/lib/constants";
 // Styles
 import styles from "./styles.module.scss";
 
-const DesktopMenu = () => (
+const DesktopMenu = ({links}) => (
 	<menu className={styles["navbar-menu"]}>
-		{NAV_LINKS.map((link) => (
+		{links?.map((link) => (
 			<Link
 				key={link.key}
 				href={link.href}
@@ -23,12 +23,12 @@ const DesktopMenu = () => (
 );
 const MobileMenu = () => <menu className={styles["navbar-menu"]}>Menu</menu>;
 
-const NavMenu = () => {
+const NavMenu = ({links}) => {
 	const isSmallDevice = useMediaQuery("only screen and (max-width: 768px)")
 
 	// return <DesktopMenu />
 
-	return isSmallDevice ? <MobileMenu /> : <DesktopMenu />;
+	return isSmallDevice ? <MobileMenu links={links} /> : <DesktopMenu links={links}/>;
 };
 
 export default NavMenu;

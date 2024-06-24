@@ -106,13 +106,18 @@
 		overflow: hidden;
 		max-height: 80vh;
 		min-height: 380px;
-
-		// STATES
-		&:not(:hover) {
-			img {
-				transform: scale(1.2);
-			}
+		background: var(--background-color--base);
+		
+		img {
+			opacity: 0.95;
 		}
+
+		// // STATES
+		// &:not(:hover) {
+		// 	img {
+		// 		transform: scale(1.2);
+		// 	}
+		// }
 
 		img {
 			flex-grow: 1;

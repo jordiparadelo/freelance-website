@@ -7,14 +7,18 @@ import styles from "../styles.module.scss";
 // Components
 import NavMenu from "../../Navbar/NavMenu";
 import SidebarButton from "../SidebarButton";
-import { AvatarDropdown } from "@/components/ui";
+import { AvatarDropdown, Logo } from "@/components/ui";
+
+// Constants
+import { NAV_LINKS } from "@/lib/constants";
 
 const TopBar = () => {
 
 	return (
 		<div className={styles["hero__frame-top-bar"]}>
 			<SidebarButton/>
-			<NavMenu />
+			{/* <NavMenu links={NAV_LINKS}/> */}
+			<Logo/>
 			<AvatarDropdown />
 		</div>
 	);

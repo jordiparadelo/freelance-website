@@ -29,7 +29,7 @@ const Frame = () => {
 					Launch your next project in <strong>no-time.</strong>{" "}
 				</p>
 				<div className={styles["hero__actions"]}>
-					<ContactButton label={"Get in touch"} />
+					<ContactButton label={"Let's start a new project"} />
 				</div>
 			</div>
 
