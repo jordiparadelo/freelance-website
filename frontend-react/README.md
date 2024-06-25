@@ -1,12 +1,10 @@
 # Personal Website
 
-Infinite loop scrolling based on the animation seen on [Bureau DAM](https://www.jordiparadelo.com/).
-
 ![Image Title](./public/assets/open-graph.png)
 
-[Article on Codrops](https://tympanus.net/codrops/?p=66589)
+🚀 [View Live](https://freelance-website-git-new-style-version-jordiparadelos-projects.vercel.app/)
 
-[Demo](http://tympanus.net/Tutorials/LoopScrolling/)
+[Old Version](http://tympanus.net/Tutorials/LoopScrolling/)
 
 
 ## Installation
