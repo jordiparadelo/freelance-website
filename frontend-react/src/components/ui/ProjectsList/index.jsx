@@ -34,8 +34,8 @@ const ProjectsList = ({ projects }) => {
 			{projects?.map((project, index) => (
 				<li key={project.title + "-" + index}>
 					<Project
-						project={project}
-						key={index}
+						project={project} 
+						key={index} 
 					/>
 				</li>
 			))}

@@ -10,7 +10,8 @@
 	bottom: 0;
 	z-index: 12;
 	border-radius: 20px 20px 0px 0px;
-	background: white;
+	background: var(--background-color--alternative);
+	color: var(--text-color--alternative);
 	overflow-y: scroll;
 	overflow-x: hidden;
 	display: flex;
