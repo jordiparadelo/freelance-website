@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 // Assets
-import CopyClip from '@/public/assets/copy.svg'
+import CopyClip from '@/public/assets/icons/copy.svg'
 
 // Styles
 import styles from "./styles.module.scss";

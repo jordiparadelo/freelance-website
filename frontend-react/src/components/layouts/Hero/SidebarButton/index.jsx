@@ -2,8 +2,8 @@
 // Styles
 import styles from "../styles.module.scss";
 // Assets
-import SidebarOpen from "@/public/assets/sidebar-open.svg";
-import SidebarClose from "@/public/assets/sidebar-close.svg";
+import SidebarOpen from "@/public/assets/icons/sidebar-open.svg";
+import SidebarClose from "@/public/assets/icons/sidebar-close.svg";
 // Context
 import { useHero } from "@/context/HeroContext";
 

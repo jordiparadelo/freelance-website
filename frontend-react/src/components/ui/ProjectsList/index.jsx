@@ -12,7 +12,6 @@ import { useGSAP } from "@gsap/react";
 // Animations
 import { projectsAnimation } from "./animations";
 
-
 // Styles
 import "./styles.scss";
 

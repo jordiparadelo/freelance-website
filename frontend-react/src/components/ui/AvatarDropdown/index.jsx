@@ -5,7 +5,7 @@ import Image from "next/image";
 // Styles
 import styles from "./styles.module.scss";
 // Assets
-import ArrowDownIcon from "@/public/assets/chevron-down.svg";
+import ArrowDownIcon from "@/public/assets/icons/chevron-down.svg";
 import { Button } from "..";
 // Constants
 import { ABOUT } from "@/lib/constants";
