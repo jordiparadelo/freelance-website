@@ -7,7 +7,7 @@ import useLiveClock from "@/hooks/useLiveClock";
 import WorldIcon from "@/public/assets/icons/globe.svg";
 // Styles
 import styles from "./styles.module.scss";
-import { useMediaQuery } from "@uidotdev/usehooks";
+import useMediaQuery  from "@/hooks/useMediaQuery";
 
 const Banner = () => {
 	const [isAvailable, setIsAvailable] = useState(false);

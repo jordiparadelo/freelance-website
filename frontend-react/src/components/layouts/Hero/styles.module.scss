@@ -89,7 +89,7 @@
 		padding-inline-end: var(--section-padding--inline-small);
 		display: flex;
 		flex-direction: column;
-		gap: var(--section-padding--block-xSmall);
+		gap: var(--section-padding--block-tiny);
 		min-width: max-content;
 		// white-space: nowrap;
 
@@ -215,6 +215,7 @@
 		place-items: center;
 		margin-block: auto;
 		gap: 1.5rem;
+		text-align: center;
 	}
 
 	&__heading-wrapper {
@@ -224,7 +225,6 @@
 		flex-grow: 1;
 		flex-shrink: 0;
 		gap: 1.25rem;
-		// max-width: 80ch;
 	}
 
 	&__label {

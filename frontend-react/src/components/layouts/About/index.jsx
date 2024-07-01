@@ -7,7 +7,7 @@ import styles from "./styles.module.scss";
 const About = () => {
 	return (
 		<section id='about' className={styles.about}>
-			<div className="padding-global --section-large">
+			<div className="padding-global --section-medium">
 				<div className='container'>
 					<div className={styles["about__layout"]}>
 						<div className={styles["about__header"]}>

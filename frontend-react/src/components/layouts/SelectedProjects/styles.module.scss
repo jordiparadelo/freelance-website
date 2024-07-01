@@ -1,5 +1,44 @@
-.selected-works {
+.selected-projects {
     position: relative;
+
+    &__layout {
+        display: flex;
+        flex-direction: column;
+        gap: var(--section-padding--block-small);
+    }
+
+    &__heading {
+        display: flex;
+        flex-flow: column;
+        place-items: center;
+        gap: var(--section-padding--inline-medium);
+        
+        @media screen and (min-width: 769px) {
+            text-align: center;
+            align-items: center;
+            justify-content: space-between;
+            flex-flow: row;
+            place-items: initial;
+        }
+    }
+
+    &__title-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: var(--section-padding--inline-small);
+        place-items: center;
+        
+        @media screen and (min-width: 769px) {
+            place-items: initial;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        place-items: center;
+        place-content: center;  
+        place-self: center;
+    }
 
     .section-header {
         display: flex;

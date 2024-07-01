@@ -1,7 +1,7 @@
 import {
 	Hero,
 	About,
-	SelectedWork,
+	SelectedProjects,
 	Gallery,
 	ClientsReviews,
 	Products,
@@ -18,7 +18,7 @@ const Home = () => {
 			<Services />
 			<Process />
 			{/* <Products /> */}
-			<SelectedWork />
+			<SelectedProjects />
 			{/* <ClientsReviews /> */}
 		</>
 	);

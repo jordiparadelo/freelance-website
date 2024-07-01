@@ -9,11 +9,13 @@ const GridBackground = lazy(() => import("../../../ui/GridBackground"));
 
 const Frame = () => {
 	return (
+		// TODO: Make Grid with images
 		<div className={styles["hero__frame-container"]}>
-			<Suspense fallback={<div>Loading...</div>}>
 				<GridBackground className={styles["hero__background"]} />
-			</Suspense>
-			<div className={styles["hero__layout"]}>
+			{/* <Suspense fallback={<div>Loading...</div>}>
+				<GridBackground className={styles["hero__background"]} />
+			</Suspense> */}
+			{/* <div className={styles["hero__layout"]}>
 				<div className={styles["hero__heading-wrapper"]}>
 					<div className={styles["hero__label"]}>Design & Dev freelancer</div>
 					<div className={styles["hero__title-wrapper"]}>
@@ -25,7 +27,7 @@ const Frame = () => {
 						</h1>
 					</div>
 				</div>
-				<p className={styles["hero__details-text"]}>
+				<p className='text-size-medium'>
 					Launch your next project in <strong>no-time.</strong>{" "}
 				</p>
 				<div className={styles["hero__actions"]}>
@@ -33,7 +35,7 @@ const Frame = () => {
 				</div>
 			</div>
 
-			<Banner />
+			<Banner /> */}
 		</div>
 	);
 };
