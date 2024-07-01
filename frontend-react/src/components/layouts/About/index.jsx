@@ -1,5 +1,6 @@
 import React from "react";
-import { ServiceForm, SectionLabel, AnimatedParagraph, Curves } from "@/ui";
+import {  SectionLabel, AnimatedParagraph, Curves } from "@/ui";
+import AboutForm from "./AboutForm";
 // import Box from "@/public/assets/animated-icons/services.json";
 import styles from "./styles.module.scss";
 
@@ -8,7 +9,7 @@ const About = () => {
 		<section id='about' className={styles.about}>
 			<div className="padding-global --section-large">
 				<div className='container'>
-					<div className={styles["about__wrapper"]}>
+					<div className={styles["about__layout"]}>
 						<div className={styles["about__header"]}>
 							<AnimatedParagraph className={styles["about__title"]}>
 								Freelancer, focused on develop digital products from scratch.
@@ -20,12 +21,11 @@ const About = () => {
 							<h3 className={styles["about__services-title"]}>
 								Unlock your design potential with{" "}
 							</h3>
-							<ServiceForm />
+							<AboutForm />
 						</div>
 					</div>
 				</div>
 			</div>
-			{/* <Curves fill="var(--background-color--base)" orientation="bottom"/> */}
 		</section>
 	);
 };

@@ -2,12 +2,12 @@
 
 import React, { useState, useRef, useEffect } from "react";
 // Styles
-import "./styles.scss";
+import styles from "./styles.module.scss";
 // Components
 import { Button } from "@/ui";
 import Link from "next/link";
 
-const ServiceForm = () => {
+const AboutForm = () => {
 	const [activeButtons, setActiveButtons] = useState(false);
 	const [services, setServices] = useState([]);
 	const formRef = useRef(null);
@@ -46,15 +46,15 @@ const ServiceForm = () => {
 	return (
 		<form
 			action=''
-			className='services-form'
+			className={styles['about-form']}
 			onChange={handleChange}
 			onReset={() => setActiveButtons(false)}
 			ref={formRef}
 		>
-			<div className='services-form__wrapper'>
+			<div className={styles['about-form__layout']}>
 				<label
 					htmlFor='service_development'
-					className='services-form__group'
+					className={styles['about-form__group']}
 				>
 					<input
 						type='checkbox'
@@ -62,12 +62,12 @@ const ServiceForm = () => {
 						name='services'
 						id='service_development'
 					/>
-					<span className='active-light'></span>
+					<span className={styles['active-light']}></span>
 					<p>Development</p>
 				</label>
 				<label
 					htmlFor='service_product-design'
-					className='services-form__group'
+					className={styles['about-form__group']}
 				>
 					<input
 						type='checkbox'
@@ -75,12 +75,12 @@ const ServiceForm = () => {
 						name='services'
 						id='service_product-design'
 					/>
-					<span className='active-light'></span>
+					<span className={styles['active-light']}></span>
 					<p>Product Design</p>
 				</label>
 				<label
 					htmlFor='service_branding'
-					className='services-form__group'
+					className={styles['about-form__group']}
 				>
 					<input
 						type='checkbox'
@@ -88,12 +88,12 @@ const ServiceForm = () => {
 						name='services'
 						id='service_branding'
 					/>
-					<span className='active-light'></span>
+					<span className={styles['active-light']}></span>
 					<p>Branding</p>
 				</label>
 				<label
 					htmlFor='service_graphic-design'
-					className='services-form__group'
+					className={styles['about-form__group']}
 				>
 					<input
 						type='checkbox'
@@ -101,20 +101,20 @@ const ServiceForm = () => {
 						name='services'
 						id='service_graphic-design'
 					/>
-					<span className='active-light'></span>
+					<span className={styles['active-light']}></span>
 					<p>Graphic design</p>
 				</label>
 			</div>
 
 			{activeButtons && (
-				<div className='services-form__actions'>
+				<div className={styles['about-form__actions']}>
 					<Link
 						href={`?modal=true&type=contact&services=${services}`}
 						scroll={false}
 					>
 						<Button
 							type='submit'
-							// className='services-form__submit'
+							// className={styles['about-form__submit']}
 						>
 							Ready to start your project
 						</Button>
@@ -122,7 +122,7 @@ const ServiceForm = () => {
 					<button
 						type='reset'
 						aria-label='Reset'
-						className='services-form__reset'
+						className={styles['about-form__reset']}
 					>
 						Reset
 					</button>
@@ -132,4 +132,4 @@ const ServiceForm = () => {
 	);
 };
 
-export default ServiceForm;
+export default AboutForm;

@@ -1,7 +1,6 @@
 export {default as Button} from './Button';
 export {default as Logo} from './Logo';
 export {default as SectionLabel} from './SectionLabel';
-export {default as ServiceForm} from './ServiceForm';
 export {default as TransitionPage} from './TransitionPage';
 export {default as AnimatedParagraph} from './AnimatedParagraph';
 export {default as CloseModalButton} from './CloseModalButton';
