@@ -7,7 +7,7 @@
 	place-content: center;
 	color: var(--color-light);
 
-	&__wrapper {
+	&__layout {
 		display: flex;
 		gap: 1.25rem;
 		place-items: center;
@@ -35,6 +35,12 @@
 			background: var(--color-background-light);
 			transition: height 0.2s ease, width 0.2s ease;
 		}
+	}
+
+	&__worldwide-icon {
+		--size: 2em;
+		height: var(--size);
+		width: var(--size);
 	}
 
 	&__location {
