@@ -1,38 +1,68 @@
-# Personal Website
+# Minimalist Dev Portfolio
 
-![Image Title](./public/assets/open-graph.png)
+Transforming Concepts into Seamless User Experiences
 
-🚀 [View Live](https://freelance-website-git-new-style-version-jordiparadelos-projects.vercel.app/)
+<div align="center">
+  <img src="../frontend-react/public/assets/open-graph.png" alt="Portfolio Screenshot" width="800px"/>
+</div>
 
-[Old Version](http://tympanus.net/Tutorials/LoopScrolling/)
+## A Modern Next.js Portfolio
 
+Build this project step by step with our detailed tutorial on [JavaScript Mastery](https://www.youtube.com/channel/JavaScriptMastery). Join the JSM family!
 
-## Installation
+### Tech Stack
+- ![Next JS](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
 
-Install dependencies:
+## Table of Contents
+1. [Introduction](#introduction)
+2. [Tech Stack](#tech-stack)
+3. [Features](#features)
+4. [Quick Start](#quick-start)
+5. [Code to Copy](#code-to-copy)
+6. [Assets](#assets)
+7. [More](#more)
 
-```
-npm install
-```
+## Introduction
+Provide a brief introduction to your project, explaining what it is and what it aims to accomplish.
 
-Compile the code for development and start a local server:
+## Tech Stack
+Describe the technologies used in the project.
+- **Next.js**: A React framework for server-rendered applications.
 
-```
-npm run dev
-```
+## Features
+List the main features of your project.
+- Modern design
+- Smooth animations
+- Responsive layout
+- SEO friendly
 
-Create the build:
+## Quick Start
+Provide instructions on how to get the project up and running locally.
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/your-username/your-repo-name.git
+    ```
+2. Install dependencies:
+    ```bash
+    cd your-repo-name
+    npm install
+    ```
+3. Run the development server:
+    ```bash
+    npm run dev
+    ```
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
-```
-npm run build
-```
+## Assets
+List any assets or resources used in the project.
+- Images
+- Fonts
+- Icons
+- Design
 
-## Folder Structure
+## More
+Add any additional sections or links here.
 
+---
 
-## Misc
-
-
-## License
-
-Made with :blue_heart:  by [Jordi]
+Feel free to customize the template according to your project needs.
