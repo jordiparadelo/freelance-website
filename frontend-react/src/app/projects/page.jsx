@@ -1,12 +1,12 @@
-'use client'
+// 'use client'
 
 import React from 'react'
-import {SelectedWork} from '@/layouts'
+import {SelectedProjects} from '@/layouts'
 
 const Projects = () => {
   return (
     <>
-    <SelectedWork />
+    <SelectedProjects />
     </>
   )
 }

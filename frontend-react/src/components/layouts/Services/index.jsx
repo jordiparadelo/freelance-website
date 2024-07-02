@@ -12,7 +12,8 @@ import Box from "@/public/assets/animated-icons/services.json";
 import styles from "./styles.module.scss";
 // Libs
 import { useGSAP } from "@gsap/react";
-import { useMediaQuery, useWindowSize } from "@uidotdev/usehooks";
+import { useWindowSize } from "@uidotdev/usehooks";
+import useMediaQuery  from "@/hooks/useMediaQuery";
 // Animations
 import { serviceAnimation } from "./animations.js";
 

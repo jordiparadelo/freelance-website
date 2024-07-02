@@ -13,7 +13,7 @@ import { PROCESS } from "@/constants";
 import { useGSAP } from "@gsap/react";
 // Animations
 import { processAnimations } from "./animations";
-import { useMediaQuery } from "@uidotdev/usehooks";
+import useMediaQuery  from "@/hooks/useMediaQuery";
 
 const LargeDevices = () => (
 	<div className={styles["process__layout"]}>
