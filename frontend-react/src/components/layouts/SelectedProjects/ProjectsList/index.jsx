@@ -1,11 +1,6 @@
 "use client";
 
 import React, { useRef } from "react";
-
-// Next.js
-import Link from "next/link";
-import Image from "next/image";
-
 // Libs
 import { useGSAP } from "@gsap/react";
 
@@ -13,7 +8,10 @@ import { useGSAP } from "@gsap/react";
 import { projectsAnimation } from "./animations";
 
 // Styles
-import "./styles.scss";
+import styles from "./styles.module.scss";
+
+// Components
+import ProjectItem from "./ProjectItem";
 
 const ProjectsList = ({ projects }) => {
 	const componentRef = useRef(null);
@@ -27,12 +25,12 @@ const ProjectsList = ({ projects }) => {
 
 	return (
 		<ul
-			className='projects-list'
+			className={styles['projects-list']}
 			ref={componentRef}
 		>
 			{projects?.map((project, index) => (
 				<li key={project.title + "-" + index}>
-					<Project
+					<ProjectItem
 						project={project} 
 						key={index} 
 					/>
@@ -43,56 +41,3 @@ const ProjectsList = ({ projects }) => {
 };
 
 export default ProjectsList;
-
-export const Project = ({ project }) => {
-	return (
-		<article
-			className='project'
-			key={project.title}
-		>
-			<div className='project__header'>
-				<div className='project__heading-wrapper'>
-					<h3 className='project__title'>{project.title}</h3>
-					<ul className='project__categories'>
-						{project.categories?.map((category) => (
-							<li
-								className='project__category'
-								key={category}
-							>
-								<span>{category}</span>
-							</li>
-						))}
-					</ul>
-				</div>
-
-				<ButtonInfo id={project.id}/>
-			</div>
-			<Link
-				href={`?modal=true&type=project&id=${project.id}`}
-				scroll={false}
-				className='project__image-link'
-				rel='preload'
-			>
-				<div className='project__image'>
-					<Image
-					unoptimized
-						src={project.image.src}
-						alt={project.image.alt}
-					/>
-				</div>
-			</Link>
-		</article>
-	);
-};
-
-export const ButtonInfo = ({id}) => {
-	return (
-		<Link
-			href={`?modal=true&type=project&id=${id}`}
-			scroll={false}
-			rel='preload'
-		>
-			info
-		</Link>
-	);
-};

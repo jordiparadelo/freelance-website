@@ -1,21 +1,15 @@
-import React, { Suspense, lazy } from "react";
-import Link from "next/link";
 // Styles
 import styles from "../styles.module.scss";
 // Components
-import { Button, ContactButton } from "@/ui";
+import { ContactButton, GridBackground } from "@/ui";
 import { Banner } from "@/layouts";
-const GridBackground = lazy(() => import("../../../ui/GridBackground")); 
 
 const Frame = () => {
 	return (
 		// TODO: Make Grid with images
 		<div className={styles["hero__frame-container"]}>
 				<GridBackground className={styles["hero__background"]} />
-			{/* <Suspense fallback={<div>Loading...</div>}>
-				<GridBackground className={styles["hero__background"]} />
-			</Suspense> */}
-			{/* <div className={styles["hero__layout"]}>
+			<div className={styles["hero__layout"]}>
 				<div className={styles["hero__heading-wrapper"]}>
 					<div className={styles["hero__label"]}>Design & Dev freelancer</div>
 					<div className={styles["hero__title-wrapper"]}>
@@ -35,7 +29,7 @@ const Frame = () => {
 				</div>
 			</div>
 
-			<Banner /> */}
+			<Banner />
 		</div>
 	);
 };

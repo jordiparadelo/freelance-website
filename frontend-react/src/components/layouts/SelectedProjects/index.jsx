@@ -35,9 +35,7 @@ const SelectedProjects = async () => {
 							</Link>
 						</div>
 
-						<Suspense fallback={"...Loading"}>
 							<ProjectsList projects={projects} />
-						</Suspense>
 						<div className={styles["selected-projects__actions"]}>
 							<Link href='/projects'>
 								<Button>See more projects</Button>
