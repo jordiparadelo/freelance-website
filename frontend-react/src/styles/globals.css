@@ -87,6 +87,7 @@ h1,
 	line-height: 1.2;
 	font-size: var(--font-size--heading-style-1);
 	font-family: var(--font-family--heading);
+	font-weight: 400;
 }
 
 h2,

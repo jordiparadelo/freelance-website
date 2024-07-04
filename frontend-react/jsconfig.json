@@ -7,11 +7,13 @@
       "@/styles": ["./src/styles"],
       "@/ui": ["./src/components/ui"],
       "@/layouts": ["./src/components/layouts"],
+      "@/pages": ["./src/components/pages"],
       "@/hooks": ["./src/hooks"],
       "@/public/*": ["./public/*"],
       "@/constants": ["./src/lib/constants"],
       "@/utils": ["./src/lib/utils"],
-      "@/lib": ["./src/lib"]
+      "@/lib": ["./src/lib"],
+      "@/actions": ["./src/lib/actions"]
     }
   },
 

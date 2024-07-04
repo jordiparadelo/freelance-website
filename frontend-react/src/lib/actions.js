@@ -23,7 +23,7 @@ export async function getProjects() {
 export async function getProjectById(id) {
 	try {
 		const { data, error } = await getProjects();
-		const projectById = data.filter((project) => project.id === id);
+		const projectById = data.find((project) => project.id === id);
 
 		if (error) throw error;
 		return projectById;

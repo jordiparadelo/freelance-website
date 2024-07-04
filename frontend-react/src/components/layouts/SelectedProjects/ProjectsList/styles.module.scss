@@ -116,14 +116,12 @@
 
 		&:not(:hover) {
 			.project__live-link__label {
-				--translateY: -0.5rem;
-				--transition-delay: 0.2s;
+				--translateY: 0.1rem;
 				opacity: 0;
 			}
 		}
 		&__label {
 			--translateY: 0.25rem;
-			--transition-delay: 0.25s;
 
 			position: absolute;
 			top: 0;
@@ -140,7 +138,7 @@
 			transform: translateY(calc(-100% - var(--translateY)));
 			align-self: flex-start;
 			transform-origin: bottom center;
-			transition: opacity 0.5s ease, transform 0.5s ease;
+			transition: opacity 0.25s ease, transform 0.25s ease;
 			transition-delay: var(--transition-delay);
 			pointer-events: none;
 		}

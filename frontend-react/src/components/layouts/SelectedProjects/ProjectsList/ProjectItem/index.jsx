@@ -39,7 +39,7 @@ const ProjectItem = ({ project }) => {
 				</a>
 			</div>
 			<Link
-				href={`?modal=true&type=project&id=${project.id}`}
+				href={`/projects/${project.id}`}
 				scroll={false}
 				className={styles["project__image-link"]}
 				rel='preload'

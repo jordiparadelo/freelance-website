@@ -1,26 +1,8 @@
-import {
-	Hero,
-	About,
-	SelectedProjects,
-	Gallery,
-	ClientsReviews,
-	Products,
-	Services,
-	Process,
-} from "@/layouts";
+import { HomePage } from "@/pages";
 
 const Home = () => {
 	return (
-		<>
-			<Hero />
-			<Gallery />
-			<About />
-			<Services />
-			<Process />
-			{/* <Products /> */}
-			<SelectedProjects />
-			{/* <ClientsReviews /> */}
-		</>
+		<HomePage/>
 	);
 };
 

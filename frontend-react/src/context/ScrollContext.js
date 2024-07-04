@@ -60,14 +60,16 @@ const ScrollProvider = ({ children }) => {
 
 		ScrollTrigger.addEventListener("refresh", () => lenis.current.resize());
 		ScrollTrigger.refresh();
+	
 
 		// Clean up Lenis on component unmount
 		return () => {
-			lenis.current.destroy();
+			// if(lenis.current) return;
+			// lenis.current.destroy();
 			ScrollTrigger.removeEventListener("refresh", () => lenis.current.resize());
-			console.log("Lenis destroyed");
+			// console.log(lenis.current);
 		};
-	}, [lenis]);
+	}, [lenis.current]);
 
 	// Scroll to function
 	const scrollTo = (target, options) => {
