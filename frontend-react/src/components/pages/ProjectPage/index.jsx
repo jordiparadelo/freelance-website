@@ -13,6 +13,7 @@ const ProjectPage = ({ project }) => {
 							width={project.image.width}
 							height={project.image.height}
 							alg={project.image.alt}
+							placeholder="blur"
 						/>
 					</div>
 					<a href={project.preview}>See the Site</a>

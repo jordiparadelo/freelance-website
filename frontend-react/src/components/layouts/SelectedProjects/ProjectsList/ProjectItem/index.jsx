@@ -48,8 +48,13 @@ const ProjectItem = ({ project }) => {
 				<div className={styles["project__image"]}>
 					<Image
 						unoptimized
+						width={800}
+						height={600}
 						src={project.image.src}
 						alt={project.image.alt}
+						priority
+						quality={100}
+						placeholder="blur"
 					/>
 				</div>
 			</Link>
