@@ -1,5 +1,4 @@
 import React from "react";
-// styles
 import "./styles.scss";
 
 const ContactForm = React.forwardRef(({ children, className }, ref) => {
@@ -12,5 +11,7 @@ const ContactForm = React.forwardRef(({ children, className }, ref) => {
 		</form>
 	);
 });
+
+ContactForm.displayName = 'ContactForm';
 
 export default ContactForm;

@@ -27,7 +27,7 @@ const lenisConfig = {
 };
 
 const ScrollProvider = ({ children }) => {
-	let lenis = useRef(null);
+	const lenis = useRef(null);
 
 	useEffect(() => {
 		// Initialize Lenis
@@ -60,24 +60,27 @@ const ScrollProvider = ({ children }) => {
 
 		ScrollTrigger.addEventListener("refresh", () => lenis.current.resize());
 		ScrollTrigger.refresh();
-	
 
 		// Clean up Lenis on component unmount
 		return () => {
-			// if(lenis.current) return;
-			// lenis.current.destroy();
-			ScrollTrigger.removeEventListener("refresh", () => lenis.current.resize());
-			// console.log(lenis.current);
+			if (lenis.current) {
+				ScrollTrigger.removeEventListener("refresh", () => lenis.current.resize());
+				lenis.current.destroy();
+			}
 		};
-	}, [lenis.current]);
+	}, []); // Remove lenis.current from dependencies
 
 	// Scroll to function
 	const scrollTo = (target, options) => {
-		lenis.current.scrollTo(target, options);
+		if (lenis.current) {
+			lenis.current.scrollTo(target, options);
+		}
 	};
 
 	return (
-		<ScrollContext.Provider value={scrollTo}>{children}</ScrollContext.Provider>
+		<ScrollContext.Provider value={{ lenis: lenis.current, scrollTo }}>
+			{children}
+		</ScrollContext.Provider>
 	);
 };
 

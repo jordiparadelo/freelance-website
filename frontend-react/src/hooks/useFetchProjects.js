@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 const useFetchProjects = (id) => {
 	const [projects, setProject] = useState(null);
@@ -6,7 +6,7 @@ const useFetchProjects = (id) => {
 		? `${window.location.href}api/projects?id=${id}`
 		: `${window.location.href}api/projects`;
 
-	const fetchData = async () => {
+	const fetchData = useCallback(async () => {
 		try {
 			const res = await fetch(URL_PROJECTS);
 			const data = await res.json();
@@ -14,11 +14,11 @@ const useFetchProjects = (id) => {
 		} catch (error) {
 			console.error("Error fetching data:", error);
 		}
-	};
+	}, [URL_PROJECTS]);
 
 	useEffect(() => {
 		fetchData();
-	}, [id]);
+	}, [fetchData]);
 
 	return projects;
 };

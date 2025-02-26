@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 
@@ -12,9 +12,9 @@ const useModal = (params) => {
 	const showModal = searchParams.get("modal");
 
 	// Methods
-	function closeModal() {
+	const closeModal = useCallback(() => {
 		router.push(pathname, { scroll: false });
-	}
+	}, [router, pathname]);
 
 	useEffect(() => {
 		const handleKeyDown = (event) => {

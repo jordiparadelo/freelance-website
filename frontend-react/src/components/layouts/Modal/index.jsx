@@ -40,7 +40,7 @@ const Modal = () => {
 		} else {
 			lenis?.start();
 		}
-	}, [showModal]);
+	}, [showModal, lenis]);
 
 	return (
 		showModal && (
