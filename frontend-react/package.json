@@ -28,9 +28,13 @@
     "split-type": "^0.3.4"
   },
   "devDependencies": {
+    "@babel/core": "^7.24.0",
+    "@babel/eslint-parser": "^7.23.10",
+    "@babel/preset-react": "^7.23.3",
     "@next/bundle-analyzer": "^14.2.3",
     "@next/eslint-plugin-next": "^14.2.3",
     "@svgr/webpack": "^8.1.0",
+    "eslint": "^8.57.0",
     "eslint-config-next": "^14.2.3",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-import": "^2.29.1",
