@@ -533,9 +533,9 @@ export const SERVICES = [
 			},
 		],
 		type: "websites",
-		title: "Web apps ",
+		title: "Web Development ",
 		description:
-			"We design sleek and responsive web apps for any business challenge.",
+			"From designing and developing responsive web apps for any business challenge.",
 	},
 	{
 		id: "service-2",
@@ -566,9 +566,9 @@ export const SERVICES = [
 			},
 		],
 		type: "mobile",
-		title: "Mobile apps.",
+		title: "Ui/Ux Design",
 		description:
-			"We design, refine, and make your app shine above the competition.",
+			"Design center on bring the best user experience to your business.",
 	},
 	{
 		id: "service-3",
@@ -601,7 +601,7 @@ export const SERVICES = [
 		type: "design-system",
 		title: "Design system",
 		description:
-			"We build robust and cohesive design systems for easy scalability.",
+			"Have a robust and cohesive design systems for your product for easy scalability.",
 	},
 	{
 		id: "Consulting",
@@ -634,7 +634,7 @@ export const SERVICES = [
 		type: "consulting",
 		title: "Consulting.",
 		description:
-			"We'll tear apart your existing product and help you optimize your product for better results.",
+			"Help and improvements to optimize your product.",
 	},
 ];
 

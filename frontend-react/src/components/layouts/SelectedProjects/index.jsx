@@ -30,17 +30,25 @@ const SelectedProjects = async () => {
 									Check out the last projects
 								</h2>
 							</div>
+
+							{/* 
+							// TODO: Add when Projects site is done
 							<Link href='/projects'>
 								<Button>See more projects</Button>
-							</Link>
+							</Link> 
+							*/}
 						</div>
+						<ProjectsList projects={projects} />
 
-							<ProjectsList projects={projects} />
+						{/* 
+						// TODO: Add when Projects site is done
 						<div className={styles["selected-projects__actions"]}>
 							<Link href='/projects'>
 								<Button>See more projects</Button>
 							</Link>
-						</div>
+						</div> 
+						
+						*/}
 					</div>
 				</div>
 			</div>

@@ -19,7 +19,7 @@ const About = () => {
 						</div>
 						<div className={styles["about__services"]}>
 							<h3 className={styles["about__services-title"]}>
-								Unlock your design potential with{" "}
+								Get ready your next project 
 							</h3>
 							<AboutForm />
 						</div>

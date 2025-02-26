@@ -45,10 +45,10 @@ const Services = () => {
 							/>
 
 							<h2 className={styles["section-header__title"]}>
-								A breakdown of what we do
+								A breakdown of what I do
 							</h2>
 							<p className="text-size-medium">
-								Your go-to solution for web and mobile apps, like many founders,
+								Your go-to solution for web and design solutions, like many founders,
 								startups, and agencies do.
 							</p>
 						</header>
