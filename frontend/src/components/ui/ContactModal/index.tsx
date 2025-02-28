@@ -1,19 +1,20 @@
 "use client";
 
-import React, { useRef, useEffect, forwardRef } from "react";
-import { useSearchParams } from "next/navigation";
 import { Button, ContactForm } from "@/components/ui";
 
-// Styles
+import React, { useRef, useEffect } from "react";
+
+import { useSearchParams } from "next/navigation";
+
 import styles from "./styles.module.scss";
 import "./styles.scss";
 
 const ContactModal = () => {
 	const searchParams = useSearchParams();
 	const services = searchParams.get("services");
-	const contactModalRef = useRef(null);
+	const contactModalRef = useRef<HTMLFormElement | null>(null);
 
-	function setServices(services) {
+	function setServices(services: string | null): void {
 		if (!services) return;
 
 		const servicesArray = services.split(",");
@@ -23,9 +24,12 @@ const ContactModal = () => {
 
 		servicesArray.forEach((service) => {
 			if (!formElements) return;
-			formElements.find(
-				(formElement) => formElement.defaultValue === service
-			).checked = true;
+			const element = formElements.find(
+				(formElement) => (formElement as HTMLInputElement).defaultValue === service
+			) as HTMLInputElement;
+			if (element) {
+				element.checked = true;
+			}
 		});
 	}
 
@@ -36,14 +40,14 @@ const ContactModal = () => {
 
 	return (
 		<div className={styles['contact-modal']}>
-			<h2 className={styles['contact-modal__title']}>Got an idea? Let's discuss!</h2>
+			<h2 className={styles['contact-modal__title']}>Got an idea? Let&apos;s discuss!</h2>
 			<ContactForm
 				className={styles['contact-modal__form']}
 				ref={contactModalRef}
 			>
 					<div className='form__row'>
 						<div className='form__group'>
-							<label htmlFor='name'>What's your name?</label>
+							<label htmlFor='name'>What&apos;s your name?</label>
 							<input
 								type='text'
 								name='name'
@@ -51,7 +55,7 @@ const ContactModal = () => {
 							/>
 						</div>
 						<div className='form__group'>
-							<label htmlFor='name'>What's your email?</label>
+							<label htmlFor='name'>What&apos;s your email?</label>
 							<input
 								type='text'
 								name='email'
@@ -61,7 +65,7 @@ const ContactModal = () => {
 					</div>
 					<div className='form__group'>
 						<label htmlFor='company'>
-							What's the name of your organization?
+							What&apos;s the name of your organization?
 						</label>
 						<input
 							type='text'

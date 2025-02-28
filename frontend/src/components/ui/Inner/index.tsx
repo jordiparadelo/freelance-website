@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 // Libs
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, ResolvedValues } from "framer-motion";
 import { usePathname } from "next/navigation";
 // Styles
 import "./styles.scss";
@@ -25,6 +25,7 @@ const animationCurtain = {
 		duration: 5,
 	},
 };
+
 const animation = {
 	initial: {
 		opacity: 0,
@@ -38,22 +39,20 @@ const animation = {
 		opacity: 0,
 		transition: { delay: 2.5 },
 	},
-	// transition: {
-	// },
 };
 
-const Inner = ({ children }) => {
-	const [showChildren, setShowChildren] = useState(false);
+interface InnerProps {
+	children: React.ReactNode;
+}
 
+const Inner: React.FC<InnerProps> = ({ children }) => {
 	const pathname = usePathname();
 
-	function onComplete() {
-		setShowChildren((prevState) => !prevState);
-	}
-
-	function onUpdate({ progress }) {
+	function onUpdate(latest: ResolvedValues): void {
+		const progress = latest.progress as number;
 		if (progress >= 50) {
-			setShowChildren(true);
+			// Animation is halfway through
+			console.log("Animation is halfway through");
 		}
 	}
 
@@ -70,7 +69,6 @@ const Inner = ({ children }) => {
 				key={pathname}
 				{...animationCurtain}
 				onUpdate={onUpdate}
-				// onAnimationComplete={onComplete}
 				className='animated-page-curtain'
 			>
 				<p>{pathname}</p>

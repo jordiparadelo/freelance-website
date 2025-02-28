@@ -1,11 +1,9 @@
 "use client";
-import React, { memo, useRef, useEffect } from "react";
+import React from "react";
 import styles from "./styles.module.scss";
 import Image from "next/image";
-import SvgBackground from '@/assets/images/grid-background.svg'
 
-
-const GridBackground = (props) => {
+const GridBackground: React.FC = () => {
 	return (
 		<div className={styles["grid-background"]}>
 			<Image
@@ -17,7 +15,7 @@ const GridBackground = (props) => {
 				priority
 			/>
 		</div>
-	)
+	);
 };
 
 export default GridBackground;

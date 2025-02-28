@@ -5,7 +5,7 @@ import { useRef } from "react";
 import { SERVICES } from "@/lib/constants";
 // Components
 import { SectionLabel } from "@/components/ui";
-import  ServiceCard  from "./ServiceCard";
+import ServiceCard from "./ServiceCard";
 // Assets
 import Box from "@/assets/animated-icons/services.json";
 // Styles
@@ -13,20 +13,22 @@ import styles from "./styles.module.scss";
 // Libs
 import { useGSAP } from "@gsap/react";
 import { useWindowSize } from "@uidotdev/usehooks";
-import useMediaQuery  from "@/hooks/useMediaQuery";
+import useMediaQuery from "@/hooks/useMediaQuery";
 // Animations
 import { serviceAnimation } from "./animations.js";
 
 const Services = () => {
-	let componentRef = useRef(null);
+	const componentRef = useRef<HTMLElement | null>(null);
 	const {width: windowWidth} = useWindowSize();
 	const isLargeDevice = useMediaQuery("only screen and (min-width: 991px)");
 
 	useGSAP(
 		() => {
-			isLargeDevice && serviceAnimation(componentRef.current);
+			if (isLargeDevice) {
+				serviceAnimation(componentRef.current);
+			}
 		},
-		{ scope: componentRef.current, dependencies: [windowWidth, isLargeDevice]}
+		{ scope: componentRef, dependencies: [windowWidth, isLargeDevice]}
 	);
 
 	return (
@@ -36,7 +38,7 @@ const Services = () => {
 			ref={componentRef}
 		>
 			<div className='padding-global --section-medium'>
-				<div className={`'container' ${styles["services__container"]}`}>
+				<div className={`container ${styles["services__container"]}`}>
 					<div className={styles["services__wrapper"]}>
 						<header className={styles["services__header"]}>
 							<SectionLabel

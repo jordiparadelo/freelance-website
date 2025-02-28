@@ -1,17 +1,15 @@
 "use client";
 
-import { useRef } from "react";
-// Components
-import { Logo, ContactButton, AvatarDropdown } from "@/components/ui";
-import NavMenu from "./NavMenu";
-// Constants
+import { ContactButton, AvatarDropdown } from "@/components/ui";
 import { NAV_LINKS } from "@/lib/constants";
-// import NavIndex from './NavIndex'
-// Styles
+
+import { useRef } from "react";
+
+import NavMenu from "./NavMenu";
 import "./styles.scss";
 
 const Navbar = () => {
-	let navbarRef = useRef(null);
+	const navbarRef = useRef<HTMLElement>(null);
 	return (
 		<nav
 			ref={navbarRef}

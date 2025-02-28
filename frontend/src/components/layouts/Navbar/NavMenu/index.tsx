@@ -2,13 +2,21 @@
 
 import Link from "next/link";
 // Libs
-import useMediaQuery  from "@/hooks/useMediaQuery";
-// Constants
-import { NAV_LINKS } from "@/lib/constants";
+import useMediaQuery from "@/hooks/useMediaQuery";
 // Styles
 import styles from "./styles.module.scss";
 
-const DesktopMenu = ({links}) => (
+interface NavLink {
+	key: string;
+	href: string;
+	label: string;
+}
+
+interface MenuProps {
+	links?: NavLink[];
+}
+
+const DesktopMenu: React.FC<MenuProps> = ({ links }) => (
 	<menu className={styles["navbar-menu"]}>
 		{links?.map((link) => (
 			<Link
@@ -21,14 +29,17 @@ const DesktopMenu = ({links}) => (
 		))}
 	</menu>
 );
-const MobileMenu = () => <menu className={styles["navbar-menu"]}>Menu</menu>;
 
-const NavMenu = ({links}) => {
-	const isSmallDevice = useMediaQuery("only screen and (max-width: 768px)")
+const MobileMenu: React.FC = () => (
+	<menu className={styles["navbar-menu"]}>Menu</menu>
+);
+
+const NavMenu: React.FC<MenuProps> = ({ links }) => {
+	const isSmallDevice = useMediaQuery("only screen and (max-width: 768px)");
 
 	// return <DesktopMenu />
 
-	return isSmallDevice ? <MobileMenu links={links} /> : <DesktopMenu links={links}/>;
+	return isSmallDevice ? <MobileMenu /> : <DesktopMenu links={links} />;
 };
 
 export default NavMenu;

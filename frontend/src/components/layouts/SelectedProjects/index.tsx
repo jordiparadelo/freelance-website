@@ -1,16 +1,13 @@
-import { Button, Curves, SectionLabel } from "@/components/ui";
+import { SectionLabel } from "@/components/ui";
 import ProjectsList from "./ProjectsList";
 import Computer from "@/assets/animated-icons/selected-work.json";
 import { getLimitedProjects } from "@/lib/actions";
-
-import React, { Suspense } from "react";
-
-import Link from "next/link";
 // Styles
 import styles from "./styles.module.scss";
 
 const SelectedProjects = async () => {
-	const { data: projects } = await getLimitedProjects(10);
+	const response = await getLimitedProjects(10);
+	const projects = response?.data ?? [];
 
 	return (
 		<section
@@ -30,25 +27,8 @@ const SelectedProjects = async () => {
 									Check out the last projects
 								</h2>
 							</div>
-
-							{/* 
-							// TODO: Add when Projects site is done
-							<Link href='/projects'>
-								<Button>See more projects</Button>
-							</Link> 
-							*/}
 						</div>
 						<ProjectsList projects={projects} />
-
-						{/* 
-						// TODO: Add when Projects site is done
-						<div className={styles["selected-projects__actions"]}>
-							<Link href='/projects'>
-								<Button>See more projects</Button>
-							</Link>
-						</div> 
-						
-						*/}
 					</div>
 				</div>
 			</div>

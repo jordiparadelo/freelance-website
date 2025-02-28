@@ -1,10 +1,28 @@
 // Components
-import { SectionLabel } from "@/components/ui";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 // Styles
 import styles from "./styles.module.scss";
 
-const ServiceCard = ({ service }) => {
+interface ServiceImage {
+	src: StaticImageData;
+	alt: string;
+	width: number;
+	height: number;
+}
+
+interface Service {
+	id: string;
+	type: string;
+	title: string;
+	description: string;
+	gallery: ServiceImage[];
+}
+
+interface ServiceCardProps {
+	service: Service;
+}
+
+const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
 	return (
 		<figure
 			className={styles["service-card"]}
@@ -19,7 +37,10 @@ const ServiceCard = ({ service }) => {
 					{service.description}
 				</p>
 			</figcaption>
-			<div className={styles["service-card__image-container"]} height={300}>
+			<div 
+				className={styles["service-card__image-container"]} 
+				style={{ height: 300 }}
+			>
 				{service.gallery.map((image, index) => (
 					<Image
 						unoptimized

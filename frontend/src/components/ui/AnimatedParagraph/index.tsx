@@ -11,8 +11,13 @@ import { paragraphAnimation } from "./animations";
 // Styles
 import "./styles.scss";
 
-const AnimatedParagraph = ({ className, children }) => {
-	let componentRef = useRef(null);
+interface AnimatedParagraphProps {
+	className?: string;
+	children: React.ReactNode;
+}
+
+const AnimatedParagraph: React.FC<AnimatedParagraphProps> = ({ className, children }) => {
+	const componentRef = useRef<HTMLParagraphElement | null>(null);
 
 	useGSAP(() => {
 		paragraphAnimation(componentRef?.current);
@@ -24,7 +29,7 @@ const AnimatedParagraph = ({ className, children }) => {
 				className ? `animated-paragraph ${className}` : "animated-paragraph" 
 			}
 			ref={componentRef}
-			aria-label={children}
+			aria-label={typeof children === 'string' ? children : undefined}
 		>
 			{children}
 		</p>

@@ -6,11 +6,19 @@ import { useGSAP } from "@gsap/react";
 // Animation
 import { curveAnimation } from "./animations";
 
-const Curves = ({ className, orientation, fill }) => {
-	const componentRef = useRef(null)
+interface CurvesProps {
+	className?: string;
+	orientation?: "top" | "bottom";
+	fill?: string;
+}
+
+const Curves: React.FC<CurvesProps> = ({ className, orientation, fill }) => {
+	const componentRef = useRef<SVGSVGElement | null>(null);
 
 	useGSAP(() => {
-		componentRef && curveAnimation(componentRef.current)
+		if (componentRef.current) {
+			curveAnimation(componentRef.current);
+		}
 	}, {scope: componentRef})
 
 	return (

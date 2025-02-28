@@ -3,8 +3,6 @@ import {
 	About,
 	SelectedProjects,
 	Gallery,
-	ClientsReviews,
-	Products,
 	Services,
 	Process,
 } from "@/components/layouts";
@@ -17,9 +15,7 @@ const HomePage = () => {
 			<About />
 			<Services />
 			<Process />
-			{/* <Products /> */}
 			<SelectedProjects />
-			{/* <ClientsReviews /> */}
 		</>
 	);
 };
