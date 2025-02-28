@@ -1,0 +1,10 @@
+export {default as HomePage} from './HomePage';
+export {default as ProjectPage} from './ProjectPage';
+// export {default as AboutPage} from './AboutPage';
+// export {default as ServicesPage} from './ServicesPage';
+// export {default as ContactPage} from './ContactPage';
+// export {default as NotFoundPage} from './NotFoundPage';
+// export {default as ProjectsPage} from './ProjectsPage';
+// export {default as ReviewsPage} from './ReviewsPage';
+// export {default as SelectedProjectsPage} from './SelectedProjectsPage';
+// export {default as TemplatePage} from './TemplatePage';

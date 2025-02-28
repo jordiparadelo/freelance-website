@@ -1,0 +1,51 @@
+.navbar {
+	--offset: 0.5rem;
+
+	display: flex;
+	flex-direction: row;
+
+	position: sticky;
+	top: 1rem;
+	left: var(--offset);
+	right: var(--offset);
+	z-index: 100;
+
+	margin-inline: auto;
+	padding: var(--offset);
+
+	color: var(--color-light);
+	background-color: rgba(0, 0, 0, 0.1);
+	border: 1px solid var(--border-color--base);
+	border-radius: var(--corners--radius-medium);
+
+	backdrop-filter: blur(10px);
+
+	margin-block-end: calc(var(--navbar-size) * -1);
+	max-width: var(--max-width--xl);
+	width: calc(100% - var(--offset) * 2);
+
+	@media screen and (min-width: 1440px) {
+		max-width: var(--container-size-lg);
+	}
+
+	.container {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		max-width: unset;
+	}
+
+	.logo {
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	&__action {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 1rem;
+	}
+}

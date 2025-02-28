@@ -1,0 +1,117 @@
+{
+  "name": "next-typescript-rules",
+  "description": "Expert rules for Next.js App Router with TypeScript, React, Shadcn UI, Radix UI, and Tailwind",
+  "rules": {
+    "codeStyle": {
+      "general": [
+        "Write concise, technical TypeScript code",
+        "Use functional and declarative programming patterns",
+        "Avoid class-based components",
+        "Prefer iteration and modularization over code duplication",
+        "Use descriptive variable names with auxiliary verbs (isLoading, hasError)"
+      ],
+      "fileStructure": [
+        "Exported component",
+        "Subcomponents",
+        "Helpers",
+        "Static content",
+        "Types"
+      ]
+    },
+    "namingConventions": {
+      "directories": "lowercase with dashes (components/auth-wizard)",
+      "components": "PascalCase with named exports",
+      "functions": "camelCase",
+      "variables": "camelCase with auxiliary verbs",
+      "constants": "UPPERCASE_WITH_UNDERSCORES",
+      "types": "PascalCase"
+    },
+    "typescript": {
+      "preferences": [
+        "Use TypeScript for all code files",
+        "Prefer interfaces over types",
+        "Avoid enums, use const maps instead",
+        "Use functional components with TypeScript interfaces",
+        "Enable strict mode and noImplicitAny"
+      ],
+      "patterns": {
+        "avoid": ["any", "enums", "namespace"],
+        "prefer": ["interface", "type inference", "const assertions"]
+      }
+    },
+    "componentStructure": {
+      "pattern": "src/components/**/*.tsx",
+      "syntax": [
+        "Use 'function' keyword for pure functions",
+        "Avoid unnecessary curly braces in conditionals",
+        "Use declarative JSX",
+        "Favor named exports"
+      ],
+      "organization": {
+        "app/*": "Next.js app router pages and layouts",
+        "components/*": "Reusable React components by feature",
+        "lib/*": "Utility functions and configurations",
+        "types/*": "TypeScript interfaces and types"
+      }
+    },
+    "uiAndStyling": {
+      "frameworks": {
+        "primary": "Tailwind CSS",
+        "components": ["Shadcn UI", "Radix UI"]
+      },
+      "principles": [
+        "Mobile-first responsive design",
+        "Use Tailwind CSS utility classes",
+        "Implement Shadcn UI components",
+        "Utilize Radix UI for accessible primitives"
+      ],
+      "responsive": "Use Tailwind breakpoints consistently"
+    },
+    "performance": {
+      "serverComponents": [
+        "Minimize use of 'use client' directive",
+        "Favor React Server Components (RSC)",
+        "Use server-side data fetching"
+      ],
+      "clientComponents": [
+        "Wrap in Suspense with fallback",
+        "Use dynamic imports for non-critical components",
+        "Implement proper loading states"
+      ],
+      "optimization": {
+        "images": [
+          "Use WebP format",
+          "Include size data",
+          "Implement lazy loading",
+          "Use next/image component"
+        ],
+        "webVitals": [
+          "Optimize LCP (Largest Contentful Paint)",
+          "Minimize CLS (Cumulative Layout Shift)",
+          "Improve FID (First Input Delay)"
+        ]
+      }
+    },
+    "stateManagement": {
+      "url": "Use 'nuqs' for URL search parameter state",
+      "client": "Minimize useState and useEffect usage",
+      "server": "Prefer server-side state management"
+    },
+    "dataFetching": {
+      "preferred": "Server Components and Route Handlers",
+      "patterns": [
+        "Use React Server Components",
+        "Implement proper error boundaries",
+        "Handle loading states with Suspense"
+      ]
+    },
+    "routing": {
+      "structure": "Follow Next.js App Router conventions",
+      "patterns": [
+        "Use dynamic route segments appropriately",
+        "Implement proper loading and error pages",
+        "Handle parallel routes when needed"
+      ]
+    }
+  }
+}

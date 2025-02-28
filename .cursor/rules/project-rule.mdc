@@ -1,0 +1,102 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+Before diving into the best practices, please note that you may need to adapt the globs depending on your specific project structure.
+
+---
+name: nextjs-best-practices.mdc
+description: Best practices for Next.js applications and routing
+globs: **/*.{ts,tsx}
+---
+
+- Use the App Router for better performance and simpler routing
+- Implement proper error boundaries with `error.tsx` files
+- Use `loading.tsx` for loading states to improve user experience
+- Keep route-specific logic in `route.ts` files
+- Utilize Next.js built-in optimizations like image optimization and code splitting
+
+---
+name: react-best-practices.mdc
+description: Best practices for React component development
+globs: **/*.{tsx,jsx}
+---
+
+- Use functional components with hooks instead of class components
+- Keep components small and focused on a single responsibility
+- Utilize React.memo for performance optimization of pure components
+- Use the Context API for global state management
+- Implement proper prop type validation with TypeScript
+
+---
+name: typescript-best-practices.mdc
+description: TypeScript coding standards and type safety guidelines
+globs: **/*.{ts,tsx}
+---
+
+- Enable strict mode in tsconfig.json for better type checking
+- Use interfaces for object shapes and type aliases for unions and intersections
+- Leverage type inference to reduce unnecessary type annotations
+- Use readonly arrays and tuples when possible to prevent unintended mutations
+- Implement custom type guards for runtime type checking
+
+---
+name: shadcn-ui-best-practices.mdc
+description: Best practices for using Shadcn UI components
+globs: **/*.{tsx,jsx}
+---
+
+- Use Shadcn UI components as building blocks for your custom components
+- Customize components using the `className` prop and Tailwind CSS utilities
+- Override default styles by passing custom class names
+- Utilize the `asChild` prop to render components as different HTML elements
+- Keep custom components DRY by composing Shadcn UI primitives
+
+---
+name: tailwindcss-best-practices.mdc
+description: Best practices for using Tailwind CSS
+globs: **/*.{tsx,jsx,css}
+---
+
+- Use utility classes directly in your JSX for faster development
+- Create custom utility classes for frequently used styles
+- Utilize the `@apply` directive in CSS files for complex styles
+- Keep your `tailwind.config.js` organized and DRY
+- Use responsive prefixes for mobile-first design
+
+---
+name: react-context-best-practices.mdc
+description: Best practices for using React Context API
+globs: src/context/**/*.{ts,tsx}
+---
+
+- Use context for global state that is needed by many components
+- Create separate context for different domains of your application
+- Use the `useContext` hook instead of `Context.Consumer` for better readability
+- Implement custom hooks to abstract context usage
+- Avoid overusing context; prefer props for component-specific data
+
+---
+name: react-hooks-best-practices.mdc
+description: Best practices for creating custom React hooks
+globs: src/hooks/**/*.{ts,tsx}
+---
+
+- Name hooks with the `use` prefix to follow React conventions
+- Keep hooks focused on a single responsibility
+- Use `useCallback` and `useMemo` for performance optimization
+- Implement error handling and loading states in data-fetching hooks
+- Document hook usage, parameters, and return values
+
+---
+name: typescript-types-best-practices.mdc
+description: Best practices for defining TypeScript types
+globs: src/types/**/*.ts
+---
+
+- Use interfaces for object shapes and type aliases for unions and intersections
+- Group related types in a single file for better organization
+- Use generics for reusable types
+- Implement branded types for runtime type safety
+- Use utility types like `Partial`, `Readonly`, and `Pick` for type manipulation

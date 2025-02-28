@@ -1,0 +1,14 @@
+.contact-button {
+    --size: 40px;
+
+    border-radius: var(--corners--radius-round);
+    background-color: var(--background-color--base);
+    color: var(--background-color--alternative);
+    border: var(--border);
+    min-width: var(--size);
+    min-height: var(--size);
+    padding-inline: 2em;
+    font-size: 0.875rem;
+    line-height: 1.75rem;
+    text-align: center;
+}

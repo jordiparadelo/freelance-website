@@ -1,0 +1,28 @@
+.section-label {
+	display: flex;
+	flex-direction: row;
+	gap: 0.25rem;
+	place-items: center;
+
+	&:not([data-active="true"]) {
+		.section-label__icon {
+			--size: 0.55em;
+		}
+	}
+
+	&__icon {
+		--size: var(--section-label-size);
+
+		height: var(--size);
+		width: var(--size);
+		border-radius: 999px;
+		background: var(--background-color--alternative);
+		color: var(--color-text--font);
+		transition: height 0.2s ease, width 0.2s ease;
+		padding: 0.3rem;
+	}
+
+	&__text {
+		line-height: 100%;
+	}
+}
