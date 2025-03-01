@@ -3,9 +3,13 @@ import React from "react";
 import styles from "./styles.module.scss";
 import Image from "next/image";
 
-const GridBackground: React.FC = () => {
+interface GridBackgroundProps {
+	className?: string;
+}
+
+const GridBackground: React.FC<GridBackgroundProps> = ({ className }) => {
 	return (
-		<div className={styles["grid-background"]}>
+		<div className={`${styles["grid-background"]} ${className || ''}`}>
 			<Image
 				src="/assets/images/grid-background.svg"
 				alt="grid-background"

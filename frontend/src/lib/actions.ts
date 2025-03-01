@@ -1,41 +1,102 @@
 import { PROJECTS, PRODUCTS } from "@/lib/constants";
 
-export async function getProjects() {
-	let response;
+import { StaticImageData } from "next/image";
 
-	if (PROJECTS) {
-		response = {
-			data: PROJECTS,
-			error: null,
-		};
-	} else {
-		response = {
-			data: null,
-			error: "Failed to get projects",
-		};
-	}
-
-	const { data, error } = response;
-
-	return { data, error };
+interface Image {
+	src: StaticImageData;
+	alt: string;
+	width: number;
+	height: number;
 }
 
-export async function getProjectById(id) {
+interface Comment {
+	id: number;
+	comment: string;
+}
+
+export interface ProjectDetails {
+	brief: string;
+	blob: string;
+	client: string;
+	type: string[];
+	industries: string[];
+	year: string;
+	roles: string[];
+	collaboration: string[];
+}
+
+export interface Project {
+	id: string;
+	href: string;
+	image: Image;
+	title: string;
+	details: ProjectDetails;
+	challenge: string;
+	services: string[];
+	preview: string;
+	categories: string[];
+	gallery: Image[];
+}
+
+export interface Product {
+	id: string;
+	href: string;
+	image: Image;
+	category: string;
+	title: string;
+	details: string;
+	preview: string;
+	formats: string[];
+	likes: number;
+	comments: Comment[];
+	price: number;
+}
+
+interface Pagination {
+	page: number;
+	pageSize: number;
+	total: number;
+}
+
+interface Response<T> {
+	data: T[] | null;
+	error: string | null;
+}
+
+interface PaginatedResponse<T> {
+	data: T[];
+	pagination: Pagination;
+}
+
+export async function getProjects(): Promise<Response<Project>> {
+	const response = PROJECTS ? {
+		data: PROJECTS,
+		error: null,
+	} : {
+		data: null,
+		error: "Failed to get projects",
+	};
+
+	return response;
+}
+
+export async function getProjectById(id: string): Promise<Project | null> {
 	try {
 		const { data, error } = await getProjects();
-		const projectById = data.find((project) => project.id === id);
+		if (error || !data) throw error;
 
-		if (error) throw error;
-		return projectById;
+		const projectById = data.find((project) => project.id === id);
+		return projectById || null;
 	} catch (error) {
 		console.error(error);
 		return null;
 	}
 }
 
-export async function getLimitedProjects(limit) {
+export async function getLimitedProjects(limit: number): Promise<PaginatedResponse<Project> | null> {
 	try {
-		let { data, error } = await getProjects();
+		const { data, error } = await getProjects();
+		if (error || !data) throw error;
 
 		const projectsByLimit = data.slice(0, limit);
 
@@ -50,133 +111,121 @@ export async function getLimitedProjects(limit) {
 			total: data.length,
 		};
 
-		const response = {
+		return {
 			data: projectsByPage,
 			pagination,
 		};
-
-		if (error) throw error;
-		return response;
 	} catch (error) {
-		console.error(error.hint);
+		console.error(error instanceof Error ? error.message : error);
 		return null;
 	}
 }
 
-export async function getSortedProjects(order) {
+export async function getSortedProjects(order: 'asc' | 'desc' | 'default'): Promise<Project[] | null> {
 	const ORDER_OPTIONS = {
 		asc: true,
 		desc: false,
 		default: true,
-	};
+	} as const;
 
 	const orderOption = ORDER_OPTIONS[order];
 
 	try {
 		const { data, error } = await getProjects();
+		if (error || !data) throw error;
 
-		if (error) throw error;
+		const getYear = (project: Project) => JSON.parse(project.details.year);
 
-		const getYear = (data) => JSON.parse(data.details.year);
-
-		const sortedData = data.sort((a, b) => {
+		return data.sort((a, b) => {
 			return orderOption ? getYear(a) - getYear(b) : getYear(b) - getYear(a);
 		});
-
-		return sortedData;
 	} catch (error) {
-		console.error(error.hint);
+		console.error(error instanceof Error ? error.message : error);
 		return null;
 	}
 }
 
 // PRODUCTS
-export async function getProducts() {
-	let response;
+export async function getProducts(): Promise<Response<Product>> {
+	const response = PRODUCTS ? {
+		data: PRODUCTS,
+		error: null,
+	} : {
+		data: null,
+		error: "Failed to get products",
+	};
 
-	if (PRODUCTS) {
-		response = {
-			data: PRODUCTS,
-			error: null,
-		};
-	} else {
-		response = {
-			data: null,
-			error: "Failed to get projects",
-		};
-	}
-
-	const { data, error } = response;
-
-	return { data, error };
+	return response;
 }
 
-export async function getProductById(id) {
+export async function getProductById(id: string): Promise<Product | null> {
 	try {
 		const { data, error } = await getProducts();
-		const projectById = data.filter((project) => project.id === id);
+		if (error || !data) throw error;
 
-		if (error) throw error;
-		return projectById;
+		const productById = data.find((product) => product.id === id);
+		return productById || null;
 	} catch (error) {
 		console.error(error);
 		return null;
 	}
 }
 
-export async function getLimitedProducts(limit) {
+export async function getLimitedProducts(limit: number): Promise<PaginatedResponse<Product> | null> {
 	try {
-		let { data, error } = await getProducts();
+		const { data, error } = await getProducts();
+		if (error || !data) throw error;
 
-		const projectsByLimit = data.slice(0, limit);
+		const productsByLimit = data.slice(0, limit);
 
 		const page = 1;
 		const pageSize = limit;
 		const offset = (page - 1) * pageSize;
 
-		const projectsByPage = projectsByLimit.slice(offset, offset + pageSize);
+		const productsByPage = productsByLimit.slice(offset, offset + pageSize);
 		const pagination = {
 			page,
 			pageSize,
 			total: data.length,
 		};
 
-		const response = {
-			data: projectsByPage,
+		return {
+			data: productsByPage,
 			pagination,
 		};
-
-		if (error) throw error;
-		return response;
 	} catch (error) {
-		console.error(error.hint);
+		console.error(error instanceof Error ? error.message : error);
 		return null;
 	}
 }
 
-export async function getSortedProducts(order) {
+export async function getSortedProducts(order: 'asc' | 'desc' | 'default'): Promise<Product[] | null> {
 	const ORDER_OPTIONS = {
 		asc: true,
 		desc: false,
 		default: true,
-	};
+	} as const;
 
 	const orderOption = ORDER_OPTIONS[order];
 
 	try {
 		const { data, error } = await getProducts();
+		if (error || !data) throw error;
 
-		if (error) throw error;
+		const getYear = (product: Product): number => {
+			try {
+				const details = product.details;
+				return typeof details === 'string' ? parseInt(details, 10) || 0 : 0;
+			} catch {
+				return 0;
+			}
+		};
 
-		const getYear = (data) => JSON.parse(data.details.year);
-
-		const sortedData = data.sort((a, b) => {
+		return data.sort((a, b) => {
 			return orderOption ? getYear(a) - getYear(b) : getYear(b) - getYear(a);
 		});
-
-		return sortedData;
 	} catch (error) {
-		console.error(error.hint);
+		console.error(error instanceof Error ? error.message : error);
 		return null;
 	}
 }

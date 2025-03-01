@@ -6,7 +6,12 @@ import { usePathname } from "next/navigation";
 
 import React, { createContext, useContext, useState, useEffect } from "react";
 
-const MenuContext = createContext(undefined);
+interface MenuContextType {
+	scrollPosition: number;
+	setScrollPosition: React.Dispatch<React.SetStateAction<number>>;
+}
+
+const MenuContext = createContext<MenuContextType | undefined>(undefined);
 
 export const useMenuContext = () => {
 	const context = useContext(MenuContext);
@@ -22,7 +27,7 @@ export const MenuProvider = ({ children }: { children: React.ReactNode }) => {
 	const pathname = usePathname();
 
 	useEffect(() => {
-		let pageHeight;
+		let pageHeight: number = 0;
 
 		if (typeof window !== "undefined") {
 			pageHeight = document?.body.scrollHeight - window.innerHeight;

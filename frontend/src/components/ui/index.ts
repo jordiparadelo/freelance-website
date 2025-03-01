@@ -17,3 +17,4 @@ export {default as ReviewsList} from './ReviewsList';
 export {default as AvatarDropdown} from './AvatarDropdown';
 export {default as GridBackground} from './GridBackground';
 export {default as CircleScrollProgress} from './CircleScrollProgress';
+export { default as AnimatedContent } from './AnimatedContent';

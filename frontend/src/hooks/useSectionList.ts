@@ -4,20 +4,24 @@ import { usePathname } from "next/navigation";
 
 import { useEffect, useState } from "react";
 
+interface Section {
+	label: string;
+	id: string;
+}
 
-const useSectionList = () => {
+const useSectionList = (): Section[] => {
 	// const [sectionList, setSectionList] = useState([]);
-	const [sectionList, setSectionList] = useState([]);
+	const [sectionList, setSectionList] = useState<Section[]>([]);
 
 	const pathname = usePathname();
 
 	useEffect(() => {
 		// Get all sections
 		const sectionsWithId = Array.from(document.querySelectorAll("section"))
-			.filter(({ id }) => id)
+			.filter((section): section is HTMLElement => section instanceof HTMLElement && !!section.id)
 			.map(({ id }) => ({ label: formatString(id), id }));
 
-			setSectionList(sectionsWithId);
+		setSectionList(sectionsWithId);
 
 	}, [pathname]); // You might need to add dependencies here if necessary
 

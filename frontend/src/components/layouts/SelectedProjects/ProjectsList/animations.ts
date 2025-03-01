@@ -3,7 +3,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const projectsAnimation = (element) => {
+export const projectsAnimation = (element: HTMLElement) => {
 	const listItems = Array.from(element.children);
 
 	// Timeline
@@ -12,7 +12,7 @@ export const projectsAnimation = (element) => {
 	// Animations
 
 	listItems.forEach((item, index) => {
-		let animation = gsap.timeline();
+		const animation = gsap.timeline();
 
 		animation.from(item, {
 			opacity: 0.5,

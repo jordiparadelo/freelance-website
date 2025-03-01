@@ -7,10 +7,14 @@ import CopyClip from '@/assets/icons/copy.svg'
 // Styles
 import styles from "./styles.module.scss";
 
-const CopyToClipboard = ({ children }) => {
+interface CopyToClipboardProps {
+	children: string;
+}
+
+const CopyToClipboard: React.FC<CopyToClipboardProps> = ({ children }) => {
 	const [isCopied, setIsCopied] = useState(false);
 
-	function copyToClipboard(text) {
+	function copyToClipboard(text: string): void {
 		navigator.clipboard.writeText(text);
 
 		setIsCopied(true);
@@ -19,16 +23,15 @@ const CopyToClipboard = ({ children }) => {
 			setIsCopied(false);
 		}, 3000);
 	}
-	function handleSubmit(e) {
+
+	function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
 		e.preventDefault();
 
-		const formElementsMap = new Map(
-			Object.entries(e.target.elements).map(([name, element]) => {
-				return [name, element.value];
-			})
-		);
+		const formElements = e.currentTarget.elements as HTMLFormControlsCollection & {
+			clipboard: HTMLInputElement;
+		};
 
-		copyToClipboard(formElementsMap.get("clipboard"));
+		copyToClipboard(formElements.clipboard.value);
 	}
 
 	return (

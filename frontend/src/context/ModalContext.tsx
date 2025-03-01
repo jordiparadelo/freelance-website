@@ -5,31 +5,50 @@ import React, {
 	useContext,
 	useState,
 	useEffect,
+	useCallback,
 } from "react";
 
-const ModalContext = createContext(undefined);
+interface ModalContextType {
+	isModalOpen: boolean;
+	openModal: () => void;
+	closeModal: () => void;
+	toggleModal: () => void;
+	setModalComponent: React.Dispatch<React.SetStateAction<React.ReactNode>>;
+}
+
+const ModalContext = createContext<ModalContextType | undefined>(undefined);
 
 export const useModalContext = () => {
 	const context = useContext(ModalContext);
 	if (!context) {
-		throw new Error("useMenuContext must be used within a MenuProvider");
+		throw new Error("useModalContext must be used within a ModalProvider");
 	}
 	return context;
 };
 
 export const ModalProvider = ({ children }: { children: React.ReactNode }) => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
-	const [modalComponent, setModalComponent] = useState(null);
+	const [modalComponent, setModalComponent] = useState<React.ReactNode>(null);
 
-	const openModal = () => setIsModalOpen(true);
-	const closeModal = () => setIsModalOpen(false);
-	const toggleModal = () => setIsModalOpen((prevState) => !prevState);
+	const openModal = useCallback(() => setIsModalOpen(true), []);
+	const closeModal = useCallback(() => setIsModalOpen(false), []);
+	const toggleModal = useCallback(() => setIsModalOpen((prev) => !prev), []);
 
 	useEffect(() => {
-		if(isModalOpen === false) {
-			setModalComponent(null)
+		if (!isModalOpen) {
+			const timer = setTimeout(() => {
+				setModalComponent(null);
+			}, 300); // Add a small delay to allow for exit animations
+
+			return () => clearTimeout(timer);
 		}
 	}, [isModalOpen]);
+
+	const handleModalClick = useCallback((e: React.MouseEvent) => {
+		if (e.target === e.currentTarget) {
+			closeModal();
+		}
+	}, [closeModal]);
 
 	return (
 		<ModalContext.Provider
@@ -37,14 +56,15 @@ export const ModalProvider = ({ children }: { children: React.ReactNode }) => {
 		>
 			{children}
 			{isModalOpen && (
-				<div className='modal' onClick={() => closeModal}>{modalComponent && modalComponent}</div>
+				<div className='modal' onClick={handleModalClick}>
+					{modalComponent}
+				</div>
 			)}
 		</ModalContext.Provider>
 	);
 };
 
-export const useModal = (component) => {
-	const { isModalOpen, openModal, closeModal, toggleModal, setModalComponent } = useModalContext();
-	// Add your logic to trigger the menu based on scroll position or any other condition
-	return { isModalOpen, openModal, closeModal, toggleModal , setModalComponent};
+export const useModal = () => {
+	const context = useModalContext();
+	return context;
 };

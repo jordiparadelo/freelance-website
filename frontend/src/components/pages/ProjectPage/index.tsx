@@ -1,8 +1,13 @@
 import React from "react";
+import type { Project } from "@/lib/actions";
 import Image from "next/image";
 import styles from "./styles.module.scss";
 
-const ProjectPage = ({ project }) => {
+interface ProjectPageProps {
+	project: Project;
+}
+
+const ProjectPage: React.FC<ProjectPageProps> = ({ project }) => {
 	return (
 		<article className={styles["project-page"]}>
 			<div className='padding-global'>

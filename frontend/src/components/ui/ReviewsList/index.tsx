@@ -46,7 +46,9 @@ const ReviewsList = ({ reviews }: ReviewsListProps) => {
 	})
 
 	useGSAP(() => {
-		animation.current = reviewAnimation(componentRef.current);
+		if (componentRef.current) {
+			animation.current = reviewAnimation(componentRef.current);
+		}
 	}, { dependencies: [size], scope: componentRef });
 
 	return (

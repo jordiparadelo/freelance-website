@@ -1,39 +1,38 @@
 "use client";
 
-import React, { useEffect } from "react";
-// Styles
-import styles from "../styles.module.scss";
-// Context
 import { useHero } from "@/context/HeroContext";
 import { useScroll } from "@/context/ScrollContext";
 import { useColorTheme } from "@/hooks/useColorTheme";
-// Constants
 import { NAV_LINKS, SOCIAL_LINKS } from "@/lib/constants";
+
+import React, { useEffect } from "react";
+
+import styles from "../styles.module.scss";
 
 const SideNav = () => {
 	const { isOpen, setIsOpen } = useHero();
-	const scrollTo = useScroll();
-	const [theme, setColorTheme] = useColorTheme();
+	const { scrollTo } = useScroll();
+	const [theme, setTheme] = useColorTheme();
 
 	useEffect(() => {
-		const handleKeyDown = (e) => {
+		const handleKeyDown = (e: KeyboardEvent): void => {
 			if (e.key === "Escape") {
 				setIsOpen(false);
 			} else if (
 				isOpen &&
-				NAV_LINKS[0].sections.some((link, index) => index + 1 === Number(e.key))
+				NAV_LINKS[0].sections?.some((link, index) => index + 1 === Number(e.key))
 			) {
 				const index = Number(e.key) - 1;
-				scrollTo(NAV_LINKS[0].sections[index].href);
+				scrollTo(NAV_LINKS[0].sections[index]?.href || "");
 			}
 		};
 
 		if (isOpen) {
-			window.addEventListener("keydown", handleKeyDown);
+			document.addEventListener("keydown", handleKeyDown);
 		}
 
 		return () => {
-			window.removeEventListener("keydown", handleKeyDown);
+			document.removeEventListener("keydown", handleKeyDown);
 		};
 	}, [isOpen, setIsOpen, scrollTo]);
 
@@ -93,7 +92,7 @@ const SideNav = () => {
 				<div className={styles["hero__frame-nav__block--switch-theme"]}>
 					<button
 						className={styles["hero__frame-nav__switch-button"]}
-						onClick={() => setColorTheme("dark")}
+						onClick={() => setTheme("dark")}
 						aria-label="Change to Dark theme"
 						data-selected={theme === "dark"}
 					>
@@ -101,7 +100,7 @@ const SideNav = () => {
 					</button>
 					<button
 						className={styles["hero__frame-nav__switch-button"]}
-						onClick={() => setColorTheme("light")}
+						onClick={() => setTheme("light")}
 						aria-label="Change to Light theme"
 						data-selected={theme === "light"}
 					>

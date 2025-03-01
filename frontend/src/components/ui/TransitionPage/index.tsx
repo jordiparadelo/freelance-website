@@ -5,7 +5,11 @@ import { motion } from "framer-motion";
 // Styles
 import "./styles.scss";
 
-const TransitionPage = ({ children }) => {
+interface TransitionPageProps {
+	children: React.ReactNode;
+}
+
+const TransitionPage = ({ children }: TransitionPageProps) => {
 	return (
 		<>
 		{children}

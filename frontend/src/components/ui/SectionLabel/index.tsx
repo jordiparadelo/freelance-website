@@ -5,16 +5,20 @@ import Lottie from "lottie-react";
 import { useIntersectionObserver } from "@uidotdev/usehooks";
 import './styles.scss'
 
+interface SectionLabelProps {
+	label: string;
+	animationData: object;
+	className?: string;
+}
 
-const SectionLabel = ({ label, animationData }) => {
+const SectionLabel: React.FC<SectionLabelProps> = ({ label, animationData, className }) => {
 	const iconRef = useRef(null);
 
 	const [ref, entry] = useIntersectionObserver({
 		threshold: 0.5,
 		root: null,
 		rootMargin: "-150px",
-	  });
-
+	});
 
 	const iconProps = {
 		animationData: animationData,
@@ -27,13 +31,17 @@ const SectionLabel = ({ label, animationData }) => {
 	};
 
 	return (
-		<div className="section-label" ref={ref} data-active={entry?.isIntersecting}>
+		<div 
+			className={`section-label ${className || ''}`} 
+			ref={ref} 
+			data-active={entry?.isIntersecting}
+		>
 			<Lottie
 				{...iconProps}
 				lottieRef={iconRef}
 				className='section-label__icon'
 			/>
-			<p className='section-label__text'></p>{label}
+			<p className='section-label__text'>{label}</p>
 		</div>
 	);
 };

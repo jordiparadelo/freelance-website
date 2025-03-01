@@ -1,0 +1,1 @@
+export { default as WorldIcon } from './globe.svg'; 

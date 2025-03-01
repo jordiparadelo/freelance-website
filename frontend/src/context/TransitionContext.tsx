@@ -1,13 +1,23 @@
+"use client";
+
 import React, { createContext, useContext, useState } from "react";
 
-export const TransitionContext = createContext(undefined);
+import gsap from "gsap";
+
+interface TransitionContextType {
+	timeline: gsap.core.Timeline;
+	setTimeline: React.Dispatch<React.SetStateAction<gsap.core.Timeline>>;
+}
+
+export const TransitionContext = createContext<TransitionContextType | undefined>(undefined);
 
 const initialState = gsap.timeline({ paused: true });
 
-export const Transition = ({ children }: { children: React.ReactNode }) => {
-    const [timeline, setTimeline] = useState(initialState);
+export const TransitionProvider = ({ children }: { children: React.ReactNode }) => {
+	const [timeline, setTimeline] = useState<gsap.core.Timeline>(initialState);
+
 	return (
-		<TransitionContext.Provider value={{timeline, setTimeline}}>
+		<TransitionContext.Provider value={{ timeline, setTimeline }}>
 			{children}
 		</TransitionContext.Provider>
 	);

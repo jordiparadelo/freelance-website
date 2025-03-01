@@ -1,8 +1,13 @@
-// Styles
+import { type ProjectDetails } from "@/lib/types";
+
 import "./styles.scss";
 
-const ProjectDetailsList = ({ details }) => {
-	if (!details) return;
+interface ProjectDetailsListProps {
+	details: ProjectDetails;
+}
+
+const ProjectDetailsList: React.FC<ProjectDetailsListProps> = ({ details }) => {
+	if (!details) return null;
 
 	const { client, type, industries, year, roles, collaboration } = details;
 
@@ -20,12 +25,12 @@ const ProjectDetailsList = ({ details }) => {
 				<div className='project-detail-list__col'>
 					<h4 className='project-detail-list__title'>Project Type</h4>
 					<ul className='project__categories'>
-						{type?.map((type) => (
+						{type?.map((typeItem: string) => (
 							<li
 								className='project__category'
-								key={type}
+								key={typeItem}
 							>
-								{type}
+								{typeItem}
 							</li>
 						))}
 					</ul>
@@ -35,7 +40,7 @@ const ProjectDetailsList = ({ details }) => {
 				<div className='project-detail-list__col'>
 					<h4 className='project-detail-list__title'>Industry</h4>
 					<p>
-						{industries?.map((industry) => (
+						{industries?.map((industry: string) => (
 							<span key={industry}>{industry}</span>
 						))}
 					</p>
@@ -43,7 +48,7 @@ const ProjectDetailsList = ({ details }) => {
 				<div className='project-detail-list__col'>
 					<h4 className='project-detail-list__title'>Roles</h4>
 					<ul className='project__categories'>
-						{roles?.map((role) => (
+						{roles?.map((role: string) => (
 							<li
 								className='project__category'
 								key={role}
@@ -56,12 +61,12 @@ const ProjectDetailsList = ({ details }) => {
 				<div className='project-detail-list__col'>
 					<h4 className='project-detail-list__title'>Collaboration</h4>
 					<ul className='project__categories'>
-						{collaboration?.map((colaborator) => (
+						{collaboration?.map((collaborator: string) => (
 							<li
 								className='project__category'
-								key={colaborator}
+								key={collaborator}
 							>
-								{colaborator}
+								{collaborator}
 							</li>
 						))}
 					</ul>

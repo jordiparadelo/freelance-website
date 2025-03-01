@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useState, MouseEvent } from "react";
-// Hooks
 import useLiveClock from "@/hooks/useLiveClock";
-// Assets
+import useMediaQuery from "@/hooks/useMediaQuery";
+
 import WorldIcon from "@/assets/icons/globe.svg";
-// Styles
+
+import { useEffect, useState, MouseEvent } from "react";
+
 import styles from "./styles.module.scss";
-import useMediaQuery  from "@/hooks/useMediaQuery";
 
 const Banner = () => {
 	const [isAvailable, setIsAvailable] = useState(false);

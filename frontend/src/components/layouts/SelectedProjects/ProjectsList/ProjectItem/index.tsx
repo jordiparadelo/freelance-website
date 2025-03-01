@@ -1,4 +1,6 @@
 // Next.js
+import React from "react";
+import type { Project } from "@/lib/actions";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -8,7 +10,11 @@ import styles from "../styles.module.scss";
 // Assets
 import LinkIcon from "@/assets/icons/link.svg";
 
-const ProjectItem = ({ project }) => {
+interface ProjectItemProps {
+	project: Project;
+}
+
+const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
 	return (
 		<article
 			className={styles["project"]}

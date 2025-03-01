@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import React, { useRef, useEffect, useState } from 'react';
 import Image from "next/image";
 // Styles
 import styles from "./styles.module.scss";
@@ -10,41 +10,41 @@ import { Button } from "..";
 // Constants
 import { ABOUT } from "@/lib/constants";
 
-const AvatarDropdown = () => {
+const AvatarDropdown: React.FC = () => {
 	// State to manage dropdown open/close status
-	const [dropdownOpen, setDropdownOpen] = useState(false);
-	const dropdownRef = useRef(null);
+	const [isDropdownOpen, setDropdownOpen] = useState(false);
+	const dropdownRef = useRef<HTMLDivElement>(null);
 
 	// Function to handle clicks outside the dropdown
-	const handleClicksOutsideDropdown = (event) => {
-		if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+	const handleClicksOutsideDropdown = (event: MouseEvent): void => {
+		if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
 			setDropdownOpen(false);
 		}
 	};
 
-	// Function to handle Escape key press to close the dropdown
-	const handleEscDropdown = (event) => {
-		if (event.key === "Escape") {
+	// Function to handle Escape key press
+	const handleEscDropdown = (event: KeyboardEvent): void => {
+		if (event.key === 'Escape') {
 			setDropdownOpen(false);
 		}
 	};
 
 	// Effect to manage event listeners for closing the dropdown
 	useEffect(() => {
-		if (dropdownOpen) {
-			window.addEventListener("click", handleClicksOutsideDropdown);
+		if (isDropdownOpen) {
+			document.addEventListener('mousedown', handleClicksOutsideDropdown);
 			window.addEventListener("keydown", handleEscDropdown);
 		} else {
-			window.removeEventListener("click", handleClicksOutsideDropdown);
+			document.removeEventListener('mousedown', handleClicksOutsideDropdown);
 			window.removeEventListener("keydown", handleEscDropdown);
 		}
 
 		// Cleanup function to remove event listeners
 		return () => {
-			window.removeEventListener("click", handleClicksOutsideDropdown);
+			document.removeEventListener('mousedown', handleClicksOutsideDropdown);
 			window.removeEventListener("keydown", handleEscDropdown);
 		};
-	}, [dropdownOpen]);
+	}, [isDropdownOpen]);
 
 	// Function to toggle the dropdown open state
 	const toggleDropdownOpen = () => {
@@ -55,7 +55,7 @@ const AvatarDropdown = () => {
 		<div
 			tabIndex={0}
 			aria-haspopup='true'
-			aria-expanded={dropdownOpen}
+			aria-expanded={isDropdownOpen}
 			className={styles["avatar-dropdown"]}
 			ref={dropdownRef}
 		>
@@ -77,8 +77,8 @@ const AvatarDropdown = () => {
 
 			<div
 				role='menu'
-				aria-hidden={!dropdownOpen}
-				hidden={!dropdownOpen}
+				aria-hidden={!isDropdownOpen}
+				hidden={!isDropdownOpen}
 				className={styles["avatar-dropdown__menu"]}
 			>
 				{/* Contact Details */}

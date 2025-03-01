@@ -1,8 +1,14 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 
-const HeroContext = React.createContext();
+interface HeroContextType {
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  toggleMenu: () => void;
+}
+
+const HeroContext = React.createContext<HeroContextType | undefined>(undefined);
 
 export const useHeroContext = () => {
   const context = React.useContext(HeroContext);
@@ -20,14 +26,14 @@ export const HeroProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   return (
-    <HeroContext.Provider value={{ isOpen,setIsOpen, toggleMenu }}>
+    <HeroContext.Provider value={{ isOpen, setIsOpen, toggleMenu }}>
       {children}
     </HeroContext.Provider>
   );
 };
 
 export const useHero = () => {
-  const { isOpen,setIsOpen, toggleMenu } = useHeroContext();
-  return { isOpen,setIsOpen, toggleMenu };
+  const { isOpen, setIsOpen, toggleMenu } = useHeroContext();
+  return { isOpen, setIsOpen, toggleMenu };
 };
 

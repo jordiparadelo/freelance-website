@@ -10,25 +10,27 @@ import useModal from "@/hooks/useModal";
 import "./styles.scss";
 import { useScroll } from "@/context/ScrollContext";
 
+type ModalType = "project" | "product" | "contact";
+
+const MODAL_CHILD_TYPE = {
+	project: {
+		component: <ProjectModal />,
+		loading: "Loading...",
+	},
+	product: {
+		component: "<p>ProductModal</p>",
+		loading: "Loading...",
+	},
+	contact: {
+		component: <ContactModal />,
+		loading: "Loading...",
+	},
+} as const;
+
 const Modal = () => {
 	const { params, closeModal, showModal } = useModal(["type", "id"]);
-	const [type] = params;
+	const [type] = params as [ModalType | undefined];
 	const { lenis } = useScroll();
-
-	const MODAL_CHILD_TYPE = {
-		project: {
-			component: <ProjectModal />,
-			loading: "Loading...",
-		},
-		product: {
-			component: "<p>ProductModal</p>",
-			loading: "Loading...",
-		},
-		contact: {
-			component: <ContactModal />,
-			loading: "Loading...",
-		},
-	};
 
 	const component = type ? MODAL_CHILD_TYPE[type]?.component : null;
 	const loading = type ? MODAL_CHILD_TYPE[type]?.loading : <p>Loading...</p>;

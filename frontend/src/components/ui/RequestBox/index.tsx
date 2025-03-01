@@ -1,16 +1,35 @@
 "use client";
 
-import React, { useRef } from "react";
-// Styles
-import "./styles.scss";
 import { useGSAP } from "@gsap/react";
 
-const RequestBox = ({frontFace, backFace, topFace, bottomFace, leftFace, rightFace, className}) => {
-	const componentRef = useRef(null);
+import React, { useRef } from "react";
+
+import "./styles.scss";
+
+interface RequestBoxProps {
+	frontFace?: React.ReactNode;
+	backFace?: React.ReactNode;
+	topFace?: React.ReactNode;
+	bottomFace?: React.ReactNode;
+	leftFace?: React.ReactNode;
+	rightFace?: React.ReactNode;
+	className?: string;
+}
+
+const RequestBox: React.FC<RequestBoxProps> = ({
+	frontFace,
+	backFace,
+	topFace,
+	bottomFace,
+	leftFace,
+	rightFace,
+	className
+}) => {
+	const componentRef = useRef<HTMLDivElement | null>(null);
 
 	useGSAP(
 		() => {
-			function handleHover(event) {
+			function handleHover(event: MouseEvent) {
 				const EVENT_TYPE = {
 					mouseenter: handleMouseEnter,
 					mouseleave: handleMouseLeave,
@@ -21,60 +40,69 @@ const RequestBox = ({frontFace, backFace, topFace, bottomFace, leftFace, rightFa
 				}
 				function handleMouseLeave() {
 					componentRef?.current?.classList.remove("hover");
-
-					componentRef?.current.removeAttribute('style');
+					componentRef?.current?.removeAttribute('style');
 				}
 
-				event.type ? EVENT_TYPE[event.type]() : null;
+				if (event.type && event.type in EVENT_TYPE) {
+					EVENT_TYPE[event.type as keyof typeof EVENT_TYPE]();
+				}
 			}
-			function handleMouseOver(event) {
-				const { layerX, layerY } = event;
+
+			function handleMouseOver(event: MouseEvent) {
+				if (!componentRef.current) return;
+
+				const { clientX, clientY } = event;
+				const rect = componentRef.current.getBoundingClientRect();
+				const layerX = clientX - rect.left;
+				const layerY = clientY - rect.top;
+
 				const rotateX = Number(
-					((2 * layerX) / componentRef?.current.clientWidth - 1).toFixed(2)
+					((2 * layerX) / componentRef.current.clientWidth - 1).toFixed(2)
 				);
 				const rotateY = Number(
-					((2 * layerY) / componentRef?.current.clientHeight - 1).toFixed(2)
+					((2 * layerY) / componentRef.current.clientHeight - 1).toFixed(2)
 				);
 
-				componentRef?.current.setAttribute(
-					"style",
-					`--mouse-rotate-x : ${rotateX};
-				--mouse-rotate-y : ${rotateY}`
-				);
+				componentRef.current.style.setProperty('--mouse-rotate-x', String(rotateX));
+				componentRef.current.style.setProperty('--mouse-rotate-y', String(rotateY));
 			}
 
-			componentRef?.current.addEventListener("mouseenter", handleHover);
-			componentRef?.current.addEventListener("mouseleave", handleHover);
-			componentRef?.current.addEventListener("mousemove", handleMouseOver);
-			// componentRef?.current.onMouseOver = handleMouseOver
-			// componentRef?.current.onmouseenter = handleHover
-			// componentRef?.current.onmouseleave = handleHover
+			const element = componentRef.current;
+			if (element) {
+				element.addEventListener("mouseenter", handleHover);
+				element.addEventListener("mouseleave", handleHover);
+				element.addEventListener("mousemove", handleMouseOver);
+
+				return () => {
+					element.removeEventListener("mouseenter", handleHover);
+					element.removeEventListener("mouseleave", handleHover);
+					element.removeEventListener("mousemove", handleMouseOver);
+				};
+			}
 		},
 		{ scope: componentRef }
 	);
 
 	return (
 		<div className={className ? `scene--box ${className}` : "scene--box"} ref={componentRef}>
-			<div
-				className='request-box box--rotate'
-			>
+			<div className='request-box box--rotate'>
 				<div className='request-box__face request-box__face--front'>
-				{frontFace && frontFace}
+					{frontFace}
 				</div>
 				<div className='request-box__face request-box__face--back'>
-					{backFace && backFace}
+					{backFace}
 				</div>
 				<div className='request-box__face request-box__face--right'>
-				{rightFace && rightFace}
+					{rightFace}
 				</div>
 				<div className='request-box__face request-box__face--left'>
-				{leftFace && leftFace}
+					{leftFace}
 				</div>
 				<div className='request-box__face request-box__face--top'>
-				{topFace && topFace}
+					{topFace}
 				</div>
 				<div className='request-box__face request-box__face--bottom'>
-				{bottomFace && bottomFace}
+					{bottomFace}
 				</div>
 			</div>
 		</div>

@@ -1,27 +1,38 @@
+import { SectionLabel, Button } from "@/components/ui";
+import { getLimitedProducts } from "@/lib/actions";
+import type { Product as ProductType } from "@/lib/actions";
+import ShoppingCart from "@/assets/animated-icons/shopping-cart.json";
+
 import React from "react";
+
 import Image from "next/image";
 import Link from "next/link";
-// Components
-import { SectionLabel, Button } from "@/components/ui";
-// Constants
-// import { PRODUCTS as products } from "@/lib/constants";
-import {getLimitedProducts} from '@/lib/actions'
-// Assets
-import ShoppingCart from "@/assets/animated-icons/shopping-cart.json";
-// Styles
+
 import styles from "./styles.module.scss";
 
 const Products = async () => {
-	const { data: products } = await getLimitedProducts(3)
+	const response = await getLimitedProducts(3);
+	
+	if (!response) {
+		return (
+			<section id="products" className={styles.products}>
+				<div className="container">
+					<p>No products available</p>
+				</div>
+			</section>
+		);
+	}
+
+	const { data: products } = response;
 
 	return (
-		<section id='products' className={styles.products}>
+		<section id="products" className={styles.products}>
 			<div className={styles.container}>
 				<div className={styles.products__wrapper}>
 					<header className={styles.section_header}>
 						<div className={styles.section_header__wrapper}>
 							<SectionLabel
-								label='Products'
+								label="Products"
 								animationData={ShoppingCart}
 								className={styles.section_label}
 							/>
@@ -40,7 +51,7 @@ const Products = async () => {
 								href={product.href}
 								key={product.id}
 							>
-								<Product product={product} />
+								<ProductComponent product={product} />
 							</Link>
 						))}
 					</div>
@@ -52,7 +63,11 @@ const Products = async () => {
 
 export default Products;
 
-export const Product = ({ product }) => {
+interface ProductProps {
+	product: ProductType;
+}
+
+const ProductComponent: React.FC<ProductProps> = ({ product }) => {
 	return (
 		<figure className={styles.product}>
 			<div className={styles.product__image}>
@@ -74,18 +89,17 @@ export const Product = ({ product }) => {
 				<div className={styles.product__content_block}>
 					<h4>Format</h4>
 					<ul className={styles.product__format_list}>
-						{product.formats.map((formats) => (
+						{product.formats.map((format: string) => (
 							<li
 								className={styles.product__format}
-								key={formats}
+								key={format}
 							>
 								<Image
 									unoptimized
-									key={formats}
-									src={`/${formats}.svg`}
+									src={`/${format}.svg`}
 									width={32}
 									height={32}
-									alt={`${formats}`}
+									alt={format}
 									className={styles.product__format_icon}
 								/>
 							</li>

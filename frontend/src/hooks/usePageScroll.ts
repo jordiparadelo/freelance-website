@@ -4,23 +4,28 @@ import { useState, useEffect } from "react";
 
 import { usePathname } from "next/navigation";
 
-const usePageScroll = () => {
+interface UsePageScrollReturn {
+	scrollPosition: number;
+	scrollToElement: (element: string) => number | undefined;
+}
+
+const usePageScroll = (): UsePageScrollReturn => {
 	const [scrollPosition, setScrollPosition] = useState(0);
 	const size = useWindowSize();
 	const pathname = usePathname();
 
 	// Methods 
-	function scrollToElement(element) {
-		if(!element) return
-		const selectedElement = document.querySelector(element);
+	function scrollToElement(element: string): number | undefined {
+		if (!element) return;
+		const selectedElement = document.querySelector<HTMLElement>(element);
+		if (!selectedElement) return;
 
-		selectedElement.scrollIntoView({ behavior: "smooth" })
-
-		return selectedElement?.getBoundingClientRect().top
+		selectedElement.scrollIntoView({ behavior: "smooth" });
+		return selectedElement.getBoundingClientRect().top;
 	}
 
 	useEffect(() => {
-		let pageHeight;
+		let pageHeight: number = 0;
 
 		if (typeof window !== "undefined") {
 			pageHeight = document?.body.scrollHeight - window.innerHeight;
@@ -38,7 +43,7 @@ const usePageScroll = () => {
 		};
 	}, [size, pathname]);
 
-	return { scrollPosition, scrollToElement};
+	return { scrollPosition, scrollToElement };
 };
 
 export default usePageScroll;

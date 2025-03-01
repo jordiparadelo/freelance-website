@@ -2,14 +2,18 @@ import gsap from "gsap";
 
 import SplitType from "split-type";
 
-export const buttonAnimation = (element) => {
-  const timeline = gsap.timeline({ paused: true, });
-  const label = element.querySelectorAll(".button__label");
+export const buttonAnimation = (element: HTMLElement) => {
+  if (!element) return;
 
-  const splitWords = new SplitType(label, { types: "chars", ease: "power1.inOut", duration: 0.2,});
+  const timeline = gsap.timeline({ paused: true, });
+  const label: NodeListOf<HTMLElement> = element.querySelectorAll(".button__label");
+
+  const splitWords: SplitType = new SplitType(label, { types: "chars"});
+
+  if (!splitWords) return;
 
   timeline
-    .to(splitWords.elements, {
+    .to(splitWords?.chars, {
       transform: "translateY(-50%)",
 	  duration: 0.5,
       stagger: 0.01,

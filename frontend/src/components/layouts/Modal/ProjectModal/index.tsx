@@ -5,41 +5,46 @@ import ProjectDetailsList from "./ProjectDetailsList";
 import ProjectGallery from "./ProjectGallery";
 
 import { useLayoutEffect, useState } from "react";
-
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 // Lib
-import { getProjectById } from "@/lib/actions";
+import { getProjectById, type Project } from "@/lib/actions";
 // Styles
 import styles from "./styles.module.scss";
 
 const ProjectModal = () => {
-	const [project, setProject] = useState(null);
+	const [project, setProject] = useState<Project | null>(null);
 	const searchParams = useSearchParams();
 	const id = searchParams.get("id");
 
 	useLayoutEffect(() => {
+		if (!id) return;
+
 		const fetchData = async () => {
 			const data = await getProjectById(id);
-			return data;
+			if (data) {
+				setProject(data);
+			}
 		};
 
-		fetchData().then((data) => {
-			setProject(...data);
-		});
+		fetchData();
 	}, [id]);
+
+	if (!project) {
+		return <div className={styles["project-detail"]}>Loading...</div>;
+	}
 
 	return (
 		<article className={styles["project-detail"]}>
 			<div className='container'>
 				<div className={styles["project__header"]}>
 					<div className={styles["project__heading-wrapper"]}>
-						<h3 className={styles["project__title"]}>{project?.title}</h3>
+						<h3 className={styles["project__title"]}>{project.title}</h3>
 					</div>
 					<div className='action_wrapper'>
 						<Button
-							href={project?.preview}
-							target='_blank'
+							href={project.preview}
+							className={styles["project__link"]}
 						>
 							Live view
 						</Button>
@@ -51,7 +56,7 @@ const ProjectModal = () => {
 					<div className={styles["project-detail__content-wrapper"]}>
 						<div className={styles["project-detail__content"]}>
 							<p className={styles["project-detail__description"]}>
-								{project?.details?.blob}
+								{project.details.blob}
 							</p>
 						</div>
 
@@ -60,14 +65,14 @@ const ProjectModal = () => {
 								<h4 className={styles["project-detail__aside__block-title"]}>
 									Challenge
 								</h4>
-								<p>{project?.challenge}</p>
+								<p>{project.challenge}</p>
 							</div>
 							<div className={styles["project-detail__aside__block"]}>
 								<h4 className={styles["project-detail__aside__block-title"]}>
 									Services
 								</h4>
 								<ul className={styles["project__categories"]}>
-									{project?.services?.map((service) => (
+									{project.services.map((service: string) => (
 										<li
 											className={styles["project__category"]}
 											key={service}
@@ -83,17 +88,17 @@ const ProjectModal = () => {
 					<div className={styles["project-detail__image"]}>
 						<Image
 							unoptimized
-							src={project?.image?.src}
-							alt={project?.image?.alt}
-							width={project?.image?.width}
-							height={project?.image?.height}
+							src={project.image.src}
+							alt={project.image.alt}
+							width={project.image.width}
+							height={project.image.height}
 							priority={true}
 						/>
 					</div>
 
-					<ProjectDetailsList details={project?.details} />
+					<ProjectDetailsList details={project.details} />
 
-					{project?.gallery && <ProjectGallery gallery={project?.gallery} />}
+					{project.gallery && <ProjectGallery gallery={project.gallery} />}
 				</div>
 			</div>
 		</article>

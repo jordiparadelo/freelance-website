@@ -3,6 +3,7 @@
 import React, { useRef } from "react";
 // Libs
 import { useGSAP } from "@gsap/react";
+import type { Project } from "@/lib/actions";
 
 // Animations
 import { projectsAnimation } from "./animations";
@@ -13,12 +14,18 @@ import styles from "./styles.module.scss";
 // Components
 import ProjectItem from "./ProjectItem";
 
-const ProjectsList = ({ projects }) => {
+interface ProjectsListProps {
+	projects: Project[];
+}
+
+const ProjectsList: React.FC<ProjectsListProps> = ({ projects }) => {
 	const componentRef = useRef(null);
 
 	useGSAP(
 		() => {
-			projectsAnimation(componentRef.current);
+			if (componentRef.current) {
+				projectsAnimation(componentRef.current);
+			}
 		},
 		{ scope: componentRef }
 	);

@@ -10,15 +10,29 @@ import React, { createContext, useContext, useEffect, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ScrollContext = createContext(null);
+interface LenisOptions {
+	duration?: number;
+	easing?: (t: number) => number;
+}
+
+interface ScrollContextType {
+	lenis: Lenis | null;
+	scrollTo: (target: string | number | HTMLElement, options?: LenisOptions) => void;
+}
+
+const ScrollContext = createContext<ScrollContextType | null>(null);
 
 export const useScroll = () => {
-	return useContext(ScrollContext);
+	const context = useContext(ScrollContext);
+	if (!context) {
+		throw new Error("useScroll must be used within a ScrollProvider");
+	}
+	return context;
 };
 
 const EASING_FN = {
-	lenisDefault: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-	easeOutCubic: (t) => 1 - Math.pow(1 - t, 3),
+	lenisDefault: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+	easeOutCubic: (t: number) => 1 - Math.pow(1 - t, 3),
 };
 
 const lenisConfig = {
@@ -28,7 +42,7 @@ const lenisConfig = {
 };
 
 const ScrollProvider = ({ children }: { children: React.ReactNode }) => {
-	const lenis = useRef(null);
+	const lenis = useRef<Lenis | null>(null);
 
 	useEffect(() => {
 		// Initialize Lenis
@@ -37,17 +51,19 @@ const ScrollProvider = ({ children }: { children: React.ReactNode }) => {
 		});
 
 		// Animation frame function to update Lenis
-		function raf(time) {
-			lenis.current.raf(time);
-			requestAnimationFrame(raf);
+		function raf(time: number) {
+			if (lenis.current) {
+				lenis.current.raf(time);
+				requestAnimationFrame(raf);
+			}
 		}
 
 		requestAnimationFrame(raf);
 		lenis.current.on("scroll", ScrollTrigger.update); // Update ScrollTrigger on Lenis scroll
 
 		ScrollTrigger.scrollerProxy(document.body, {
-			scrollTop(value) {
-				return arguments.length ? lenis.current.scrollTo(value) : lenis.current.scroll;
+			scrollTop(value: number | undefined) {
+				return arguments.length ? lenis.current?.scrollTo(value || 0) : lenis.current?.scroll;
 			},
 			getBoundingClientRect() {
 				return {
@@ -59,20 +75,20 @@ const ScrollProvider = ({ children }: { children: React.ReactNode }) => {
 			},
 		});
 
-		ScrollTrigger.addEventListener("refresh", () => lenis.current.resize());
+		ScrollTrigger.addEventListener("refresh", () => lenis.current?.resize());
 		ScrollTrigger.refresh();
 
 		// Clean up Lenis on component unmount
 		return () => {
 			if (lenis.current) {
-				ScrollTrigger.removeEventListener("refresh", () => lenis.current.resize());
+					ScrollTrigger.removeEventListener("refresh", () => lenis.current?.resize());
 				lenis.current.destroy();
 			}
 		};
 	}, []); // Remove lenis.current from dependencies
 
 	// Scroll to function
-	const scrollTo = (target, options) => {
+	const scrollTo = (target: string | number | HTMLElement, options?: LenisOptions) => {
 		if (lenis.current) {
 			lenis.current.scrollTo(target, options);
 		}

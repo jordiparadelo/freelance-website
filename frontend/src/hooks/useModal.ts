@@ -2,8 +2,14 @@ import { useEffect, useCallback } from "react";
 
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 
-const useModal = (params) => {
+interface UseModalReturn {
+	closeModal: () => void;
+	showModal: string | null;
+	params: (string | null)[] | null;
+	pathname: string;
+}
 
+const useModal = (params: string[]): UseModalReturn => {
 	const router = useRouter();
 	const searchParams = useSearchParams();
 	const pathname = usePathname();
@@ -17,7 +23,7 @@ const useModal = (params) => {
 	}, [router, pathname]);
 
 	useEffect(() => {
-		const handleKeyDown = (event) => {
+		const handleKeyDown = (event: KeyboardEvent) => {
 			if (event.key === "Escape") closeModal();
 		};
 
@@ -30,15 +36,16 @@ const useModal = (params) => {
 
 		return () => {
 			window.removeEventListener("keydown", handleKeyDown);
+			document.body.style.overflow = "auto";
 		};
 	}, [showModal, closeModal]);
 
-	return ({
+	return {
 		closeModal,
 		showModal,
 		params: params?.map((param) => searchParams.get(param)) || null,
 		pathname,
-	});
+	};
 };
 
 export default useModal;

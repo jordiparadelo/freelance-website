@@ -1,4 +1,12 @@
-export function formatString(inputString) {
+import { clsx, type ClassValue } from "clsx";
+
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+	return twMerge(clsx(inputs));
+}
+
+export function formatString(inputString: string) {
 	// Replace all hashes with spaces
 	let formattedString = inputString.replace(/#/g, " ");
 
@@ -13,13 +21,13 @@ export function formatString(inputString) {
 	return formattedString;
 }
 
-export function splitArray(array, numberOfSplits = 1) {
-	if(!array) return
+export function splitArray<T>(array: T[] | undefined, numberOfSplits = 1): T[][] | undefined {
+	if (!array) return undefined;
 
 	// console.log({array})
 
 	const chunkSize = Math.ceil(array.length / numberOfSplits);
-	const splitArray = [];
+	const splitArray: T[][] = [];
 
 	for (let i = 0; i < array.length; i += chunkSize) {
 		const chunk = array.slice(i, i + chunkSize);
