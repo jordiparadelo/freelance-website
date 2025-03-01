@@ -10,6 +10,9 @@ interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>
 	className?: string;
 }
 
+// Styles
+import "./styles.scss";
+
 const Button: React.FC<ButtonProps> = ({ children, href, type = 'button', className = '', ...props }) => {
 	return href ? (
 		<a

@@ -8,7 +8,7 @@ import Link from "next/link";
 import styles from "../styles.module.scss";
 
 // Assets
-import LinkIcon from "@/assets/icons/link.svg";
+import LinkIcon from "@/assets/icons/LinkIcon";
 
 interface ProjectItemProps {
 	project: Project;
