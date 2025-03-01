@@ -37,7 +37,7 @@ export default function RootLayout({
 						</TransitionProvider>
 					</MenuProvider>
 				</ScrollProvider>
-				<Analytics />
+				{/* <Analytics /> */}
 			</body>
 		</html>
 	);

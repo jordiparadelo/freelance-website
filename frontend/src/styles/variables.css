@@ -107,6 +107,13 @@
 		rgba(255, 255, 255, 0.1) 0px 1px 22px 0px,
 		rgba(197, 204, 255, 0.2) 0px 0px 20px 0px inset,
 		rgba(198, 219, 255, 0.35) 0px 1px 3px 0px inset;
+
+	/* Animation */
+	--anim-duration--sm: 0.3s;
+	--anim-duration--md: 0.5s;
+	--anim-duration--lg: 0.7s;
+	--anim-duration--xl: 1s;
+	--anim-easing: cubic-bezier(0.76, 0, 0.24, 1);
 }
 
 /* COLOR THEME SUPPORT */

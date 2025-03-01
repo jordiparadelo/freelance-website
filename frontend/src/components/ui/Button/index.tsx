@@ -1,33 +1,55 @@
 "use client";
 
-import React from "react";
 import { cn } from "@/lib/utils";
 
-interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'ref'> {
+import React, { useRef } from "react";
+
+import { useButtonAnimation } from "./animations";
+import "./styles.scss";
+
+interface ButtonProps
+	extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "ref"> {
 	children: React.ReactNode;
 	href?: string;
-	type?: 'button' | 'submit' | 'reset';
+	type?: "button" | "submit" | "reset";
 	className?: string;
 }
 
-// Styles
-import "./styles.scss";
+const Button: React.FC<ButtonProps> = ({
+	children,
+	href,
+	type = "button",
+	className = "",
+	...props
+}) => {
+	const buttonRef = useRef<HTMLButtonElement>(null);
+	const anchorRef = useRef<HTMLAnchorElement>(null);
+	const { onHoverEnter, onHoverLeave } = useButtonAnimation(href ? anchorRef : buttonRef);
 
-const Button: React.FC<ButtonProps> = ({ children, href, type = 'button', className = '', ...props }) => {
+	const commonProps = {
+		className: cn("button", className),
+		onMouseEnter: onHoverEnter,
+		onMouseLeave: onHoverLeave,
+	};
+
 	return href ? (
 		<a
 			href={href}
-			className={cn("button", className)}
+			ref={anchorRef}
+			{...commonProps}
 		>
-			<span className="button__label">{children}</span>
+			<span className='button__label'>{children}</span>
 		</a>
 	) : (
 		<button
 			type={type}
-			className={cn("button", className)}
+			ref={buttonRef}
+			{...commonProps}
 			{...props}
 		>
-			<span className="button__label">{children}</span>
+			<span className='sr-only'>{children}</span>
+			<span className='button__label' aria-hidden>{children}</span>
+			<span className='button__label' aria-hidden>{children}</span>
 		</button>
 	);
 };

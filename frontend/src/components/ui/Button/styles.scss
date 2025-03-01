@@ -36,12 +36,16 @@
         z-index: 0;
         background-color: var(--text-color--font);
         transform: translateY(0%) ;
-        transition: transform 0.3s ease-out 0.1s, top 0.3s ease;
-        // filter: invert(1)
+        transition: transform var(--anim-duration--md) var(--anim-easing), top var(--anim-duration--md) var(--anim-easing);
+        z-index: -1;
     }
 
 	&:hover {
 		transform: scale(1.1);
+
+        .button__label {
+            transform: translateY(-100%);
+        }
 
         &::before {
             top: 50%;
@@ -50,10 +54,12 @@
 	}
 
 	&__label {
+        color: var(--text-color--alternative);
 		line-height: var(--button-size);
+        transition: transform var(--anim-duration--md) var(--anim-easing);
 
         &:nth-child(2) {
-            color: var(--text-color--alternative);
+            color: var(--text-color--font);
         }
 	}
 
