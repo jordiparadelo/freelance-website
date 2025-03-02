@@ -1,18 +1,4 @@
 :root {
-	/* Base colors */
-	--base-color-brand--primary: #006cf5;
-	--base-color-brand--secondary: #c6f500;
-	--base-color-brand--accent: #61f500;
-
-	--base-color-system--success-green: #019c07;
-	--base-color-system--success-green-dark: #114e0b;
-	--base-color-system--error-red: #e50b0b;
-	--base-color-system--error-red-dark: #3b0b0b;
-	--base-color-system--warning-yellow: #fcf8d8;
-	--base-color-system--warning-yellow-dark: #5e5515;
-
-	--base-color-system--focus-state: #2d62ff;
-
 	/* Typography */
 	--font-family--body: "Body", sans-serif;
 	--font-family--heading: "Heading", sans-serif;
@@ -36,7 +22,7 @@
 	--background-color--gray: #667599;
 
 	/* Borders */
-	--border-color--base: var(--base-color-brand--primary);
+	--border-color--base: var(--text-color--font);
 	--border-color--accent: var(--background-color--accent);
 	--border-color--alternative: var(--background-color--alternative);
 	--border-color--primary: var(--background-color--primary);
@@ -123,7 +109,7 @@
 		--text-color--alternative: var(--text-color--light);
 		--background-color--base: var(--background-color--light);
 		--background-color--alternative: var(--background-color--dark);
-		--border-color--base: var(--base-color-brand--primary);
+		--border-color--base: rgba(0, 0, 0, 0.1);
 	}
 
 	/* Dark Mode */
@@ -132,7 +118,7 @@
 		--text-color--alternative: var(--text-color--dark);
 		--background-color--alternative: var(--background-color--light);
 		--background-color--base: var(--background-color--dark);
-		--border-color--base: rgba(255, 255, 255, 0.1);
+		--border-color--base: rgba(0, 0, 0, 0.1);
 	}
 }
 
@@ -142,7 +128,7 @@
 		--text-color--alternative: var(--text-color--dark);
 		--background-color--alternative: var(--background-color--light);
 		--background-color--base: var(--background-color--dark);
-		--border-color--base: rgba(255, 255, 255, 0.1);
+		--border-color--base: rgba(0, 0, 0, 0.1);
 	}
 
 	/* Light Mode */
@@ -160,7 +146,7 @@
 	--text-color--alternative: var(--text-color--dark);
 	--background-color--alternative: var(--background-color--light);
 	--background-color--base: var(--background-color--dark);
-	--border-color--base: rgba(255, 255, 255, 0.1);
+	--border-color--base: rgba(0, 0, 0, 0.1);
 }
 
 /* Light Mode */

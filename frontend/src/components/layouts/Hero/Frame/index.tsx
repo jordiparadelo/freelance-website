@@ -6,9 +6,8 @@ import { Banner } from "@/components/layouts";
 
 const Frame = () => {
 	return (
-		// TODO: Make Grid with images
 		<div className={styles["hero__frame-container"]}>
-				<GridBackground className={styles["hero__background"]} />
+			<GridBackground className={styles["hero__background"]} />
 			<div className={styles["hero__layout"]}>
 				<div className={styles["hero__heading-wrapper"]}>
 					<div className={styles["hero__label"]}>Design & Dev freelancer</div>
@@ -25,7 +24,7 @@ const Frame = () => {
 					Launch your next project in <strong>no-time.</strong>{" "}
 				</p>
 				<div className={styles["hero__actions"]}>
-					<ContactButton label={"Let's start a new project"} />
+					<ContactButton>Let&apos;s start a new project</ContactButton>
 				</div>
 			</div>
 

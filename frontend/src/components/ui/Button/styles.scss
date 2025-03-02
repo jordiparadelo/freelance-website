@@ -2,11 +2,9 @@
 	--color: inherit;
 	--size: 48px;
 
-	// box-sizing: border-box;
-
 	display: grid;
 	grid-template-rows: var(--button-size) var(--button-size);
-    position: relative;
+	position: relative;
 	align-items: center;
 	place-items: center;
 	max-width: fit-content;
@@ -21,55 +19,64 @@
 	overflow: hidden;
 	transition: transform 0.3s ease-in-out;
 	cursor: pointer;
-    color: var(--text-color--font);
-    box-shadow: var(--box-shadow--glow);
-    backdrop-filter: blur(1px);
+	color: var(--text-color--font);
+	backdrop-filter: blur(1px);
+	background-color: var(--background-color--base);
 
-    &::before {
-        content: "";
-        position: absolute;
-        top: 100%;
-        left: -5%;
-        width: 110%;
-        aspect-ratio: 1/1;
-        border-radius: 999px;
-        z-index: 0;
-        background-color: var(--text-color--font);
-        transform: translateY(0%) ;
-        transition: transform var(--anim-duration--md) var(--anim-easing), top var(--anim-duration--md) var(--anim-easing);
-        z-index: -1;
-    }
+	&--primary {
+		box-shadow: var(--box-shadow--glow);
+	}
+
+	&--secondary {
+		border: 1px solid var(--border-color--base);
+	}
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 100%;
+		left: -5%;
+		width: 110%;
+		aspect-ratio: 1/1;
+		border-radius: 999px;
+		z-index: 0;
+		background-color: var(--text-color--font);
+		transform: translateY(0%);
+		transition: transform var(--anim-duration--md) var(--anim-easing),
+			top var(--anim-duration--md) var(--anim-easing);
+		z-index: -1;
+	}
 
 	&:hover {
 		transform: scale(1.1);
 
-        .button__label {
-            transform: translateY(-100%);
-        }
+		.button__label {
+			transform: translateY(-100%);
+		}
 
-        &::before {
-            top: 50%;
-            transform: translateY(-50%) scale(1.1);
-        }
+		&::before {
+			top: 50%;
+			transform: translateY(-50%) scale(1.1);
+		}
 	}
 
 	&__label {
-        color: var(--text-color--alternative);
+		color: var(--text-color--alternative);
 		line-height: var(--button-size);
-        transition: transform var(--anim-duration--md) var(--anim-easing);
+		transition: transform var(--anim-duration--md) var(--anim-easing);
 
-        &:nth-child(2) {
-            color: var(--text-color--font);
-        }
+		&:nth-child(2) {
+			color: var(--text-color--font);
+		}
 	}
 
-    @media screen and (min-width: 480px) {
-        --size: 40px;
-    }
+	@media screen and (min-width: 480px) {
+		--size: 40px;
+	}
 
-    @media screen and (min-width: 765px) {
-        --size: 48px;
-        font-size: 0.875rem;
-        padding-inline: 2em;
-    }
+	@media screen and (min-width: 765px) {
+		--size: 48px;
+		font-size: 0.875rem;
+		padding-inline: 2em;
+	}
 }

@@ -47,7 +47,7 @@ const Footer = () => {
 								<h2 className={styles["footer__banner__title"]}>
 									Let&apos;s create something great together
 								</h2>
-								<ContactButton label={"Get in touch"} />
+								<ContactButton>Get in touch</ContactButton>
 
 								<div className={styles["footer__banner__actions"]}>
 									<p className='text-size-small'> Or reach me by email at</p>

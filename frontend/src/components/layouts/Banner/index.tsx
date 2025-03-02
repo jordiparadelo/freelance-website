@@ -3,7 +3,7 @@
 import useLiveClock from "@/hooks/useLiveClock";
 import useMediaQuery from "@/hooks/useMediaQuery";
 
-import WorldIcon from "@/assets/icons/globe.svg";
+import { GlobeIcon } from "@/assets/icons";
 
 import { useEffect, useState, MouseEvent } from "react";
 
@@ -46,7 +46,7 @@ const Banner = () => {
 					<div
 						className={styles['banner__worldwide']}
 					>
-						{isSmallDevice ? <WorldIcon className={styles['banner__worldwide-icon']}/> : 'Working Worldwide'}
+						{isSmallDevice ? <GlobeIcon className={styles['banner__worldwide-icon']}/> : 'Working Worldwide'}
 					</div>
 					<button
 						className={styles['banner__location']}

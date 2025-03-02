@@ -1,53 +1,41 @@
-import React from 'react'
-import { Metadata } from 'next'
-import { About } from '@/components/layouts'
-import { ABOUT } from '@/lib/constants'
-import AnimatedContent from '@/components/ui/AnimatedContent'
-import styles from './styles.module.scss'
+import React from "react";
+import { Metadata } from "next";
+// Styles
+import styles from "./styles.module.scss";
+// Components
+import AboutInfo from "@/components/pages/AboutPage/AboutInfo";
+import AboutContent from "@/components/pages/AboutPage/AboutContent";
+import AboutServices from "@/components/pages/AboutPage/AboutServices";
 
 export const metadata: Metadata = {
-  title: 'About - Jordi Paradelo',
-  description: 'Learn more about Jordi Paradelo - A freelance developer focused on developing digital products from scratch.',
-  openGraph: {
-    title: 'About - Jordi Paradelo',
-    description: 'Learn more about Jordi Paradelo - A freelance developer focused on developing digital products from scratch.',
-  },
-}
+	title: "About - Jordi Paradelo",
+	description:
+		"Learn more about Jordi Paradelo - A freelance developer focused on developing digital products from scratch.",
+	openGraph: {
+		title: "About - Jordi Paradelo",
+		description:
+			"Learn more about Jordi Paradelo - A freelance developer focused on developing digital products from scratch.",
+	},
+};
 
 const AboutPage = () => {
-  return (
-    <main className={styles['about-page']}>
-      <About />
-      <section className="padding-global">
-        <div className="container">
-          <AnimatedContent className={styles['about-page__content']}>
-            <h1>{ABOUT.title}</h1>
-            <p>{ABOUT.description}</p>
-            <div className={styles['about-page__contact']}>
-              {ABOUT.contact.map((item) => (
-                <a key={item.id} {...item.props}>
-                  {item.label}
-                </a>
-              ))}
-            </div>
-            <div className={styles['about-page__business']}>
-              <h2>Business Information</h2>
-              <p>{ABOUT.business.name}</p>
-              <p>VAT ID: {ABOUT.business.vatId}</p>
-              <p>{ABOUT.business.location}</p>
-            </div>
-            <div className={styles['about-page__socials']}>
-              {ABOUT.socials.map((social) => (
-                <a key={social.id} href={social.href} target="_blank" rel="noopener noreferrer">
-                  {social.title}
-                </a>
-              ))}
-            </div>
-          </AnimatedContent>
-        </div>
-      </section>
-    </main>
-  )
-}
+	return (
+		<main className={styles["about-page"] + " padding-global"}>
+				<div className='container'>
+					<div className={styles["about-layout"]}>
+						<aside className={styles["about-layout__side"]}>
+							<AboutInfo />
+						</aside>
+						<section className={styles["about-layout__main"]}>
+							<AboutContent />
+						</section>
+						<aside className={styles["about-layout__side"]}>
+							<AboutServices />
+						</aside>
+					</div>
+				</div>
+		</main>
+	);
+};
 
-export default AboutPage
+export default AboutPage;

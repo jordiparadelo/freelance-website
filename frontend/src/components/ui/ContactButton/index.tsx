@@ -1,24 +1,32 @@
+"use client";
 // Components
-import Link from "next/link";
 import { Button } from "@/components/ui";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 // Styles
 import "./styles.scss";
 
 interface ContactButtonProps {
-	label: string;
+	children: React.ReactNode;
 	className?: string;
 }
 
-const ContactButton: React.FC<ContactButtonProps> = ({ label, className }) => {
+const ContactButton: React.FC<ContactButtonProps> = ({ children, className }) => {
+	const router = useRouter();
+
+	const handleClick = () => {
+		router.push('?modal=true&type=contact');
+		console.log("clicked");
+	}
+
 	return (
-		<Link
-			href='?modal=true&type=contact'
-			scroll={false}
+		<Button
+			className={cn("contact-button", className)}
+			onClick={handleClick}
 		>
-			<Button className={cn("contact-button", className)}>{label}</Button>
-		</Link>
+			{children}
+		</Button>
 	);
 };
 

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 // Assets
-import CopyClip from '@/assets/icons/copy.svg'
+import { CopyIcon } from "@/assets/icons";
 
 // Styles
 import styles from "./styles.module.scss";
@@ -46,7 +46,7 @@ const CopyToClipboard: React.FC<CopyToClipboardProps> = ({ children }) => {
 				type='submit'
 				className={styles['copy-to-clipboard__button']}
 			>
-				<CopyClip/>
+				<CopyIcon/>
 			</button>
 			<input
 				name='clipboard'

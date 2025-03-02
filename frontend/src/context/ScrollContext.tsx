@@ -56,10 +56,11 @@ const ScrollProvider = ({ children }: { children: React.ReactNode }) => {
 				lenis.current.raf(time);
 				requestAnimationFrame(raf);
 			}
+			ScrollTrigger.update();
 		}
 
 		requestAnimationFrame(raf);
-		lenis.current.on("scroll", ScrollTrigger.update); // Update ScrollTrigger on Lenis scroll
+		// lenis.current.on("scroll", ScrollTrigger.update); // Update ScrollTrigger on Lenis scroll
 
 		ScrollTrigger.scrollerProxy(document.body, {
 			scrollTop(value: number | undefined) {

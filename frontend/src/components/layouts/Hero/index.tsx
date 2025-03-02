@@ -12,20 +12,22 @@ import Frame from "./Frame";
 
 const Hero = () => {
 	return (
-		<header
-			className={styles["hero"]}
-			id='hero'
-		>
-			<HeroProvider>
-				<div className={styles["hero__frame"]}>
-					<TopBar />
-					<div className={styles["hero__frame-container-wrapper"]}>
-						<SideNav />
-						<Frame />
+		<HeroProvider>
+			<header
+				className={styles["hero"]}
+				id='hero'
+			>
+				<div className='container'>
+					<div className={styles["hero__frame"]}>
+						<TopBar />
+						<div className={styles["hero__frame-container-wrapper"]}>
+							<SideNav />
+							<Frame />
+						</div>
 					</div>
 				</div>
-			</HeroProvider>
-		</header>
+			</header>
+		</HeroProvider>
 	);
 };
 

@@ -3,14 +3,13 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	padding: 1rem;
 	max-height: 100vh;
+	padding-inline: var(--section-padding--inline-medium);
 
 	&__frame {
 		border: 1px solid var(--border-color--base);
 		aspect-ratio: 16/9;
 		border-radius: var(--corners--radius-medium);
-		padding: 0.5rem;
 		display: flex;
 		gap: 0.5rem;
 		flex-direction: column;

@@ -6,6 +6,8 @@ gsap.registerPlugin(ScrollTrigger);
 export function processAnimations(component: HTMLElement | null): void {
   if (!component) return;
 
+  ScrollTrigger.refresh();
+
   const asideHeaderEl = component.querySelector(
     '[data-component="aside-header"]'
   );
@@ -54,5 +56,6 @@ export function processAnimations(component: HTMLElement | null): void {
     start: "top+=5% center",
     end: "bottom-=20% center",
     scrub: true,
+    // markers: true,
   });
 } 

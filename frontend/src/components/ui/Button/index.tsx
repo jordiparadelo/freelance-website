@@ -13,6 +13,8 @@ interface ButtonProps
 	href?: string;
 	type?: "button" | "submit" | "reset";
 	className?: string;
+	variant?: "primary" | "secondary";
+	onClick?: () => void;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -20,6 +22,8 @@ const Button: React.FC<ButtonProps> = ({
 	href,
 	type = "button",
 	className = "",
+	variant = "primary",
+	onClick,
 	...props
 }) => {
 	const buttonRef = useRef<HTMLButtonElement>(null);
@@ -27,7 +31,7 @@ const Button: React.FC<ButtonProps> = ({
 	const { onHoverEnter, onHoverLeave } = useButtonAnimation(href ? anchorRef : buttonRef);
 
 	const commonProps = {
-		className: cn("button", className),
+		className: cn("button", className, `button--${variant}`),
 		onMouseEnter: onHoverEnter,
 		onMouseLeave: onHoverLeave,
 	};
@@ -46,6 +50,7 @@ const Button: React.FC<ButtonProps> = ({
 			ref={buttonRef}
 			{...commonProps}
 			{...props}
+			{...onClick}
 		>
 			<span className='sr-only'>{children}</span>
 			<span className='button__label' aria-hidden>{children}</span>

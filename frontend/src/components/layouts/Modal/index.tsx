@@ -37,7 +37,6 @@ const Modal = () => {
 
 	useEffect(() => {
 		if (showModal) {
-			console.log({ showModal, lenis });
 			lenis?.stop();
 		} else {
 			lenis?.start();

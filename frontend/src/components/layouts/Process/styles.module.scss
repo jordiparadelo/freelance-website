@@ -29,7 +29,6 @@
 		gap: var(--section-padding--block-small);
 		flex-flow: column;
 		padding-block: var(--section-padding--block-small) var(--section-padding--inline-small);
-		padding-inline: var(--section-padding--inline-medium);
 		flex: 1 1 min-content;
 		border-radius: var(--corners--radius-large);
 		border: 1px solid var(--border-color--base);
@@ -99,9 +98,12 @@
 
 			align-items: center;
 			padding-inline: 0.75rem;
-			min-height: 2.5rem;
+			min-height: 2.25rem;
 			border-radius: var(--corners--radius-small);
 			box-shadow: var(--box-shadow--glow);
+			text-transform: uppercase;
+			font-size: .75rem;
+			letter-spacing: 0.125em;
 
 			@media screen and (max-width: 768px) {
 				align-self: flex-start;

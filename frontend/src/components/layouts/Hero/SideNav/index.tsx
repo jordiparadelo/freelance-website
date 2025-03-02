@@ -2,7 +2,7 @@
 
 import { useHero } from "@/context/HeroContext";
 import { useScroll } from "@/context/ScrollContext";
-import { useColorTheme } from "@/hooks/useColorTheme";
+import { useTheme } from "@/context/ThemeProvider";
 import { NAV_LINKS, SOCIAL_LINKS } from "@/lib/constants";
 
 import React, { useEffect } from "react";
@@ -12,7 +12,7 @@ import styles from "../styles.module.scss";
 const SideNav = () => {
 	const { isOpen, setIsOpen } = useHero();
 	const { scrollTo } = useScroll();
-	const [theme, setTheme] = useColorTheme();
+	const { theme, setTheme } = useTheme();
 
 	useEffect(() => {
 		const handleKeyDown = (e: KeyboardEvent): void => {

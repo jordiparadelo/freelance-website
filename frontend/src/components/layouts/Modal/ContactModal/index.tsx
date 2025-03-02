@@ -6,7 +6,6 @@ import { Button, ContactForm } from "@/components/ui";
 
 // Styles
 import styles from "./styles.module.scss";
-import "./styles.module.scss";
 
 interface FormElements extends HTMLFormElement {
 	elements: HTMLFormControlsCollection;
