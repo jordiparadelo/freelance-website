@@ -13,6 +13,7 @@ import ScrollProvider from "@/context/ScrollContext";
 
 // Components
 import { Footer, Modal } from "@/components/layouts";
+import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -40,7 +41,9 @@ export default function RootLayout({
 							<MenuProvider>
 								{children}
 								<Footer />
-								<Modal />
+								<Suspense fallback={null}>
+									<Modal />
+								</Suspense>
 							</MenuProvider>
 						</ScrollProvider>
 					</TransitionProvider>

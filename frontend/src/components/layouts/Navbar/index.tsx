@@ -18,7 +18,9 @@ const Navbar = () => {
 			<div className='container'>
 				<AvatarDropdown />
 				<NavMenu links={NAV_LINKS}/>
-				<ContactButton label={"Get in touch"} />
+				<ContactButton>
+					Get in touch
+				</ContactButton>
 			</div>
 		</nav>
 	);
