@@ -5,15 +5,10 @@ import { Analytics } from "@vercel/analytics/react";
 // Styles
 import "@/styles/globals.css";
 
-// Context
-import { MenuProvider } from "@/context/MenuContext";
-import { TransitionProvider } from "@/context/TransitionContext";
-import { ThemeProvider } from "@/context/ThemeProvider";
-import ScrollProvider from "@/context/ScrollContext";
-
 // Components
 import { Footer, Modal } from "@/components/layouts";
 import { Suspense } from "react";
+import SiteProvider from "@/context/SiteProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -35,19 +30,11 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<body className={inter.className}>
-				<ThemeProvider>
-					<TransitionProvider>
-						<ScrollProvider>
-							<MenuProvider>
-								{children}
-								<Footer />
-								<Suspense fallback={null}>
-									<Modal />
-								</Suspense>
-							</MenuProvider>
-						</ScrollProvider>
-					</TransitionProvider>
-				</ThemeProvider>
+				<SiteProvider>
+					{children}
+					<Footer />
+					<Modal />
+				</SiteProvider>
 				<Analytics />
 			</body>
 		</html>

@@ -17,13 +17,11 @@ const Hero = () => {
 				className={styles["hero"]}
 				id='hero'
 			>
-				<div className='container'>
-					<div className={styles["hero__frame"]}>
-						<TopBar />
-						<div className={styles["hero__frame-container-wrapper"]}>
-							<SideNav />
-							<Frame />
-						</div>
+				<div className={styles["hero__frame"]}>
+					<TopBar />
+					<div className={styles["hero__frame-container-wrapper"]}>
+						<SideNav />
+						<Frame />
 					</div>
 				</div>
 			</header>
