@@ -48,6 +48,7 @@ const ScrollProvider = ({ children }: { children: React.ReactNode }) => {
 		// Initialize Lenis
 		lenis.current = new Lenis({
 			...lenisConfig,
+			smoothWheel: true,
 		});
 
 		// Animation frame function to update Lenis
@@ -82,6 +83,7 @@ const ScrollProvider = ({ children }: { children: React.ReactNode }) => {
 		// Clean up Lenis on component unmount
 		return () => {
 			if (lenis.current) {
+				lenis.on
 					ScrollTrigger.removeEventListener("refresh", () => lenis.current?.resize());
 				lenis.current.destroy();
 			}

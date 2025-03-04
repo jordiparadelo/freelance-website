@@ -18,3 +18,4 @@ export {default as GridBackground} from './GridBackground';
 export {default as CircleScrollProgress} from './CircleScrollProgress';
 export { default as AnimatedContent } from './AnimatedContent';
 export { default as ProjectsList } from './ProjectsList';
+export { default as TagsList } from './TagsList';

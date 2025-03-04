@@ -33,7 +33,9 @@ export default function RootLayout({
 				<SiteProvider>
 					{children}
 					<Footer />
-					<Modal />
+					<Suspense fallback="...loading">
+						<Modal />
+					</Suspense>
 				</SiteProvider>
 				<Analytics />
 			</body>

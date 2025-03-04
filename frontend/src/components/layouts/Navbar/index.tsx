@@ -1,11 +1,12 @@
 "use client";
 
-import { ContactButton, AvatarDropdown } from "@/components/ui";
+import {  AvatarDropdown } from "@/components/ui";
 import { NAV_LINKS } from "@/lib/constants";
 
 import { useRef } from "react";
 
 import NavMenu from "./NavMenu";
+import NavActions from "./NavActions";
 import "./styles.scss";
 
 const Navbar = () => {
@@ -15,12 +16,14 @@ const Navbar = () => {
 			ref={navbarRef}
 			className='navbar'
 		>
-			<div className='container'>
-				<AvatarDropdown />
-				<NavMenu links={NAV_LINKS}/>
-				<ContactButton>
-					Get in touch
-				</ContactButton>
+			<div className='padding-global'>
+				<div className='container'>
+					<div className='navbar__layout'>
+						<AvatarDropdown />
+						<NavMenu links={NAV_LINKS} />
+						<NavActions />
+					</div>
+				</div>
 			</div>
 		</nav>
 	);

@@ -18,6 +18,8 @@
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
+		color: var(--text-color--dark);
+
 
 		&-header {
 			display: flex;
@@ -83,7 +85,7 @@
 		border-radius: var(--corners--radius-small);
 		border: 1px solid var(--border-color--base);
 		padding: 0.5rem;
-		background-color: var(--background-color--base);
+		background-color: var(--background-color--light);
 		box-shadow: var(--box-shadow--sm);
 		outline: 0px solid var(--border-color--base);
 		transition: all 0.15s linear;

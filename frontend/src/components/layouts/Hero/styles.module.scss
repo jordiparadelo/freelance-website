@@ -5,14 +5,13 @@
 	align-items: center;
 	min-height: calc(100dvh - var(--section-padding--inline-medium));
 	padding-inline: var(--section-padding--inline-medium);
+	padding-block: .5rem;
 
 	&__frame {
 		flex-grow: 1;
 		border: 1px solid var(--border-color--base);
-		// aspect-ratio: 16/9;
 		border-radius: var(--corners--radius-medium);
 		display: flex;
-		gap: 0.5rem;
 		flex-direction: column;
 		width: 100%;
 
@@ -23,17 +22,20 @@
 	}
 
 	&__frame-top-bar {
-		display: flex;
-		place-content: space-between;
-		place-items: center;
+		width: 100%;
+		// justify-self: center;
+		min-height: calc(var(--navbar-height) - 1rem);
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		// place-items: center;
+		align-self: center;
+		align-items: center;
 		gap: 1rem;
-		padding-inline: 0.25rem 0.75rem;
+		padding-inline: 0.75rem;
 
 		// Actions
 		&__actions {
-			display: flex;
-			place-items: center;
-			gap: 1rem;
+			justify-self: flex-end;
 		}
 
 		&__sidebar-button {
@@ -85,8 +87,8 @@
 	}
 	&__frame-nav {
 		flex-grow: 1;
-		padding-block-start: var(--section-padding--inline-small);
-		padding-inline-end: var(--section-padding--inline-small);
+		padding-block-end: var(--section-padding--inline-small);
+		padding-inline: var(--section-padding--inline-small);
 		display: flex;
 		flex-direction: column;
 		gap: var(--section-padding--block-tiny);

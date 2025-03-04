@@ -30,3 +30,9 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   size?: 'sm' | 'md' | 'lg';
   isLoading?: boolean;
 } 
+
+export interface Tags {
+  id: number;
+  label: string;
+  group: string[];
+}

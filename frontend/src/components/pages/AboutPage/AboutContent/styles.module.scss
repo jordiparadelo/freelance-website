@@ -1,0 +1,44 @@
+.about-content {
+	display: flex;
+	flex-direction: column;
+	gap: var(--section-padding--block-small);
+	padding-block-start: 1rem;
+
+	&__section {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		// gap: var(--section-padding--block-small);
+	}
+
+	&__section-header {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	&__heading {
+		text-transform: uppercase;
+		font-size: 0.75rem;
+		letter-spacing: 0.125em;
+	}
+
+	&__description {
+		font-size: 1.25rem;
+		line-height: 1.5;
+		font-weight: 300;
+		color: var(--color-text);
+	}
+
+	&__select {
+		padding-inline: 0.25rem;
+		min-height: 2rem;
+		border: 1px solid var(--border-color--base);
+		border-radius: 0.25rem;
+		background-color: var(--color-background);
+
+		&:focus {
+			outline: 2px solid var(--border-color--base);
+		}
+	}
+}

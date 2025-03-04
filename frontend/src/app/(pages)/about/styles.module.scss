@@ -2,7 +2,8 @@
 	display: flex;
 	flex-direction: row;
 	padding-block-end: var(--section-padding--block-small);
-	
+	padding-block-start: var(--navbar-height);
+
 	.about-layout {
 		--spacing: 1rem;
 		display: flex;
@@ -18,16 +19,16 @@
 			top: 2rem;
 			// height: fit-content;
 		}
-		
+
 		&__main {
 			display: none;
 		}
-		
+
 		@media (min-width: 768px) and (max-width: 1024px) {
 			display: grid;
 			grid-template-columns: 1fr 1fr;
 			grid-template-rows: auto;
-			
+
 			&__side {
 				position: sticky;
 			}
@@ -52,6 +53,10 @@
 		@media (min-width: 1024px) {
 			display: grid;
 			grid-template-columns: 350px 1fr 350px;
+			height: 1px;
+			overflow: hidden;
+			min-height: 100%;
+
 			// height: calc(100vh - 4rem); // Account for padding
 
 			&__main {
@@ -64,10 +69,11 @@
 				display: flex;
 				gap: 4rem;
 				flex-direction: column;
-				padding-inline: var(--section-padding--inline-medium);
-				padding-block-start: var(--section-padding--block-medium);
-				padding-block-end: var(--section-padding--inline-medium);
+				padding: var(--section-padding--inline-medium);
 				flex-grow: 1;
+				height: 1px;
+				min-height: 100%;
+				overflow-y: auto;
 			}
 		}
 	}
@@ -77,5 +83,13 @@
 		border: 1px solid var(--border-color--base);
 		padding: 1.25rem;
 		box-shadow: inset 0 0 4px -2px #fff;
+	}
+
+	@media (min-width: 1024px) {
+		height: 100dvh;
+		min-height: 100%;
+		overflow: hidden;
+	padding-block-end: var(--section-padding--inline-small);
+
 	}
 }

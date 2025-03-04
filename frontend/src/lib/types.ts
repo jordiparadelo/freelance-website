@@ -48,3 +48,9 @@ export interface IconProps extends React.SVGProps<SVGSVGElement> {
 	width?: number;
 	height?: number;
 }
+
+export interface Tags {
+    id: number;
+    label: string;
+    group: string[];
+}
