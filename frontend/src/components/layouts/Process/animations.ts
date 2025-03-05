@@ -59,5 +59,5 @@ export function processAnimations(component: HTMLElement | null): void {
 		// markers: true,
 	});
 
-	ScrollTrigger.refresh();
+	// ScrollTrigger.update();
 }

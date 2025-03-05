@@ -30,7 +30,6 @@ export const useButtonAnimation = (
 			const labels =
 				elementRef.current.querySelectorAll<HTMLElement>(".button__label");
 
-			console.log({ labels });
 
 			labels.forEach((label, index) => {
 				const splitChars = new SplitType(label, { types: "chars" });

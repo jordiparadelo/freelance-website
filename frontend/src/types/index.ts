@@ -36,3 +36,7 @@ export interface Tags {
   label: string;
   group: string[];
 }
+
+export interface Capability {
+	group: 'All' | 'Frontend' | 'Design' | 'Animation';
+}

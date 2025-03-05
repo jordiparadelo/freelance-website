@@ -4,13 +4,12 @@
 	&__layout {
 		display: flex;
 		flex-direction: column;
-		gap: 2rem;
 		border-radius: var(--corners--radius-large);
 		border: 1px solid var(--border-color--base);
 	}
-
+	
 	// Background
-
+	
 	&__background {
 		position: absolute;
 		top: 0;
@@ -22,9 +21,9 @@
 		mask-image: radial-gradient(circle, black, rgba(0, 0, 0, 0) 95%);
 		opacity: 0.5;
 	}
-
-
-
+	
+	
+	
 	// Banner
 	&__banner {
 		position: relative;
@@ -37,6 +36,9 @@
 		flex-direction: column;
 		text-align: center;
 		place-items: center;
+		background-color: var(--background-color--base);
+		position: relative;
+		z-index: 1;
 		gap: var(--section-padding--block-small);
 
 		&__layout {
@@ -80,9 +82,14 @@
 	// Bottom
 
 	&__bottom {
+		position: sticky;
+		bottom: 0;
+		z-index: -1;
 		display: flex;
 		place-items: center;
 		place-content: space-between;
 		gap: 1rem;
+		padding-inline: var(--section-padding--inline-medium);
+		padding-block: var(--section-padding--inline-medium);
 	}
 }

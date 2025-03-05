@@ -1,11 +1,7 @@
 import React from "react";
 import { Metadata } from "next";
-// Styles
-import styles from "./styles.module.scss";
-// Components
-import AboutInfo from "@/components/pages/AboutPage/AboutInfo";
-import AboutContent from "@/components/pages/AboutPage/AboutContent";
-import AboutServices from "@/components/pages/AboutPage/AboutServices";
+import AboutPageLayout from "@/components/pages/AboutPage";
+
 
 export const metadata: Metadata = {
 	title: "About - Jordi Paradelo",
@@ -20,21 +16,7 @@ export const metadata: Metadata = {
 
 const AboutPage = () => {
 	return (
-		<main className={styles["about-page"] + " padding-global"}>
-				<div className='container'>
-					<div className={styles["about-layout"]}>
-						<aside className={styles["about-layout__side"]}>
-							<AboutInfo />
-						</aside>
-						<section className={styles["about-layout__main"]}>
-							<AboutContent />
-						</section>
-						<aside className={styles["about-layout__side"]}>
-							<AboutServices />
-						</aside>
-					</div>
-				</div>
-		</main>
+		<AboutPageLayout />
 	);
 };
 

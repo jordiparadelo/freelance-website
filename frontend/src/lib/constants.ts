@@ -5,7 +5,7 @@ import reviewLogo1 from "@/assets/icons/review-logo-1.svg?url";
 import reviewLogo2 from "@/assets/icons/review-logo-2.svg?url";
 import reviewLogo3 from "@/assets/icons/review-logo-3.svg?url";
 import reviewLogo4 from "@/assets/icons/review-logo-4.svg?url";
-import avatarPic from "@/assets/avatar-pic.jpeg";
+import avatarPic from "@/assets/avatar-pic.png";
 import modumImageCover from "@/assets/images/image_cover_modum.webp";
 import modoImageCover from "@/assets/images/image_cover_modo.webp";
 

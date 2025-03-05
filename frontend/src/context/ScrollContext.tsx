@@ -13,11 +13,19 @@ gsap.registerPlugin(ScrollTrigger);
 interface LenisOptions {
 	duration?: number;
 	easing?: (t: number) => number;
+	offset?: number;
+	immediate?: boolean;
+	lock?: boolean;
+	force?: boolean;
+	onComplete?: () => void;
 }
 
 interface ScrollContextType {
 	lenis: Lenis | null;
-	scrollTo: (target: string | number | HTMLElement, options?: LenisOptions) => void;
+	scrollTo: (
+		target: string | number | HTMLElement,
+		options?: LenisOptions
+	) => void;
 }
 
 const ScrollContext = createContext<ScrollContextType | null>(null);
@@ -36,69 +44,75 @@ const EASING_FN = {
 };
 
 const lenisConfig = {
-	limitCallbacks: true,
 	duration: 1.2,
 	easing: EASING_FN.lenisDefault,
+	smoothWheel: true,
+	wheelMultiplier: 1,
+	touchMultiplier: 2,
+	infinite: false,
+	anchors: true,
+	autoRaf: true,
 };
 
 const ScrollProvider = ({ children }: { children: React.ReactNode }) => {
-	const lenis = useRef<Lenis | null>(null);
+	const lenisRef = useRef<Lenis | null>(null);
 
 	useEffect(() => {
-		// Initialize Lenis
-		lenis.current = new Lenis({
-			...lenisConfig,
-			smoothWheel: true,
+		// Initialize Lenis with configuration
+		lenisRef.current = new Lenis(lenisConfig);
+
+		// Get the Lenis instance
+		const lenis = lenisRef.current;
+
+		// Sync Lenis scroll with GSAP ScrollTrigger
+		lenis.on("scroll", ScrollTrigger.update);
+
+		// Create the RAF loop
+		gsap.ticker.add((time) => {
+			lenis.raf(time * 1000);
 		});
 
-		// Animation frame function to update Lenis
-		function raf(time: number) {
-			if (lenis.current) {
-				lenis.current.raf(time);
-				requestAnimationFrame(raf);
-			}
-			ScrollTrigger.update();
-		}
+		// Disable GSAP ticker lag smoothing
+		gsap.ticker.lagSmoothing(0);
 
-		requestAnimationFrame(raf);
-		// lenis.current.on("scroll", ScrollTrigger.update); // Update ScrollTrigger on Lenis scroll
+		// Handle window resize
+		const resize = () => {
+			lenis.resize();
+		};
 
-		ScrollTrigger.scrollerProxy(document.body, {
-			scrollTop(value: number | undefined) {
-				return arguments.length ? lenis.current?.scrollTo(value || 0) : lenis.current?.scroll;
-			},
-			getBoundingClientRect() {
-				return {
-					top: 0,
-					left: 0,
-					width: window.innerWidth,
-					height: window.innerHeight,
-				};
-			},
-		});
+		window.addEventListener("resize", resize, { passive: true });
 
-		ScrollTrigger.addEventListener("refresh", () => lenis.current?.resize());
-		ScrollTrigger.refresh();
-
-		// Clean up Lenis on component unmount
+		// Clean up
 		return () => {
-			if (lenis.current) {
-				lenis.on
-					ScrollTrigger.removeEventListener("refresh", () => lenis.current?.resize());
-				lenis.current.destroy();
+			if (lenis) {
+				window.removeEventListener("resize", resize);
+				gsap.ticker.remove(lenis.raf);
+				lenis.destroy();
 			}
 		};
-	}, []); // Remove lenis.current from dependencies
+	}, []);
 
-	// Scroll to function
-	const scrollTo = (target: string | number | HTMLElement, options?: LenisOptions) => {
-		if (lenis.current) {
-			lenis.current.scrollTo(target, options);
+	// Scroll to function with enhanced options
+	const scrollTo = (
+		target: string | number | HTMLElement,
+		options: LenisOptions = {
+			offset: 50,
+			duration: 2,
+			easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+		}
+	) => {
+		if (lenisRef.current) {
+			lenisRef.current.scrollTo(target, {
+				offset: 0, // Default offset
+				duration: lenisConfig.duration,
+				easing: lenisConfig.easing,
+				...options,
+			});
 		}
 	};
 
 	return (
-		<ScrollContext.Provider value={{ lenis: lenis.current, scrollTo }}>
+		<ScrollContext.Provider value={{ lenis: lenisRef.current, scrollTo }}>
 			{children}
 		</ScrollContext.Provider>
 	);
