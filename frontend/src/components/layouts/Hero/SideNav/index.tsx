@@ -3,11 +3,12 @@
 import { useHero } from "@/context/HeroContext";
 import { useScroll } from "@/context/ScrollContext";
 import { useTheme } from "@/context/ThemeProvider";
-import { NAV_LINKS, SOCIAL_LINKS } from "@/lib/constants";
+import { SOCIAL_LINKS } from "@/app/seo.config";
 
 import React, { useEffect } from "react";
 
 import styles from "../styles.module.scss";
+import { HOME_SECTIONS } from "@/app/site.config";
 
 const SideNav = () => {
 	const { isOpen, setIsOpen } = useHero();
@@ -20,10 +21,10 @@ const SideNav = () => {
 				setIsOpen(false);
 			} else if (
 				isOpen &&
-				NAV_LINKS[0].sections?.some((link, index) => index + 1 === Number(e.key))
+				HOME_SECTIONS
 			) {
 				const index = Number(e.key) - 1;
-				scrollTo(NAV_LINKS[0].sections[index]?.href || "");
+				scrollTo(HOME_SECTIONS[index]?.href || "");
 			}
 		};
 
@@ -45,7 +46,7 @@ const SideNav = () => {
 				<div className={styles["hero__frame-nav__block"]}>
 					<h2 className={styles["hero__frame-nav__title"]}>Navigation</h2>
 					<ul className={styles["hero__frame-nav__list"]}>
-						{NAV_LINKS[0].sections?.map((link, index) => {
+						{HOME_SECTIONS?.map((link, index) => {
 							return (
 								<li
 									className={styles["hero__frame-nav__list-item"]}
@@ -79,8 +80,10 @@ const SideNav = () => {
 									key={`nav-link-${link.id}`}
 								>
 									<a
-										href={link.href}
+										href={link.url}
 										className={styles["hero__frame-nav__link"]}
+										target="_blank"
+										rel="noopener noreferrer"
 									>
 										<span>{link.title}</span>
 									</a>

@@ -7,34 +7,35 @@ import useMediaQuery from "@/hooks/useMediaQuery";
 import styles from "./styles.module.scss";
 
 interface NavLink {
-	key: string;
-	href: string;
-	label: string;
+	name: string;
+	path: string;
 }
 
 interface MenuProps {
 	links?: NavLink[];
 }
 
-const DesktopMenu: React.FC<MenuProps> = ({ links }) => (
+const DesktopMenu: React.FC<MenuProps> = ({ links }) => {
+	return(
 	<menu className={styles["navbar-menu"]}>
 		{links?.map((link) => (
 			<Link
-				key={link.key}
-				href={link.href}
+				key={link.name}
+				href={link.path}
 				className={styles["navbar-menu__link"]}
 			>
-				{link.label}
+				{link.name}
 			</Link>
 		))}
 	</menu>
-);
+)};
 
 const MobileMenu: React.FC = () => (
 	<menu className={styles["navbar-menu"]}>Menu</menu>
 );
 
 const NavMenu: React.FC<MenuProps> = ({ links }) => {
+	console.log({links});
 	const isSmallDevice = useMediaQuery("only screen and (max-width: 768px)");
 
 	// return <DesktopMenu />

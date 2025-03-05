@@ -1,7 +1,7 @@
 "use client";
 
 import {  AvatarDropdown } from "@/components/ui";
-import { NAV_LINKS } from "@/lib/constants";
+import { ROUTES } from "@/app/site.config";
 
 import { useRef } from "react";
 
@@ -20,7 +20,7 @@ const Navbar = () => {
 				<div className='container'>
 					<div className='navbar__layout'>
 						<AvatarDropdown />
-						<NavMenu links={NAV_LINKS} />
+						<NavMenu links={ROUTES} />
 						<NavActions />
 					</div>
 				</div>
