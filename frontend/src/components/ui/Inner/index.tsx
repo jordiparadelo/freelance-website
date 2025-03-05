@@ -52,7 +52,6 @@ const Inner: React.FC<InnerProps> = ({ children }) => {
 		const progress = latest.progress as number;
 		if (progress >= 50) {
 			// Animation is halfway through
-			console.log("Animation is halfway through");
 		}
 	}
 

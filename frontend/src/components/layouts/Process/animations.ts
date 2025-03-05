@@ -20,7 +20,6 @@ export function processAnimations(component: HTMLElement | null): void {
 
 	function goToTimelineStep(index: number): void {
 		const progress = index / masterTl.duration() / 1;
-		console.log({ progress, index, masterTl });
 		masterTl.progress(progress);
 	}
 

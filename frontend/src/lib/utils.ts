@@ -24,8 +24,6 @@ export function formatString(inputString: string) {
 export function splitArray<T>(array: T[] | undefined, numberOfSplits = 1): T[][] | undefined {
 	if (!array) return undefined;
 
-	// console.log({array})
-
 	const chunkSize = Math.ceil(array.length / numberOfSplits);
 	const splitArray: T[][] = [];
 

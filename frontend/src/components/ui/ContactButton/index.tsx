@@ -17,7 +17,6 @@ const ContactButton: React.FC<ContactButtonProps> = ({ children, className }) =>
 
 	const handleClick = () => {
 		router.push('?modal=true&type=contact');
-		console.log("clicked");
 	}
 
 	return (

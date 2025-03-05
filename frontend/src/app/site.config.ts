@@ -7,10 +7,6 @@ export const ROUTES = [
 		name: "About",
 		path: "/about",
 	},
-	{
-		name: "Services",
-		path: "/services",
-	},
 ];
 
 export const HOME_SECTIONS = [

@@ -1,11 +1,18 @@
 "use client";
-import React from "react";
-import styles from "../styles.module.scss";
+
 import { ContentBlock } from "@/components/ui";
 import { useCapability } from "@/context/CapabilityContext";
 
+import React from "react";
+
+import { AnimatePresence, motion, MotionConfig } from "framer-motion";
+
+// import SplitType from "split-type";
+
+import styles from "../styles.module.scss";
+
 const CONTENT_TYPE = {
-	All: "As a front-end developer, I love to be creative with code, putting a lot of effort into making interactions as smooth as they can be. Over the last 5 years, I have learned to use Next.js in combination with tools such as Framer Motion, GSAP.",
+	All: "As a Designer & Developer, I passionate to explore new ways to create functional websites and applications.",
 	Frontend:
 		"As a front-end developer, I love to be creative with code, putting a lot of effort into making interactions as smooth as they can be. Over the last 5 years, I have learned to use Next.js in combination with tools such as Framer Motion, GSAP.",
 	Design:
@@ -15,14 +22,48 @@ const CONTENT_TYPE = {
 };
 
 const DescriptionBlock = () => {
-    const { capability } = useCapability();
-    
+	const { capability } = useCapability();
+
+	const paragraph =
+		Object.entries(CONTENT_TYPE).find(([key]) => {
+			return key.toLowerCase().includes(capability.toLowerCase());
+		})?.[1] || CONTENT_TYPE["All"];
+
+	console.log({ paragraph, capability });
+
 	return (
 		<ContentBlock title='Professional Experience'>
-			<p className={styles["about-content__description"]}>
-				{CONTENT_TYPE[capability]}
-			</p>
+			<AnimatedParagraph paragraph={paragraph} />
 		</ContentBlock>
+	);
+};
+
+const AnimatedParagraph = ({ paragraph }: { paragraph: string }) => {
+	const variants = {
+		hidden: { opacity: 0, filter: "blur(10px)" },
+		visible: { opacity: 1, filter: "blur(0px)" },
+	};
+
+	return (
+		<MotionConfig
+			transition={{
+				duration: 0.5,
+				ease: [0.76, 0, 0.24, 1],
+			}}
+		>
+			<AnimatePresence mode='wait'>
+				<motion.p
+					className={styles["about-content__description"]}
+					key={paragraph}
+					variants={variants}
+					initial='hidden'
+					animate='visible'
+					exit='hidden'
+				>
+					{paragraph}
+				</motion.p>
+			</AnimatePresence>
+		</MotionConfig>
 	);
 };
 

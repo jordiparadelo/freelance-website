@@ -35,7 +35,6 @@ const MobileMenu: React.FC = () => (
 );
 
 const NavMenu: React.FC<MenuProps> = ({ links }) => {
-	console.log({links});
 	const isSmallDevice = useMediaQuery("only screen and (max-width: 768px)");
 
 	// return <DesktopMenu />
