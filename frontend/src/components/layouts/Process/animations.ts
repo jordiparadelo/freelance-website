@@ -6,13 +6,15 @@ gsap.registerPlugin(ScrollTrigger);
 export function processAnimations(component: HTMLElement | null): void {
 	if (!component) return;
 
+	console.log(ScrollTrigger);
+
 	const asideHeaderEl = component.querySelector(
 		'[data-component="aside-header"]'
 	);
 	const navListItems = component.querySelectorAll(
 		'[data-component="process-nav-item"]'
 	);
-	const masterTl = gsap.timeline({ paused: true });
+	const masterTl = gsap.timeline();
 
 	if (asideHeaderEl) {
 		masterTl.addLabel("start").to(asideHeaderEl, { maxHeight: 0, opacity: 0 });
@@ -55,8 +57,11 @@ export function processAnimations(component: HTMLElement | null): void {
 		start: "top+=5% center",
 		end: "bottom-=20% center",
 		scrub: true,
-		// markers: true,
 	});
 
-	// ScrollTrigger.update();
+	window.addEventListener("resize", () => {
+		ScrollTrigger.refresh();
+		ScrollTrigger.update();
+	});
+
 }

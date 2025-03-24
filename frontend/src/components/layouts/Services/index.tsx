@@ -15,7 +15,7 @@ import { useGSAP } from "@gsap/react";
 import { useWindowSize } from "@uidotdev/usehooks";
 import useMediaQuery from "@/hooks/useMediaQuery";
 // Animations
-import { serviceAnimation } from "./animations.js";
+import { serviceAnimation } from "./animations";
 
 const Services = () => {
 	const componentRef = useRef<HTMLElement | null>(null);

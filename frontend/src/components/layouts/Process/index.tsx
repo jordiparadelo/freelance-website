@@ -171,7 +171,8 @@ const Process: React.FC = () => {
 				processAnimations(processRef?.current);
 			}
 		},
-		{ scope: processRef, dependencies: [isSmallDevice] }
+		{ scope: processRef }
+		// { scope: processRef, dependencies: [isSmallDevice] }
 	);
 
 	return (
