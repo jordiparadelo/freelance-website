@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useState, useLayoutEffect } from 'react';
 import Image from "next/image";
 // Styles
 import styles from "./styles.module.scss";
@@ -30,7 +30,7 @@ const AvatarDropdown: React.FC = () => {
 	};
 
 	// Effect to manage event listeners for closing the dropdown
-	useEffect(() => {
+	useLayoutEffect(() => {
 		if (isDropdownOpen) {
 			document.addEventListener('mousedown', handleClicksOutsideDropdown);
 			window.addEventListener("keydown", handleEscDropdown);

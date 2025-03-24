@@ -6,7 +6,7 @@ import Lenis from "@studio-freight/lenis";
 
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import React, { createContext, useContext, useEffect, useRef } from "react";
+import React, { createContext, useContext, useLayoutEffect, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -57,7 +57,7 @@ const lenisConfig = {
 const ScrollProvider = ({ children }: { children: React.ReactNode }) => {
 	const lenisRef = useRef<Lenis | null>(null);
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		// Initialize Lenis with configuration
 		lenisRef.current = new Lenis(lenisConfig);
 

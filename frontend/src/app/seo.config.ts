@@ -137,6 +137,13 @@ export const METADATA = {
 	},
 };
 
+export const HOME_METADATA = {
+	...METADATA,
+	title: "Freelance Web Designer | Webflow & React Developer",
+	description:
+		"Learn more about Jordi Paradelo, a freelance web developer specialized in React, Next.js, and modern web technologies.",
+};
+
 export const ABOUT_METADATA = {
 	...METADATA,
 	title: "Hi Visitor | Learn more about me",

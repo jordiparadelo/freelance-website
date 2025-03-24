@@ -4,7 +4,7 @@ import { useWindowSize } from "@uidotdev/usehooks";
 
 import { usePathname } from "next/navigation";
 
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState, useLayoutEffect } from "react";
 
 interface MenuContextType {
 	scrollPosition: number;
@@ -26,7 +26,7 @@ export const MenuProvider = ({ children }: { children: React.ReactNode }) => {
 	const size = useWindowSize();
 	const pathname = usePathname();
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		let pageHeight: number = 0;
 
 		if (typeof window !== "undefined") {

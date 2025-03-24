@@ -81,13 +81,6 @@ const Footer = () => {
 							<div className={styles["footer__copyright"]}>
 								© {new Date().getFullYear()}
 							</div>
-							{/* <a
-								href='#'
-								target='_blank'
-								className={styles["footer__download"]}
-							>
-								Download Design
-							</a> */}
 							<button
 								onClick={() => scrollToElement("body")}
 							>
