@@ -1,0 +1,150 @@
+:root {
+	/* Typography */
+	--font-family--body: "Body", sans-serif;
+	--font-family--heading: "Heading", sans-serif;
+
+	/* Colors */
+	--text-color--font: var(--text-color--light);
+	--text-color--primary: #002e9d; /* Primary */
+	--text-color--alternative: white; /* Alternative */
+	--text-color--accent: #5dc3d5; /* Accent */
+	--text-color--dark: #060a16; /* Dark */
+	--text-color--gray: #667599; /* Gray */
+	--text-color--light: white; /* Light */
+
+	/* Background Colors */
+	--background-color--base: var(--background-color--dark);
+	--background-color--alternative: var(--background-color--light);
+	--background-color--primary: #002e9d;
+	--background-color--accent: #5dc3d5;
+	--background-color--dark: #151923;
+	--background-color--light: hsl(223, 24%, 91%);
+	--background-color--gray: #667599;
+
+	/* Borders */
+	--border-color--base: var(--text-color--font);
+	--border-color--accent: var(--background-color--accent);
+	--border-color--alternative: var(--background-color--alternative);
+	--border-color--primary: var(--background-color--primary);
+
+	/* Font sizes */
+	--font-ratio: calc(0.23vi + 0.82rem);
+	--font-size--heading-style-1: max(3.5rem, 10vw);
+	--font-size--heading-style-2: clamp(2.5rem, var(--font-ratio),8vw);
+	--font-size--heading-style-3: clamp(2rem, var(--font-ratio),6vw);
+	--font-size--heading-style-4: clamp(1.5rem, var(--font-ratio),4vw);
+	--font-size--heading-style-5: clamp(1.25rem, var(--font-ratio),3vw);
+	--font-size--heading-style-6: clamp(1.125rem, var(--font-ratio),2vw);
+
+	/* Section Padding */
+	--section-padding--inline: max(1.5rem, 5vw);
+	--section-padding--block: max(3rem, 10vw);
+
+	/* Sizes */
+	--navbar-height: 84px;
+	--button-size: 48px;
+	--input-size: 48px;
+	--container-size: 1200px;
+	--container-size-lg: 1440px;
+	--section-label-size: 2.5rem;
+
+	/* Ui */
+	--border: 1px solid var(--color-border);
+
+	/* Max Widths */
+	--max-width--small: 48rem;
+	--max-width--medium: 64rem;
+	--max-width--large: 80rem;
+	--max-width--xl: 1200px;
+
+	/* Breakpoints */
+	--breakpoint-xs: 0px;
+	--breakpoint-sm: 576px;
+	--breakpoint-md: 768px;
+	--breakpoint-lg: 992px;
+	--breakpoint-xl: 1200px;
+
+	/* Corners */
+	--corners--radius-round: 999px;
+	--corners--radius-tiny: 0.25rem;
+	--corners--radius-small: 0.5rem;
+	--corners--radius-medium: 0.75rem;
+	--corners--radius-large: 2rem;
+
+	/* Navbar */
+	--navbar-size: 82px;
+
+	/* Shadows */
+	--box-shadow--sm: 0px 0px 14px 0px rgba(255, 255, 255, 255, 0.3);
+	--box-shadow--md: 0px 0px 0px 2px rgba(0, 0, 0, 0.5);
+	--box-shadow--lg: 0px 0px 0px 4px rgba(0, 0, 0, 0.5);
+	--box-shadow--xl: 0px 0px 0px 8px rgba(0, 0, 0, 0.5);
+	--box-shadow--glow: rgba(0, 0, 0, 0.1) 0px 10px 10px 0px,
+		rgba(0, 0, 0, 0.05) 0px 4px 4px 0px,
+		rgba(255, 255, 255, 0.1) 0px 1px 22px 0px,
+		rgba(197, 204, 255, 0.2) 0px 0px 20px 0px inset,
+		rgba(198, 219, 255, 0.35) 0px 1px 3px 0px inset;
+
+	/* Animation */
+	--anim-duration--sm: 0.3s;
+	--anim-duration--md: 0.5s;
+	--anim-duration--lg: 0.7s;
+	--anim-duration--xl: 1s;
+	--anim-easing: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+/* COLOR THEME SUPPORT */
+@media (prefers-color-scheme: light) {
+	:root {
+		--text-color--font: var(--text-color--dark);
+		--text-color--alternative: var(--text-color--light);
+		--background-color--base: var(--background-color--light);
+		--background-color--alternative: var(--background-color--dark);
+		--border-color--base: rgba(0, 0, 0, 0.1);
+	}
+
+	/* Dark Mode */
+	[data-theme="dark"] {
+		--text-color--font: var(--text-color--light);
+		--text-color--alternative: var(--text-color--dark);
+		--background-color--alternative: var(--background-color--light);
+		--background-color--base: var(--background-color--dark);
+		--border-color--base: rgba(255, 255, 255, 0.1);
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--text-color--font: var(--text-color--light);
+		--text-color--alternative: var(--text-color--dark);
+		--background-color--alternative: var(--background-color--light);
+		--background-color--base: var(--background-color--dark);
+		--border-color--base: rgba(255, 255, 255, 0.1);
+	}
+
+	/* Light Mode */
+	[data-theme="light"] {
+		--text-color--font: #212631;
+		--text-color--alternative: var(--text-color--light);
+		--background-color--base: var(--background-color--light);
+		--background-color--alternative: var(--text-color--font);
+		--border-color--base: rgba(0, 0, 0, 0.1);
+	}
+}
+/* Dark Mode */
+[data-theme="dark"] {
+	--text-color--font: var(--text-color--light);
+	--text-color--alternative: var(--text-color--dark);
+	--background-color--alternative: var(--background-color--light);
+	--background-color--base: var(--background-color--dark);
+	--border-color--base: rgba(255, 255, 255, 0.1);
+}
+
+/* Light Mode */
+[data-theme="light"] {
+	--text-color--font: #212631;
+	--text-color--alternative: var(--text-color--light);
+	--background-color--base: var(--background-color--light);
+	--background-color--alternative: var(--background-color--dark);
+	--border-color--base: rgba(0, 0, 0, 0.1);
+}

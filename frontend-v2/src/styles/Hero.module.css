@@ -1,0 +1,11 @@
+.hero {
+
+    /* Heading */
+    .hero_heading {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        text-align: center;
+    }
+}

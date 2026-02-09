@@ -1,0 +1,63 @@
+.card {
+    --corners: var(--corners--radius-medium);
+    --stroke: 2px;
+    display: flex;
+    flex-direction: column;
+    padding: var(--stroke);
+    position: relative;
+    border-radius: var(--corners);
+    z-index: 1;
+    overflow: hidden;
+    will-change: transform;
+    box-shadow: 0px 0px 40px -50px rgba(255, 255, 255, 0.5);
+    will-change: box-shadow;
+
+    /* Glow */
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        background-color: var(--background-color--alternative);
+        opacity: 0.025;
+    }
+    &::before {
+        content: "";
+        position: absolute;
+        left: calc(var(--x) * 1px);
+        top: calc(var(--y) * 1px );
+        width: 100%;
+        aspect-ratio: 1/1;
+        background-color: var(--background-color--alternative);
+        border-radius: var(--corners--radius-round);
+        filter: blur(30px);
+        opacity: 0.5;
+        z-index: 0;
+    }
+
+    .card__layout {
+        position: relative;
+        z-index: 1;
+        background-color: var(--background-color--base);
+        flex-grow: 1;
+        border-radius: calc(var(--corners) - var(--stroke));
+        padding: 1rem;
+        /* visibility: hidden; */
+
+        /* Glow */
+        &::before {
+            content: "";
+            position: absolute;
+            left: calc(var(--x) * 1px);
+            top: calc(var(--y) * 1px );
+            width: 100%;
+            aspect-ratio: 1/1;
+            background-color: var(--background-color--alternative);
+            border-radius: var(--corners--radius-round);
+            filter: blur(30px);
+            opacity: 0.5;
+            transform-origin: center center;
+            mix-blend-mode: overlay;
+        }
+    }
+}
