@@ -34,7 +34,7 @@ const useParagraphAnimation = (
 					trigger: target,
 					start: "top center",
 					end: "bottom center",
-					markers: true,
+					// markers: true,
 				},
 			});
 		},

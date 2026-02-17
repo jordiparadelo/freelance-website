@@ -101,10 +101,6 @@ const Tabs = ({ data, className }: { data: TabItem[]; className?: string }) => {
 			},
 		});
 
-		// const animation = timeline.to(Object.values(elements), {
-		// 	opacity: 1,
-		// 	yPercent: 0,
-		// });
 		const animation = timeline.fromTo(
 			Object.values(elements),
 			{
@@ -150,9 +146,12 @@ const Tabs = ({ data, className }: { data: TabItem[]; className?: string }) => {
 				},
 			});
 
-			masterTl.current.add(exitAnimation().then(() => enterAnimation()));
+			masterTl.current.add(exitAnimation()?.then(() => enterAnimation()));
 		},
-		{ scope: componentRef, dependencies: [activeTab] },
+		{
+			scope: componentRef,
+			dependencies: [activeTab, exitAnimation, enterAnimation],
+		},
 	);
 
 	return (

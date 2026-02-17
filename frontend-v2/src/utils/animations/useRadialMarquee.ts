@@ -3,189 +3,154 @@
 import { useGSAP } from "@gsap/react";
 
 import gsap from "gsap";
-import GSDevTools from "gsap/GSDevTools";
+import Draggable from "gsap/Draggable";
+import InertiaPlugin from "gsap/InertiaPlugin";
+import MotionPathPlugin from "gsap/MotionPathPlugin";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 
-import { useDebounceCallback, useWindowSize } from "usehooks-ts";
+import { useWindowSize } from "usehooks-ts";
 
+// TODO: Clean functionality and refactor code
 // Animation hook
 const useRadialMarquee = (elementRef: React.RefObject<HTMLElement | null>) => {
-	const [isTransitioning, setIsTransitioning] = useState(true);
-	const [elementWidth, setElementWidth] = useState(
-		elementRef?.current?.offsetWidth ?? 0,
-	);
-	const timeline = useRef<gsap.core.Timeline | null>(null);
-	const { width: windowWidth } = useWindowSize();
-
-	gsap.registerPlugin(GSDevTools);
-
-	const elements = {
-		items: [] as HTMLElement[],
-	};
-
-	const config = {
-		offset: 10,
-		duration: 120,
-	};
-
-	// Methods
-	const pause = useCallback(() => {
-		if (!timeline.current) return;
-		timeline.current.pause();
-		console.log("paused");
-	}, []);
-
-	const resume = useCallback(() => {
-		if (!timeline.current) return;
-		timeline.current.play();
-		console.log("resumed");
-	}, []);
-
-	const setupItems = useCallback(() => {
-		if (!elementRef.current?.children.length) return;
-
-		const items = Array.from(elementRef.current.children);
-
-		const itemLength = items.length;
-		const radian = (Math.PI * 2) / itemLength;
-		// Circle diameter = window width, radius = half of that
-		const radius: number = elementRef?.current?.offsetWidth / 2 || 0;
-		const centerAxis = elementRef?.current?.clientWidth / 2;
-
-		// Wrapper gets positioning; inner card uses CSS to counter-rotate (stay facing front)
-		// Rotation follows the arc: tangent angle = position angle + 90° (perpendicular to radius)
-		gsap.set(items, {
-			"--card-index": (index: number) => index + 1,
-			"--card-length": (index: number) => itemLength,
-			"--x": (index: number) =>
-				Math.round(centerAxis + radius * Math.cos(index * radian)),
-			"--y": (index: number) =>
-				Math.round(centerAxis + radius * Math.sin(index * radian)),
-			rotation: (index: number) => (index * 360) / itemLength - 90,
-			left: (index: number) => centerAxis + radius * Math.cos(index * radian),
-			top: (index: number) => centerAxis + radius * Math.sin(index * radian),
-			xPercent: -50,
-			yPercent: -50,
-		});
-	}, [elementRef]);
-
-	const debouncedSetupItems = useDebounceCallback(() => {
-		console.log("debouncedSetupItems");
-		setupItems();
-	}, 500);
-
-	// Go to the next item
-	const goToNextItem = useCallback(
-		(index: number) => {
-			if (!timeline.current || timeline.current?.duration() > 0) return;
-
-			let nextIndex = index || undefined;
-
-			if (index === elements.items.length - 1) {
-				nextIndex = (index + 1) % elements.items.length;
-			} else {
-				nextIndex = timeline.current?.progress() + 1;
-			}
-
-			console.log("nextIndex", nextIndex);
-
-			timeline.current?.progress(nextIndex / elements.items.length, true);
-		},
-		[elements.items.length],
+	gsap.registerPlugin(
+		MotionPathPlugin,
+		Draggable,
+		InertiaPlugin,
+		ScrollTrigger,
 	);
 
-	const goToPreviousItem = useCallback(
-		(index: number) => {
-			if (!timeline.current || timeline.current?.duration() > 0) return;
-			const previousIndex =
-				(index - 1 + elements.items.length) % elements.items.length;
-			timeline.current?.progress(previousIndex / elements.items.length, true);
-		},
-		[elements.items.length],
-	);
+	const { width } = useWindowSize();
 
-	// Init
+	const rotationTimeline = useRef<gsap.core.Timeline | null>(null);
 
 	useGSAP(
 		() => {
 			if (!elementRef.current) return;
 
-			timeline.current = gsap.timeline({
-				// onStart: () => setIsTransitioning(true),
-				paused: true,
-				defaults: {
-					// repeat: -1,
-					ease: "linear",
-					duration: config.duration / elements.items.length,
-				},
-				id: "master-tl",
-			});
-
-			timeline.current
-				.from(
-					elementRef.current,
-					{
-						rotation: "-=20deg",
-						width: "50vw",
-						duration: 2,
-						ease: "power2.inOut",
-						onUpdate: () => {
-							setupItems();
-						},
-					},
-					"start",
-				)
-				.to(
-					elementRef.current,
-					{
-						rotation: "+=360deg",
-						duration: config.duration,
-						ease: "linear",
-						repeat: -1,
-						onComplete: () => setIsTransitioning(false),
-					},
-					"-=0.25",
-				)
-				.play();
-
-			GSDevTools.create({
-				animation: timeline.current,
-				label: "radial-marquee",
-			});
-
-			return () => {
-				timeline.current?.kill();
+			const elements = {
+				container: elementRef.current,
+				path: elementRef.current.querySelector<SVGPathElement>(
+					"svg path",
+				) as SVGPathElement,
+				items: gsap.utils.toArray<HTMLDivElement>("div"),
 			};
+
+			const ROTATION_DURATION =
+				(elements.items.length / elementRef.current.clientWidth) * 100 + 45;
+			const SLOWMO_DURATION = ROTATION_DURATION / 2;
+			const SLOWMO_TIMESCALE = SLOWMO_DURATION / ROTATION_DURATION; // ~0.4 (slower)
+			const TIMESCALE_TWEEN_DURATION = 0.6;
+
+			const displayItems = () => {
+				return gsap.set(elements.items, {
+					motionPath: {
+						path: elements.path,
+						align: elements.path,
+						alignOrigin: [0.5, 0.5],
+						end: (index: number) => index / elements.items.length,
+						autoRotate: 180,
+					},
+				});
+			};
+
+			displayItems();
+
+			// Single timeline for rotation - enables pause/resume and timeScale control
+			rotationTimeline.current = gsap.timeline({ repeat: -1, paused: true });
+
+			rotationTimeline.current.to(elements.container, {
+				rotation: "+=360",
+				duration: ROTATION_DURATION,
+				ease: "none",
+			});
+
+			// Tween for smooth timeScale transitions (slow-mo effect)
+			let timeScaleTween: gsap.core.Tween | null = null;
+
+			const setRotationSpeed = (timescale: number) => {
+				timeScaleTween?.kill();
+				timeScaleTween = gsap.to(rotationTimeline.current, {
+					timeScale: timescale,
+					duration: TIMESCALE_TWEEN_DURATION,
+					ease: "power2.inOut",
+					overwrite: true,
+				});
+			};
+
+			const enterSlowMo = () => setRotationSpeed(SLOWMO_TIMESCALE);
+			const exitSlowMo = () => setRotationSpeed(1);
+
+			Draggable.create(elements.container, {
+				type: "rotation",
+				inertia: true,
+				onDragStart: () => {
+					rotationTimeline.current?.pause();
+					console.log("drag start", rotationTimeline.current?.paused());
+				},
+				onThrowComplete: () => {
+					// 	gsap.to(rotationTimeline.current, {
+					// 		rotation: "+=360",
+					// 		duration: ROTATION_DURATION,
+					// 		ease: "none",
+					// 	});
+					rotationTimeline.current?.paused()
+						? rotationTimeline.current?.resume()
+						: rotationTimeline.current?.play();
+					console.log("throw complete", rotationTimeline.current?.paused());
+				},
+			});
+
+			// Slow-mo on mouse enter/leave - container mouseleave ensures we exit when leaving any item
+			elements.container.addEventListener("mouseleave", exitSlowMo);
+			elements.items.forEach((item) => {
+				item.addEventListener("mouseenter", () => {
+					enterSlowMo();
+					gsap.to("body section:not(:hover)", {
+						filter: "blur(10px)",
+						duration: 0.5,
+						ease: "power2.out",
+					});
+					gsap.to(item, {
+						scale: 1.125,
+						duration: 0.5,
+						ease: "power2.out",
+					});
+				});
+				item.addEventListener("mouseleave", () => {
+					gsap.to("body section", {
+						filter: "blur(0px)",
+						duration: 0.5,
+						ease: "power2.out",
+						clearProps: true,
+					});
+					gsap.to(item, {
+						scale: 1,
+						duration: 0.5,
+						ease: "power2.out",
+					});
+				});
+			});
+
+			// ScrollTrigger: pause when leaving viewport, resume when entering
+			ScrollTrigger.create({
+				trigger: elements.container.parentElement ?? elements.container,
+				start: "top-=50% bottom",
+				end: "bottom+=50% top",
+				// markers: true,
+				onLeave: () => rotationTimeline.current?.pause(),
+				onEnterBack: () => rotationTimeline.current?.resume(),
+				onEnter: () => rotationTimeline.current?.resume(),
+				onLeaveBack: () => rotationTimeline.current?.pause(),
+				onRefresh: (self) => {
+					if (self.isActive) rotationTimeline.current?.resume();
+				},
+			});
 		},
-		{ scope: elementRef, dependencies: [elementRef] },
+		{ scope: elementRef, dependencies: [width] },
 	);
-
-	// useEffect(() => {
-	// 	setupItems();
-	// }, [setupItems]);
-	// Re-run setupItems when window size changes
-	// biome-ignore lint/correctness/useExhaustiveDependencies: we need to re-run setupItems when window size changes
-	useEffect(() => {
-		if (!elementRef.current) return;
-		setElementWidth(
-			(
-				document.querySelector(
-					'[data-component="radial-marquee"]',
-				) as HTMLElement
-			)?.offsetWidth || 0,
-		);
-		debouncedSetupItems();
-	}, [windowWidth]);
-
-	return {
-		timeline,
-		pause,
-		isTransitioning,
-		resume,
-		goToNextItem,
-		goToPreviousItem,
-	};
 };
 
 export default useRadialMarquee;

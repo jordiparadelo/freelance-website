@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { Section } from "@/components/ui";
 import styles from "@/styles/RadialMarquee.module.css";
 import { useRadialMarquee } from "@/utils/animations";
@@ -59,7 +59,7 @@ const PROJECTS_MOCK = [
 const RadialMarquee = () => {
 	const componentRef = useRef<HTMLDivElement>(null);
 
-	const { pause, resume, isTransitioning } = useRadialMarquee(componentRef);
+	useRadialMarquee(componentRef);
 
 	return (
 		<Section className={styles["reel-section"]}>
@@ -67,15 +67,34 @@ const RadialMarquee = () => {
 				className={styles["radial-marquee"]}
 				ref={componentRef}
 				role="application"
-				data-transitioning={isTransitioning}
-				data-debug="true"
+				// data-debug="true"
 			>
+				<svg
+					className={styles["radial-marquee__circle"]}
+					style={{
+						width: "100%",
+						height: "100%",
+						position: "absolute",
+						inset: 0,
+					}}
+					viewBox="0 0 100 100"
+					preserveAspectRatio="none"
+				>
+					<title>Radial Marquee Circle</title>
+					<path
+						d="
+							M 50, 0
+							a 50,50 0 1,1 0,100
+							a 50,50 0 1,1 0,-100
+						"
+						fill="transparent"
+						strokeWidth="1"
+					/>
+				</svg>
 				{[...PROJECTS_MOCK, ...PROJECTS_MOCK].map((project, index) => (
 					<div
 						key={`${project.id}-${index}`}
 						className={styles["radial-marquee__item"]}
-						onMouseEnter={() => pause()}
-						onMouseLeave={() => resume()}
 						role="application"
 					>
 						<figure className={styles["radial-marquee__card"]}>
@@ -88,5 +107,37 @@ const RadialMarquee = () => {
 		</Section>
 	);
 };
+// const RadialMarquee = () => {
+// 	const componentRef = useRef<HTMLDivElement>(null);
+
+// 	const { pause, resume, isTransitioning } = useRadialMarquee(componentRef);
+
+// 	return (
+// 		<Section className={styles["reel-section"]}>
+// 			<div
+// 				className={styles["radial-marquee"]}
+// 				ref={componentRef}
+// 				role="application"
+// 				data-transitioning={isTransitioning}
+// 				data-debug="true"
+// 			>
+// 				{[...PROJECTS_MOCK, ...PROJECTS_MOCK].map((project, index) => (
+// 					<div
+// 						key={`${project.id}-${index}`}
+// 						className={styles["radial-marquee__item"]}
+// 						onMouseEnter={() => pause()}
+// 						onMouseLeave={() => resume()}
+// 						role="application"
+// 					>
+// 						<figure className={styles["radial-marquee__card"]}>
+// 							<h3>{project.title}</h3>
+// 							<p>{project.description}</p>
+// 						</figure>
+// 					</div>
+// 				))}
+// 			</div>
+// 		</Section>
+// 	);
+// };
 
 export default RadialMarquee;

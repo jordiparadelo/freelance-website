@@ -2,16 +2,21 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    height: 30vh;
+    height: min(300px, 20vh);
+    z-index: -1;
+    padding: unset;
 }
 .radial-marquee {
     --rotation: 0;
     position: relative;
     aspect-ratio: 1/1;
-    width: 300vw;
-    pointer-events: none;
+    width: 400vw;
     will-change: transform;
     animation: rotate 10s linear infinite;
+
+    @media (min-width: 768px) {
+        width: 250vw;
+    }
 
     .radial-marquee__item {
         --rotation: calc(calc(var(--card-index) * 360deg) / var(--card-length));
