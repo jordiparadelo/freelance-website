@@ -1,10 +1,19 @@
-import { Container, Section } from "@/components/ui";
+import { Container, Section, Tabs } from "@/components/ui";
+import styles from "@/styles/ServicesSection.module.css";
+import { SERVICES } from "@/utils/constants";
 
 const ServicesSection = () => {
 	return (
-		<Section>
+		<Section id="services" className={styles["services-section"]}>
 			<Container>
-				<h2 className="services-section__title">Services</h2>
+				<div className={styles["services-section__layout"]}>
+					<h2 className={styles["services-section__title"]}>
+						Full on Services
+					</h2>
+				</div>
+				<div className={styles["services-section__container"]}>
+					<Tabs data={SERVICES} className={styles["services-section__tabs"]} />
+				</div>
 			</Container>
 		</Section>
 	);

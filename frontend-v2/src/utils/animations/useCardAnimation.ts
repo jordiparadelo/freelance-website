@@ -6,12 +6,15 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import type React from "react";
+import { useState } from "react";
 
 import { useEventListener } from "usehooks-ts";
 
 const useCardAnimation = (
 	componentRef: React.RefObject<HTMLElement | null>,
 ) => {
+	const [inView, setInView] = useState<boolean>(false);
+
 	// Methods
 	const handleMouseMove = (event: MouseEvent) => {
 		const target = componentRef.current as HTMLElement;
@@ -23,27 +26,15 @@ const useCardAnimation = (
 		const moveX = clientX - left - glowSize;
 		const moveY = clientY - top - glowSize;
 
-		console.log({ target, clientX, clientY, moveX, moveY });
-
 		gsap.to(target, {
 			"--x": moveX,
 			"--y": moveY,
-			// "--x": clientX - centerX,
-			// "--y": clientY - centerX,
 			duration: 0.1,
 		});
 	};
 
 	// Mouse Event
-	useEventListener("mousemove", handleMouseMove, document);
-
-	useGSAP(
-		() => {
-			if (!componentRef.current) return;
-			console.log(componentRef.current);
-		},
-		{ scope: componentRef },
-	);
+	useEventListener("mousemove", handleMouseMove);
 };
 
 export default useCardAnimation;

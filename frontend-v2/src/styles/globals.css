@@ -12,6 +12,8 @@ body {
 	background-color: var(--background-color--base);
 	font-family: var(--font-body);
 	color: var(--text-color--font);
+	max-width: 100dvw;
+	overflow-x: clip;
 }
 
 /* Set max image dimensions */

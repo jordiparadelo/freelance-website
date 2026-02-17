@@ -25,8 +25,8 @@ const useRadialMarquee = (elementRef: React.RefObject<HTMLElement | null>) => {
 	};
 
 	const config = {
-		offset: 20,
-		duration: 60,
+		offset: 10,
+		duration: 120,
 	};
 
 	// Methods
