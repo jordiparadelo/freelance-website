@@ -8,8 +8,11 @@ import SplitText from "gsap/SplitText";
 
 import { useRef } from "react";
 
+if (typeof window !== "undefined") {
+	gsap.registerPlugin(ScrollTrigger, SplitText);
+}
+
 export const transition = { duration: 1.4, ease: [0.6, 0.01, 0.05, 0.9] };
-gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const useParagraphAnimation = (
 	element: React.RefObject<HTMLElement | null>,
@@ -34,7 +37,6 @@ const useParagraphAnimation = (
 					trigger: target,
 					start: "top center",
 					end: "bottom center",
-					// markers: true,
 				},
 			});
 		},

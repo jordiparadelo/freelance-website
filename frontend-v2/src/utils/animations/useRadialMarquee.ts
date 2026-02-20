@@ -3,25 +3,30 @@
 import { useGSAP } from "@gsap/react";
 
 import gsap from "gsap";
-import Draggable from "gsap/Draggable";
-import InertiaPlugin from "gsap/InertiaPlugin";
-import MotionPathPlugin from "gsap/MotionPathPlugin";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {
+	Draggable,
+	InertiaPlugin,
+	MotionPathPlugin,
+	ScrollTrigger,
+} from "gsap/all";
 
 import { useRef } from "react";
 
 import { useWindowSize } from "usehooks-ts";
 
-// TODO: Clean functionality and refactor code
-// Animation hook
-const useRadialMarquee = (elementRef: React.RefObject<HTMLElement | null>) => {
+// Register plugin once
+if (typeof window !== "undefined") {
 	gsap.registerPlugin(
 		MotionPathPlugin,
 		Draggable,
 		InertiaPlugin,
 		ScrollTrigger,
 	);
+}
 
+// TODO: Clean functionality and refactor code
+// Animation hook
+const useRadialMarquee = (elementRef: React.RefObject<HTMLElement | null>) => {
 	const { width } = useWindowSize();
 
 	const rotationTimeline = useRef<gsap.core.Timeline | null>(null);
@@ -39,13 +44,13 @@ const useRadialMarquee = (elementRef: React.RefObject<HTMLElement | null>) => {
 			};
 
 			const ROTATION_DURATION =
-				(elements.items.length / elementRef.current.clientWidth) * 100 + 45;
-			const SLOWMO_DURATION = ROTATION_DURATION / 2;
-			const SLOWMO_TIMESCALE = SLOWMO_DURATION / ROTATION_DURATION; // ~0.4 (slower)
-			const TIMESCALE_TWEEN_DURATION = 0.6;
+				(elements.items.length / elementRef.current.clientWidth) * 100 + 100;
+			const SLOWMO_DURATION = ROTATION_DURATION * 2;
 
 			const displayItems = () => {
 				return gsap.set(elements.items, {
+					perspectiveOrigin: "center",
+					perspective: 100,
 					motionPath: {
 						path: elements.path,
 						align: elements.path,
@@ -61,27 +66,20 @@ const useRadialMarquee = (elementRef: React.RefObject<HTMLElement | null>) => {
 			// Single timeline for rotation - enables pause/resume and timeScale control
 			rotationTimeline.current = gsap.timeline({ repeat: -1, paused: true });
 
-			rotationTimeline.current.to(elements.container, {
-				rotation: "+=360",
-				duration: ROTATION_DURATION,
-				ease: "none",
-			});
+			rotationTimeline.current
+				.to(elements.container, {
+					rotation: "+=360",
 
-			// Tween for smooth timeScale transitions (slow-mo effect)
-			let timeScaleTween: gsap.core.Tween | null = null;
+					ease: "none",
+				})
+				.duration(ROTATION_DURATION);
 
 			const setRotationSpeed = (timescale: number) => {
-				timeScaleTween?.kill();
-				timeScaleTween = gsap.to(rotationTimeline.current, {
-					timeScale: timescale,
-					duration: TIMESCALE_TWEEN_DURATION,
-					ease: "power2.inOut",
-					overwrite: true,
-				});
+				rotationTimeline.current?.duration(timescale);
 			};
 
-			const enterSlowMo = () => setRotationSpeed(SLOWMO_TIMESCALE);
-			const exitSlowMo = () => setRotationSpeed(1);
+			const enterSlowMo = () => setRotationSpeed(SLOWMO_DURATION);
+			const exitSlowMo = () => setRotationSpeed(ROTATION_DURATION);
 
 			Draggable.create(elements.container, {
 				type: "rotation",
@@ -91,15 +89,7 @@ const useRadialMarquee = (elementRef: React.RefObject<HTMLElement | null>) => {
 					console.log("drag start", rotationTimeline.current?.paused());
 				},
 				onThrowComplete: () => {
-					// 	gsap.to(rotationTimeline.current, {
-					// 		rotation: "+=360",
-					// 		duration: ROTATION_DURATION,
-					// 		ease: "none",
-					// 	});
-					rotationTimeline.current?.paused()
-						? rotationTimeline.current?.resume()
-						: rotationTimeline.current?.play();
-					console.log("throw complete", rotationTimeline.current?.paused());
+					rotationTimeline.current?.paused();
 				},
 			});
 

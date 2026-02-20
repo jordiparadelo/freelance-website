@@ -1,9 +1,35 @@
 {
+	"$schema": "https://biomejs.dev",
 	"linter": {
+		"enabled": true,
 		"rules": {
-			"a11y": {
-				"noStaticElementInteractions": "off"
+			"recommended": true,
+			"complexity": {
+				"noExtraBooleanCast": "off"
+			},
+			"suspicious": {
+				"noExplicitAny": "off",
+				"noImplicitAnyLet": "off"
+			},
+			"style": {
+				"noNonNullAssertion": "off",
+				"useImportType": "off"
+			},
+			"correctness": {
+				"noUnusedVariables": "warn",
+				"noUnusedImports": "warn"
 			}
+		}
+	},
+	"formatter": {
+		"enabled": true,
+		"indentStyle": "space",
+		"lineWidth": 80
+	},
+	"javascript": {
+		"formatter": {
+			"quoteStyle": "double",
+			"semicolons": "always"
 		}
 	}
 }

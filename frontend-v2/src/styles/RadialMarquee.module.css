@@ -13,6 +13,7 @@
     width: 400vw;
     will-change: transform;
     animation: rotate 10s linear infinite;
+    perspective: 500vh;
 
     @media (min-width: 768px) {
         width: 250vw;
