@@ -1,7 +1,8 @@
 "use client";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { useCallback, useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import { useRef, useState } from "react";
 
 type TabItem = {
 	title: string;
@@ -10,21 +11,12 @@ type TabItem = {
 	className?: string;
 };
 
-// if (typeof window !== "undefined") {
-// 	gsap.registerPlugin();
-// }
-
 const Tabs = ({ data, className }: { data: TabItem[]; className?: string }) => {
 	const componentRef = useRef<HTMLDivElement>(null);
-	// const masterTl = useRef<GSAPTimeline>(null);
-	// const [activeTab, setActiveTab] = useState(0);
-	// const previousTabRef = useRef<number | null>(null);
-	// const isTransitioning = useRef(false);
 
 	const { activeTab, handleTabChange, isTransitioning } =
 		useTabsAnimation(componentRef);
 
-	// const setInitialProperties = useCallback(() => {
 	// 	if (!componentRef.current) return;
 
 	// 	const elements = {
@@ -158,7 +150,12 @@ const Tabs = ({ data, className }: { data: TabItem[]; className?: string }) => {
 	// );
 
 	return (
-		<div className={`tabs ${className}`} data-tabs ref={componentRef}>
+		<div
+			className={`tabs ${className}`}
+			data-tabs
+			ref={componentRef}
+			data-tabs-animation={isTransitioning}
+		>
 			<div
 				className="tabs__menu"
 				aria-label="Services"
@@ -178,7 +175,7 @@ const Tabs = ({ data, className }: { data: TabItem[]; className?: string }) => {
 						role="tab"
 						data-tab-link
 					>
-						<img src={item.image} alt={item.title} width={64} height={64} />
+						<Image src={item.image} alt={item.title} width={64} height={64} />
 						<span>{item.title}</span>
 					</button>
 				))}
@@ -199,7 +196,12 @@ const Tabs = ({ data, className }: { data: TabItem[]; className?: string }) => {
 						data-tab-item
 					>
 						<div className="tabs__item-image" data-tab-image>
-							<img src={item.image} alt={item.title} width={100} height={100} />
+							<Image
+								src={item.image}
+								alt={item.title}
+								width={100}
+								height={100}
+							/>
 						</div>
 						<div className="tabs__item-content" data-tab-content>
 							<h3 className="tabs__item-title">{item.title}</h3>

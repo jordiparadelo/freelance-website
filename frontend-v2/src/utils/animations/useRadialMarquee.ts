@@ -10,7 +10,7 @@ import {
 	ScrollTrigger,
 } from "gsap/all";
 
-import { useRef } from "react";
+import { useCallback, useRef, useState } from "react";
 
 import { useWindowSize } from "usehooks-ts";
 
@@ -24,123 +24,112 @@ if (typeof window !== "undefined") {
 	);
 }
 
-// TODO: Clean functionality and refactor code
 // Animation hook
 const useRadialMarquee = (elementRef: React.RefObject<HTMLElement | null>) => {
 	const { width } = useWindowSize();
 
-	const rotationTimeline = useRef<gsap.core.Timeline | null>(null);
+	const [radialReady, setRadialReady] = useState(false);
 
+	const rotationTween = useRef<gsap.core.Tween | null>(null);
+
+	const displayItemsRadial = useCallback(() => {
+		if (!elementRef.current) return;
+
+		const elements = {
+			path: elementRef.current.querySelector<SVGPathElement>(
+				"svg path",
+			) as SVGPathElement,
+			items:
+				elementRef.current.querySelectorAll<HTMLDivElement>(
+					`[data-target="item"]`,
+				),
+		};
+
+		return gsap.set(elements.items, {
+			perspectiveOrigin: "center",
+			perspective: 100,
+			motionPath: {
+				path: elements.path,
+				align: elements.path,
+				alignOrigin: [0.5, 0.5],
+				end: (index: number) => index / elements.items.length,
+				autoRotate: 180,
+			},
+			onStart: () => setRadialReady(false),
+			onComplete: () => setRadialReady(true),
+		});
+	}, [elementRef]);
+
+	// User Events
+	const handleMouseEnter = (event: React.MouseEvent<HTMLDivElement>) => {
+		const target = event.currentTarget;
+
+		gsap.to(target, {
+			scale: 1.125,
+			duration: 0.5,
+			ease: "power2.out",
+		});
+
+		rotationTween.current?.timeScale(0.3);
+	};
+
+	const handleMouseLeave = (event: React.MouseEvent<HTMLDivElement>) => {
+		const target = event.currentTarget;
+
+		gsap.to(target, {
+			scale: 1,
+			duration: 0.5,
+			ease: "power2.out",
+		});
+
+		rotationTween.current?.timeScale(1);
+	};
+
+	// Adapt the radial when window size changes
 	useGSAP(
 		() => {
 			if (!elementRef.current) return;
 
-			const elements = {
-				container: elementRef.current,
-				path: elementRef.current.querySelector<SVGPathElement>(
-					"svg path",
-				) as SVGPathElement,
-				items: gsap.utils.toArray<HTMLDivElement>("div"),
-			};
-
-			const ROTATION_DURATION =
-				(elements.items.length / elementRef.current.clientWidth) * 100 + 100;
-			const SLOWMO_DURATION = ROTATION_DURATION * 2;
-
-			const displayItems = () => {
-				return gsap.set(elements.items, {
-					perspectiveOrigin: "center",
-					perspective: 100,
-					motionPath: {
-						path: elements.path,
-						align: elements.path,
-						alignOrigin: [0.5, 0.5],
-						end: (index: number) => index / elements.items.length,
-						autoRotate: 180,
-					},
-				});
-			};
-
-			displayItems();
-
-			// Single timeline for rotation - enables pause/resume and timeScale control
-			rotationTimeline.current = gsap.timeline({ repeat: -1, paused: true });
-
-			rotationTimeline.current
-				.to(elements.container, {
-					rotation: "+=360",
-
-					ease: "none",
-				})
-				.duration(ROTATION_DURATION);
-
-			const setRotationSpeed = (timescale: number) => {
-				rotationTimeline.current?.duration(timescale);
-			};
-
-			const enterSlowMo = () => setRotationSpeed(SLOWMO_DURATION);
-			const exitSlowMo = () => setRotationSpeed(ROTATION_DURATION);
-
-			Draggable.create(elements.container, {
-				type: "rotation",
-				inertia: true,
-				onDragStart: () => {
-					rotationTimeline.current?.pause();
-					console.log("drag start", rotationTimeline.current?.paused());
-				},
-				onThrowComplete: () => {
-					rotationTimeline.current?.paused();
-				},
-			});
-
-			// Slow-mo on mouse enter/leave - container mouseleave ensures we exit when leaving any item
-			elements.container.addEventListener("mouseleave", exitSlowMo);
-			elements.items.forEach((item) => {
-				item.addEventListener("mouseenter", () => {
-					enterSlowMo();
-					gsap.to("body section:not(:hover)", {
-						filter: "blur(10px)",
-						duration: 0.5,
-						ease: "power2.out",
-					});
-					gsap.to(item, {
-						scale: 1.125,
-						duration: 0.5,
-						ease: "power2.out",
-					});
-				});
-				item.addEventListener("mouseleave", () => {
-					gsap.to("body section", {
-						filter: "blur(0px)",
-						duration: 0.5,
-						ease: "power2.out",
-						clearProps: true,
-					});
-					gsap.to(item, {
-						scale: 1,
-						duration: 0.5,
-						ease: "power2.out",
-					});
-				});
-			});
-
-			// ScrollTrigger: pause when leaving viewport, resume when entering
-			ScrollTrigger.create({
-				trigger: elements.container.parentElement ?? elements.container,
-				start: "top-=50% bottom",
-				end: "bottom+=50% top",
-				// markers: true,
-				onLeave: () => rotationTimeline.current?.pause(),
-				onEnterBack: () => rotationTimeline.current?.resume(),
-				onEnter: () => rotationTimeline.current?.resume(),
-				onLeaveBack: () => rotationTimeline.current?.pause(),
-				onRefresh: (self) => {
-					if (self.isActive) rotationTimeline.current?.resume();
-				},
-			});
+			displayItemsRadial();
 		},
-		{ scope: elementRef, dependencies: [width] },
+		{ dependencies: [width] },
 	);
+
+	// Run the radial animation
+	useGSAP(
+		() => {
+			if (!elementRef.current || !radialReady) return;
+
+			rotationTween.current = gsap.to(elementRef.current, {
+				rotation: "+=360",
+				ease: "none",
+				duration: 30,
+				repeat: -1,
+			});
+
+			// rotationTimeline.current.play();
+		},
+		{ dependencies: [elementRef, radialReady] },
+	);
+
+	// Init Draggable
+	useGSAP(() => {
+		Draggable.create(elementRef.current, {
+			type: "rotation",
+			inertia: true,
+			onDragStart: () => {
+				setRadialReady(false);
+			},
+			onThrowComplete: () => {
+				setRadialReady(true);
+			},
+		});
+	}, [elementRef]);
+
+	return {
+		handleMouseEnter,
+		handleMouseLeave,
+	};
 };
 
 export default useRadialMarquee;

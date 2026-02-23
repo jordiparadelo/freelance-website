@@ -59,7 +59,7 @@ const PROJECTS_MOCK = [
 const RadialMarquee = () => {
 	const componentRef = useRef<HTMLDivElement>(null);
 
-	useRadialMarquee(componentRef);
+	const { handleMouseEnter, handleMouseLeave } = useRadialMarquee(componentRef);
 
 	return (
 		<Section className={styles["reel-section"]}>
@@ -67,6 +67,7 @@ const RadialMarquee = () => {
 				className={styles["radial-marquee"]}
 				ref={componentRef}
 				role="application"
+				data-component="radial-marquee"
 				// data-debug="true"
 			>
 				<svg
@@ -96,6 +97,9 @@ const RadialMarquee = () => {
 						key={`${project.id}-${index}`}
 						className={styles["radial-marquee__item"]}
 						role="application"
+						data-target="item"
+						onMouseEnter={handleMouseEnter}
+						onMouseLeave={handleMouseLeave}
 					>
 						<figure className={styles["radial-marquee__card"]}>
 							<h3>{project.title}</h3>
