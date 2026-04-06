@@ -133,7 +133,7 @@
                 grid-template-rows: 1fr;
                 gap: 1rem;
                 flex-grow: 1;
-                overflow: hidden;
+                /* overflow: hidden; */
             }
 
             [data-tab-item] {
@@ -152,6 +152,15 @@
                 [data-tab-image] {
                     flex-grow: 1;
                     flex-basis: 75%;
+                    display: flex;
+                    flex-direction: row;
+
+                    img {
+                        width: 1px;
+                        min-width: 100%;
+                        flex-grow: 1;
+                        object-fit: contain;
+                    }
                 }
 
                 [data-tab-content] {

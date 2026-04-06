@@ -31,6 +31,7 @@ const useRadialMarquee = (elementRef: React.RefObject<HTMLElement | null>) => {
 	const [radialReady, setRadialReady] = useState(false);
 
 	const rotationTween = useRef<gsap.core.Tween | null>(null);
+	const mouseEventAnimation = useRef<gsap.core.Timeline | null>(null);
 
 	const displayItemsRadial = useCallback(() => {
 		if (!elementRef.current) return;
@@ -63,24 +64,45 @@ const useRadialMarquee = (elementRef: React.RefObject<HTMLElement | null>) => {
 	// User Events
 	const handleMouseEnter = (event: React.MouseEvent<HTMLDivElement>) => {
 		const target = event.currentTarget;
+		const notParentSection = document.querySelectorAll<HTMLElement>(
+			"section:not(section:hover)",
+		);
 
-		gsap.to(target, {
-			scale: 1.125,
-			duration: 0.5,
-			ease: "power2.out",
+		// mouseEventAnimation.current?.kill();
+
+		mouseEventAnimation.current = gsap.timeline({
+			paused: true,
+			defaults: { duration: 0.5, ease: "power3.inOut" },
 		});
 
-		rotationTween.current?.timeScale(0.3);
+		mouseEventAnimation.current
+			.fromTo(
+				notParentSection,
+				{
+					filter: "blur(0px)",
+				},
+				{
+					filter: "blur(10px)",
+				},
+			)
+			.fromTo(
+				target,
+				{
+					delay: 0.25,
+					scale: 1,
+				},
+				{
+					scale: 1.125,
+				},
+				"<",
+			);
+
+		mouseEventAnimation.current?.play();
+		rotationTween.current?.timeScale(0.35);
 	};
 
-	const handleMouseLeave = (event: React.MouseEvent<HTMLDivElement>) => {
-		const target = event.currentTarget;
-
-		gsap.to(target, {
-			scale: 1,
-			duration: 0.5,
-			ease: "power2.out",
-		});
+	const handleMouseLeave = () => {
+		mouseEventAnimation.current.reverse();
 
 		rotationTween.current?.timeScale(1);
 	};
@@ -101,7 +123,7 @@ const useRadialMarquee = (elementRef: React.RefObject<HTMLElement | null>) => {
 			if (!elementRef.current || !radialReady) return;
 
 			rotationTween.current = gsap.to(elementRef.current, {
-				rotation: "+=360",
+				rotation: `+=360`,
 				ease: "none",
 				duration: 30,
 				repeat: -1,

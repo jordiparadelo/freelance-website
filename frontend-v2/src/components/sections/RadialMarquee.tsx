@@ -111,37 +111,5 @@ const RadialMarquee = () => {
 		</Section>
 	);
 };
-// const RadialMarquee = () => {
-// 	const componentRef = useRef<HTMLDivElement>(null);
-
-// 	const { pause, resume, isTransitioning } = useRadialMarquee(componentRef);
-
-// 	return (
-// 		<Section className={styles["reel-section"]}>
-// 			<div
-// 				className={styles["radial-marquee"]}
-// 				ref={componentRef}
-// 				role="application"
-// 				data-transitioning={isTransitioning}
-// 				data-debug="true"
-// 			>
-// 				{[...PROJECTS_MOCK, ...PROJECTS_MOCK].map((project, index) => (
-// 					<div
-// 						key={`${project.id}-${index}`}
-// 						className={styles["radial-marquee__item"]}
-// 						onMouseEnter={() => pause()}
-// 						onMouseLeave={() => resume()}
-// 						role="application"
-// 					>
-// 						<figure className={styles["radial-marquee__card"]}>
-// 							<h3>{project.title}</h3>
-// 							<p>{project.description}</p>
-// 						</figure>
-// 					</div>
-// 				))}
-// 			</div>
-// 		</Section>
-// 	);
-// };
 
 export default RadialMarquee;

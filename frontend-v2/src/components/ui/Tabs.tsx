@@ -175,7 +175,13 @@ const Tabs = ({ data, className }: { data: TabItem[]; className?: string }) => {
 						role="tab"
 						data-tab-link
 					>
-						<Image src={item.image} alt={item.title} width={64} height={64} />
+						<Image
+							src={item.image}
+							alt={item.title}
+							width={64}
+							height={64}
+							loading="lazy"
+						/>
 						<span>{item.title}</span>
 					</button>
 				))}
@@ -199,8 +205,9 @@ const Tabs = ({ data, className }: { data: TabItem[]; className?: string }) => {
 							<Image
 								src={item.image}
 								alt={item.title}
-								width={100}
-								height={100}
+								width={400}
+								height={400}
+								loading="lazy"
 							/>
 						</div>
 						<div className="tabs__item-content" data-tab-content>
@@ -296,8 +303,7 @@ const useTabsAnimation = (componentRef: React.RefObject<HTMLDivElement>) => {
 
 			masterTl.current
 				?.add(animationTween(previousTabRef.current).reverse(0))
-				.add(animationTween(activeTab).play(0), "-=0.125")
-				.totalDuration(5);
+				.add(animationTween(activeTab).play(0), "-=0.125");
 		},
 		{
 			scope: componentRef,

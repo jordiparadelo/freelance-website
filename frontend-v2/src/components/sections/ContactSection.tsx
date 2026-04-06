@@ -1,10 +1,16 @@
-import { Container, Section } from "@/components/ui";
+import { BookCallButton, Container, Section } from "@/components/ui";
+import styles from "@/styles/ContactSection.module.css";
 
 const ContactSection = () => {
 	return (
-		<Section>
+		<Section id="contact" className={styles["contact-section"]}>
 			<Container>
-				<h2 className="contact-section__title">Contact</h2>
+				<div className={styles["contact-section__layout"]}>
+					<h2 className={styles["contact-section__title"]}>
+						Need a Design Partner?
+					</h2>
+					<BookCallButton />
+				</div>
 			</Container>
 		</Section>
 	);

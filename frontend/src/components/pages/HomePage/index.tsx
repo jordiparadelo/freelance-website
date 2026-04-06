@@ -1,10 +1,10 @@
 import {
-	Hero,
 	About,
-	SelectedProjects,
 	Gallery,
-	Services,
+	Hero,
 	Process,
+	SelectedProjects,
+	Services,
 } from "@/components/layouts";
 
 const HomePage = () => {
@@ -14,7 +14,7 @@ const HomePage = () => {
 			<Gallery />
 			<About />
 			<Services />
-			<Process />
+			{/* <Process /> */}
 			<SelectedProjects />
 		</>
 	);
