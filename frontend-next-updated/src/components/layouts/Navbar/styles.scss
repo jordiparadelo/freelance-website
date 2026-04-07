@@ -1,9 +1,12 @@
 .navbar {
 	--offset: 0.5rem;
 	padding-block: var(--offset);
-	position: sticky;
+	// position: sticky;
 	z-index: 100;
-	margin-block-end: calc(var(--navbar-height) * -1);
+	top: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: stretch;
 
 	&__layout {
 		display: grid;
