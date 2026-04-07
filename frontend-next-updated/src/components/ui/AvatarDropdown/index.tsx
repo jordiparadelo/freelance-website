@@ -1,14 +1,15 @@
 "use client";
 
-import React, { useRef, useState, useLayoutEffect } from 'react';
 import Image from "next/image";
-// Styles
-import styles from "./styles.module.scss";
+import type React from "react";
+import { useCallback, useLayoutEffect, useRef, useState } from "react";
 // Assets
 import ArrowDownIcon from "@/assets/icons/ArrowDownIcon";
-import { Button } from "..";
 // Constants
 import { ABOUT } from "@/lib/constants";
+import { Button } from "..";
+// Styles
+import styles from "./styles.module.scss";
 
 const AvatarDropdown: React.FC = () => {
 	// State to manage dropdown open/close status
@@ -16,35 +17,38 @@ const AvatarDropdown: React.FC = () => {
 	const dropdownRef = useRef<HTMLDivElement>(null);
 
 	// Function to handle clicks outside the dropdown
-	const handleClicksOutsideDropdown = (event: MouseEvent): void => {
-		if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+	const handleClicksOutsideDropdown = useCallback((event: MouseEvent): void => {
+		if (
+			dropdownRef.current &&
+			!dropdownRef.current.contains(event.target as Node)
+		) {
 			setDropdownOpen(false);
 		}
-	};
+	}, []);
 
 	// Function to handle Escape key press
-	const handleEscDropdown = (event: KeyboardEvent): void => {
-		if (event.key === 'Escape') {
+	const handleEscDropdown = useCallback((event: KeyboardEvent): void => {
+		if (event.key === "Escape") {
 			setDropdownOpen(false);
 		}
-	};
+	}, []);
 
 	// Effect to manage event listeners for closing the dropdown
 	useLayoutEffect(() => {
 		if (isDropdownOpen) {
-			document.addEventListener('mousedown', handleClicksOutsideDropdown);
+			document.addEventListener("mousedown", handleClicksOutsideDropdown);
 			window.addEventListener("keydown", handleEscDropdown);
 		} else {
-			document.removeEventListener('mousedown', handleClicksOutsideDropdown);
+			document.removeEventListener("mousedown", handleClicksOutsideDropdown);
 			window.removeEventListener("keydown", handleEscDropdown);
 		}
 
 		// Cleanup function to remove event listeners
 		return () => {
-			document.removeEventListener('mousedown', handleClicksOutsideDropdown);
+			document.removeEventListener("mousedown", handleClicksOutsideDropdown);
 			window.removeEventListener("keydown", handleEscDropdown);
 		};
-	}, [isDropdownOpen]);
+	}, [isDropdownOpen, handleClicksOutsideDropdown, handleEscDropdown]);
 
 	// Function to toggle the dropdown open state
 	const toggleDropdownOpen = () => {
@@ -52,15 +56,12 @@ const AvatarDropdown: React.FC = () => {
 	};
 
 	return (
-		<div
-			tabIndex={0}
-			aria-haspopup='true'
-			aria-expanded={isDropdownOpen}
-			className={styles["avatar-dropdown"]}
-			ref={dropdownRef}
-		>
+		<div className={styles["avatar-dropdown"]} ref={dropdownRef}>
 			<button
+				type="button"
 				onClick={toggleDropdownOpen}
+				aria-haspopup="menu"
+				aria-expanded={isDropdownOpen}
 				className={styles["avatar-dropdown__button"]}
 			>
 				<div className={styles["avatar-dropdown__avatar"]}>
@@ -68,7 +69,7 @@ const AvatarDropdown: React.FC = () => {
 						src={ABOUT.avatar}
 						height={64}
 						width={64}
-						alt='Jordi Paradelo - Freelance Designer & Developer'
+						alt="Jordi Paradelo - Freelance Designer & Developer"
 						className={styles["avatar-dropdown__avatar-image"]}
 					/>
 				</div>
@@ -76,7 +77,7 @@ const AvatarDropdown: React.FC = () => {
 			</button>
 
 			<div
-				role='menu'
+				role="menu"
 				aria-hidden={!isDropdownOpen}
 				hidden={!isDropdownOpen}
 				className={styles["avatar-dropdown__menu"]}

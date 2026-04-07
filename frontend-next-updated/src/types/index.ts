@@ -25,11 +25,12 @@ export interface LayoutProps {
   children: React.ReactNode;
 }
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'default' | 'outline' | 'ghost';
-  size?: 'sm' | 'md' | 'lg';
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: "default" | "outline" | "ghost";
+  size?: "sm" | "md" | "lg";
   isLoading?: boolean;
-} 
+}
 
 export interface Tags {
   id: number;
@@ -38,5 +39,5 @@ export interface Tags {
 }
 
 export interface Capability {
-	group: 'All' | 'Frontend' | 'Design' | 'Animation';
+  group: "All" | "Frontend" | "Design" | "Animation";
 }

@@ -1,0 +1,9 @@
+npm warn Unknown env config "devdir". This will stop working in the next major version of npm.
+npm error code ENOENT
+npm error syscall open
+npm error path /Users/jordiparadelo/Documents/Projects/freelance-website/package.json
+npm error errno -2
+npm error enoent Could not read package.json: Error: ENOENT: no such file or directory, open '/Users/jordiparadelo/Documents/Projects/freelance-website/package.json'
+npm error enoent This is related to npm not being able to find a file.
+npm error enoent
+npm error A complete log of this run can be found in: /var/folders/qc/5xkx6pm17y961z0d9ppgmpf00000gn/T/cursor-sandbox-cache/6f7593309c8126aeb6386c62e5e26f4a/npm/_logs/2026-04-07T07_11_45_186Z-debug-0.log

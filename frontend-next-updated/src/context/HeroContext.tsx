@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useCallback } from "react";
+import React, { useCallback, useState } from "react";
 
 interface HeroContextType {
   isOpen: boolean;
@@ -36,4 +36,3 @@ export const useHero = () => {
   const { isOpen, setIsOpen, toggleMenu } = useHeroContext();
   return { isOpen, setIsOpen, toggleMenu };
 };
-

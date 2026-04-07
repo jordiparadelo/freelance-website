@@ -10,25 +10,25 @@ import { cn } from "@/lib/utils";
 import "./styles.scss";
 
 interface ContactButtonProps {
-	children: React.ReactNode;
-	className?: string;
+  children: React.ReactNode;
+  className?: string;
 }
 
 const ContactButton: React.FC<ContactButtonProps> = ({
-	children,
-	className,
+  children,
+  className,
 }) => {
-	const router = useRouter();
+  const router = useRouter();
 
-	const handleClick = () => {
-		router.push("?modal=true&type=contact");
-	};
+  const handleClick = () => {
+    router.push("?modal=true&type=contact");
+  };
 
-	return (
-		<Button className={cn("contact-button", className)} onClick={handleClick}>
-			{children}
-		</Button>
-	);
+  return (
+    <Button className={cn("contact-button", className)} onClick={handleClick}>
+      {children}
+    </Button>
+  );
 };
 
 export default ContactButton;

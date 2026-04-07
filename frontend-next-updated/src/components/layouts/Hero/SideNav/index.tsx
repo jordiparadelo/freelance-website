@@ -1,14 +1,12 @@
 "use client";
 
+import { useEffect } from "react";
+import { SOCIAL_LINKS } from "@/app/seo.config";
+import { HOME_SECTIONS } from "@/app/site.config";
 import { useHero } from "@/context/HeroContext";
 import { useScroll } from "@/context/ScrollContext";
 import { useTheme } from "@/context/ThemeProvider";
-import { SOCIAL_LINKS } from "@/app/seo.config";
-
-import React, { useEffect } from "react";
-
 import styles from "../styles.module.scss";
-import { HOME_SECTIONS } from "@/app/site.config";
 
 const SideNav = () => {
 	const { isOpen, setIsOpen } = useHero();
@@ -19,10 +17,7 @@ const SideNav = () => {
 		const handleKeyDown = (e: KeyboardEvent): void => {
 			if (e.key === "Escape") {
 				setIsOpen(false);
-			} else if (
-				isOpen &&
-				HOME_SECTIONS
-			) {
+			} else if (isOpen && HOME_SECTIONS) {
 				const index = Number(e.key) - 1;
 				scrollTo(HOME_SECTIONS[index]?.href || "");
 			}
@@ -38,10 +33,7 @@ const SideNav = () => {
 	}, [isOpen, setIsOpen, scrollTo]);
 
 	return (
-		<aside
-			className={styles["hero__frame-nav-wrapper"]}
-			data-expanded={isOpen}
-		>
+		<aside className={styles["hero__frame-nav-wrapper"]} data-expanded={isOpen}>
 			<nav className={styles["hero__frame-nav"]}>
 				<div className={styles["hero__frame-nav__block"]}>
 					<h2 className={styles["hero__frame-nav__title"]}>Navigation</h2>
@@ -55,7 +47,7 @@ const SideNav = () => {
 									<a
 										href={link.href}
 										className={styles["hero__frame-nav__link"]}
-										aria-label='Scroll to top'
+										aria-label="Scroll to top"
 										onClick={() => scrollTo(link.href)}
 									>
 										<span className={styles["hero__frame-nav__link-label"]}>
@@ -94,6 +86,7 @@ const SideNav = () => {
 				</div>
 				<div className={styles["hero__frame-nav__block--switch-theme"]}>
 					<button
+						type="button"
 						className={styles["hero__frame-nav__switch-button"]}
 						onClick={() => setTheme("dark")}
 						aria-label="Change to Dark theme"
@@ -102,6 +95,7 @@ const SideNav = () => {
 						Dark
 					</button>
 					<button
+						type="button"
 						className={styles["hero__frame-nav__switch-button"]}
 						onClick={() => setTheme("light")}
 						aria-label="Change to Light theme"

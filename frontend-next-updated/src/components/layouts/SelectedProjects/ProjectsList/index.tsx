@@ -1,18 +1,17 @@
 "use client";
 
-import React, { useRef } from "react";
 // Libs
 import { useGSAP } from "@gsap/react";
+import type React from "react";
+import { useRef } from "react";
 import type { Project } from "@/lib/actions";
 
 // Animations
 import { projectsAnimation } from "./animations";
-
-// Styles
-import styles from "./styles.module.scss";
-
 // Components
 import ProjectItem from "./ProjectItem";
+// Styles
+import styles from "./styles.module.scss";
 
 interface ProjectsListProps {
 	projects: Project[];
@@ -27,20 +26,14 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ projects }) => {
 				projectsAnimation(componentRef.current);
 			}
 		},
-		{ scope: componentRef }
+		{ scope: componentRef },
 	);
 
 	return (
-		<ul
-			className={styles['projects-list']}
-			ref={componentRef}
-		>
-			{projects?.map((project, index) => (
-				<li key={project.title + "-" + index}>
-					<ProjectItem
-						project={project} 
-						key={index} 
-					/>
+		<ul className={styles["projects-list"]} ref={componentRef}>
+			{projects?.map((project) => (
+				<li key={project.title}>
+					<ProjectItem project={project} />
 				</li>
 			))}
 		</ul>

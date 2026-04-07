@@ -1,11 +1,9 @@
 "use client";
 
+import { type MouseEvent, useEffect, useState } from "react";
+import { GlobeIcon } from "@/assets/icons";
 import useLiveClock from "@/hooks/useLiveClock";
 import useMediaQuery from "@/hooks/useMediaQuery";
-
-import { GlobeIcon } from "@/assets/icons";
-
-import { useEffect, useState, MouseEvent } from "react";
 
 import styles from "./styles.module.scss";
 
@@ -14,7 +12,7 @@ const Banner = () => {
 	const [isClockVisible, setIsClockVisible] = useState(false);
 
 	const currentTime = useLiveClock();
-	const isSmallDevice = useMediaQuery('only screen and (max-width: 550px)');
+	const isSmallDevice = useMediaQuery("only screen and (max-width: 550px)");
 
 	const START_DATE = 9;
 	const END_DATE = 22;
@@ -40,16 +38,19 @@ const Banner = () => {
 	}, [isBetweenAvailableTime]);
 
 	return (
-		<section className={styles['banner']}>
-			<div className='container'>
-				<div className={styles['banner__layout']}>
-					<div
-						className={styles['banner__worldwide']}
-					>
-						{isSmallDevice ? <GlobeIcon className={styles['banner__worldwide-icon']}/> : 'Working Worldwide'}
+		<section className={styles.banner}>
+			<div className="container">
+				<div className={styles.banner__layout}>
+					<div className={styles.banner__worldwide}>
+						{isSmallDevice ? (
+							<GlobeIcon className={styles["banner__worldwide-icon"]} />
+						) : (
+							"Working Worldwide"
+						)}
 					</div>
 					<button
-						className={styles['banner__location']}
+						type="button"
+						className={styles.banner__location}
 						onMouseEnter={handleClockVisible}
 						onMouseLeave={handleClockVisible}
 					>
@@ -57,12 +58,12 @@ const Banner = () => {
 						<span>{isClockVisible && currentTime}</span>
 					</button>
 					<div
-						className={styles['banner__availability']}
+						className={styles.banner__availability}
 						style={isAvailable ? { color: "green" } : { color: "gray" }}
 						data-availability={isAvailable}
 					>
 						<span>{isSmallDevice ? "Live" : "Available to Work"}</span>
-						<span className={styles['dot-light']}></span>
+						<span className={styles["dot-light"]}></span>
 					</div>
 				</div>
 			</div>

@@ -48,27 +48,27 @@ const tools = [
 const AboutServices = () => {
 	return (
 		<div className={styles["about-services"]}>
-			<section className={styles["about-services__tools"] + " card-block"}>
+			<section className={`${styles["about-services__tools"]} card-block`}>
 				<h2 className="heading-style-h6">Tools & Tech Stack</h2>
 
 				<ToolsBar tools={tools} />
 			</section>
 
-			<section className={styles["about-services__projects"] + " card-block"}>
+			<section className={`${styles["about-services__projects"]} card-block`}>
 				<h2 className="heading-style-h6">Latest Projects</h2>
 				<ProjectsList />
 			</section>
 
-			<section className={styles["about-services__social"] + " card-block"}>
+			<section className={`${styles["about-services__social"]} card-block`}>
 				<h2 className="heading-style-h6">Find me on</h2>
 				<div className={styles["social-links"]}>
-					<a href="#" className={styles["social-link"]}>
+					<a href="https://github.com" className={styles["social-link"]}>
 						GitHub
 					</a>
-					<a href="#" className={styles["social-link"]}>
+					<a href="https://www.linkedin.com" className={styles["social-link"]}>
 						LinkedIn
 					</a>
-					<a href="#" className={styles["social-link"]}>
+					<a href="https://x.com" className={styles["social-link"]}>
 						Twitter
 					</a>
 				</div>

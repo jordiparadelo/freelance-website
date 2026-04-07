@@ -1,21 +1,20 @@
 "use client";
 
-import { Button, CloseModalButton, ProjectDetailsList } from "@/components/ui";
-import { splitArray } from "@/lib/utils";
+import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 
 import { useLayoutEffect, useMemo, useState } from "react";
-
-import { useSearchParams } from "next/navigation";
-import Image from "next/image";
+import { Button, CloseModalButton, ProjectDetailsList } from "@/components/ui";
 // Lib
 import { getProjectById, type Project } from "@/lib/actions";
-import { type ProjectGalleryItem } from "@/lib/types";
+import type { ProjectGalleryItem } from "@/lib/types";
+import { splitArray } from "@/lib/utils";
 // Styles
 import "./styles.scss";
 
 // Separate interface for ProjectGallery props
 interface ProjectGalleryProps {
-	gallery: Project['gallery'];
+	gallery: Project["gallery"];
 	numOfColumns?: number;
 }
 
@@ -46,55 +45,45 @@ const ProjectModal = () => {
 	}
 
 	return (
-		<div 
-			role="dialog"
-			aria-modal="true"
-			aria-labelledby="modal-title"
-		>
+		<div role="dialog" aria-modal="true" aria-labelledby="modal-title">
 			<h2 id="modal-title">{project.title}</h2>
-			<div className='container'>
-				<div className='project__header'>
-					<div className='project__heading-wrapper'>
-						<h3 className='project__title'>{project.title}</h3>
+			<div className="container">
+				<div className="project__header">
+					<div className="project__heading-wrapper">
+						<h3 className="project__title">{project.title}</h3>
 					</div>
-					<div className='action_wrapper'>
+					<div className="action_wrapper">
 						{project.preview && (
-							<Button
-								href={project.preview}
-								rel="noopener noreferrer"
-							>
+							<Button href={project.preview} rel="noopener noreferrer">
 								Live view
 							</Button>
 						)}
 						<CloseModalButton>Close</CloseModalButton>
 					</div>
 				</div>
-				<div className='project-detail__wrapper'>
-					<div className='project-detail__content-wrapper'>
-						<div className='project-detail__content'>
+				<div className="project-detail__wrapper">
+					<div className="project-detail__content-wrapper">
+						<div className="project-detail__content">
 							{project.details?.blob && (
-								<p className='project-detail__description'>
+								<p className="project-detail__description">
 									{project.details.blob}
 								</p>
 							)}
 						</div>
 
-						<aside className='project-detail__aside'>
+						<aside className="project-detail__aside">
 							{project.challenge && (
-								<div className='project-detail__aside__block'>
+								<div className="project-detail__aside__block">
 									<h4>Challenge</h4>
 									<p>{project.challenge}</p>
 								</div>
 							)}
 							{project.services && project.services.length > 0 && (
-								<div className='project-detail__aside__block'>
+								<div className="project-detail__aside__block">
 									<h4>Services</h4>
-									<ul className='project__categories'>
+									<ul className="project__categories">
 										{project.services.map((service) => (
-											<li
-												className='project__category'
-												key={service}
-											>
+											<li className="project__category" key={service}>
 												{service}
 											</li>
 										))}
@@ -105,7 +94,7 @@ const ProjectModal = () => {
 					</div>
 
 					{project.image && (
-						<div className='project-detail__image'>
+						<div className="project-detail__image">
 							<Image
 								unoptimized
 								src={project.image.src}
@@ -126,41 +115,40 @@ const ProjectModal = () => {
 	);
 };
 
-export const ProjectGallery: React.FC<ProjectGalleryProps> = ({ 
-	gallery, 
-	numOfColumns = 2 
+export const ProjectGallery: React.FC<ProjectGalleryProps> = ({
+	gallery,
+	numOfColumns = 2,
 }) => {
 	const galleryByColumns = useMemo(
 		() => splitArray(gallery, numOfColumns),
-		[gallery, numOfColumns]
+		[gallery, numOfColumns],
 	);
 
 	if (!gallery || gallery.length === 0) return null;
 
 	return (
 		<div
-			className='project-detail__gallery'
+			className="project-detail__gallery"
 			style={{ "--columns": numOfColumns } as React.CSSProperties}
 		>
-			{galleryByColumns && galleryByColumns.map((galleryColumn, columnIndex) => (
-				<ul
-					key={columnIndex}
-					className='project-detail__gallery-column'
-				>
-					{galleryColumn.map((galleryItem: ProjectGalleryItem, index: number) => (
-						<li
-							key={`${columnIndex}-${index}`}
-							className='project-detail__gallery-item'
-						>
-							<Image
-								unoptimized
-								src={galleryItem.src}
-								alt={galleryItem.alt}
-								width={galleryItem.width}
-								height={galleryItem.height}
-							/>
-						</li>
-					))}
+			{galleryByColumns?.map((galleryColumn, columnIndex) => (
+				<ul key={columnIndex} className="project-detail__gallery-column">
+					{galleryColumn.map(
+						(galleryItem: ProjectGalleryItem, index: number) => (
+							<li
+								key={`${columnIndex}-${index}`}
+								className="project-detail__gallery-item"
+							>
+								<Image
+									unoptimized
+									src={galleryItem.src}
+									alt={galleryItem.alt}
+									width={galleryItem.width}
+									height={galleryItem.height}
+								/>
+							</li>
+						),
+					)}
 				</ul>
 			))}
 		</div>

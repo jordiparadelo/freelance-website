@@ -1,16 +1,12 @@
 const ArrowDownIcon = () => {
-	return (
-		<svg
-			xmlns='http://www.w3.org/2000/svg'
-			width='24'
-			height='24'
-		>
-			<path
-				fill='currentColor'
-				d='M7.41 8.58 12 13.17l4.59-4.59L18 10l-6 6-6-6z'
-			/>
-		</svg>
-	);
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+      <path
+        fill="currentColor"
+        d="M7.41 8.58 12 13.17l4.59-4.59L18 10l-6 6-6-6z"
+      />
+    </svg>
+  );
 };
 
 export default ArrowDownIcon;

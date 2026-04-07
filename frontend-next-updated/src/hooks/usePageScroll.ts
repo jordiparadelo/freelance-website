@@ -5,45 +5,45 @@ import { useEffect, useState } from "react";
 import { useWindowSize } from "usehooks-ts";
 
 interface UsePageScrollReturn {
-	scrollPosition: number;
-	scrollToElement: (element: string) => number | undefined;
+  scrollPosition: number;
+  scrollToElement: (element: string) => number | undefined;
 }
 
 const usePageScroll = (): UsePageScrollReturn => {
-	const [scrollPosition, setScrollPosition] = useState(0);
-	const size = useWindowSize();
-	const pathname = usePathname();
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const _size = useWindowSize();
+  const _pathname = usePathname();
 
-	// Methods
-	function scrollToElement(element: string): number | undefined {
-		if (!element) return;
-		const selectedElement = document.querySelector<HTMLElement>(element);
-		if (!selectedElement) return;
+  // Methods
+  function scrollToElement(element: string): number | undefined {
+    if (!element) return;
+    const selectedElement = document.querySelector<HTMLElement>(element);
+    if (!selectedElement) return;
 
-		selectedElement.scrollIntoView({ behavior: "smooth" });
-		return selectedElement.getBoundingClientRect().top;
-	}
+    selectedElement.scrollIntoView({ behavior: "smooth" });
+    return selectedElement.getBoundingClientRect().top;
+  }
 
-	useEffect(() => {
-		let pageHeight: number = 0;
+  useEffect(() => {
+    let pageHeight: number = 0;
 
-		if (typeof window !== "undefined") {
-			pageHeight = document?.body.scrollHeight - window.innerHeight;
-		}
+    if (typeof window !== "undefined") {
+      pageHeight = document?.body.scrollHeight - window.innerHeight;
+    }
 
-		const handleScroll = () => {
-			const scrollPercent = Math.round((window.scrollY / pageHeight) * 100);
-			setScrollPosition(scrollPercent);
-		};
+    const handleScroll = () => {
+      const scrollPercent = Math.round((window.scrollY / pageHeight) * 100);
+      setScrollPosition(scrollPercent);
+    };
 
-		window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
-		return () => {
-			window.removeEventListener("scroll", handleScroll);
-		};
-	}, [size, pathname]);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
-	return { scrollPosition, scrollToElement };
+  return { scrollPosition, scrollToElement };
 };
 
 export default usePageScroll;

@@ -1,11 +1,12 @@
 "use client";
 // ModalContext.js
-import React, {
+import type React from "react";
+import {
 	createContext,
-	useContext,
-	useState,
-	useEffect,
 	useCallback,
+	useContext,
+	useEffect,
+	useState,
 } from "react";
 
 interface ModalContextType {
@@ -44,19 +45,34 @@ export const ModalProvider = ({ children }: { children: React.ReactNode }) => {
 		}
 	}, [isModalOpen]);
 
-	const handleModalClick = useCallback((e: React.MouseEvent) => {
-		if (e.target === e.currentTarget) {
-			closeModal();
-		}
-	}, [closeModal]);
+	const handleModalClick = useCallback(
+		(e: React.MouseEvent) => {
+			if (e.target === e.currentTarget) {
+				closeModal();
+			}
+		},
+		[closeModal],
+	);
 
 	return (
 		<ModalContext.Provider
-			value={{ isModalOpen, openModal, closeModal, toggleModal, setModalComponent }}
+			value={{
+				isModalOpen,
+				openModal,
+				closeModal,
+				toggleModal,
+				setModalComponent,
+			}}
 		>
 			{children}
 			{isModalOpen && (
-				<div className='modal' onClick={handleModalClick}>
+				<div className="modal">
+					<button
+						type="button"
+						className="modal__overlay"
+						onClick={handleModalClick}
+						aria-label="Close modal"
+					/>
 					{modalComponent}
 				</div>
 			)}

@@ -1,5 +1,5 @@
 // Components
-import Image, { StaticImageData } from "next/image";
+import Image, { type StaticImageData } from "next/image";
 // Styles
 import styles from "./styles.module.scss";
 
@@ -27,7 +27,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
 		<figure
 			className={styles["service-card"]}
 			data-type={service.type}
-			data-component='service-card'
+			data-component="service-card"
 		>
 			<figcaption className={styles["service-card__details"]}>
 				<div className={styles["service-card__title-wrapper"]}>
@@ -37,8 +37,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
 					{service.description}
 				</p>
 			</figcaption>
-			<div 
-				className={styles["service-card__image-container"]} 
+			<div
+				className={styles["service-card__image-container"]}
 				style={{ height: 300 }}
 			>
 				{service.gallery.map((image, index) => (

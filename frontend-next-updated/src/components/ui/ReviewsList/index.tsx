@@ -12,6 +12,7 @@ import { useWindowSize } from "usehooks-ts";
 import { reviewAnimation } from "./animations";
 // Styles
 import "./styles.scss";
+import { useScroll } from "motion/react";
 
 interface ReviewImage {
 	src: string;

@@ -1,19 +1,18 @@
 "use client";
 
-import React from "react";
-import styles from "./styles.module.scss";
+import Actions from "./Actions";
 import Bio from "./Bio";
 import Location from "./Location";
-import Actions from "./Actions";
+import styles from "./styles.module.scss";
 
 const AboutInfo = () => {
-	return (
-		<div className={styles["about-info"]}>
-			<Bio />
-			<Location />
-			<Actions />
-		</div>
-	);
+  return (
+    <div className={styles["about-info"]}>
+      <Bio />
+      <Location />
+      <Actions />
+    </div>
+  );
 };
 
 export default AboutInfo;

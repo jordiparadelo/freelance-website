@@ -5,5 +5,5 @@ import HomePage from "@/components/pages/HomePage";
 export const metadata: Metadata = HOME_METADATA;
 
 export default function Home() {
-	return <HomePage />;
+  return <HomePage />;
 }

@@ -1,31 +1,31 @@
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { formatString } from "@/lib/utils";
 
-import { usePathname } from "next/navigation";
-
-import { useEffect, useState } from "react";
-
 interface Section {
-	label: string;
-	id: string;
+  label: string;
+  id: string;
 }
 
 const useSectionList = (): Section[] => {
-	// const [sectionList, setSectionList] = useState([]);
-	const [sectionList, setSectionList] = useState<Section[]>([]);
+  // const [sectionList, setSectionList] = useState([]);
+  const [sectionList, setSectionList] = useState<Section[]>([]);
 
-	const pathname = usePathname();
+  const _pathname = usePathname();
 
-	useEffect(() => {
-		// Get all sections
-		const sectionsWithId = Array.from(document.querySelectorAll("section"))
-			.filter((section): section is HTMLElement => section instanceof HTMLElement && !!section.id)
-			.map(({ id }) => ({ label: formatString(id), id }));
+  useEffect(() => {
+    // Get all sections
+    const sectionsWithId = Array.from(document.querySelectorAll("section"))
+      .filter(
+        (section): section is HTMLElement =>
+          section instanceof HTMLElement && !!section.id,
+      )
+      .map(({ id }) => ({ label: formatString(id), id }));
 
-		setSectionList(sectionsWithId);
+    setSectionList(sectionsWithId);
+  }, []); // You might need to add dependencies here if necessary
 
-	}, [pathname]); // You might need to add dependencies here if necessary
-
-	return sectionList;
+  return sectionList;
 };
 
 export default useSectionList;

@@ -8,58 +8,61 @@ import { CopyIcon } from "@/assets/icons";
 import styles from "./styles.module.scss";
 
 interface CopyToClipboardProps {
-	children: string;
+  children: string;
 }
 
 const CopyToClipboard: React.FC<CopyToClipboardProps> = ({ children }) => {
-	const [isCopied, setIsCopied] = useState(false);
+  const [isCopied, setIsCopied] = useState(false);
 
-	function copyToClipboard(text: string): void {
-		navigator.clipboard.writeText(text);
+  function copyToClipboard(text: string): void {
+    navigator.clipboard.writeText(text);
 
-		setIsCopied(true);
+    setIsCopied(true);
 
-		setTimeout(() => {
-			setIsCopied(false);
-		}, 3000);
-	}
+    setTimeout(() => {
+      setIsCopied(false);
+    }, 3000);
+  }
 
-	function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
-		e.preventDefault();
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
+    e.preventDefault();
 
-		const formElements = e.currentTarget.elements as HTMLFormControlsCollection & {
-			clipboard: HTMLInputElement;
-		};
+    const formElements = e.currentTarget
+      .elements as HTMLFormControlsCollection & {
+      clipboard: HTMLInputElement;
+    };
 
-		copyToClipboard(formElements.clipboard.value);
-	}
+    copyToClipboard(formElements.clipboard.value);
+  }
 
-	return (
-		<form
-			onSubmit={handleSubmit}
-			className={styles['copy-to-clipboard']}
-			data-alert={isCopied}
-		>
-			<button
-				name='button'
-				aria-label='Copy to clipboard'
-				type='submit'
-				className={styles['copy-to-clipboard__button']}
-			>
-				<CopyIcon/>
-			</button>
-			<input
-				name='clipboard'
-				type='text'
-				value={children}
-				className={styles['copy-to-clipboard__input']}
-				placeholder={children}
-				disabled
-				readOnly
-			/>
-			{isCopied && <p className={styles['copy-to-clipboard__alert-text']}>Copied!</p>}
-		</form>
-	);
+  return (
+    <form
+      onSubmit={handleSubmit}
+      className={styles["copy-to-clipboard"]}
+      data-alert={isCopied}
+    >
+      <button
+        name="button"
+        aria-label="Copy to clipboard"
+        type="submit"
+        className={styles["copy-to-clipboard__button"]}
+      >
+        <CopyIcon />
+      </button>
+      <input
+        name="clipboard"
+        type="text"
+        value={children}
+        className={styles["copy-to-clipboard__input"]}
+        placeholder={children}
+        disabled
+        readOnly
+      />
+      {isCopied && (
+        <p className={styles["copy-to-clipboard__alert-text"]}>Copied!</p>
+      )}
+    </form>
+  );
 };
 
 export default CopyToClipboard;

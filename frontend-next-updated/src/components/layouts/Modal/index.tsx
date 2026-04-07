@@ -1,11 +1,11 @@
 "use client";
 
-import React, { Suspense, useEffect } from "react";
-// Components
-import ProjectModal from "./ProjectModal";
-import ContactModal from "./ContactModal";
+import { Suspense, useEffect } from "react";
 // Hooks
 import useModal from "@/hooks/useModal";
+import ContactModal from "./ContactModal";
+// Components
+import ProjectModal from "./ProjectModal";
 // Styles
 import "./styles.scss";
 import { useScroll } from "@/context/ScrollContext";
@@ -45,15 +45,15 @@ const Modal = () => {
 
 	return (
 		showModal && (
-			<>
-				<div className='modal'>
-					{component && <Suspense fallback={loading}>{component}</Suspense>}
-					<div
-						className='modal__overlay'
-						onClick={closeModal}
-					></div>
-				</div>
-			</>
+			<div className="modal">
+				{component && <Suspense fallback={loading}>{component}</Suspense>}
+				<button
+					type="button"
+					className="modal__overlay"
+					onClick={closeModal}
+					aria-label="Close modal"
+				/>
+			</div>
 		)
 	);
 };

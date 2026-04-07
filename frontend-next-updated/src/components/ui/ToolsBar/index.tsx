@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
-import styles from "./styles.module.scss";
 import Image from "next/image";
+import type React from "react";
+import { useState } from "react";
+import styles from "./styles.module.scss";
 
 interface Tool {
 	id: string;
@@ -45,24 +46,22 @@ const ToolsBar: React.FC<ToolsBarProps> = ({ tools }) => {
 							{activeTool.tool.name}
 						</h3>
 					</div>
-					<p className={styles["dialog-description"]}>{activeTool.tool.description}</p>
+					<p className={styles["dialog-description"]}>
+						{activeTool.tool.description}
+					</p>
 				</div>
 			)}
-			<div className={styles["tools__list"]}>
+			<div className={styles.tools__list}>
 				{tools.map((tool) => (
 					<button
+						type="button"
 						key={tool.name}
-						className={styles["tools__item"]}
+						className={styles.tools__item}
 						aria-label={tool.name}
 						onClick={() => handleClick(tool.id)}
 						data-selected={activeTool.tool.id === tool.id}
 					>
-						<Image
-							src={tool.icon}
-							alt={tool.name}
-							width={20}
-							height={20}
-						/>
+						<Image src={tool.icon} alt={tool.name} width={20} height={20} />
 					</button>
 				))}
 			</div>

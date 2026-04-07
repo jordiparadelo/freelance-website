@@ -13,25 +13,25 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = METADATA;
 
 export default function RootLayout({
-	children,
+  children,
 }: Readonly<{
-	children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-	return (
-		<html lang="en">
-			<head>
-				<JsonLd data={ORGANIZATION_DATA} />
-			</head>
-			<body className={inter.className}>
-				<SiteProvider>
-					<Navbar />
-					{children}
-					<Footer />
-					<Suspense fallback="...loading">
-						<Modal />
-					</Suspense>
-				</SiteProvider>
-			</body>
-		</html>
-	);
+  return (
+    <html lang="en">
+      <head>
+        <JsonLd data={ORGANIZATION_DATA} />
+      </head>
+      <body className={inter.className}>
+        <SiteProvider>
+          <Navbar />
+          {children}
+          <Footer />
+          <Suspense fallback="...loading">
+            <Modal />
+          </Suspense>
+        </SiteProvider>
+      </body>
+    </html>
+  );
 }

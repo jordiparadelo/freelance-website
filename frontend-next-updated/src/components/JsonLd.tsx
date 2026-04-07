@@ -1,21 +1,16 @@
 type JsonLdType = {
-  '@context': string;
-  '@type': string;
-  name?: string;
-  description?: string;
-  url?: string;
-  [key: string]: string | number | boolean | string[] | undefined;
-}
+	"@context": string;
+	"@type": string;
+	name?: string;
+	description?: string;
+	url?: string;
+	[key: string]: string | number | boolean | string[] | undefined;
+};
 
 interface JsonLdProps {
-  data: JsonLdType;
+	data: JsonLdType;
 }
 
 export default function JsonLd({ data }: JsonLdProps) {
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
-  );
-} 
+	return <script type="application/ld+json">{JSON.stringify(data)}</script>;
+}

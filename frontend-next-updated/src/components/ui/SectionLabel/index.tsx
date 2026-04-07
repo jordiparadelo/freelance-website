@@ -39,7 +39,7 @@ const SectionLabel: React.FC<SectionLabelProps> = ({
 		<div
 			className={`section-label ${className || ""}`}
 			ref={ref}
-			data-active={entry?.isIntersecting}
+			// data-active={entry?.isIntersecting}
 		>
 			<Lottie
 				{...iconProps}
