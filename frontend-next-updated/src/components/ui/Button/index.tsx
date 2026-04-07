@@ -1,8 +1,7 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-
-import React, { useRef } from "react";
+import type React from "react";
+import { useRef } from "react";
 
 import { useButtonAnimation } from "./animations";
 import "./styles.scss";
@@ -28,21 +27,19 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
 	const buttonRef = useRef<HTMLButtonElement>(null);
 	const anchorRef = useRef<HTMLAnchorElement>(null);
-	const { onHoverEnter, onHoverLeave } = useButtonAnimation(href ? anchorRef : buttonRef);
+	const { onHoverEnter, onHoverLeave } = useButtonAnimation(
+		href ? anchorRef : buttonRef,
+	);
 
 	const commonProps = {
-		className: cn("button", className, `button--${variant}`),
+		className: "button" + className + `button--${variant}`,
 		onMouseEnter: onHoverEnter,
 		onMouseLeave: onHoverLeave,
 	};
 
 	return href ? (
-		<a
-			href={href}
-			ref={anchorRef}
-			{...commonProps}
-		>
-			<span className='button__label'>{children}</span>
+		<a href={href} ref={anchorRef} {...commonProps}>
+			<span className="button__label">{children}</span>
 		</a>
 	) : (
 		<button
@@ -52,9 +49,13 @@ const Button: React.FC<ButtonProps> = ({
 			{...props}
 			{...onClick}
 		>
-			<span className='sr-only'>{children}</span>
-			<span className='button__label' aria-hidden>{children}</span>
-			<span className='button__label' aria-hidden>{children}</span>
+			<span className="sr-only">{children}</span>
+			<span className="button__label" aria-hidden>
+				{children}
+			</span>
+			<span className="button__label" aria-hidden>
+				{children}
+			</span>
 		</button>
 	);
 };

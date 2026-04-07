@@ -1,20 +1,20 @@
 "use client";
 
-import React from "react";
-import { cn } from "@/lib/utils";
+import type React from "react";
+
 // Hooks
 import useModal from "@/hooks/useModal";
 
 interface CloseModalButtonProps {
 	children: React.ReactNode;
 	className?: string;
-	'aria-label'?: string;
+	"aria-label"?: string;
 }
 
-const CloseModalButton: React.FC<CloseModalButtonProps> = ({ 
-	children, 
+const CloseModalButton: React.FC<CloseModalButtonProps> = ({
+	children,
 	className,
-	'aria-label': ariaLabel 
+	"aria-label": ariaLabel,
 }) => {
 	const { closeModal } = useModal([]);
 

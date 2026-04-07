@@ -1,10 +1,9 @@
 "use client";
 
-import { useWindowSize } from "@uidotdev/usehooks";
-
 import { usePathname } from "next/navigation";
-
-import React, { createContext, useContext, useState, useLayoutEffect } from "react";
+import type React from "react";
+import { createContext, useContext, useLayoutEffect, useState } from "react";
+import { useWindowSize } from "usehooks-ts";
 
 interface MenuContextType {
 	scrollPosition: number;

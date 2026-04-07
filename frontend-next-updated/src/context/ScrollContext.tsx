@@ -1,12 +1,12 @@
 "use client";
 
 import gsap from "gsap";
-
-import Lenis from "@studio-freight/lenis";
-
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Lenis from "lenis";
+import "lenis/dist/lenis.css";
 
-import React, { createContext, useContext, useLayoutEffect, useRef } from "react";
+import type React from "react";
+import { createContext, useContext, useLayoutEffect, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -24,7 +24,7 @@ interface ScrollContextType {
 	lenis: Lenis | null;
 	scrollTo: (
 		target: string | number | HTMLElement,
-		options?: LenisOptions
+		options?: LenisOptions,
 	) => void;
 }
 
@@ -39,8 +39,8 @@ export const useScroll = () => {
 };
 
 const EASING_FN = {
-	lenisDefault: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-	easeOutCubic: (t: number) => 1 - Math.pow(1 - t, 3),
+	lenisDefault: (t: number) => Math.min(1, 1.001 - 2 ** (-10 * t)),
+	easeOutCubic: (t: number) => 1 - (1 - t) ** 3,
 };
 
 const lenisConfig = {
@@ -98,8 +98,8 @@ const ScrollProvider = ({ children }: { children: React.ReactNode }) => {
 		options: LenisOptions = {
 			offset: 50,
 			duration: 2,
-			easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-		}
+			easing: (t) => Math.min(1, 1.001 - 2 ** (-10 * t)),
+		},
 	) => {
 		if (lenisRef.current) {
 			lenisRef.current.scrollTo(target, {
