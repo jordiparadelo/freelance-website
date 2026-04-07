@@ -1,14 +1,13 @@
 "use client";
 
 import React from "react";
-// Styles
-import styles from "../styles.module.scss";
-
-// Components
-import SidebarButton from "../SidebarButton";
+import { ROUTES } from "@/app/site.config";
 import { AvatarDropdown } from "@/components/ui";
 import NavMenu from "../../Navbar/NavMenu";
-import { ROUTES } from "@/app/site.config";
+// Components
+import SidebarButton from "../SidebarButton";
+// Styles
+import styles from "../styles.module.scss";
 
 const TopBar = () => {
 	return (

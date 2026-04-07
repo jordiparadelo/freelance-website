@@ -1,24 +1,21 @@
 "use client";
 
+// Context
+import { HeroProvider } from "@/context/HeroContext";
+import Frame from "./Frame";
+import SideNav from "./SideNav";
 // Components
 // Styles
 import styles from "./styles.module.scss";
-// Context
-import { HeroProvider } from "@/context/HeroContext";
 // Components
 import TopBar from "./TopBar";
-import SideNav from "./SideNav";
-import Frame from "./Frame";
 
 const Hero = () => {
 	return (
 		<HeroProvider>
-			<header
-				className={styles["hero"]}
-				id='hero'
-			>
+			<header className={styles["hero"]} id="hero">
 				<div className={styles["hero__frame"]}>
-					<TopBar />
+					{/* <TopBar /> */}
 					<div className={styles["hero__frame-container-wrapper"]}>
 						<SideNav />
 						<Frame />
