@@ -15,7 +15,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ project }) => {
 					<header className={styles["project-page__header"]}>
 						<div className={styles["project-page__header__image-container"]}>
 							<Image
-								src={project.image.src}
+								src={project?.image.src}
 								width={project.image.width}
 								height={project.image.height}
 								alt={project.image.alt}

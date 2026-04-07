@@ -4,8 +4,7 @@ import { PROJECTS } from "@/lib/constants";
 
 const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
 	const { id } = await params;
-	const selectedProject = getProjectById(id);
-	console.log({ selectedProject });
+	const selectedProject = await getProjectById(id);
 	return <ProjectPage project={selectedProject} />;
 };
 

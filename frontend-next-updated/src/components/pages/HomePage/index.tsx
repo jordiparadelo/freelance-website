@@ -11,8 +11,8 @@ import HeroV2 from "@/components/layouts/HeroV2/HeroV2";
 const HomePage = () => {
 	return (
 		<>
-			<HeroV2 />
-			{/* <Hero /> */}
+			{/* <HeroV2 /> */}
+			<Hero />
 			<Gallery />
 			<About />
 			<Services />
