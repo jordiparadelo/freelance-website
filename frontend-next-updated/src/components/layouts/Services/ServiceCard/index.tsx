@@ -48,7 +48,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
 						alt={image.alt}
 						width={image.width}
 						height={image.height}
-						key={image.alt + index}
+						key={image.alt}
 						className={styles["service-card__image"]}
 					/>
 				))}
