@@ -1,3 +1,4 @@
+import { span } from "motion/react-client";
 import Image from "next/image";
 import { Container, Section } from "@/components/ui";
 import { PROJECTS } from "@/lib/constants";
@@ -10,7 +11,6 @@ const ProjectsSection = () => {
 			<Container>
 				<div className={styles["projects-section__layout"]}>
 					<h2 className={styles["projects-section__title"]}>Selected Works</h2>
-
 					<ProjectsList data={PROJECTS} />
 				</div>
 			</Container>
@@ -42,17 +42,59 @@ const ProjectItem = ({ project }: { project: Project }) => {
 					/>
 				</div>
 				<div className={styles["project-card_description"]}>
-					<h3 className={styles["project-card__title"]}>{project.title}</h3>
-					<ul className={styles["project-card_category_list"]}>
-						{project.categories?.map((category) => (
-							<li
-								className={styles["project-card_category_item"]}
-								key={category}
-							>
-								{category}
-							</li>
-						))}
-					</ul>
+					<div className={styles["project-card_header"]}>
+						<div className={styles["project-card_header_headline"]}>
+							<h3 className="heading-style-h4">{project.title}</h3>
+							<p className="text-size-small text-color-gray">
+								{project.details?.blob}
+							</p>
+							<a href={project.preview}>Visit Site</a>
+						</div>
+						<div className={styles["project-card_details_block"]}>
+							<h4 className={styles["project-card_details_title"]}>Year</h4>
+							<span> {project.details?.year}</span>
+						</div>
+					</div>
+					<div className={styles["project-card_details"]}>
+						<div className={styles["project-card_details_block"]}>
+							<h4 className={styles["project-card_details_title"]}>
+								Industries
+							</h4>
+							<div className={styles["project-card_details_list"]}>
+								{project.details?.industries.map((industry) => (
+									<span key={industry}> {industry}</span>
+								))}
+							</div>
+						</div>
+						<div className={styles["project-card_details_block"]}>
+							<h4 className={styles["project-card_details_title"]}>Type</h4>
+							<div className={styles["project-card_details_list"]}>
+								{project.details?.type.map((type) => (
+									<span key={type}> {type}</span>
+								))}
+							</div>
+						</div>
+						<div className={styles["project-card_details_block"]}>
+							<h4 className={styles["project-card_details_title"]}>Roles</h4>
+							<div className={styles["project-card_details_list"]}>
+								{project.details?.roles.map((rol) => (
+									<span key={rol}> {rol}</span>
+								))}
+							</div>
+						</div>
+						{project.details?.collaboration.length && (
+							<div className={styles["project-card_details_block"]}>
+								<h4 className={styles["project-card_details_title"]}>
+									Collaborators
+								</h4>
+								<div className={styles["project-card_details_list"]}>
+									{project.details?.collaboration.map((collaborator) => (
+										<span key={collaborator}> {collaborator}</span>
+									))}
+								</div>
+							</div>
+						)}
+					</div>
 				</div>
 			</figure>
 		</li>

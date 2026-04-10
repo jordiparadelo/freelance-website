@@ -9,7 +9,7 @@
 	--text-color--alternative: var(--text-color--dark); /* Alternative */
 	--text-color--accent: #5dc3d5; /* Accent */
 	--text-color--dark: #060a16; /* Dark */
-	--text-color--gray: #667599; /* Gray */
+	--text-color--gray: rgba(from var(--text-color--font) r g b / 65%); /* Gray */
 	--text-color--light: white; /* Light */
 
 	/* Background Colors */
@@ -35,8 +35,8 @@
 	--font-size--heading-style-5: 1.25rem;
 	--font-size--heading-style-6: 1.125rem;
 	--font-size--tiny: 0.75rem;
-	--font-size--regular: 1rem;
 	--font-size--small: 0.875rem;
+	--font-size--regular: 1rem;
 	--font-size--medium: 1.25rem;
 	--font-size--large: 1.5rem;
 
