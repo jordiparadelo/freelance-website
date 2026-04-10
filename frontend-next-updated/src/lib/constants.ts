@@ -75,7 +75,7 @@ export const NAV_LINKS = [
 export const GALLERY_IMAGES = [
 	{
 		key: "image-gallery-1",
-		src: "/assets/image-gallery-1.webp",
+		src: galleryImage1,
 		alt: "Project website 1",
 		width: 568,
 		height: 456,

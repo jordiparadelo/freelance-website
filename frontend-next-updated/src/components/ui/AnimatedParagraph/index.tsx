@@ -1,15 +1,12 @@
 "use client";
 
 // Libs
-import { useGSAP } from "@gsap/react";
 import type React from "react";
 import { useRef } from "react";
-
 // Animations
-import { paragraphAnimation } from "./animations";
-
+import useParagraphAnimation from "./animations";
 // Styles
-import "./styles.scss";
+import styles from "./styles.module.css";
 
 interface AnimatedParagraphProps {
 	className?: string;
@@ -22,17 +19,14 @@ const AnimatedParagraph: React.FC<AnimatedParagraphProps> = ({
 }) => {
 	const componentRef = useRef<HTMLParagraphElement | null>(null);
 
-	useGSAP(
-		() => {
-			paragraphAnimation(componentRef?.current);
-		},
-		{ scope: componentRef },
-	);
+	useParagraphAnimation(componentRef);
 
 	return (
 		<p
 			className={
-				className ? `animated-paragraph ${className}` : "animated-paragraph"
+				className
+					? `${styles["animated-paragraph"]} ${className}`
+					: styles["animated-paragraph"]
 			}
 			ref={componentRef}
 		>

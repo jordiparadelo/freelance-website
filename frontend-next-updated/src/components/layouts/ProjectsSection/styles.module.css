@@ -71,7 +71,7 @@
 		}
 
 		.project-card {
-			min-height: max(45vh, 450px);
+			/* min-height: max(45vh, 450px); */
 			grow: 1;
 			height: 100%;
 			width: 100%;
@@ -99,6 +99,7 @@
 				border-radius: var(--corners--radius-small);
 				overflow: hidden;
 				max-width: 100%;
+				aspect-ratio: 3/2;
 
 				@media screen and (max-width: 425px) {
 					position: absolute;

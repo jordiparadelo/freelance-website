@@ -1,8 +1,11 @@
-import { span } from "motion/react-client";
+"use client";
+
 import Image from "next/image";
+import { useRef } from "react";
 import { Container, Section } from "@/components/ui";
 import { PROJECTS } from "@/lib/constants";
 import type { Project } from "@/types";
+import useListAnimation from "./animations";
 import styles from "./styles.module.css";
 
 const ProjectsSection = () => {
@@ -19,8 +22,12 @@ const ProjectsSection = () => {
 };
 
 const ProjectsList = ({ data }: { data: Project[] }) => {
+	const componentRef = useRef(null);
+
+	useListAnimation(componentRef);
+
 	return (
-		<ul className={styles["projects-list"]}>
+		<ul className={styles["projects-list"]} ref={componentRef}>
 			{data.map((project) => (
 				<ProjectItem key={project.id} project={project} />
 			))}
