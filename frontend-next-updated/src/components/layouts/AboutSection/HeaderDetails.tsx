@@ -15,7 +15,7 @@ const HeaderDetails = () => {
 	return (
 		<div
 			ref={componentRef}
-			className={styles["about_content_wrapper"]}
+			className={styles["about_header_wrapper"]}
 			data-target="header-details"
 		>
 			<p data-target="header-details-default">

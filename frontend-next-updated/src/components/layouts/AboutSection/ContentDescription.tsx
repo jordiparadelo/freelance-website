@@ -1,13 +1,18 @@
+import { useRef } from "react";
 import { AnimatedParagraph } from "@/components/ui";
+import { animateDescription } from "./animations";
 import { useCapabilities } from "./context";
 import { CAPABILITIES } from "./data";
 import styles from "./styles.module.css";
 
 const ContentDescription = () => {
+	const componentRef = useRef(null);
 	const { activeCapability, previousCapability } = useCapabilities();
 
+	animateDescription(componentRef);
+
 	return (
-		<div className={styles["about_content_description"]}>
+		<div className={styles["about_content_description"]} ref={componentRef}>
 			<div data-target="default">
 				<AnimatedParagraph className={styles.about_title}>
 					Freelancer, focused on develop digital products from scratch. Always

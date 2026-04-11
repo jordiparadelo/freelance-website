@@ -60,7 +60,8 @@
 		gap: max(3rem, 5vw);
 	}
 
-	.about_content_description {
+	.about_content_description,
+	.about_header_wrapper {
 		position: relative;
 		display: grid;
 		grid-template-columns: 1fr;
