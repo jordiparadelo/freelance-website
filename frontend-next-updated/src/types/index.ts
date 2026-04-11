@@ -59,5 +59,6 @@ export interface Tags {
 }
 
 export interface Capability {
-	group: "All" | "Frontend" | "Design" | "Animation";
+	name: string;
+	description: string;
 }

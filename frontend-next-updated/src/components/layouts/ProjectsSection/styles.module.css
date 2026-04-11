@@ -100,6 +100,8 @@
 				overflow: hidden;
 				max-width: 100%;
 				aspect-ratio: 3/2;
+				position: sticky;
+				bottom: 0;
 
 				@media screen and (max-width: 425px) {
 					position: absolute;

@@ -25,7 +25,11 @@ const useParagraphAnimation = (
 
 			const target = element.current;
 
-			splitRef.current = new SplitText(target, { type: "words" });
+			splitRef.current = new SplitText(target, {
+				type: "words, lines",
+				mask: "lines",
+				linesClass: "line",
+			});
 
 			gsap.set(splitRef.current.words, { opacity: 0 });
 
