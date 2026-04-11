@@ -8,6 +8,7 @@ import ArrowDownIcon from "@/assets/icons/ArrowDownIcon";
 // Constants
 import { ABOUT } from "@/lib/constants";
 import { Button } from "..";
+import useDropdownAnimation from "./animations";
 // Styles
 import styles from "./styles.module.scss";
 
@@ -15,23 +16,32 @@ const AvatarDropdown: React.FC = () => {
 	// State to manage dropdown open/close status
 	const [isDropdownOpen, setDropdownOpen] = useState(false);
 	const dropdownRef = useRef<HTMLDivElement>(null);
+	const { openMenu, closeMenu } = useDropdownAnimation(dropdownRef);
 
 	// Function to handle clicks outside the dropdown
-	const handleClicksOutsideDropdown = useCallback((event: MouseEvent): void => {
-		if (
-			dropdownRef.current &&
-			!dropdownRef.current.contains(event.target as Node)
-		) {
-			setDropdownOpen(false);
-		}
-	}, []);
+	const handleClicksOutsideDropdown = useCallback(
+		(event: MouseEvent): void => {
+			if (
+				dropdownRef.current &&
+				!dropdownRef.current.contains(event.target as Node)
+			) {
+				setDropdownOpen(false);
+				closeMenu();
+			}
+		},
+		[closeMenu],
+	);
 
 	// Function to handle Escape key press
-	const handleEscDropdown = useCallback((event: KeyboardEvent): void => {
-		if (event.key === "Escape") {
-			setDropdownOpen(false);
-		}
-	}, []);
+	const handleEscDropdown = useCallback(
+		(event: KeyboardEvent): void => {
+			if (event.key === "Escape") {
+				setDropdownOpen(false);
+				closeMenu();
+			}
+		},
+		[closeMenu],
+	);
 
 	// Effect to manage event listeners for closing the dropdown
 	useLayoutEffect(() => {
@@ -53,16 +63,22 @@ const AvatarDropdown: React.FC = () => {
 	// Function to toggle the dropdown open state
 	const toggleDropdownOpen = () => {
 		setDropdownOpen((prev) => !prev);
+		isDropdownOpen ? closeMenu() : openMenu();
 	};
 
 	return (
-		<div className={styles["avatar-dropdown"]} ref={dropdownRef}>
+		<div
+			className={styles["avatar-dropdown"]}
+			ref={dropdownRef}
+			data-expanded={isDropdownOpen}
+		>
 			<button
 				type="button"
 				onClick={toggleDropdownOpen}
 				aria-haspopup="menu"
 				aria-expanded={isDropdownOpen}
 				className={styles["avatar-dropdown__button"]}
+				data-target="button"
 			>
 				<div className={styles["avatar-dropdown__avatar"]}>
 					<Image
@@ -81,6 +97,7 @@ const AvatarDropdown: React.FC = () => {
 				aria-hidden={!isDropdownOpen}
 				hidden={!isDropdownOpen}
 				className={styles["avatar-dropdown__menu"]}
+				data-target="menu"
 			>
 				{/* Contact Details */}
 				<div className={styles["avatar-dropdown__menu-block"]}>

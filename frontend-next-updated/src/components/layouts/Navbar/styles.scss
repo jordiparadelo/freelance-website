@@ -1,29 +1,32 @@
 .navbar {
 	--offset: 0.5rem;
-	padding-block: var(--offset);
-	// position: sticky;
-	z-index: 100;
-	top: 0;
-	display: flex;
-	flex-direction: column;
-	justify-content: stretch;
+	    padding-block: var(--offset);
+    z-index: 100;
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+    position: sticky;
+    top: 0;
+    min-height: 5rem;
+
+	&::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		backdrop-filter: blur(50px);
+		mask-image: linear-gradient(to bottom, black, transparent);
+		z-index: -1;
+	}
 
 	&__layout {
-		display: grid;
-		grid-template-columns: 1fr 1fr 1fr;
-		align-items: center;
-
-		// margin-inline: auto;
-		padding: var(--offset);
-
-		color: var(--color-light);
-		background-color: rgba(0, 0, 0, 0.1);
-		border: 1px solid var(--border-color--base);
-		border-radius: var(--corners--radius-medium);
-
-		backdrop-filter: blur(10px);
-
-		@media screen and (min-width: 1440px) {
+		display: flex;
+		place-items: center;
+		justify-content: space-between;
+		gap: 1.5rem;
+		// padding: var(--offset);
+		
+		@media screen and (min-width: 675px) {
+			gap: 4rem;
 			max-width: var(--container-size-lg);
 		}
 

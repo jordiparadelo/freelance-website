@@ -1,24 +1,43 @@
 /* Avatar Dropdown */
 .avatar-dropdown {
 	position: relative;
+	z-index: 999;
+	border-radius: 1.5rem;
 
-	&[aria-expanded="true"] .avatar-dropdown__button {
-		border-color: var(--border-color--base);
 
-		svg {
-			max-width: 1000px;
-		}
+	// Background
+	&::before {
+		box-sizing: border-box;
+		content: "";
+		display: block;
+		position: absolute;
+		inset: 0;
+		height: var(--background-size, 48px);
+		will-change: max-width;
+		transition: max-width 1.2s ease-in;
+		max-width: 1000px;
+		border-radius: inherit;
+		z-index: -1;
+		pointer-events: none;
+		background-color: var(--background-color--base);
+		border: 1px solid var(--border-color--base);
 	}
+
+	&[data-expanded="true"] {
+		.avatar-dropdown__button {
+			border-color: var(--border-color--base);
+
+			svg {
+				max-width: 1000px;
+			}
+	}}
 
 	&__button {
 		display: flex;
-		justify-content: center;
+		justify-content: space-between;
 		align-items: center;
 		cursor: pointer;
 		padding: 0.25rem;
-		border-radius: var(--corners--radius-round);
-		border: 1px solid transparent;
-		transition: border-color 0.2s ease-in;
 
 		svg {
 			will-change: max-width;
@@ -52,19 +71,16 @@
 		display: flex;
 		position: absolute;
 		top: calc(100% + 0.5rem);
-		right: 0;
-		background-color: var(--background-color--base);
 		color: var(--text-color--font);
-		border: 1px solid var(--border-color--base);
-		border-radius: var(--corners--radius-medium);
 		padding: var(--section-padding--inline-small);
 		z-index: 10;
 		min-width: 256px;
 		gap: 1.25rem;
 		flex-direction: column;
+		z-index: 999;
 
-		&[aria-hidden="true"] {
-			display: none;
+		&[hidden] {
+			pointer-events: none;
 		}
 	}
 

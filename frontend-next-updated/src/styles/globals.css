@@ -237,7 +237,11 @@ h6,
    ========================================================================== */
 
 .padding-global {
-	padding-inline: var(--section-padding--inline-medium);
+	padding-inline: clamp(
+		var(--section-padding--inline-small),
+		0.5vw,
+		var(--section-padding--inline-large)
+	);
 }
 
 .padding-global.--section-large {
@@ -251,10 +255,6 @@ h6,
 }
 
 @media screen and (min-width: 425px) {
-	.padding-global {
-		padding-inline: var(--section-padding--inline-large);
-	}
-
 	.padding-global.--section-large {
 		padding-block: var(--section-padding--block-medium);
 	}
