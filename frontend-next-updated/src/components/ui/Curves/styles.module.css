@@ -1,0 +1,13 @@
+.curve {
+	position: absolute;
+	inset-inline: 0;
+	z-index: 10;
+
+	&[data-orientation="top"] {
+		top: 0;
+	}
+	&[data-orientation="bottom"] {
+		bottom: 0;
+		rotate: 180deg;
+	}
+}

@@ -6,50 +6,45 @@ import type React from "react";
 import { useRef } from "react";
 // Animation
 import { curveAnimation } from "./animations";
+import styles from "./styles.module.css";
 
 interface CurvesProps {
-  className?: string;
-  orientation?: "top" | "bottom";
-  fill?: string;
+	className?: string;
+	orientation?: "top" | "bottom";
+	fill?: string;
 }
 
 const Curves: React.FC<CurvesProps> = ({ className, orientation, fill }) => {
-  const componentRef = useRef<SVGSVGElement | null>(null);
+	const componentRef = useRef<SVGSVGElement | null>(null);
 
-  useGSAP(
-    () => {
-      if (componentRef.current) {
-        curveAnimation(componentRef.current);
-      }
-    },
-    { scope: componentRef },
-  );
+	curveAnimation(componentRef);
 
-  return (
-    <svg
-      viewBox="0 0 1440 55"
-      fill={fill || "currentColor"}
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-      ref={componentRef}
-      style={{
-        transform: "translateY(calc(100% - 1px))",
-        maxWidth: "100vw",
-        rotate: orientation === "top" ? "z 180deg" : "0deg",
-        overflow: "hidden",
-        position: "absolute",
-        top: orientation === "top" ? 0 : undefined,
-        left: 0,
-        bottom: orientation === "bottom" ? 0 : undefined,
-      }}
-    >
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M1450 30c-207 16-458 25-730 25-273 0-523-9-720-25V0h1440v30Z"
-      />
-    </svg>
-  );
+	return (
+		<svg
+			viewBox="0 0 1440 55"
+			fill={fill || "currentColor"}
+			xmlns="http://www.w3.org/2000/svg"
+			className={`${styles.curve}`}
+			ref={componentRef}
+			data-orientation={orientation}
+		>
+			<title>curve</title>
+			<path
+				data-curve="wavy"
+				fillRule="evenodd"
+				clipRule="evenodd"
+				d="M720 55C447 55 197 46 0 30V0H1440V30C1440 30 960.145 55 720 55Z"
+			/>
+			<path
+				data-curve="flat"
+				fillRule="evenodd"
+				clipRule="evenodd"
+				d="M720 30H0V0H1440V30H720Z"
+				opacity={0}
+				aria-hidden
+			/>
+		</svg>
+	);
 };
 
 export default Curves;

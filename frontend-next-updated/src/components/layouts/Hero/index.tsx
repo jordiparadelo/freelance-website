@@ -1,5 +1,6 @@
 "use client";
 
+import { Container } from "@/components/ui";
 // Context
 import { HeroProvider } from "@/context/HeroContext";
 import Frame from "./Frame";
@@ -10,12 +11,14 @@ const Hero = () => {
 	return (
 		<HeroProvider>
 			<header className={styles.hero} id="hero">
-				<div className={styles.hero__frame}>
-					<div className={styles["hero__frame-container-wrapper"]}>
-						{/* <SideNav /> */}
-						<Frame />
+				<Container>
+					<div className={styles.hero__frame}>
+						<div className={styles["hero__frame-container-wrapper"]}>
+							{/* <SideNav /> */}
+							<Frame />
+						</div>
 					</div>
-				</div>
+				</Container>
 			</header>
 		</HeroProvider>
 	);

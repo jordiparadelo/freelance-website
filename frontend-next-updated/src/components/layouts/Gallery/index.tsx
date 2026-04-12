@@ -32,10 +32,7 @@ const Gallery = () => {
 
 	return (
 		<section id="gallery" className="gallery" ref={componentRef}>
-			<Curves
-				fill="var(--background-color--base)"
-				className="gallery__curves--top"
-			/>
+			<Curves fill="var(--background-color--base)" orientation="top" />
 
 			<div className="gallery__slideshow">
 				{GALLERY_IMAGES.map((image) => (
@@ -53,10 +50,7 @@ const Gallery = () => {
 				))}
 			</div>
 
-			<Curves
-				fill="var(--background-color--base)"
-				className="gallery__curves--bottom"
-			/>
+			<Curves fill="var(--background-color--base)" orientation="bottom" />
 		</section>
 	);
 };

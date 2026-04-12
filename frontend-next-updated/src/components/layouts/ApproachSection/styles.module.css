@@ -1,0 +1,13 @@
+.approach-section {
+	padding-block: var(--section-padding-block);
+	background: var(--background-color--alternative);
+	color: var(--text-color--alternative);
+	position: relative;
+
+	.approach-section_header {
+		grid-template-columns: 1fr 2fr;
+		grid-auto-columns: 1fr;
+		grid-auto-flow: column;
+		display: grid;
+	}
+}
