@@ -92,8 +92,8 @@ const ProcessApproach = ({ steps }: { steps: ProcessSteps[] }) => {
 								onClick={() => goToStep(idx)}
 								cx={x}
 								cy={y}
-								r="6"
-								fill="#fff"
+								r="4"
+								fill="inherit"
 								stroke="#333"
 								strokeWidth="1"
 							/>
