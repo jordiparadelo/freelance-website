@@ -101,9 +101,7 @@ const AvatarDropdown: React.FC = () => {
 			>
 				{/* Contact Details */}
 				<div className={styles["avatar-dropdown__menu-block"]}>
-					<h2 className={styles["avatar-dropdown__menu-title"]}>
-						Contact details
-					</h2>
+					<p className="heading-style-uppercase">Contact details</p>
 					<ul className={styles["avatar-dropdown__menu-list"]}>
 						{ABOUT.contact.map((contact) => (
 							<li
@@ -123,9 +121,7 @@ const AvatarDropdown: React.FC = () => {
 
 				{/* Business Details */}
 				<div className={styles["avatar-dropdown__menu-block"]}>
-					<h2 className={styles["avatar-dropdown__menu-title"]}>
-						Business details
-					</h2>
+					<p className="heading-style-uppercase">Business details</p>
 					<ul className={styles["avatar-dropdown__menu-list"]}>
 						<li className={styles["avatar-dropdown__menu-list-item"]}>
 							<span>{ABOUT.business.name}</span>
@@ -141,7 +137,7 @@ const AvatarDropdown: React.FC = () => {
 
 				{/* Social Media Links */}
 				<div className={styles["avatar-dropdown__menu-block"]}>
-					<h2 className={styles["avatar-dropdown__menu-title"]}>Socials</h2>
+					<p className="heading-style-uppercase">Socials</p>
 					<ul className={styles["avatar-dropdown__menu-list"]}>
 						{ABOUT.socials.map((contact) => (
 							<li

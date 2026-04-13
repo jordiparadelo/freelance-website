@@ -1,7 +1,6 @@
 "use client";
 
 // Libs
-import { useGSAP } from "@gsap/react";
 import type React from "react";
 import { useRef } from "react";
 // Animation

@@ -111,23 +111,32 @@
 	--anim-easing: cubic-bezier(0.76, 0, 0.24, 1);
 }
 
+/* Light Mode */
+[data-theme="light"] {
+	--text-color--font: var(--text-color--dark);
+	--text-color--alternative: var(--text-color--light);
+	--background-color--base: var(--background-color--light);
+	--background-color--alternative: var(--background-color--dark);
+	--border-color--base: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Mode */
+[data-theme="dark"] {
+	--text-color--font: var(--text-color--light);
+	--text-color--alternative: var(--text-color--dark);
+	--background-color--alternative: var(--background-color--light);
+	--background-color--base: var(--background-color--dark);
+	--border-color--base: rgba(255, 255, 255, 0.1);
+}
+
 /* COLOR THEME SUPPORT */
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
 	:root {
 		--text-color--font: var(--text-color--dark);
 		--text-color--alternative: var(--text-color--light);
 		--background-color--base: var(--background-color--light);
 		--background-color--alternative: var(--background-color--dark);
 		--border-color--base: rgba(0, 0, 0, 0.1);
-	}
-
-	/* Dark Mode */
-	[data-theme="dark"] {
-		--text-color--font: var(--text-color--light);
-		--text-color--alternative: var(--text-color--dark);
-		--background-color--alternative: var(--background-color--light);
-		--background-color--base: var(--background-color--dark);
-		--border-color--base: rgba(255, 255, 255, 0.1);
 	}
 }
 
@@ -140,29 +149,4 @@
 		--border-color--base: rgba(255, 255, 255, 0.1);
 	}
 
-	/* Light Mode */
-	[data-theme="light"] {
-		--text-color--font: #212631;
-		--text-color--alternative: var(--text-color--light);
-		--background-color--base: var(--background-color--light);
-		--background-color--alternative: var(--text-color--font);
-		--border-color--base: rgba(0, 0, 0, 0.1);
-	}
-}
-/* Dark Mode */
-[data-theme="dark"] {
-	--text-color--font: var(--text-color--light);
-	--text-color--alternative: var(--text-color--dark);
-	--background-color--alternative: var(--background-color--light);
-	--background-color--base: var(--background-color--dark);
-	--border-color--base: rgba(255, 255, 255, 0.1);
-}
-
-/* Light Mode */
-[data-theme="light"] {
-	--text-color--font: #212631;
-	--text-color--alternative: var(--text-color--light);
-	--background-color--base: var(--background-color--light);
-	--background-color--alternative: var(--background-color--dark);
-	--border-color--base: rgba(0, 0, 0, 0.1);
-}
+} */

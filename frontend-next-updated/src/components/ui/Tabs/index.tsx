@@ -41,6 +41,7 @@ const Tabs = ({ data, className }: { data: TabItem[]; className?: string }) => {
 						key={item.title}
 						aria-labelledby={`services-${index}`}
 						data-tab-active={index === activeTab}
+						aria-selected={index === activeTab}
 						role="tab"
 						data-tab-link
 					>

@@ -4,10 +4,10 @@
 	z-index: 10;
 
 	&[data-orientation="top"] {
-		top: 0;
+		top: -1;
 	}
 	&[data-orientation="bottom"] {
-		bottom: 0;
+		bottom: -1;
 		rotate: 180deg;
 	}
 }

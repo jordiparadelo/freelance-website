@@ -149,7 +149,8 @@ h6,
 	text-transform: uppercase;
 	font-size: 0.75rem;
 	letter-spacing: 2;
-	color: rgba(from inherit r g b / 5%);
+	color: inherit;
+	opacity: 0.65;
 }
 
 /* Set text styles */
@@ -193,7 +194,8 @@ h6,
 	color: var(--text-color--dark);
 }
 .text-color-gray {
-	color: var(--text-color--gray);
+	color: inherit;
+	opacity: 0.65;
 }
 
 .text-color-brand-primary {
