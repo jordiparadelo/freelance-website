@@ -45,6 +45,7 @@ const ProcessApproach = ({ steps }: { steps: ProcessSteps[] }) => {
 
 			<svg
 				width="100%"
+				height="100%"
 				viewBox="0 0 300 300"
 				className={styles["process-circle"]}
 			>

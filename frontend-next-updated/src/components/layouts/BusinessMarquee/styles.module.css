@@ -1,2 +1,38 @@
 .business-marquee {
+	overflow-x: clip;
+	width: 1px;
+	min-width: 100%;
+	mask-image: linear-gradient(to right, transparent 5%, black, transparent 95%);
+
+	.business-marquee_wrapper {
+		display: grid;
+		grid-auto-flow: column;
+	}
+
+	.business-marquee_list {
+		display: grid;
+		grid-auto-flow: column;
+		animation: marquee 10s linear infinite;
+
+		.business-marquee_item {
+			display: flex;
+			flex-direction: column;
+			place-items: center;
+			place-content: center;
+		}
+		.business-marquee_link {
+			min-width: 120px;
+			display: flex;
+			flex-direction: column;
+			place-items: center;
+			place-content: center;
+			padding-inline: 0.5rem;
+		}
+	}
+}
+
+@keyframes marquee {
+	to {
+		transform: translateX(-100%);
+	}
 }

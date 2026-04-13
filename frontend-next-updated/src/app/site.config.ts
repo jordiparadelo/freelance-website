@@ -8,6 +8,10 @@ export const ROUTES = [
 		path: "#selected-works",
 	},
 	{
+		name: "Approach",
+		path: "#approach",
+	},
+	{
 		name: "Experience",
 		path: "#experience",
 	},

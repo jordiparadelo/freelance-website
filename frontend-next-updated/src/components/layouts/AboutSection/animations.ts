@@ -92,8 +92,6 @@ export const animateDescription = (selector: RefObject<HTMLElement | null>) => {
 				});
 			}
 
-			console.log({ elements, selector: selector.current });
-
 			if (!elements.default || !elements.active) return;
 
 			timeline.current

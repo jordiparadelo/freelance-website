@@ -14,11 +14,6 @@
 	font-weight: normal;
 	font-style: normal;
 }
-@font-face {
-	font-family: "Heading";
-	src: url("/fonts/ClashGrotesk-Variable.ttf") format("truetype");
-	font-variation-settings: "wght" 375;
-}
 
 /* Reset styles */
 * {
@@ -34,6 +29,10 @@
 }
 
 /* Set background color */
+html {
+	scrollbar-width: none;
+}
+
 body {
 	background-color: var(--background-color--base);
 	font-family: var(--font-family--body);

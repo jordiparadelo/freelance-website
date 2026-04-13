@@ -176,6 +176,7 @@ export const PROJECTS: Project[] = [
 			year: "2022",
 			roles: ["Designer", "Developer"],
 			collaboration: ["Commute"],
+			logo: "./logos/modum.svg",
 		},
 		challenge:
 			"Modum was created with the aim of simplifying the process of managing health care. The company's mission is to deliver better healthcare services to patients.",
@@ -246,6 +247,7 @@ export const PROJECTS: Project[] = [
 			year: "2023",
 			roles: ["Designer", "Developer"],
 			collaboration: ["Commute"],
+			logo: "./logos/modo.svg",
 		},
 		challenge:
 			"Modo was a new modern banking app startup, that want to simplify the process of managing financial transactions. The company's mission is to deliver better banking services to its clients.",
@@ -316,6 +318,7 @@ export const PROJECTS: Project[] = [
 			year: "2022",
 			roles: ["Designer", "Developer"],
 			collaboration: ["Commute"],
+			logo: "./logos/receeve.svg",
 		},
 		challenge:
 			"Receeve was created with the aim of simplifying the process of managing health care. The company's mission is to deliver better healthcare services to patients.",
@@ -386,6 +389,7 @@ export const PROJECTS: Project[] = [
 			year: "2023",
 			roles: ["Designer", "Developer"],
 			collaboration: ["Commute", "Cledara"],
+			logo: "./logos/cledara.svg",
 		},
 		challenge:
 			"Cledara want to update their actual site with a modern and modern design. Bring more of their brand identity to the site.",
@@ -456,6 +460,7 @@ export const PROJECTS: Project[] = [
 			year: "2022",
 			roles: ["Developer"],
 			collaboration: ["Commute"],
+			logo: "./logos/kidscorp.svg",
 		},
 		challenge:
 			"Kidscorp was created with the aim of simplifying the process of managing health care. The company's mission is to deliver better healthcare services to patients.",

@@ -17,6 +17,7 @@ export interface Project {
 		year: string;
 		roles: string[];
 		collaboration: string[];
+		logo: string;
 	};
 	challenge?: string;
 	services?: string[];

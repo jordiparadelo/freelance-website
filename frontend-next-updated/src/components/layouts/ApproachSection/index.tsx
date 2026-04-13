@@ -10,7 +10,7 @@ const ApproachSection = () => {
 			<Curves fill="var(--background-color--base)" orientation="top" />
 			<Container>
 				<div className={styles["approach-section_layout"]}>
-					<div className={styles["approach-section_header"]}>
+					<aside className={styles["approach-section_header"]}>
 						<span className="heading-style-uppercase">My Process</span>
 						<div className={styles["approach-section_business"]}>
 							<div className={styles["approach-section_business_header"]}>
@@ -20,7 +20,7 @@ const ApproachSection = () => {
 							</div>
 							<BusinessMarquee />
 						</div>
-					</div>
+					</aside>
 					<div className={styles["approach-section_content"]}>
 						<AnimatedParagraph className="heading-style-h2">
 							I follow a systematic process that stat by understanding the DNA

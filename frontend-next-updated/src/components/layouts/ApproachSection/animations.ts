@@ -29,7 +29,6 @@ const processAnimation = (
 		if (!circleRef.current || totalStep.current === 0) return "0";
 		const willComplete =
 			previousStep === totalStep.current - 1 && activeStep === 0;
-		console.log({ willComplete });
 		const progress = 75 + (100 / totalStep.current) * activeStep;
 
 		return willComplete ? `75% 255%` : `75% ${progress}%`;
