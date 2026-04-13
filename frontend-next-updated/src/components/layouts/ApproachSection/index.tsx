@@ -48,7 +48,6 @@ const ProcessApproach = ({ steps }: { steps: ProcessSteps[] }) => {
 						>
 							<figure
 								className={styles["process_step"]}
-								// {...(previousStep === index ? { "data-previous": true } : {})}
 								onClick={() => goToStep(index)}
 								onKeyDown={() => goToStep(index)}
 								data-target="step"
