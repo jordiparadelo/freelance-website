@@ -24,7 +24,7 @@ const Curves: React.FC<CurvesProps> = ({ className, orientation, fill }) => {
 			viewBox="0 0 1440 55"
 			fill={fill || "currentColor"}
 			xmlns="http://www.w3.org/2000/svg"
-			className={`${styles.curve}`}
+			className={`${styles.curve}${className ? ` ${className}` : ""}`}
 			ref={componentRef}
 			data-orientation={orientation}
 		>
