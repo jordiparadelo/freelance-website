@@ -3,9 +3,9 @@ import reviewLogo1 from "@/assets/icons/review-logo-1.svg?url";
 import reviewLogo2 from "@/assets/icons/review-logo-2.svg?url";
 import reviewLogo3 from "@/assets/icons/review-logo-3.svg?url";
 import reviewLogo4 from "@/assets/icons/review-logo-4.svg?url";
-import galleryImage1 from "@/assets/image-gallery-1.webp";
-import galleryImage2 from "@/assets/image-gallery-2.webp";
-import galleryImage3 from "@/assets/image-gallery-3.webp";
+import galleryImage1 from "@/assets/images/gallery/gallery-image-01.webp";
+import galleryImage2 from "@/assets/images/gallery/gallery-image-02.webp";
+import galleryImage3 from "@/assets/images/gallery/gallery-image-03.webp";
 import modoImageCover from "@/assets/images/image_cover_modo.webp";
 import modumImageCover from "@/assets/images/image_cover_modum.webp";
 import type { Project } from "@/types";
@@ -74,23 +74,23 @@ export const NAV_LINKS = [
 // GALLERY
 export const GALLERY_IMAGES = [
 	{
-		key: "image-gallery-1",
+		key: "/image-gallery-01",
 		src: galleryImage1,
-		alt: "Project website 1",
+		alt: "North Star - Website project",
 		width: 568,
 		height: 456,
 	},
 	{
-		key: "image-gallery-2",
+		key: "image-gallery-02",
 		src: galleryImage2,
-		alt: "Project website 2",
+		alt: "Glow Ai - Website project",
 		width: 568,
 		height: 456,
 	},
 	{
-		key: "image-gallery-3",
+		key: "image-gallery-03",
 		src: galleryImage3,
-		alt: "Project website 3",
+		alt: "Invest - Web Project",
 		width: 568,
 		height: 456,
 	},

@@ -13,12 +13,15 @@ const ApproachSection = () => {
 					<aside className={styles["approach-section_header"]}>
 						<span className="heading-style-uppercase">My Process</span>
 						<div className={styles["approach-section_business"]}>
-							<div className={styles["approach-section_business_header"]}>
-								<div className="divider"></div>
-								<span>Trusted by</span>
-								<div className="divider"></div>
+							{/* <BusinessMarquee /> */}
+							<div className={styles["approach-section_business"]}>
+								<div className={styles["approach-section_business_header"]}>
+									{/* <div className="divider"></div> */}
+									<span>Trusted by</span>
+									<div className="divider"></div>
+								</div>
+								<BusinessMarquee />
 							</div>
-							<BusinessMarquee />
 						</div>
 					</aside>
 					<div className={styles["approach-section_content"]}>

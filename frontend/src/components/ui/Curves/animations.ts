@@ -25,7 +25,3 @@ export function curveAnimation(component: React.RefObject<SVGElement | null>) {
 		},
 	);
 }
-
-// <svg width="1440" height="55" viewBox="0 0 1440 55" fill="none" xmlns="http://www.w3.org/2000/svg">
-// <path fill-rule="evenodd" clip-rule="evenodd" d="M720 30H0V0H1440V30H720Z" fill="white" style="fill:white;fill-opacity:1;"/>
-// </svg>

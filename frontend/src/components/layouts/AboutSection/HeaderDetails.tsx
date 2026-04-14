@@ -19,7 +19,7 @@ const HeaderDetails = () => {
 			data-target="header-details"
 		>
 			<p data-target="header-details-default">
-				More than +8 years of experience
+				More than +5 years of experience
 			</p>
 			<p data-target="header-details-active">
 				{activeCapability !== null
