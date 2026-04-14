@@ -8,10 +8,6 @@ import SplitText from "gsap/SplitText";
 
 import { useRef } from "react";
 
-if (typeof window !== "undefined") {
-	gsap.registerPlugin(ScrollTrigger, SplitText);
-}
-
 export const transition = { duration: 1.4, ease: [0.6, 0.01, 0.05, 0.9] };
 
 const useParagraphAnimation = (
@@ -25,15 +21,17 @@ const useParagraphAnimation = (
 
 			const target = element.current;
 
-			splitRef.current = new SplitText(target, {
-				type: "words, lines",
-				mask: "lines",
-				linesClass: "line",
-			});
+			if (!splitRef.current || document.fonts) {
+				splitRef.current = new SplitText(target, {
+					type: "words, lines",
+					mask: "lines",
+					linesClass: "line",
+				});
+			}
 
-			gsap.set(splitRef.current.words, { opacity: 0 });
+			gsap.set(splitRef.current?.words, { opacity: 0 });
 
-			gsap.to(splitRef.current.words, {
+			gsap.to(splitRef.current?.words, {
 				opacity: 1,
 				delay: (index) => 0.1 * index,
 				scrollTrigger: {
@@ -44,7 +42,7 @@ const useParagraphAnimation = (
 				},
 			});
 		},
-		{ scope: element },
+		{ scope: element, dependencies: [splitRef] },
 	);
 };
 
