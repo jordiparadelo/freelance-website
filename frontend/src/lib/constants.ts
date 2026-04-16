@@ -158,6 +158,77 @@ export const PRODUCTS = [
 // PROJECTS
 export const PROJECTS: Project[] = [
 	{
+		id: "surfrigo",
+		href: "/projects/surfrigo",
+		image: {
+			src: "/images/projects/surfrigo.webp",
+			alt: "Project website 32",
+			width: 568,
+			height: 456,
+		},
+		title: "Surfrigo | Health Care",
+		details: {
+			brief: "Modern website for a healthcare company",
+			blob: "Modum was created with the aim of simplifying the process of managing health care. The company's mission is to deliver better healthcare services to patients.",
+			client: "Modum Salud",
+			type: ["Website", "Design", "Webflow"],
+			industries: ["Health", "Company"],
+			year: "2022",
+			roles: ["Designer", "Developer"],
+			collaboration: ["Commute"],
+			logo: "./logos/modum.svg",
+		},
+		challenge:
+			"Modum was created with the aim of simplifying the process of managing health care. The company's mission is to deliver better healthcare services to patients.",
+		services: ["Design Website", "Webflow Development", "CMS Integration"],
+		preview: "https://www.modumsalud.com.ar/",
+		categories: ["Webflow", "Website"],
+		gallery: [
+			{
+				src: "/assets/image-gallery-1.webp",
+				alt: "Project website 32",
+				width: 568,
+				height: 456,
+			},
+			{
+				src: "/assets/image-gallery-1.webp",
+				alt: "Project website 32",
+				width: 568,
+				height: 456,
+			},
+			{
+				src: "/assets/image-gallery-1.webp",
+				alt: "Project website 32",
+				width: 568,
+				height: 456,
+			},
+			{
+				src: "/assets/image-gallery-1.webp",
+				alt: "Project website 32",
+				width: 568,
+				height: 456,
+			},
+			{
+				src: "/assets/image-gallery-1.webp",
+				alt: "Project website 32",
+				width: 568,
+				height: 456,
+			},
+			{
+				src: "/assets/image-gallery-1.webp",
+				alt: "Project website 32",
+				width: 568,
+				height: 456,
+			},
+			{
+				src: "/assets/image-gallery-1.webp",
+				alt: "Project website 32",
+				width: 568,
+				height: 456,
+			},
+		],
+	},
+	{
 		id: "modum",
 		href: "/products/modum",
 		image: {

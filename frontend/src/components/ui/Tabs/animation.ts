@@ -64,7 +64,6 @@ const useTabsAnimation = (
 		},
 		{
 			scope: componentRef,
-			dependencies: [],
 		},
 	);
 
@@ -93,6 +92,7 @@ const useTabsAnimation = (
 		{
 			scope: componentRef,
 			dependencies: [activeTab],
+			revertOnUpdate: true,
 		},
 	);
 
