@@ -17,42 +17,42 @@ import { galleryAnimations } from "./animations";
 import "./styles.scss";
 
 const Gallery = () => {
-	const componentRef = useRef(null);
+  const componentRef = useRef(null);
 
-	useGSAP(
-		() => {
-			galleryAnimations(componentRef?.current);
-		},
-		{ scope: componentRef },
-	);
+  useGSAP(
+    () => {
+      galleryAnimations(componentRef?.current);
+    },
+    { scope: componentRef },
+  );
 
-	// const handleAnimation = () => {
-	// 	galleryAnimations(componentRef?.current);
-	// };
+  // const handleAnimation = () => {
+  // 	galleryAnimations(componentRef?.current);
+  // };
 
-	return (
-		<section id="gallery" className="gallery" ref={componentRef}>
-			<Curves fill="var(--background-color--base)" orientation="top" />
+  return (
+    <section id="gallery" className="gallery" ref={componentRef}>
+      <Curves fill="var(--background-color--base)" orientation="top" />
 
-			<div className="gallery__slideshow">
-				{GALLERY_IMAGES.map((image) => (
-					<figure className="gallery__slide" key={image.key}>
-						<Image
-							unoptimized
-							priority={true}
-							src={image.src}
-							alt={image.alt}
-							width={image.width}
-							height={image.height}
-							sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-						/>
-					</figure>
-				))}
-			</div>
+      <div className="gallery__slideshow">
+        {GALLERY_IMAGES.map((image) => (
+          <figure className="gallery__slide" key={image.key}>
+            <Image
+              unoptimized
+              priority={true}
+              src={image.src}
+              alt={image.alt}
+              width={image.width}
+              height={image.height}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
+          </figure>
+        ))}
+      </div>
 
-			<Curves fill="var(--background-color--base)" orientation="bottom" />
-		</section>
-	);
+      <Curves fill="var(--background-color--base)" orientation="bottom" />
+    </section>
+  );
 };
 
 export default Gallery;

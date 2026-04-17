@@ -7,17 +7,17 @@ import ProjectItem from "./ProjectItem";
 import styles from "./styles.module.css";
 
 const ProjectsList = ({ data }: { data: Project[] }) => {
-	const componentRef = useRef(null);
+  const componentRef = useRef(null);
 
-	useListAnimation(componentRef);
+  useListAnimation(componentRef);
 
-	return (
-		<ul className={styles["projects-list"]} ref={componentRef}>
-			{data.map((project) => (
-				<ProjectItem key={project.id} project={project} />
-			))}
-		</ul>
-	);
+  return (
+    <ul className={styles["projects-list"]} ref={componentRef}>
+      {data.map((project) => (
+        <ProjectItem key={project.id} project={project} />
+      ))}
+    </ul>
+  );
 };
 
 export default ProjectsList;

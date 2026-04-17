@@ -8,19 +8,19 @@ import { useHero } from "@/context/HeroContext";
 import styles from "../styles.module.scss";
 
 const SidebarButton = () => {
-	const { isOpen, toggleMenu } = useHero();
+  const { isOpen, toggleMenu } = useHero();
 
-	return (
-		<button
-			type="button"
-			className={styles["hero__frame-top-bar__sidebar-button"]}
-			onClick={toggleMenu}
-			aria-label="Toggle sidebar"
-			data-expanded={isOpen}
-		>
-			{isOpen ? <SidebarOpen /> : <SidebarClose />}
-		</button>
-	);
+  return (
+    <button
+      type="button"
+      className={styles["hero__frame-top-bar__sidebar-button"]}
+      onClick={toggleMenu}
+      aria-label="Toggle sidebar"
+      data-expanded={isOpen}
+    >
+      {isOpen ? <SidebarOpen /> : <SidebarClose />}
+    </button>
+  );
 };
 
 export default SidebarButton;

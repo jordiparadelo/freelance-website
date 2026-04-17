@@ -10,112 +10,114 @@ import { type RefObject, useLayoutEffect, useRef } from "react";
 import { useCapabilities } from "./context";
 
 export const animateHeaderDetails = (
-	selector: RefObject<HTMLElement | null>,
+  selector: RefObject<HTMLElement | null>,
 ) => {
-	const { activeCapability } = useCapabilities();
-	const timeline = useRef<gsap.core.Timeline | null>(null);
-	const splitRef = useRef<SplitText | null>(null);
+  const { activeCapability } = useCapabilities();
+  const timeline = useRef<gsap.core.Timeline | null>(null);
+  const splitRef = useRef<SplitText | null>(null);
 
-	useGSAP(
-		() => {
-			const elements = {
-				default: selector.current?.querySelector(
-					"[data-target='header-details-default']",
-				),
-				active: selector.current?.querySelector(
-					"[data-target='header-details-active']",
-				),
-			};
+  useGSAP(
+    () => {
+      const elements = {
+        default: selector.current?.querySelector(
+          "[data-target='header-details-default']",
+        ),
+        active: selector.current?.querySelector(
+          "[data-target='header-details-active']",
+        ),
+      };
 
-			if (!timeline.current) {
-				timeline.current = gsap.timeline({
-					paused: true,
-					defaults: {
-						duration: 0.5,
-						ease: "power3.inOut",
-					},
-				});
-			}
+      timeline.current?.kill();
 
-			if (!splitRef.current && elements.default) {
-				splitRef.current = SplitText.create(elements.default, {
-					type: "words",
-				});
-			}
+      if (!timeline.current) {
+        timeline.current = gsap.timeline({
+          paused: true,
+          defaults: {
+            duration: 0.5,
+            ease: "power3.inOut",
+          },
+        });
+      }
 
-			if (splitRef.current && elements.default && elements.active) {
-				timeline.current
-					.to(splitRef.current?.words, {
-						yPercent: -100,
-						opacity: 0,
-						filter: "blur(10px)",
-						stagger: 0.025,
-					})
-					.fromTo(
-						elements.active,
-						{ yPercent: 100, opacity: 0 },
-						{ yPercent: 0, opacity: 1 },
-						"-=0.5",
-					);
-			}
-		},
-		{ scope: selector },
-	);
+      if (!splitRef.current && elements.default) {
+        splitRef.current = SplitText.create(elements.default, {
+          type: "words",
+        });
+      }
 
-	useLayoutEffect(() => {
-		if (activeCapability !== null) {
-			timeline.current?.play();
-		} else {
-			timeline.current?.reversed(!timeline.current?.reversed());
-		}
-	}, [activeCapability]);
+      if (splitRef.current && elements.default && elements.active) {
+        timeline.current
+          .to(splitRef.current?.words, {
+            yPercent: -100,
+            opacity: 0,
+            filter: "blur(10px)",
+            stagger: 0.025,
+          })
+          .fromTo(
+            elements.active,
+            { yPercent: 100, opacity: 0 },
+            { yPercent: 0, opacity: 1 },
+            "-=0.5",
+          );
+      }
+    },
+    { scope: selector },
+  );
+
+  useLayoutEffect(() => {
+    if (activeCapability !== null) {
+      timeline.current?.play();
+    } else {
+      timeline.current?.reversed(!timeline.current?.reversed());
+    }
+  }, [activeCapability]);
 };
 
 export const animateDescription = (selector: RefObject<HTMLElement | null>) => {
-	const { activeCapability } = useCapabilities();
-	const timeline = useRef<gsap.core.Timeline | null>(null);
+  const { activeCapability } = useCapabilities();
+  const timeline = useRef<gsap.core.Timeline | null>(null);
 
-	useGSAP(
-		() => {
-			const elements = {
-				default: selector.current?.querySelector("[data-target='default']"),
-				active: selector.current?.querySelector("[data-target='active']"),
-			};
+  useGSAP(
+    () => {
+      const elements = {
+        default: selector.current?.querySelector("[data-target='default']"),
+        active: selector.current?.querySelector("[data-target='active']"),
+      };
 
-			if (!timeline.current) {
-				timeline.current = gsap.timeline({
-					paused: true,
-					defaults: {
-						duration: 0.5,
-						ease: "power3.inOut",
-					},
-				});
-			}
+      if (!timeline.current) {
+        timeline.current = gsap.timeline({
+          paused: true,
+          defaults: {
+            duration: 0.5,
+            ease: "power3.inOut",
+          },
+        });
+      }
 
-			if (!elements.default || !elements.active) return;
+      if (!elements.default || !elements.active) return;
 
-			timeline.current
-				.to(elements.default, {
-					yPercent: -20,
-					opacity: 0,
-					filter: "blur(10px)",
-					stagger: 0.025,
-				})
-				.fromTo(
-					elements.active,
-					{ yPercent: 20, opacity: 0, pointerEvents: "none" },
-					{ yPercent: 0, opacity: 1, pointerEvents: "auto" },
-					"-=0.5",
-				);
-		},
-		{ scope: selector },
-	);
+      timeline.current
+        .to(elements.default, {
+          yPercent: -20,
+          opacity: 0,
+          filter: "blur(10px)",
+          stagger: 0.025,
+        })
+        .fromTo(
+          elements.active,
+          { yPercent: 20, opacity: 0, pointerEvents: "none" },
+          { yPercent: 0, opacity: 1, pointerEvents: "auto" },
+          "-=0.5",
+        );
+    },
+    { scope: selector },
+  );
 
-	useLayoutEffect(() => {
-		if (activeCapability !== null) {
-			timeline.current?.play();
-		} else {
-			timeline.current?.reversed(!timeline.current?.reversed());
-		}
-	}, [activeCapability]);
+  useLayoutEffect(() => {
+    if (activeCapability !== null) {
+      timeline.current?.play();
+    } else {
+      timeline.current?.reversed(!timeline.current?.reversed());
+    }
+  }, [activeCapability]);
 };

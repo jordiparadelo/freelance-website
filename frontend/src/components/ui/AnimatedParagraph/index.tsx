@@ -9,30 +9,30 @@ import useParagraphAnimation from "./animations";
 import styles from "./styles.module.css";
 
 interface AnimatedParagraphProps {
-	className?: string;
-	children: React.ReactNode;
+  className?: string;
+  children: React.ReactNode;
 }
 
 const AnimatedParagraph: React.FC<AnimatedParagraphProps> = ({
-	className,
-	children,
+  className,
+  children,
 }) => {
-	const componentRef = useRef<HTMLParagraphElement | null>(null);
+  const componentRef = useRef<HTMLParagraphElement | null>(null);
 
-	useParagraphAnimation(componentRef);
+  useParagraphAnimation(componentRef);
 
-	return (
-		<p
-			className={
-				className
-					? `${styles["animated-paragraph"]} ${className}`
-					: styles["animated-paragraph"]
-			}
-			ref={componentRef}
-		>
-			{children}
-		</p>
-	);
+  return (
+    <p
+      className={
+        className
+          ? `${styles["animated-paragraph"]} ${className}`
+          : styles["animated-paragraph"]
+      }
+      ref={componentRef}
+    >
+      {children}
+    </p>
+  );
 };
 
 export default AnimatedParagraph;
