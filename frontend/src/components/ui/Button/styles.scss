@@ -25,6 +25,7 @@
 
 	&--primary {
 		--color: var(--text-color--font);
+		// color: inherit;
 	}
 
 	&--alternative {
@@ -36,10 +37,9 @@
 		position: relative;
 		transition: transform var(--anim-duration--md) var(--anim-easing);
 		z-index: 1;
-
-		&:nth-child(2) {
-			filter: invert(100);
-		}
+	}
+	.button__label:nth-of-type(2) {
+		filter: invert(100);
 	}
 
 	@media screen and (min-width: 480px) {

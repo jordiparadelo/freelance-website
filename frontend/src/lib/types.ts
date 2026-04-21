@@ -63,3 +63,38 @@ export interface Carer {
   duration: string;
   years?: string;
 }
+
+export interface BusinessType {
+  id: number;
+  documentId: string;
+  legalName: string;
+  displayName: string;
+  vatId: string;
+  country: string;
+  city: string;
+  timezone: string;
+  address: string;
+  createdAt: string;
+  updatedAt: string;
+  social_links: SocialLink[];
+  publishedAt: string;
+  locale: string;
+  cv?: {
+    id: number;
+    documentId: string;
+    url: string;
+  };
+}
+
+export interface SocialLink {
+  id: number;
+  documentId: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  href: string;
+  displayName: string;
+  type: string;
+  order: number | null;
+  nameID: string | null;
+}
