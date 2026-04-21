@@ -2,7 +2,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding-inline: var(--section-padding--inline);
+  padding-inline: var(--section-padding-inline);
   padding-block: var(--section-padding--block);
   max-width: 100vw;
 }

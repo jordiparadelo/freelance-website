@@ -41,9 +41,9 @@
   --font-size--large: 1.5rem;
 
   /* Section Padding */
-  --section-padding--inline-large: 2.5rem;
-  --section-padding--inline-medium: 1.25rem;
-  --section-padding--inline-small: 1rem;
+  --section-padding-inline-large: 2.5rem;
+  --section-padding-inline-medium: 1.25rem;
+  --section-padding-inline-small: 1rem;
   --section-padding--block-large: 8rem;
   --section-padding--block-medium: 6rem;
   --section-padding--block-small: 4rem;
@@ -53,10 +53,10 @@
     10vw,
     var(--section-padding--block-medium)
   );
-  --section-padding--inline: clamp(
-    var(--section-padding--inline-small),
+  --section-padding-inline: clamp(
+    var(--section-padding-inline-small),
     5vw,
-    var(--section-padding--inline-large)
+    var(--section-padding-inline-large)
   );
   /* Sizes */
   --navbar-height: 84px;

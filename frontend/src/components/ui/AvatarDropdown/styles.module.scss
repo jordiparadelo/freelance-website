@@ -4,7 +4,6 @@
 	z-index: 999;
 	border-radius: 1.5rem;
 
-
 	// Background
 	&::before {
 		box-sizing: border-box;
@@ -30,7 +29,8 @@
 			svg {
 				max-width: 1000px;
 			}
-	}}
+		}
+	}
 
 	&__button {
 		display: flex;
@@ -72,7 +72,7 @@
 		position: absolute;
 		top: calc(100% + 0.5rem);
 		color: var(--text-color--font);
-		padding: var(--section-padding--inline-small);
+		padding: var(--section-padding-inline-small);
 		z-index: 10;
 		min-width: 256px;
 		gap: 1.25rem;

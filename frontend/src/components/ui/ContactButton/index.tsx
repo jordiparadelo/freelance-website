@@ -1,34 +1,16 @@
-"use client";
-
-import { useRouter } from "next/navigation";
-// Components
 import { Button } from "@/components/ui";
-
-import { cn } from "@/lib/utils";
-
-// Styles
-import "./styles.scss";
+import { ABOUT } from "@/lib/constants";
 
 interface ContactButtonProps {
-  children: React.ReactNode;
-  className?: string;
+	children: React.ReactNode;
 }
 
-const ContactButton: React.FC<ContactButtonProps> = ({
-  children,
-  className,
-}) => {
-  const router = useRouter();
+const ContactButton: React.FC<ContactButtonProps> = ({ children }) => {
+	const href = ABOUT.contact.find((object) => {
+		return object.id === "email";
+	})?.props.href;
 
-  const handleClick = () => {
-    router.push("?modal=true&type=contact");
-  };
-
-  return (
-    <Button className={cn("contact-button", className)} onClick={handleClick}>
-      {children}
-    </Button>
-  );
+	return <Button href={href}>{children}</Button>;
 };
 
 export default ContactButton;

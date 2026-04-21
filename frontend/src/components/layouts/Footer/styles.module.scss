@@ -1,5 +1,5 @@
 .footer {
-	padding-block-end: var(--section-padding--inline-medium);
+	padding-block-end: var(--section-padding-inline-medium);
 
 	&__layout {
 		display: flex;
@@ -29,7 +29,9 @@
 		border-end-end-radius: var(--top-radius);
 		background-color: var(--background-color--base);
 		z-index: 2;
-		padding: max(2rem, 5vw);
+		padding-block: var(--section-padding-block);
+		padding-inline: var(--section-padding-inline);
+		// padding: max(2rem, 5vw);
 		position: relative;
 
 		&:before {
@@ -69,7 +71,7 @@
 			flex-direction: column;
 			place-items: center;
 			text-align: center;
-			gap: var(--section-padding--inline-large);
+			gap: var(--section-padding-inline-large);
 			max-width: 80ch;
 			margin-inline: auto;
 			place-items: center;
@@ -90,7 +92,7 @@
 		&__actions {
 			display: flex;
 			flex-direction: column;
-			padding-block-start: var(--section-padding--inline-medium);
+			padding-block-start: var(--section-padding-inline-medium);
 			gap: 0.25rem;
 		}
 	}
@@ -98,7 +100,7 @@
 	// Social Links
 
 	&__social-link-list {
-		padding-inline-start: var(--section-padding--inline-medium);
+		padding-inline-start: var(--section-padding-inline-medium);
 		display: flex;
 		place-items: center;
 		place-content: center;
@@ -115,7 +117,11 @@
 		place-items: center;
 		place-content: space-between;
 		gap: 1rem;
-		padding-inline: var(--section-padding--inline-medium);
-		padding-block: var(--section-padding--inline-medium);
+		padding-inline: var(--section-padding-inline-medium);
+		padding-block: var(--section-padding-inline-medium);
+
+		@media screen and (max-width: 500px) {
+			flex-direction: column;
+		}
 	}
 }

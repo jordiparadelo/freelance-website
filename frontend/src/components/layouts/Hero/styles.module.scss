@@ -48,7 +48,6 @@
 				border: 1px solid var(--border-color--base);
 			}
 		}
-
 	}
 
 	// Frame Container Wrapper
@@ -76,8 +75,8 @@
 	}
 	&__frame-nav {
 		flex-grow: 1;
-		padding-block-end: var(--section-padding--inline-small);
-		padding-inline: var(--section-padding--inline-small);
+		padding-block-end: var(--section-padding-inline-small);
+		padding-inline: var(--section-padding-inline-small);
 		display: flex;
 		flex-direction: column;
 		gap: var(--section-padding--block-tiny);
@@ -169,9 +168,9 @@
 		display: flex;
 		gap: 4rem;
 		flex-direction: column;
-		padding-inline: var(--section-padding--inline-medium);
+		padding-inline: var(--section-padding-inline-medium);
 		padding-block-start: var(--section-padding--block-medium);
-		padding-block-end: var(--section-padding--inline-medium);
+		padding-block-end: var(--section-padding-inline-medium);
 		flex-grow: 1;
 	}
 
