@@ -1,9 +1,13 @@
 "use client";
 import { ContactButton } from "@/components/ui";
 import { useColorTheme } from "@/hooks/useColorTheme";
+import type { BusinessType } from "@/lib/types";
 import styles from "./styles.module.scss";
 
-const NavActions = () => {
+const NavActions = ({ data }: { data: BusinessType }) => {
+	const CONTACT_LINK: string = data?.social_links.find(
+		(link) => link.type === "email",
+	)?.href;
 	const { theme, toggleTheme } = useColorTheme();
 	return (
 		<div className={styles["navbar-actions"]}>
@@ -42,7 +46,9 @@ const NavActions = () => {
 					</svg>
 				)}
 			</button>
-			<ContactButton>Get in touch</ContactButton>
+			<ContactButton href={`mailto:${CONTACT_LINK}`}>
+				Get in touch
+			</ContactButton>
 		</div>
 	);
 };
