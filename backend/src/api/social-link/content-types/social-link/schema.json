@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "social_links",
+  "info": {
+    "singularName": "social-link",
+    "pluralName": "social-links",
+    "displayName": "Social Link"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "displayName": {
+      "type": "string"
+    },
+    "nameID": {
+      "type": "uid",
+      "targetField": "displayName"
+    },
+    "href": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "email",
+        "phone",
+        "website",
+        "other"
+      ]
+    },
+    "order": {
+      "type": "integer"
+    }
+  }
+}

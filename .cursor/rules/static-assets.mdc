@@ -1,0 +1,12 @@
+---
+description: Static assets and resources
+globs: src/assets/**/*
+alwaysApply: false
+---
+
+# Your rule content
+-Organize assets by type (images/, icons/, etc.)
+-Use appropriate file formats
+-Keep assets optimized
+-Include source files when necessary
+-Document asset usage

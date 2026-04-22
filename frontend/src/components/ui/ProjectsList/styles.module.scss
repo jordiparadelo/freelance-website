@@ -1,0 +1,57 @@
+.projects-list {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	gap: 0.2rem;
+	
+	.project-card {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 1rem;
+		padding: 0.5rem;
+		border-radius: var(--corners--radius-small);
+		background-color: var(--background-color--base);
+		outline: 0px solid var(--background-color--alternative);
+		transition: all 0.1s linear;
+
+		&:is(:hover, :focus) {
+			outline-width: 1px;
+			background-color: var(--border-color--base);
+			z-index: 1;
+		}
+
+		&__image {
+			--size: 48px;
+			flex-shrink: 0;
+			aspect-ratio: 1/1;
+			width: var(--size);
+			height: var(--size);
+			border-radius: 0.5rem;
+			background-color: var(--background-color--base);
+			border: 1px solid var(--border-color--base);
+			object-fit: cover;
+		}
+
+		&__content {
+			display: flex;
+			flex-direction: column;
+			gap: 0rem;
+
+			&-title {
+				font-size: 1rem;
+				font-weight: 600;
+			}
+
+			&-description {
+				font-size: 0.75rem;
+				color: var(--text-color--gray);
+				overflow: hidden;
+				text-overflow: ellipsis;
+				display: -webkit-box;
+				-webkit-line-clamp: 1;
+				-webkit-box-orient: vertical;
+			}
+		}
+	}
+}

@@ -1,0 +1,12 @@
+---
+description: Utility functions and shared logic
+globs: src/lib/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+# Your rule content
+- Group utilities by functionality
+- Keep functions pure and focused
+- Include proper TypeScript types
+- Document complex functions
+- Export utilities as named exports

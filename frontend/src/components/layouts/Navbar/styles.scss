@@ -1,0 +1,54 @@
+.navbar {
+	--offset: 0.5rem;
+	    padding-block: var(--offset);
+    z-index: 100;
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+    position: sticky;
+    top: 0;
+    min-height: 5rem;
+
+	&::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		backdrop-filter: blur(50px);
+		mask-image: linear-gradient(to bottom, black, transparent);
+		z-index: -1;
+	}
+
+	&__layout {
+		display: flex;
+		place-items: center;
+		justify-content: space-between;
+		gap: 1.5rem;
+		// padding: var(--offset);
+		
+		@media screen and (min-width: 675px) {
+			gap: 4rem;
+			max-width: var(--container-size-lg);
+		}
+
+		.container {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+			max-width: unset;
+		}
+
+		.logo {
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+
+		&__action {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			gap: 1rem;
+		}
+	}
+}
