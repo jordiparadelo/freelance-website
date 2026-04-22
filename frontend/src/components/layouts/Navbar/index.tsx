@@ -7,7 +7,7 @@ import { getStrapiData } from "@/lib/strapi";
 
 const Navbar = async () => {
 	const { data: BUSINESS_INFO } = await getStrapiData(
-		"business-info?fields[0]=legalName&fields[1]=country&fields[2]=city&populate[social_links]=*&populate[cv][fields][0]=url",
+		"/api/business-info?fields[0]=legalName&fields[1]=country&fields[2]=city&populate[social_links]=*&populate[cv][fields][0]=url",
 	);
 
 	return (
