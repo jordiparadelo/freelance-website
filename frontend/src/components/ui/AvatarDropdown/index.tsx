@@ -19,6 +19,8 @@ const AvatarDropdown = ({ data }: { data: BusinessType }) => {
 	const { openMenu, closeMenu } = useDropdownAnimation(dropdownRef);
 	const { legalName, country, city, social_links: links, cv } = data;
 
+	// console.log(links.filter((link) => link.type === "website"));
+
 	// Function to handle clicks outside the dropdown
 	const handleClicksOutsideDropdown = useCallback(
 		(event: MouseEvent): void => {

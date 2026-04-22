@@ -1,3 +1,4 @@
+"use server";
 import { ROUTES } from "@/app/site.config";
 import { AvatarDropdown } from "@/components/ui";
 import NavActions from "./NavActions";

@@ -5,7 +5,7 @@ import type { BusinessType } from "@/lib/types";
 import styles from "./styles.module.scss";
 
 const NavActions = ({ data }: { data: BusinessType }) => {
-	const CONTACT_LINK: string = data?.social_links.find(
+	const CONTACT_LINK: string | undefined = data?.social_links.find(
 		(link) => link.type === "email",
 	)?.href;
 	const { theme, toggleTheme } = useColorTheme();
@@ -46,9 +46,15 @@ const NavActions = ({ data }: { data: BusinessType }) => {
 					</svg>
 				)}
 			</button>
-			<ContactButton href={`mailto:${CONTACT_LINK}`}>
-				Get in touch
-			</ContactButton>
+			{CONTACT_LINK ? (
+				<ContactButton href={`mailto:${CONTACT_LINK}`}>
+					Get in touch
+				</ContactButton>
+			) : (
+				<ContactButton href={`mailto:${CONTACT_LINK}`}>
+					Get in touch
+				</ContactButton>
+			)}
 		</div>
 	);
 };
