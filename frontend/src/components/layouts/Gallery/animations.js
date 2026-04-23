@@ -5,7 +5,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export const galleryAnimations = (element) => {
   const OFFSET_TRANSLATION = 20;
-  const gallery = element.querySelector(".gallery__slideshow");
+  const gallery = element.current;
   const screenHeight = window.innerHeight;
 
   gsap.set(gallery, {
@@ -18,7 +18,7 @@ export const galleryAnimations = (element) => {
 
   ScrollTrigger.create({
     animation: animation,
-    trigger: element,
+    trigger: gallery,
     scrub: true,
     start: `top+=20% bottom`,
     end: `bottom+=${screenHeight} bottom`,

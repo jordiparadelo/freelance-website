@@ -14,7 +14,6 @@ export { default as CopyToClipboard } from "./CopyToClipboard";
 export { default as Curves } from "./Curves";
 export { default as Logo } from "./Logo";
 export { default as ProjectDetailsList } from "./ProjectDetailsList";
-export { default as ProjectsList } from "./ProjectsList";
 export { default as Section } from "./Section";
 export { default as SectionLabel } from "./SectionLabel";
 export { default as Tabs } from "./Tabs";
