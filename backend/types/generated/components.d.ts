@@ -1,5 +1,17 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface AboutCapability extends Struct.ComponentSchema {
+  collectionName: 'components_about_capabilities';
+  info: {
+    displayName: 'capability';
+    icon: 'stack';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface ProjectDetailsDetails extends Struct.ComponentSchema {
   collectionName: 'components_project_details_details';
   info: {
@@ -59,6 +71,7 @@ export interface SharedSocialLink extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'about.capability': AboutCapability;
       'project-details.details': ProjectDetailsDetails;
       'shared.category': SharedCategory;
       'shared.image-data': SharedImageData;

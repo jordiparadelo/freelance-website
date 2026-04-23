@@ -430,6 +430,55 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAboutSectionAboutSection extends Struct.SingleTypeSchema {
+  collectionName: 'about_sections';
+  info: {
+    displayName: 'About Section';
+    pluralName: 'about-sections';
+    singularName: 'about-section';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    capabilities: Schema.Attribute.Component<'about.capability', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::about-section.about-section'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiBusinessInfoBusinessInfo extends Struct.SingleTypeSchema {
   collectionName: 'business_infos';
   info: {
@@ -1164,6 +1213,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::about-section.about-section': ApiAboutSectionAboutSection;
       'api::business-info.business-info': ApiBusinessInfoBusinessInfo;
       'api::gallery-section.gallery-section': ApiGallerySectionGallerySection;
       'api::project.project': ApiProjectProject;

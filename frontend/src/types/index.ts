@@ -60,6 +60,6 @@ export interface Tags {
 }
 
 export interface Capability {
-  name: string;
+  title: string;
   description: string;
 }

@@ -3,12 +3,12 @@ import { useRef } from "react";
 import { AnimatedParagraph } from "@/components/ui";
 import { animateDescription } from "./animations";
 import { useCapabilities } from "./context";
-import { CAPABILITIES } from "./data";
 import styles from "./styles.module.css";
 
-const ContentDescription = () => {
+const ContentDescription = ({ description }: { description: string }) => {
   const componentRef = useRef(null);
-  const { activeCapability, previousCapability } = useCapabilities();
+  const { activeCapability, previousCapability, capabilities } =
+    useCapabilities();
 
   animateDescription(componentRef);
 
@@ -16,21 +16,20 @@ const ContentDescription = () => {
     <div className={styles["about_content_description"]} ref={componentRef}>
       <div data-target="default">
         <AnimatedParagraph className={styles.about_title}>
-          Freelancer, focused on develop digital products from scratch. Always
-          align with design trends and technologies to solve business needs.
+          {description}
         </AnimatedParagraph>
       </div>
       <div data-target="active">
         <AnimatedParagraph className={styles.about_title}>
           {activeCapability !== null ? (
-            <span key={CAPABILITIES[activeCapability].name}>
-              {CAPABILITIES[activeCapability].description}
+            <span key={capabilities.current[activeCapability].title}>
+              {capabilities.current[activeCapability].description}
             </span>
           ) : (
             previousCapability !== null && (
-              <span key={CAPABILITIES[previousCapability].name}>
+              <span key={capabilities.current[previousCapability].title}>
                 {" "}
-                {CAPABILITIES[previousCapability].description}
+                {capabilities.current[previousCapability].description}
               </span>
             )
           )}
