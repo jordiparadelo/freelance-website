@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_shared_image_data",
+  "info": {
+    "displayName": "image-data",
+    "icon": "landscape"
+  },
+  "options": {},
+  "attributes": {
+    "src": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  },
+  "config": {}
+}

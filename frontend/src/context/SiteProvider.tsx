@@ -1,5 +1,4 @@
 import type React from "react";
-// Context
 import ScrollProvider from "@/context/ScrollContext";
 import { ThemeProvider } from "@/context/ThemeProvider";
 import { TransitionProvider } from "@/context/TransitionContext";

@@ -1,56 +1,54 @@
 "use client";
+
 import Image from "next/image";
 import { useRef } from "react";
-import { PROJECTS } from "@/lib/constants";
-import type { Project } from "@/types";
+import { formatStrapiImageUrl } from "@/lib/strapi";
 import styles from "./styles.module.css";
 
-const BusinessMarquee = () => {
+type MarqueeData = {
+  id?: number;
+  details: {
+    id: number;
+    preview?: string;
+    client?: string;
+    logo: {
+      url: string;
+      width: number;
+      height: number;
+    };
+  };
+};
+
+const BusinessMarquee = ({ business }: { business: MarqueeData[] }) => {
   const componentRef = useRef(null);
 
   return (
     <div ref={componentRef} className={styles["business-marquee"]}>
       <div className={styles["business-marquee_wrapper"]}>
-        <ul className={styles["business-marquee_list"]}>
-          {PROJECTS?.map((business: Project) => (
-            <li key={business.id} className={styles["business-marquee_item"]}>
-              <a
-                href={business.preview ? business.preview : "#"}
-                target="_blank"
-                className={styles["business-marquee_link"]}
-              >
-                {business.details?.logo && business.details?.client && (
-                  <Image
-                    src={business.details?.logo}
-                    alt={business.details?.client}
-                    width={100}
-                    height={100}
-                  />
-                )}
-              </a>
-            </li>
-          ))}
-        </ul>
-        <ul className={styles["business-marquee_list"]}>
-          {PROJECTS?.map((business: Project) => (
-            <li key={business.id} className={styles["business-marquee_item"]}>
-              <a
-                href={business.preview ? business.preview : "#"}
-                target="_blank"
-                className={styles["business-marquee_link"]}
-              >
-                {business.details?.logo && business.details?.client && (
-                  <Image
-                    src={business.details?.logo}
-                    alt={business.details?.client}
-                    width={100}
-                    height={100}
-                  />
-                )}
-              </a>
-            </li>
-          ))}
-        </ul>
+        {Array.from({ length: 2 }).map((_, index) => (
+          <ul className={styles["business-marquee_list"]} key={index}>
+            {business?.map((business: MarqueeData) => (
+              <li key={business.id} className={styles["business-marquee_item"]}>
+                <a
+                  href={
+                    business?.details.preview ? business?.details.preview : "#"
+                  }
+                  target="_blank"
+                  className={styles["business-marquee_link"]}
+                >
+                  {business?.details?.client && (
+                    <Image
+                      src={formatStrapiImageUrl(business.details?.logo?.url)}
+                      alt={business?.details?.client}
+                      width={100}
+                      height={100}
+                    />
+                  )}
+                </a>
+              </li>
+            ))}
+          </ul>
+        ))}
       </div>
     </div>
   );

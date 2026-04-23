@@ -1,32 +1,36 @@
 import Image from "next/image";
-import type { Project } from "@/types";
+import { formatStrapiImageUrl } from "@/lib/strapi";
+import type { StrapiProject } from "@/lib/types";
 import styles from "./styles.module.css";
 
-const ProjectItem = ({ project }: { project: Project }) => {
+const ProjectItem = ({ project }: { project: StrapiProject }) => {
+  const { title, image, details } = project;
+  const imageSrc = formatStrapiImageUrl(image.url);
+
   return (
     <li className={styles["projects-list__item"]} key={project.id}>
       <figure className={styles["project-card"]}>
         <div className={styles["project-card_cover"]}>
           <Image
-            src={project.image.src || ""}
-            alt={project.title}
-            width={project.image.width}
-            height={project.image.height}
+            src={imageSrc}
+            alt={title}
+            width={image.width}
+            height={image.height}
             className={styles["project-card_cover_image"]}
           />
         </div>
         <div className={styles["project-card_description"]}>
           <div className={styles["project-card_header"]}>
             <div className={styles["project-card_header_headline"]}>
-              <h3 className="heading-style-h4">{project.title}</h3>
+              <h3 className="heading-style-h4">{title}</h3>
               <p className="text-size-small text-color-gray">
-                {project.details?.blob}
+                {details?.brief}
               </p>
-              <a href={project.preview}>Visit Site</a>
+              <a href={details?.preview}>Visit Site</a>
             </div>
             <div className={styles["project-card_details_block"]}>
               <h4 className={styles["project-card_details_title"]}>Year</h4>
-              <span> {project.details?.year}</span>
+              <span> {details?.year}</span>
             </div>
           </div>
           <div className={styles["project-card_details"]}>
@@ -35,35 +39,35 @@ const ProjectItem = ({ project }: { project: Project }) => {
                 Industries
               </h4>
               <div className={styles["project-card_details_list"]}>
-                {project.details?.industries.map((industry) => (
-                  <span key={industry}> {industry}</span>
+                {details?.industries?.map((industry) => (
+                  <span key={industry?.label}> {industry?.label}</span>
                 ))}
               </div>
             </div>
             <div className={styles["project-card_details_block"]}>
               <h4 className={styles["project-card_details_title"]}>Type</h4>
               <div className={styles["project-card_details_list"]}>
-                {project.details?.type.map((type) => (
-                  <span key={type}> {type}</span>
+                {details?.type?.map((type) => (
+                  <span key={type.label}> {type.label}</span>
                 ))}
               </div>
             </div>
             <div className={styles["project-card_details_block"]}>
               <h4 className={styles["project-card_details_title"]}>Roles</h4>
               <div className={styles["project-card_details_list"]}>
-                {project.details?.roles.map((rol) => (
-                  <span key={rol}> {rol}</span>
+                {details?.roles?.map((rol) => (
+                  <span key={rol.label}> {rol.label}</span>
                 ))}
               </div>
             </div>
-            {project.details?.collaboration.length && (
+            {details?.collaboration?.length && (
               <div className={styles["project-card_details_block"]}>
                 <h4 className={styles["project-card_details_title"]}>
                   Collaborators
                 </h4>
                 <div className={styles["project-card_details_list"]}>
-                  {project.details?.collaboration.map((collaborator) => (
-                    <span key={collaborator}> {collaborator}</span>
+                  {details?.collaboration?.map((collaborator) => (
+                    <span key={collaborator.label}> {collaborator.label}</span>
                   ))}
                 </div>
               </div>

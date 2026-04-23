@@ -159,7 +159,7 @@ export const PROJECTS: Project[] = [
     id: "surfrigo",
     href: "/projects/surfrigo",
     image: {
-      src: "/images/projects/surfrigo.webp",
+      url: "/images/projects/surfrigo.webp",
       alt: "Project website 32",
       width: 568,
       height: 456,
@@ -189,43 +189,43 @@ export const PROJECTS: Project[] = [
     categories: ["Webflow", "Website"],
     gallery: [
       {
-        src: "/assets/image-gallery-1.webp",
+        url: "/assets/image-gallery-1.webp",
         alt: "Project website 32",
         width: 568,
         height: 456,
       },
       {
-        src: "/assets/image-gallery-1.webp",
+        url: "/assets/image-gallery-1.webp",
         alt: "Project website 32",
         width: 568,
         height: 456,
       },
       {
-        src: "/assets/image-gallery-1.webp",
+        url: "/assets/image-gallery-1.webp",
         alt: "Project website 32",
         width: 568,
         height: 456,
       },
       {
-        src: "/assets/image-gallery-1.webp",
+        url: "/assets/image-gallery-1.webp",
         alt: "Project website 32",
         width: 568,
         height: 456,
       },
       {
-        src: "/assets/image-gallery-1.webp",
+        url: "/assets/image-gallery-1.webp",
         alt: "Project website 32",
         width: 568,
         height: 456,
       },
       {
-        src: "/assets/image-gallery-1.webp",
+        url: "/assets/image-gallery-1.webp",
         alt: "Project website 32",
         width: 568,
         height: 456,
       },
       {
-        src: "/assets/image-gallery-1.webp",
+        url: "/assets/image-gallery-1.webp",
         alt: "Project website 32",
         width: 568,
         height: 456,
@@ -236,7 +236,7 @@ export const PROJECTS: Project[] = [
     id: "byma",
     href: "/projects/byma",
     image: {
-      src: "/images/projects/byma.webp",
+      url: "/images/projects/byma.webp",
       alt: "BYMA website homepage",
       width: 568,
       height: 456,
@@ -270,19 +270,19 @@ export const PROJECTS: Project[] = [
     categories: ["Website", "Corporate"],
     gallery: [
       {
-        src: "/assets/image-gallery-1.webp",
+        url: "/assets/image-gallery-1.webp",
         alt: "BYMA website section",
         width: 568,
         height: 456,
       },
       {
-        src: "/assets/image-gallery-1.webp",
+        url: "/assets/image-gallery-1.webp",
         alt: "BYMA website section",
         width: 568,
         height: 456,
       },
       {
-        src: "/assets/image-gallery-1.webp",
+        url: "/assets/image-gallery-1.webp",
         alt: "BYMA website section",
         width: 568,
         height: 456,
@@ -293,7 +293,7 @@ export const PROJECTS: Project[] = [
     id: "centum",
     href: "/projects/centum",
     image: {
-      src: "/images/projects/centum.webp", // TODO: verify
+      url: "/images/projects/centum.webp", // TODO: verify
       alt: "Centum ERP platform homepage",
       width: 568,
       height: 456,
@@ -329,19 +329,19 @@ export const PROJECTS: Project[] = [
     categories: ["Website", "Corporate", "SaaS"],
     gallery: [
       {
-        src: "/assets/image-gallery-1.webp", // TODO: verify
+        url: "/assets/image-gallery-1.webp", // TODO: verify
         alt: "Centum platform overview section",
         width: 568,
         height: 456,
       },
       {
-        src: "/assets/image-gallery-1.webp", // TODO: verify
+        url: "/assets/image-gallery-1.webp", // TODO: verify
         alt: "Centum industry solutions section",
         width: 568,
         height: 456,
       },
       {
-        src: "/assets/image-gallery-1.webp", // TODO: verify
+        url: "/assets/image-gallery-1.webp", // TODO: verify
         alt: "Centum integrations and results section",
         width: 568,
         height: 456,
@@ -352,7 +352,7 @@ export const PROJECTS: Project[] = [
     id: "alertd",
     href: "/projects/alertd",
     image: {
-      src: "/images/projects/alertd.webp", // TODO: verify
+      url: "/images/projects/alertd.webp", // TODO: verify
       alt: "AlertD cloud optimization platform homepage",
       width: 568,
       height: 456,
@@ -388,19 +388,19 @@ export const PROJECTS: Project[] = [
     categories: ["Website", "Corporate", "SaaS"],
     gallery: [
       {
-        src: "/assets/image-gallery-1.webp", // TODO: verify
+        url: "/assets/image-gallery-1.webp", // TODO: verify
         alt: "AlertD hero and value proposition section",
         width: 568,
         height: 456,
       },
       {
-        src: "/assets/image-gallery-1.webp", // TODO: verify
+        url: "/assets/image-gallery-1.webp", // TODO: verify
         alt: "AlertD optimization workflow section",
         width: 568,
         height: 456,
       },
       {
-        src: "/assets/image-gallery-1.webp", // TODO: verify
+        url: "/assets/image-gallery-1.webp", // TODO: verify
         alt: "AlertD collaboration and CTA section",
         width: 568,
         height: 456,
@@ -411,7 +411,7 @@ export const PROJECTS: Project[] = [
     id: "ringtail-digital",
     href: "/projects/ringtail-digital",
     image: {
-      src: "/images/projects/ringtail-digital.webp", // TODO: verify
+      url: "/images/projects/ringtail-digital.webp", // TODO: verify
       alt: "Ringtail Digital programmatic media website homepage",
       width: 568,
       height: 456,
@@ -446,19 +446,19 @@ export const PROJECTS: Project[] = [
     categories: ["Website", "Corporate", "Marketing"],
     gallery: [
       {
-        src: "/assets/image-gallery-1.webp", // TODO: verify
+        url: "/assets/image-gallery-1.webp", // TODO: verify
         alt: "Ringtail Digital value proposition section",
         width: 568,
         height: 456,
       },
       {
-        src: "/assets/image-gallery-1.webp", // TODO: verify
+        url: "/assets/image-gallery-1.webp", // TODO: verify
         alt: "Ringtail Digital channels and platforms section",
         width: 568,
         height: 456,
       },
       {
-        src: "/assets/image-gallery-1.webp", // TODO: verify
+        url: "/assets/image-gallery-1.webp", // TODO: verify
         alt: "Ringtail Digital methodology and contact section",
         width: 568,
         height: 456,
@@ -469,7 +469,7 @@ export const PROJECTS: Project[] = [
     id: "glow-ia",
     href: "/projects/glow-ia",
     image: {
-      src: "/images/projects/glow-ia.webp", // TODO: verify
+      url: "/images/projects/glow-ia.webp", // TODO: verify
       alt: "Glow IA beauty AI platform homepage",
       width: 568,
       height: 456,
@@ -499,19 +499,19 @@ export const PROJECTS: Project[] = [
     categories: ["Website", "Corporate", "SaaS"],
     gallery: [
       {
-        src: "/assets/image-gallery-1.webp", // TODO: verify
+        url: "/assets/image-gallery-1.webp", // TODO: verify
         alt: "Glow IA hero and AI personalization section",
         width: 568,
         height: 456,
       },
       {
-        src: "/assets/image-gallery-1.webp", // TODO: verify
+        url: "/assets/image-gallery-1.webp", // TODO: verify
         alt: "Glow IA immersive path and journey section",
         width: 568,
         height: 456,
       },
       {
-        src: "/assets/image-gallery-1.webp", // TODO: verify
+        url: "/assets/image-gallery-1.webp", // TODO: verify
         alt: "Glow IA solutions suite and reviews section",
         width: 568,
         height: 456,
@@ -522,7 +522,7 @@ export const PROJECTS: Project[] = [
     id: "modo-app",
     href: "/projects/modo-app",
     image: {
-      src: "/images/projects/modo-app.webp", // TODO: verify
+      url: "/images/projects/modo-app.webp", // TODO: verify
       alt: "Modo digital wallet website homepage", // TODO: verify
       width: 568,
       height: 456,
@@ -551,19 +551,19 @@ export const PROJECTS: Project[] = [
     categories: ["Website", "Corporate", "Fintech"],
     gallery: [
       {
-        src: "/assets/image-gallery-1.webp", // TODO: verify
+        url: "/assets/image-gallery-1.webp", // TODO: verify
         alt: "Modo hero section", // TODO: verify
         width: 568,
         height: 456,
       },
       {
-        src: "/assets/image-gallery-1.webp", // TODO: verify
+        url: "/assets/image-gallery-1.webp", // TODO: verify
         alt: "Modo features section", // TODO: verify
         width: 568,
         height: 456,
       },
       {
-        src: "/assets/image-gallery-1.webp", // TODO: verify
+        url: "/assets/image-gallery-1.webp", // TODO: verify
         alt: "Modo CTA section", // TODO: verify
         width: 568,
         height: 456,
@@ -574,7 +574,7 @@ export const PROJECTS: Project[] = [
     id: "modum",
     href: "/products/modum",
     image: {
-      src: "/images/image_cover_modum.webp",
+      url: "/images/image_cover_modum.webp",
       alt: "Project website 32",
       width: 568,
       height: 456,
@@ -598,43 +598,43 @@ export const PROJECTS: Project[] = [
     categories: ["Webflow", "Website"],
     gallery: [
       {
-        src: "/assets/image-gallery-1.webp",
+        url: "/assets/image-gallery-1.webp",
         alt: "Project website 32",
         width: 568,
         height: 456,
       },
       {
-        src: "/assets/image-gallery-1.webp",
+        url: "/assets/image-gallery-1.webp",
         alt: "Project website 32",
         width: 568,
         height: 456,
       },
       {
-        src: "/assets/image-gallery-1.webp",
+        url: "/assets/image-gallery-1.webp",
         alt: "Project website 32",
         width: 568,
         height: 456,
       },
       {
-        src: "/assets/image-gallery-1.webp",
+        url: "/assets/image-gallery-1.webp",
         alt: "Project website 32",
         width: 568,
         height: 456,
       },
       {
-        src: "/assets/image-gallery-1.webp",
+        url: "/assets/image-gallery-1.webp",
         alt: "Project website 32",
         width: 568,
         height: 456,
       },
       {
-        src: "/assets/image-gallery-1.webp",
+        url: "/assets/image-gallery-1.webp",
         alt: "Project website 32",
         width: 568,
         height: 456,
       },
       {
-        src: "/assets/image-gallery-1.webp",
+        url: "/assets/image-gallery-1.webp",
         alt: "Project website 32",
         width: 568,
         height: 456,
@@ -645,7 +645,7 @@ export const PROJECTS: Project[] = [
     id: "cledara-saas",
     href: "/projects/cledara-saas",
     image: {
-      src: "/images/projects/cledara-saas.webp", // TODO: verify
+      url: "/images/projects/cledara-saas.webp", // TODO: verify
       alt: "Cledara SaaS management platform homepage",
       width: 568,
       height: 456,
@@ -680,19 +680,19 @@ export const PROJECTS: Project[] = [
     categories: ["Website", "Corporate", "SaaS"],
     gallery: [
       {
-        src: "/assets/image-gallery-1.webp", // TODO: verify
+        url: "/assets/image-gallery-1.webp", // TODO: verify
         alt: "Cledara spend visibility and control section",
         width: 568,
         height: 456,
       },
       {
-        src: "/assets/image-gallery-1.webp", // TODO: verify
+        url: "/assets/image-gallery-1.webp", // TODO: verify
         alt: "Cledara software purchasing and renewals section",
         width: 568,
         height: 456,
       },
       {
-        src: "/assets/image-gallery-1.webp", // TODO: verify
+        url: "/assets/image-gallery-1.webp", // TODO: verify
         alt: "Cledara customer stories and CTA section",
         width: 568,
         height: 456,
@@ -703,7 +703,7 @@ export const PROJECTS: Project[] = [
     id: "receeve",
     href: "/products/receeve",
     image: {
-      src: "/images/image-gallery-1.webp",
+      url: "/images/image-gallery-1.webp",
       alt: "Project website 32",
       width: 568,
       height: 456,
@@ -727,43 +727,43 @@ export const PROJECTS: Project[] = [
     categories: ["Webflow", "Website"],
     gallery: [
       {
-        src: "/images/image-gallery-1.webp",
+        url: "/images/image-gallery-1.webp",
         alt: "Project website 32",
         width: 568,
         height: 456,
       },
       {
-        src: "/images/image-gallery-1.webp",
+        url: "/images/image-gallery-1.webp",
         alt: "Project website 32",
         width: 568,
         height: 456,
       },
       {
-        src: "/images/image-gallery-1.webp",
+        url: "/images/image-gallery-1.webp",
         alt: "Project website 32",
         width: 568,
         height: 456,
       },
       {
-        src: "/images/image-gallery-1.webp",
+        url: "/images/image-gallery-1.webp",
         alt: "Project website 32",
         width: 568,
         height: 456,
       },
       {
-        src: "/images/image-gallery-1.webp",
+        url: "/images/image-gallery-1.webp",
         alt: "Project website 32",
         width: 568,
         height: 456,
       },
       {
-        src: "/images/image-gallery-1.webp",
+        url: "/images/image-gallery-1.webp",
         alt: "Project website 32",
         width: 568,
         height: 456,
       },
       {
-        src: "/images/image-gallery-1.webp",
+        url: "/images/image-gallery-1.webp",
         alt: "Project website 32",
         width: 568,
         height: 456,
@@ -774,7 +774,7 @@ export const PROJECTS: Project[] = [
     id: "kidscorp",
     href: "/products/kidscorp",
     image: {
-      src: "/images/image-gallery-1.webp",
+      url: "/images/image-gallery-1.webp",
       alt: "Project website 32",
       width: 568,
       height: 456,
@@ -798,43 +798,43 @@ export const PROJECTS: Project[] = [
     categories: ["Webflow"],
     gallery: [
       {
-        src: "/images/image-gallery-1.webp",
+        url: "/images/image-gallery-1.webp",
         alt: "Project website 32",
         width: 568,
         height: 456,
       },
       {
-        src: "/images/image-gallery-1.webp",
+        url: "/images/image-gallery-1.webp",
         alt: "Project website 32",
         width: 568,
         height: 456,
       },
       {
-        src: "/images/image-gallery-1.webp",
+        url: "/images/image-gallery-1.webp",
         alt: "Project website 32",
         width: 568,
         height: 456,
       },
       {
-        src: "/images/image-gallery-1.webp",
+        url: "/images/image-gallery-1.webp",
         alt: "Project website 32",
         width: 568,
         height: 456,
       },
       {
-        src: "/images/image-gallery-1.webp",
+        url: "/images/image-gallery-1.webp",
         alt: "Project website 32",
         width: 568,
         height: 456,
       },
       {
-        src: "/images/image-gallery-1.webp",
+        url: "/images/image-gallery-1.webp",
         alt: "Project website 32",
         width: 568,
         height: 456,
       },
       {
-        src: "/images/image-gallery-1.webp",
+        url: "/images/image-gallery-1.webp",
         alt: "Project website 32",
         width: 568,
         height: 456,

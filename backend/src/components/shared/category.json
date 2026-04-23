@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_shared_categories",
+  "info": {
+    "displayName": "category",
+    "icon": "priceTag"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

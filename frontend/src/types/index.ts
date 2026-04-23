@@ -2,7 +2,7 @@ export interface Project {
   id: string;
   href?: string;
   image: {
-    src: string;
+    url: string;
     alt?: string;
     width?: number;
     height?: number;
@@ -18,13 +18,13 @@ export interface Project {
     roles: string[];
     collaboration: string[];
     logo: string;
+    preview?: string;
   };
   challenge?: string;
   services?: string[];
-  preview?: string;
   categories?: string[];
   gallery?: Array<{
-    src: string;
+    url: string;
     alt: string;
     width: number;
     height: number;

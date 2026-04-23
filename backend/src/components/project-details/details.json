@@ -1,0 +1,57 @@
+{
+  "collectionName": "components_project_details_details",
+  "info": {
+    "displayName": "details",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "brief": {
+      "type": "text",
+      "required": true
+    },
+    "blob": {
+      "type": "blocks"
+    },
+    "client": {
+      "type": "string"
+    },
+    "type": {
+      "type": "component",
+      "component": "shared.category",
+      "repeatable": true
+    },
+    "industries": {
+      "type": "component",
+      "component": "shared.category",
+      "repeatable": true
+    },
+    "collaboration": {
+      "type": "component",
+      "component": "shared.category",
+      "repeatable": true
+    },
+    "roles": {
+      "type": "component",
+      "component": "shared.category",
+      "repeatable": true
+    },
+    "year": {
+      "type": "string"
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "preview": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
