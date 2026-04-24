@@ -12,6 +12,7 @@ export { default as Container } from "./Container";
 export { default as ContentBlock } from "./ContentBlock";
 export { default as CopyToClipboard } from "./CopyToClipboard";
 export { default as Curves } from "./Curves";
+export { default as LoadingCurtain } from "./LoadingCurtain";
 export { default as Logo } from "./Logo";
 export { default as ProjectDetailsList } from "./ProjectDetailsList";
 export { default as Section } from "./Section";
