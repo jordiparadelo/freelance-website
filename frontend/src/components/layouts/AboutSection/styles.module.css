@@ -45,13 +45,19 @@
   }
 
   .about_last-work {
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 3 / 2;
     border-radius: var(--corners--radius-tiny);
     overflow: hidden;
     background: var(--background-color--alternative);
     margin-block: auto;
     position: sticky;
     top: 50%;
+
+    img {
+      min-width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 
   .about_content {

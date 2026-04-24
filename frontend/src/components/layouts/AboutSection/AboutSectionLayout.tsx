@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+import { formatStrapiMediaUrl } from "@/lib/strapi";
 import type { Capability } from "@/types";
 import CapabilityList from "./CapabilityList";
 import ContentDescription from "./ContentDescription";
@@ -12,9 +14,18 @@ type AboutContent = {
   title: string;
   description: string;
   capabilities: Capability[];
+  previewProject: {
+    id: string;
+    title: string;
+    image: { url: string; alt?: string };
+  } | null;
 };
 
 const AboutSectionLayout = ({ content }: { content: AboutContent }) => {
+  const imageSrc = content.previewProject
+    ? formatStrapiMediaUrl(content.previewProject.image.url)
+    : null;
+
   return (
     <CapabilitiesProvider data={content.capabilities}>
       <div className={styles.about_layout}>
@@ -24,7 +35,14 @@ const AboutSectionLayout = ({ content }: { content: AboutContent }) => {
             <HeaderDetails title={content.title} />
           </div>
           <div className={styles["about_last-work"]}>
-            <figure></figure>
+            {imageSrc && content.previewProject && (
+              <Image
+                src={imageSrc}
+                width={200}
+                height={150}
+                alt={content.previewProject.title}
+              />
+            )}
           </div>
         </div>
         <div className={styles["about_content"]}>
