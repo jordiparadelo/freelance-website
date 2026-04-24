@@ -1,54 +1,32 @@
-"use client";
-
-// Libs
-import { useGSAP } from "@gsap/react";
-import Image from "next/image";
-import { useRef } from "react";
 // Components
 import { Curves } from "@/components/ui";
 
 // Constants
-import { GALLERY_IMAGES } from "@/lib/constants";
+// import { GALLERY_IMAGES } from "@/lib/constants";
 
 // Animations
-import { galleryAnimations } from "./animations";
 
 // Styles
 import "./styles.scss";
+import { getStrapiData } from "@/lib/strapi";
+import GallerySlideShow from "./GallerySlideShow";
 
-const Gallery = () => {
-  const componentRef = useRef(null);
+const Gallery = async () => {
+  const query =
+    "/api/gallery-section?fields[0]=id&populate[images][populate][src][fields][0]=url&populate[images][populate][src][fields][1]=width&populate[images][populate][src][fields][2]=height&populate[images][populate][src][fields][3]=alternativeText&status=published";
+  const {
+    data: { images },
+  } = await getStrapiData(query);
 
-  useGSAP(
-    () => {
-      galleryAnimations(componentRef?.current);
-    },
-    { scope: componentRef },
+  const GALLERY_IMAGES = images.map(
+    (image: { id: string; src: string }) => image.src,
   );
 
-  // const handleAnimation = () => {
-  // 	galleryAnimations(componentRef?.current);
-  // };
-
   return (
-    <section id="gallery" className="gallery" ref={componentRef}>
+    <section id="gallery" className="gallery">
       <Curves fill="var(--background-color--base)" orientation="top" />
 
-      <div className="gallery__slideshow">
-        {GALLERY_IMAGES.map((image) => (
-          <figure className="gallery__slide" key={image.key}>
-            <Image
-              unoptimized
-              priority={true}
-              src={image.src}
-              alt={image.alt}
-              width={image.width}
-              height={image.height}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
-          </figure>
-        ))}
-      </div>
+      <GallerySlideShow images={GALLERY_IMAGES} />
 
       <Curves fill="var(--background-color--base)" orientation="bottom" />
     </section>

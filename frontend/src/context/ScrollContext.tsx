@@ -7,6 +7,7 @@ import "lenis/dist/lenis.css";
 
 import type React from "react";
 import { createContext, useContext, useLayoutEffect, useRef } from "react";
+import { useTransitionPage } from "./TransitionPageContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -56,8 +57,10 @@ const lenisConfig = {
 
 const ScrollProvider = ({ children }: { children: React.ReactNode }) => {
   const lenisRef = useRef<Lenis | null>(null);
+  const { isTransitioning } = useTransitionPage();
 
   useLayoutEffect(() => {
+    if (isTransitioning) return;
     // Initialize Lenis with configuration
     lenisRef.current = new Lenis(lenisConfig);
 
@@ -90,7 +93,7 @@ const ScrollProvider = ({ children }: { children: React.ReactNode }) => {
         lenis.destroy();
       }
     };
-  }, []);
+  }, [isTransitioning]);
 
   // Scroll to function with enhanced options
   const scrollTo = (

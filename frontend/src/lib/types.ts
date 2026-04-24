@@ -18,22 +18,69 @@ export interface ProjectDetails {
   collaboration: string[];
 }
 
+export interface StrapiProject {
+  id: number;
+  documentId: string;
+  nameID: string;
+  title: string;
+  challenge: string;
+  image: {
+    id: number;
+    documentId: string;
+    url: string;
+    width: number;
+    height: number;
+  };
+  details: {
+    id: number;
+    brief: string;
+    client: string;
+    year: string;
+    preview: string;
+    blob: object;
+    type: {
+      id: number;
+      label: string;
+    }[];
+    industries: {
+      id: number;
+      label: string;
+    }[];
+    collaboration: {
+      id: number;
+      label: string;
+    }[];
+    roles: {
+      id: number;
+      label: string;
+    }[];
+    logo: Logos[];
+  };
+}
 export interface Project {
   id: string;
-  href: string;
-  image: Image;
+  href?: string;
+  image?: Image;
   title: string;
-  description: string;
+  description?: string;
   link?: string;
   github?: string;
-  technologies: string[];
-  featured: boolean;
-  details: ProjectDetails;
-  challenge: string;
-  services: string[];
-  preview: string;
-  categories: string[];
-  gallery: Image[];
+  technologies?: string[];
+  featured?: boolean;
+  details?: ProjectDetails;
+  challenge?: string;
+  services?: string[];
+  preview?: string;
+  categories?: string[];
+  gallery?: Image[];
+}
+
+export interface Logos {
+  id: number;
+  documentId?: string;
+  url: string;
+  width: number;
+  height: number;
 }
 
 export interface ProjectGalleryItem {

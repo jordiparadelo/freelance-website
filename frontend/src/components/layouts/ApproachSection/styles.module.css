@@ -44,8 +44,7 @@
       span {
         border-radius: var(--corners--radius-tiny);
         border: var(--border);
-        font-size: var(--font-size--small);
-        /* border: 1px solid currentColor; */
+        font-size: var(--font-size--tiny);
         background: hsl(from var(--background-color) h s 85);
         place-content: center;
         place-items: center;

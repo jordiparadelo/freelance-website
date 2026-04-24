@@ -22,6 +22,9 @@
         "noSvgWithoutTitle": "off",
         "noStaticElementInteractions": "off"
       },
+      "suspicious": {
+        "noArrayIndexKey": "off"
+      },
       "complexity": {
         "useLiteralKeys": "off",
         "noImportantStyles": "off"

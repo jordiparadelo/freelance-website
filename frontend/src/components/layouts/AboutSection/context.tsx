@@ -5,25 +5,35 @@ import {
   type SetStateAction,
   useCallback,
   useContext,
+  useRef,
   useState,
 } from "react";
+import type { Capability } from "@/types";
 
 interface CapabilitiesContextProps {
   activeCapability: number | null;
   setActiveCapability: Dispatch<SetStateAction<number | null>>;
   previousCapability: number | null;
   changeCapability: (activeIndex: number | null) => void;
+  capabilities: React.RefObject<Capability[]>;
 }
 
 const CapabilitiesContext = createContext<CapabilitiesContextProps | undefined>(
   undefined,
 );
 
-export const CapabilitiesProvider = ({ children }: { children: ReactNode }) => {
+export const CapabilitiesProvider = ({
+  children,
+  data,
+}: {
+  children: ReactNode;
+  data: Capability[];
+}) => {
   const [activeCapability, setActiveCapability] = useState<number | null>(null);
   const [previousCapability, setPreviousCapability] = useState<number | null>(
     null,
   );
+  const capabilities = useRef(data);
 
   const changeCapability = useCallback(
     (activeIndex: number | null) => {
@@ -40,6 +50,7 @@ export const CapabilitiesProvider = ({ children }: { children: ReactNode }) => {
         setActiveCapability,
         previousCapability,
         changeCapability,
+        capabilities,
       }}
     >
       {children}

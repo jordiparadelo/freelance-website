@@ -3,11 +3,11 @@
 import { useRef } from "react";
 import { animateHeaderDetails } from "./animations";
 import { useCapabilities } from "./context";
-import { CAPABILITIES } from "./data";
 import styles from "./styles.module.css";
 
-const HeaderDetails = () => {
-  const { activeCapability, previousCapability } = useCapabilities();
+const HeaderDetails = ({ title }: { title?: string }) => {
+  const { activeCapability, previousCapability, capabilities } =
+    useCapabilities();
   const componentRef = useRef(null);
 
   animateHeaderDetails(componentRef);
@@ -18,14 +18,12 @@ const HeaderDetails = () => {
       className={styles["about_header_wrapper"]}
       data-target="header-details"
     >
-      <p data-target="header-details-default">
-        More than +5 years of experience
-      </p>
+      <p data-target="header-details-default">{title}</p>
       <p data-target="header-details-active">
         {activeCapability !== null
-          ? CAPABILITIES[activeCapability].name
+          ? capabilities.current[activeCapability].title
           : previousCapability !== null &&
-            CAPABILITIES[previousCapability].name}
+            capabilities.current[previousCapability].title}
       </p>
     </div>
   );

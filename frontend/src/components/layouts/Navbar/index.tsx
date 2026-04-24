@@ -1,3 +1,4 @@
+"use server";
 import { ROUTES } from "@/app/site.config";
 import { AvatarDropdown } from "@/components/ui";
 import NavActions from "./NavActions";
@@ -17,7 +18,7 @@ const Navbar = async () => {
           <div className="navbar__layout">
             <AvatarDropdown data={BUSINESS_INFO} />
             <NavMenu links={ROUTES} />
-            <NavActions />
+            <NavActions data={BUSINESS_INFO} />
           </div>
         </div>
       </div>

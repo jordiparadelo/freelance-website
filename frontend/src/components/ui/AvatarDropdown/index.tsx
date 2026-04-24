@@ -6,6 +6,7 @@ import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import ArrowDownIcon from "@/assets/icons/ArrowDownIcon";
 // Constants
 import { ABOUT } from "@/lib/constants";
+import { formatStrapiMediaUrl } from "@/lib/strapi";
 import type { BusinessType } from "@/lib/types";
 import { Button } from "..";
 import useDropdownAnimation from "./animations";
@@ -18,6 +19,7 @@ const AvatarDropdown = ({ data }: { data: BusinessType }) => {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const { openMenu, closeMenu } = useDropdownAnimation(dropdownRef);
   const { legalName, country, city, social_links: links, cv } = data;
+  const DOWNLOADABLE_CV = formatStrapiMediaUrl(cv?.url);
 
   // Function to handle clicks outside the dropdown
   const handleClicksOutsideDropdown = useCallback(
@@ -161,7 +163,13 @@ const AvatarDropdown = ({ data }: { data: BusinessType }) => {
 
         {/* Additional Actions */}
         <div className={styles["avatar-dropdown__menu-actions"]}>
-          <Button href={`http://localhost:1337${cv?.url}`}>Download CV</Button>
+          <Button
+            href={DOWNLOADABLE_CV}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Download CV
+          </Button>
         </div>
       </div>
     </div>

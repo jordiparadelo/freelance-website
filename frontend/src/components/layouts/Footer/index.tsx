@@ -1,8 +1,7 @@
 "use client";
 
 // Libs
-import { useGSAP } from "@gsap/react";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 // Component
 import { ContactButton } from "@/components/ui";
 // Hooks
@@ -16,16 +15,14 @@ import styles from "./styles.module.scss";
 
 const Footer = () => {
   const { scrollToElement } = usePageScroll();
+  const [currentYear, setCurrentYear] = useState<null | number>(null);
   const componentRef = useRef<HTMLElement>(null);
 
-  useGSAP(
-    () => {
-      if (componentRef.current) {
-        footerAnimation(componentRef.current);
-      }
-    },
-    { scope: componentRef },
-  );
+  footerAnimation(componentRef.current);
+
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear());
+  }, []);
 
   return (
     <footer className={styles.footer} ref={componentRef}>
@@ -48,9 +45,7 @@ const Footer = () => {
             {/* Bottom */}
 
             <div className={styles.footer__bottom}>
-              <div className={styles.footer__copyright}>
-                © {new Date().getFullYear()}
-              </div>
+              <div className={styles.footer__copyright}>© {currentYear}</div>
               <ul className={styles["footer__social-link-list"]}>
                 {SOCIAL_LINKS.map((link) => (
                   <li

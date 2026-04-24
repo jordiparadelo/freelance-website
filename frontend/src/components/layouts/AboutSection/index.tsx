@@ -1,78 +1,65 @@
-"use client";
 import { Container, Section } from "@/components/ui";
+import { getStrapiData } from "@/lib/strapi";
 import type { Capability } from "@/types";
-import CapabilityList from "./CapabilityList";
-import ContentDescription from "./ContentDescription";
-import { CapabilitiesProvider } from "./context";
-import HeaderDetails from "./HeaderDetails";
+import AboutSectionLayout from "./AboutSectionLayout";
 import styles from "./styles.module.css";
 
-// TODO: Clean Up this code - Create animations
-const CAPABILITIES: Capability[] = [
-  {
-    name: "Web Design",
-    description:
-      "Designing modern, user-friendly websites that elevate your brand and engage users.",
-  },
-  {
-    name: "Developer",
-    description:
-      "Building robust, scalable web applications with clean code and best practices.",
-  },
-  {
-    name: "Marketing Design",
-    description:
-      "Crafting compelling visuals and marketing materials to drive engagement and conversions.",
-  },
-  {
-    name: "Webflow",
-    description:
-      "Developing responsive, interactive websites using Webflow for seamless no-code experiences.",
-  },
-  {
-    name: "Gsap",
-    description:
-      "Implementing high-performance, eye-catching animations with GreenSock Animation Platform.",
-  },
-  {
-    name: "Framer",
-    description:
-      "Prototyping and building interactive UIs and motion design with Framer.",
-  },
-  {
-    name: "Wordpress",
-    description:
-      "Customizing and building feature-rich websites using WordPress and Bricks.",
-  },
-];
+type AboutSectionViewModel = {
+  id: string;
+  title: string;
+  description: string;
+  capabilities: Capability[];
+  previewProject: {
+    id: string;
+    title: string;
+    image: { url: string; alt?: string };
+  } | null;
+};
 
-const AboutSection = () => {
+const AboutSection = async () => {
+  const aboutQuery =
+    "/api/about-section?fields[0]=id&fields[1]=title&fields[2]=description&populate[capabilities][fields][0]=title&populate[capabilities][fields][1]=description";
+  const lastProjectQuery =
+    "/api/projects?sort[0]=details.year:desc&populate[image][fields][0]=url&populate[image][fields][1]=alternativeText&fields[0]=id&fields[1]=title&pagination[pageSize]=1&pagination[page]=1&status=published&locale[0]=en";
+
+  const [aboutRes, projectsRes] = await Promise.allSettled([
+    getStrapiData(aboutQuery),
+    getStrapiData(lastProjectQuery),
+  ]);
+
+  if (aboutRes.status === "rejected") {
+    throw aboutRes.reason; // about content is required
+  }
+
+  const about = aboutRes.value?.data;
+  const project =
+    projectsRes.status === "fulfilled"
+      ? (projectsRes.value?.data?.[0] ?? null)
+      : null;
+
+  const ABOUT_CONTENT: AboutSectionViewModel = {
+    id: String(about?.id ?? ""),
+    title: about?.title ?? "",
+    description: about?.description ?? "",
+    capabilities: about?.capabilities ?? [],
+    previewProject: project
+      ? {
+          id: String(project.id),
+          title: project.title ?? "",
+          image: {
+            url: project.image?.url ?? "",
+            alt: project.image?.alternativeText ?? "",
+          },
+        }
+      : null,
+  };
+
   return (
-    <CapabilitiesProvider>
-      <Section id="about" className={styles.about}>
-        <Container>
-          <div className={styles.about_layout}>
-            <div className={styles["about_header"]}>
-              <div className={styles["about_header_headline"]}>
-                <span className="heading-style-uppercase">About</span>
-                <HeaderDetails />
-              </div>
-              <div className={styles["about_last-work"]}>
-                <figure></figure>
-              </div>
-            </div>
-            <div className={styles["about_content"]}>
-              <ContentDescription />
-
-              <div className={styles["about_content_block"]}>
-                <span className="heading-style-uppercase">Capabilities</span>
-                <CapabilityList data={CAPABILITIES} />
-              </div>
-            </div>
-          </div>
-        </Container>
-      </Section>
-    </CapabilitiesProvider>
+    <Section id="about" className={styles.about}>
+      <Container>
+        <AboutSectionLayout content={ABOUT_CONTENT} />
+      </Container>
+    </Section>
   );
 };
 

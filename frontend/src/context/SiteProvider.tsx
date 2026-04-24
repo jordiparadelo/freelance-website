@@ -1,15 +1,16 @@
 import type React from "react";
-// Context
+import { LoadingCurtain } from "@/components/ui";
 import ScrollProvider from "@/context/ScrollContext";
 import { ThemeProvider } from "@/context/ThemeProvider";
-import { TransitionProvider } from "@/context/TransitionContext";
+import { TransitionPageProvider } from "@/context/TransitionPageContext";
 
 const SiteProvider = ({ children }: { children: React.ReactNode }) => {
   return (
     <ThemeProvider>
-      <TransitionProvider>
+      <TransitionPageProvider>
+        {/* <LoadingCurtain /> */}
         <ScrollProvider>{children}</ScrollProvider>
-      </TransitionProvider>
+      </TransitionPageProvider>
     </ThemeProvider>
   );
 };

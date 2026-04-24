@@ -10,6 +10,7 @@ interface ButtonProps
   extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "ref"> {
   children: React.ReactNode;
   href?: string;
+  target?: string;
   type?: "button" | "submit" | "reset";
   className?: string;
   variant?: "primary" | "secondary" | "alternative";
@@ -19,6 +20,7 @@ interface ButtonProps
 const Button: React.FC<ButtonProps> = ({
   children,
   href,
+  target,
   type = "button",
   className,
   variant = "primary",

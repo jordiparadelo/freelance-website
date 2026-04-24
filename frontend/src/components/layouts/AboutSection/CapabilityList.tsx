@@ -1,12 +1,12 @@
 "use client";
 
 import { useRef } from "react";
-import type { Capability } from "@/types";
 import { useCapabilities } from "./context";
 import styles from "./styles.module.css";
 
-const CapabilityList = ({ data }: { data: Capability[] }) => {
-  const { activeCapability, changeCapability } = useCapabilities();
+const CapabilityList = () => {
+  const { activeCapability, changeCapability, capabilities } =
+    useCapabilities();
   const componentRef = useRef<HTMLUListElement | null>(null);
 
   const handleClick = (activeIndex: number) => {
@@ -19,16 +19,16 @@ const CapabilityList = ({ data }: { data: Capability[] }) => {
 
   return (
     <ul className={styles["capabilities_list"]} ref={componentRef}>
-      {data?.map((capability, index) => {
+      {capabilities.current?.map((capability, index) => {
         return (
           <li
-            key={capability?.name}
+            key={capability?.title}
             className={styles["capabilities_item"]}
             data-selected={activeCapability === index}
             onClick={() => handleClick(index)}
             onKeyUp={() => handleClick(index)}
           >
-            {capability.name}
+            {capability.title}
           </li>
         );
       })}
