@@ -1,11 +1,13 @@
 /* Avatar Dropdown */
 .avatar-dropdown {
+	--avatar-size: 4rem;
+	--button-padding: 0.35rem;
 	position: relative;
 	z-index: 999;
-	border-radius: 2.125rem;
+	border-radius: calc(var(--avatar-size) / 2 + var(--button-padding));
 
 	@media screen and (min-width: 600px) {
-		border-radius: 1.5rem;
+		--avatar-size: 3.5rem;
 	}
 
 	// Background
@@ -15,7 +17,10 @@
 		display: block;
 		position: absolute;
 		inset: 0;
-		height: var(--background-size, 48px);
+		height: var(
+			--background-size,
+			calc(var(--avatar-size) + var(--button-padding))
+		);
 		will-change: max-width;
 		transition: max-width 1.2s ease-in;
 		max-width: 1000px;
@@ -41,7 +46,8 @@
 		justify-content: space-between;
 		align-items: center;
 		cursor: pointer;
-		padding: 0.25rem;
+		padding: var(--button-padding);
+		border-radius: var(--corners--radius-round);
 
 		svg {
 			will-change: max-width;
@@ -61,18 +67,12 @@
 	}
 
 	&__avatar {
-		--avatar-size: 4rem;
-
 		width: var(--avatar-size);
 		height: var(--avatar-size);
 		border-radius: var(--corners--radius-round);
 		border: 1px solid var(--border-color--base);
 		background-color: var(--background-color--alternative);
 		overflow: hidden;
-
-		@media screen and (min-width: 600px) {
-			--avatar-size: 2.5rem;
-		}
 	}
 
 	&__menu {
@@ -102,6 +102,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem;
+		opacity: 0;
 	}
 
 	&__menu-link {
