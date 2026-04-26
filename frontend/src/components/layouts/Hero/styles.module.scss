@@ -263,5 +263,10 @@
 		display: flex;
 		gap: 1rem;
 		padding-block-start: 1.5rem;
+		width: 100%;
+
+		@media screen and (min-width: 600px) {
+			width: auto;
+		}
 	}
 }

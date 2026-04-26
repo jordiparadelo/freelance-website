@@ -1,17 +1,18 @@
 .button {
 	--color: inherit;
-	--size: 48px;
+	--button-size: 64px;
 
 	display: grid;
 	grid-template-rows: var(--button-size) var(--button-size);
 	position: relative;
+	font-size: 1rem;
 	align-items: center;
 	place-items: center;
 	max-width: fit-content;
 	white-space: nowrap;
-	font-size: 0.75rem;
 	line-height: 100%;
-	min-width: var(--button-size);
+	min-width: 100%;
+	// min-width: var(--button-size);
 	max-height: var(--button-size);
 	padding-inline: 2em;
 	border: unset;
@@ -42,14 +43,15 @@
 		filter: invert(100);
 	}
 
-	@media screen and (min-width: 480px) {
-		--size: 40px;
+	@media screen and (min-width: 600px) {
+		min-width: var(--button-size);
 	}
 
 	@media screen and (min-width: 765px) {
-		--size: 48px;
+		--button-size: 48px;
 		font-size: 0.875rem;
 		padding-inline: 2em;
+		width: auto;
 	}
 
 	&::before {
