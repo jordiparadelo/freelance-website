@@ -5,7 +5,7 @@ import styles from "./styles.module.scss";
 
 const Hero = async () => {
   const query =
-    "/api/hero-section?fields%5B0%5D=subtitle&fields%5B1%5D=title&fields%5B2%5D=description&populate%5Bfields%5D%5B0%5D=id&populate%5Bsocial_link%5D%5Bfields%5D%5B0%5D=href&status=published&locale%5B0%5D=en";
+    "/api/hero-section?fields[0]=subtitle&fields[1]=title&fields[2]=description&fields[3]=cta_text&populate[fields][0]=id&populate[social_link][fields][0]=href&status=published&locale[0]=en";
   const { data } = await getStrapiData(query);
 
   const {
@@ -13,6 +13,7 @@ const Hero = async () => {
     subtitle,
     description,
     social_link: { href },
+    cta_text,
   } = data;
   return (
     <header className={styles.hero} id="hero">
@@ -35,7 +36,7 @@ const Hero = async () => {
                 <p className="text-size-medium">{description}</p>
                 <div className={styles.hero__actions}>
                   <ContactButton href={`mailto:${href}`}>
-                    Let&apos;s start a new project
+                    {cta_text}
                   </ContactButton>
                 </div>
               </div>
