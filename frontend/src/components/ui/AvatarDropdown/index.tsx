@@ -1,36 +1,37 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useLayoutEffect, useRef, useState } from "react";
-// Assets
+import { type RefObject, useCallback, useRef, useState } from "react";
+import { useEventListener, useOnClickOutside } from "usehooks-ts";
 import ArrowDownIcon from "@/assets/icons/ArrowDownIcon";
-// Constants
 import { ABOUT } from "@/lib/constants";
 import { formatStrapiMediaUrl } from "@/lib/strapi";
 import type { BusinessType } from "@/lib/types";
+
 import { Button } from "..";
 import useDropdownAnimation from "./animations";
-// Styles
 import styles from "./styles.module.scss";
 
 const AvatarDropdown = ({ data }: { data: BusinessType }) => {
   // State to manage dropdown open/close status
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const dropdownRef = useRef<HTMLDivElement | null>(
+    null,
+  ) as RefObject<HTMLDivElement>;
   const { openMenu, closeMenu } = useDropdownAnimation(dropdownRef);
   const { legalName, country, city, social_links: links, cv } = data;
   const DOWNLOADABLE_CV = formatStrapiMediaUrl(cv?.url);
 
   // Function to handle clicks outside the dropdown
   const handleClicksOutsideDropdown = useCallback(
-    (event: MouseEvent): void => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
-        setDropdownOpen(false);
-        closeMenu();
+    (event: MouseEvent | TouchEvent | FocusEvent): void => {
+      if (!dropdownRef.current) return;
+      const target = event.target;
+      if (!(target instanceof Node) || dropdownRef.current.contains(target)) {
+        return;
       }
+      setDropdownOpen(false);
+      closeMenu();
     },
     [closeMenu],
   );
@@ -46,22 +47,8 @@ const AvatarDropdown = ({ data }: { data: BusinessType }) => {
     [closeMenu],
   );
 
-  // Effect to manage event listeners for closing the dropdown
-  useLayoutEffect(() => {
-    if (isDropdownOpen) {
-      document.addEventListener("mousedown", handleClicksOutsideDropdown);
-      window.addEventListener("keydown", handleEscDropdown);
-    } else {
-      document.removeEventListener("mousedown", handleClicksOutsideDropdown);
-      window.removeEventListener("keydown", handleEscDropdown);
-    }
-
-    // Cleanup function to remove event listeners
-    return () => {
-      document.removeEventListener("mousedown", handleClicksOutsideDropdown);
-      window.removeEventListener("keydown", handleEscDropdown);
-    };
-  }, [isDropdownOpen, handleClicksOutsideDropdown, handleEscDropdown]);
+  useOnClickOutside(dropdownRef, handleClicksOutsideDropdown);
+  useEventListener("keydown", handleEscDropdown);
 
   // Function to toggle the dropdown open state
   const toggleDropdownOpen = () => {

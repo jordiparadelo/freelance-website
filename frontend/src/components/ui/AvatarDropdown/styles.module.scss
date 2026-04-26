@@ -2,7 +2,11 @@
 .avatar-dropdown {
 	position: relative;
 	z-index: 999;
-	border-radius: 1.5rem;
+	border-radius: 2.125rem;
+
+	@media screen and (min-width: 600px) {
+		border-radius: 1.5rem;
+	}
 
 	// Background
 	&::before {
@@ -57,7 +61,7 @@
 	}
 
 	&__avatar {
-		--avatar-size: 2.5rem;
+		--avatar-size: 4rem;
 
 		width: var(--avatar-size);
 		height: var(--avatar-size);
@@ -65,14 +69,17 @@
 		border: 1px solid var(--border-color--base);
 		background-color: var(--background-color--alternative);
 		overflow: hidden;
+
+		@media screen and (min-width: 600px) {
+			--avatar-size: 2.5rem;
+		}
 	}
 
 	&__menu {
 		display: flex;
 		position: absolute;
-		top: calc(100% + 0.5rem);
 		color: var(--text-color--font);
-		padding: var(--section-padding-inline-small);
+		padding: 1rem;
 		z-index: 10;
 		min-width: 256px;
 		gap: 1.25rem;
@@ -81,6 +88,13 @@
 
 		&[hidden] {
 			pointer-events: none;
+		}
+
+		[initialize] {
+			> * {
+				opacity: 0;
+				visibility: hidden;
+			}
 		}
 	}
 

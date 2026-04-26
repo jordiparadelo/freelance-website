@@ -11,7 +11,7 @@ type ButtonSize = {
   height: number;
 };
 
-const useDropdownAnimation = (selector: RefObject<HTMLElement | null>) => {
+const useDropdownAnimation = (selector: RefObject<HTMLDivElement>) => {
   gsap.registerPlugin(useGSAP);
   const timeline = useRef<gsap.core.Timeline | null>(null);
   const buttonSize = useRef<ButtonSize | null>(null);
