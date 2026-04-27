@@ -1,12 +1,10 @@
 import { ContactButton, Container } from "@/components/ui";
-import { getStrapiData } from "@/lib/db";
+import { getHeroData } from "@/lib/db";
 import Banner from "../Banner";
 import styles from "./styles.module.scss";
 
 const Hero = async () => {
-  const query =
-    "/api/hero-section?fields[0]=subtitle&fields[1]=title&fields[2]=description&fields[3]=cta_text&populate[fields][0]=id&populate[social_link][fields][0]=href&status=published&locale[0]=en";
-  const { data } = await getStrapiData(query);
+  const data = await getHeroData();
 
   const {
     title,
@@ -15,6 +13,7 @@ const Hero = async () => {
     social_link: { href },
     cta_text,
   } = data;
+
   return (
     <header className={styles.hero} id="hero">
       <Container>

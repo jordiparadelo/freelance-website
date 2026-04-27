@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { formatStrapiMediaUrl } from "@/lib/db";
-import type { StrapiProject } from "@/lib/types";
+import type { Project } from "@/lib/db/types";
 import styles from "./styles.module.css";
 
-const ProjectItem = ({ project }: { project: StrapiProject }) => {
+const ProjectItem = ({ project }: { project: Project }) => {
   const { title, image, details } = project;
   const imageSrc = formatStrapiMediaUrl(image.url);
 

@@ -31,6 +31,7 @@ const GallerySlideShow = ({ images }: { images: GalleryImage[] }) => {
               alt={image.alternativeText || ""}
               width={image.width}
               height={image.height}
+              priority
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </figure>

@@ -59,10 +59,12 @@
 			border-color: var(--border-color--base);
 		}
 
-		&:not(:hover) svg {
-			transition-duration: 0.8s;
-			transition-timing-function: ease;
-			max-width: 0px;
+		@media screen and (min-width: 667px) and (hover: hover) {
+			&:not(:hover) svg {
+				transition-duration: 0.8s;
+				transition-timing-function: ease;
+				max-width: 0px;
+			}
 		}
 	}
 
