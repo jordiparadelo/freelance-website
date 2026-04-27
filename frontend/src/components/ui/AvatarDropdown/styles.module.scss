@@ -89,13 +89,6 @@
 		&[hidden] {
 			pointer-events: none;
 		}
-
-		[initialize] {
-			> * {
-				opacity: 0;
-				visibility: hidden;
-			}
-		}
 	}
 
 	&__menu-block {
@@ -103,6 +96,7 @@
 		flex-direction: column;
 		gap: 0.5rem;
 		opacity: 0;
+		visibility: hidden;
 	}
 
 	&__menu-link {
@@ -152,6 +146,8 @@
 	&__menu-actions {
 		display: flex;
 		padding-top: 1rem;
+		opacity: 0;
+		visibility: hidden;
 
 		> * {
 			flex-grow: 1;

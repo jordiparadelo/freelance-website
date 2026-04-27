@@ -1,13 +1,13 @@
 .navbar {
 	--offset: 0.5rem;
-	    padding-block: var(--offset);
-    z-index: 100;
-    flex-direction: column;
-    justify-content: center;
-    display: flex;
-    position: sticky;
-    top: 0;
-    min-height: 5rem;
+	padding-block: var(--offset);
+	z-index: 100;
+	flex-direction: column;
+	justify-content: center;
+	display: flex;
+	position: sticky;
+	top: 0;
+	min-height: 5rem;
 
 	&::before {
 		content: "";
@@ -24,7 +24,7 @@
 		justify-content: space-between;
 		gap: 1.5rem;
 		// padding: var(--offset);
-		
+
 		@media screen and (min-width: 675px) {
 			gap: 4rem;
 			max-width: var(--container-size-lg);
