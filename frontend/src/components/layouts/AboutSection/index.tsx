@@ -1,6 +1,6 @@
 import { Container, Section } from "@/components/ui";
-import { getStrapiData } from "@/lib/strapi";
-import type { Capability } from "@/types";
+import { getStrapiData } from "@/lib/db";
+import type { Capability } from "@/lib/types/index";
 import AboutSectionLayout from "./AboutSectionLayout";
 import styles from "./styles.module.css";
 

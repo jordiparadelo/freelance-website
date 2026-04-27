@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { formatStrapiMediaUrl } from "@/lib/strapi";
+import { formatStrapiMediaUrl } from "@/lib/db";
 import type { StrapiProject } from "@/lib/types";
 import styles from "./styles.module.css";
 

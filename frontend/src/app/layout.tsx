@@ -4,7 +4,7 @@ import "@/styles/globals.css";
 import { Inter } from "next/font/google";
 import JsonLd from "@/components/JsonLd";
 import { Footer, Navbar } from "@/components/layouts";
-import SiteProvider from "@/context/SiteProvider";
+import SiteProvider from "@/lib/context/SiteProvider";
 import { METADATA, ORGANIZATION_DATA } from "./seo.config";
 
 const inter = Inter({ subsets: ["latin"] });

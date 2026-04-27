@@ -3,7 +3,7 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { type RefObject, useLayoutEffect, useRef } from "react";
-import { useTransitionPage } from "@/context/TransitionPageContext";
+import { useTransitionPage } from "@/lib/context/TransitionPageContext";
 
 export function loadingAnimation(selector: RefObject<HTMLElement | null>) {
   const timeline = useRef<gsap.core.Timeline | null>(null);

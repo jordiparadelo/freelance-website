@@ -4,10 +4,10 @@
 import { useEffect, useRef, useState } from "react";
 // Component
 import { ContactButton } from "@/components/ui";
-// Hooks
-import usePageScroll from "@/hooks/usePageScroll";
 // Constants
-import { SOCIAL_LINKS } from "@/lib/constants";
+import { SOCIAL_LINKS } from "@/lib/constants/index";
+// Hooks
+import usePageScroll from "@/lib/hooks/usePageScroll";
 // Animations
 import { footerAnimation } from "./animations.js";
 // Styles

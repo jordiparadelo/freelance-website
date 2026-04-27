@@ -8,7 +8,7 @@ import {
   useRef,
   useState,
 } from "react";
-import type { Capability } from "@/types";
+import type { Capability } from "@/lib/types/index";
 
 interface CapabilitiesContextProps {
   activeCapability: number | null;

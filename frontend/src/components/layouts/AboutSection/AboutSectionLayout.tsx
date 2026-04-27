@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { formatStrapiMediaUrl } from "@/lib/strapi";
-import type { Capability } from "@/types";
+import { formatStrapiMediaUrl } from "@/lib/db";
+import type { Capability } from "@/lib/types/index";
 import CapabilityList from "./CapabilityList";
 import ContentDescription from "./ContentDescription";
 import { CapabilitiesProvider } from "./context";

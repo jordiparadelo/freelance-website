@@ -2,7 +2,7 @@
 
 import type React from "react";
 // Hooks
-import useModal from "@/hooks/useModal";
+import useModal from "@/lib/hooks/useModal";
 import { cn } from "@/lib/utils";
 
 interface CloseModalButtonProps {

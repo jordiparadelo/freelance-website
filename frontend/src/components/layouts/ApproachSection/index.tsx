@@ -1,5 +1,5 @@
 import { AnimatedParagraph, Container, Curves, Section } from "@/components/ui";
-import { getStrapiData } from "@/lib/strapi";
+import { getStrapiData } from "@/lib/db";
 import BusinessMarquee from "../BusinessMarquee";
 import { PROCESS_STEPS } from "./data";
 import ProcessApproach from "./ProcessApproach";

@@ -5,7 +5,7 @@ import { type RefObject, useCallback, useRef, useState } from "react";
 import { useEventListener, useOnClickOutside } from "usehooks-ts";
 import ArrowDownIcon from "@/assets/icons/ArrowDownIcon";
 import { ABOUT } from "@/lib/constants";
-import { formatStrapiMediaUrl } from "@/lib/strapi";
+import { formatStrapiMediaUrl } from "@/lib/db";
 import type { BusinessType } from "@/lib/types";
 
 import { Button } from "..";

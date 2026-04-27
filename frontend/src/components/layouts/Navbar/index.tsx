@@ -4,7 +4,7 @@ import { AvatarDropdown } from "@/components/ui";
 import NavActions from "./NavActions";
 import NavMenu from "./NavMenu";
 import "./styles.scss";
-import { getStrapiData } from "@/lib/strapi";
+import { getStrapiData } from "@/lib/db";
 
 const Navbar = async () => {
   const { data: BUSINESS_INFO } = await getStrapiData(

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useRef } from "react";
-import { formatStrapiMediaUrl } from "@/lib/strapi";
+import { formatStrapiMediaUrl } from "@/lib/db";
 
 // import { galleryAnimations } from "./animations";
 

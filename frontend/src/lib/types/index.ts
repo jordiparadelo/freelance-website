@@ -1,3 +1,69 @@
+export interface Project {
+  id: string;
+  href?: string;
+  image: {
+    url: string;
+    alt?: string;
+    width?: number;
+    height?: number;
+  };
+  title: string;
+  details?: {
+    brief: string;
+    blob: string;
+    client: string;
+    type: string[];
+    industries: string[];
+    year: string;
+    roles: string[];
+    collaboration: string[];
+    logo: string;
+    preview?: string;
+  };
+  challenge?: string;
+  services?: string[];
+  categories?: string[];
+  gallery?: Array<{
+    url: string;
+    alt: string;
+    width: number;
+    height: number;
+  }>;
+}
+
+export interface NavItem {
+  href: string;
+  label: string;
+  icon?: React.ComponentType<{ className?: string }>;
+}
+
+export interface SectionProps {
+  className?: string;
+  children: React.ReactNode;
+}
+
+export interface LayoutProps {
+  children: React.ReactNode;
+}
+
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: "default" | "outline" | "ghost";
+  size?: "sm" | "md" | "lg";
+  isLoading?: boolean;
+}
+
+export interface Tags {
+  id: number;
+  label: string;
+  group: string[];
+}
+
+export interface Capability {
+  title: string;
+  description: string;
+}
+
 import type { StaticImageData } from "next/image";
 
 interface Image {
@@ -56,23 +122,6 @@ export interface StrapiProject {
     }[];
     logo: Logos[];
   };
-}
-export interface Project {
-  id: string;
-  href?: string;
-  image?: Image;
-  title: string;
-  description?: string;
-  link?: string;
-  github?: string;
-  technologies?: string[];
-  featured?: boolean;
-  details?: ProjectDetails;
-  challenge?: string;
-  services?: string[];
-  preview?: string;
-  categories?: string[];
-  gallery?: Image[];
 }
 
 export interface Logos {

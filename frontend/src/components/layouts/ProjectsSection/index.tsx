@@ -1,7 +1,7 @@
 "use server";
 import { Container, Section } from "@/components/ui";
 // import { PROJECTS } from "@/lib/constants";
-import { getStrapiData } from "@/lib/strapi";
+import { getStrapiData } from "@/lib/db";
 import ProjectsList from "./ProjectsList";
 import styles from "./styles.module.css";
 

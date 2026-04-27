@@ -1,6 +1,6 @@
 "use client";
 import { ContactButton } from "@/components/ui";
-import { useColorTheme } from "@/hooks/useColorTheme";
+import { useColorTheme } from "@/lib/hooks/useColorTheme";
 import type { BusinessType } from "@/lib/types";
 import styles from "./styles.module.scss";
 

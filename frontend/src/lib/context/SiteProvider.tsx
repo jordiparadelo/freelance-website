@@ -1,8 +1,9 @@
-import type React from "react";
 import { LoadingCurtain } from "@/components/ui";
-import ScrollProvider from "@/context/ScrollContext";
-import { ThemeProvider } from "@/context/ThemeProvider";
-import { TransitionPageProvider } from "@/context/TransitionPageContext";
+import ScrollProvider from "@/lib/context/ScrollContext";
+import { ThemeProvider } from "@/lib/context/ThemeProvider";
+import { TransitionPageProvider } from "@/lib/context/TransitionPageContext";
+
+import type React from "react";
 
 const SiteProvider = ({ children }: { children: React.ReactNode }) => {
   return (

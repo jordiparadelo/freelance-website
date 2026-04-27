@@ -1,5 +1,5 @@
 import { ContactButton, Container } from "@/components/ui";
-import { getStrapiData } from "@/lib/strapi";
+import { getStrapiData } from "@/lib/db";
 import Banner from "../Banner";
 import styles from "./styles.module.scss";
 

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 // Libs
-import useMediaQuery from "@/hooks/useMediaQuery";
+import useMediaQuery from "@/lib/hooks/useMediaQuery";
 // Styles
 import styles from "./styles.module.css";
 

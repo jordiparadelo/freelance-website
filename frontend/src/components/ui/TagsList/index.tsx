@@ -1,7 +1,7 @@
 "use client";
 
 import type { FC } from "react";
-import type { Tags } from "@/types";
+import type { Tags } from "@/lib/types/index";
 import styles from "./styles.module.scss";
 
 interface TagsListProps {

@@ -3,7 +3,7 @@ import { Curves } from "@/components/ui";
 
 // Styles
 import "./styles.scss";
-import { getStrapiData } from "@/lib/strapi";
+import { getStrapiData } from "@/lib/db";
 import GallerySlideShow from "./GallerySlideShow";
 
 const Gallery = async () => {

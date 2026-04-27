@@ -2,8 +2,8 @@
 
 import { type MouseEvent, useEffect, useState } from "react";
 import { GlobeIcon } from "@/assets/icons";
-import useLiveClock from "@/hooks/useLiveClock";
-import useMediaQuery from "@/hooks/useMediaQuery";
+import useLiveClock from "@/lib/hooks/useLiveClock";
+import useMediaQuery from "@/lib/hooks/useMediaQuery";
 
 import styles from "./styles.module.scss";
 
