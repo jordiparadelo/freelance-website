@@ -72,6 +72,8 @@ export async function getSocialLinks({ filter }: GetSocialLinksParams = {}) {
   params.append("[fields][0]", "displayName");
   params.append("[fields][1]", "href");
   params.append("fields[2]", "type");
+  // Status published
+  params.append("status", "published");
 
   // Only add filter params if filter is provided
   if (filter) {
@@ -111,6 +113,9 @@ export async function getProjects(options?: {
   params.append("fields[1]", "title");
   params.append("fields[2]", "challenge");
 
+  // Status published
+  params.append("status", "published");
+
   params.append("populate[image][fields][0]", "alternativeText");
   params.append("populate[image][fields][1]", "width");
   params.append("populate[image][fields][2]", "height");
@@ -121,6 +126,13 @@ export async function getProjects(options?: {
   params.append("populate[details][fields][2]", "client");
   params.append("populate[details][fields][3]", "year");
   params.append("populate[details][fields][4]", "preview");
+  params.append("populate[details][populate][type][fields][0]", "label");
+  params.append("populate[details][populate][industries][fields][0]", "label");
+  params.append(
+    "populate[details][populate][collaboration][fields][0]",
+    "label",
+  );
+  params.append("populate[details][populate][roles][fields][0]", "label");
 
   // Apply result limit if provided
   if (limit !== undefined) {
