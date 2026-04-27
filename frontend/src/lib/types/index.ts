@@ -66,13 +66,6 @@ export interface Capability {
 
 import type { StaticImageData } from "next/image";
 
-interface Image {
-  src: StaticImageData;
-  alt: string;
-  width: number;
-  height: number;
-}
-
 export interface ProjectDetails {
   brief: string;
   blob: string;
