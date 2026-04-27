@@ -2,6 +2,7 @@ export { default as AnimatedContent } from "./AnimatedContent";
 export { default as AnimatedParagraph } from "./AnimatedParagraph";
 export { default as AvatarDropdown } from "./AvatarDropdown";
 export { default as Button } from "./Button";
+export { default as ButtonScrollTop } from "./ButtonScrollTop";
 export { default as CarerList } from "./CarerList";
 export { default as CircleScrollProgress } from "./CircleScrollProgress";
 export { default as CloseModalButton } from "./CloseModalButton";
