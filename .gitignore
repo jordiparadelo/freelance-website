@@ -1,8 +1,27 @@
+# Sensitive environment and local configuration
+.env
+.env.*
+!.env.example
+!.env*.example
+*.local
 
-frontend-react/sanity.cli.js
-frontend-react/sanity.config.js
-frontend-react/sanity/env.js
-frontend-react/sanity/lib/client.js
-frontend-react/sanity/schema.js
-frontend-react/sanity/lib/image.js
-frontend-react/app/admin/\[\[...index\]\]/page.jsx
+# Secrets and private keys
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+*.der
+*.jks
+id_rsa
+id_dsa
+id_ecdsa
+id_ed25519
+*_rsa
+*_dsa
+*_ecdsa
+*_ed25519
+
+# Cursor IDE local metadata
+.cursor/
