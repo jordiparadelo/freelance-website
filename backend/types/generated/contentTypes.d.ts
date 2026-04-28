@@ -692,6 +692,12 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
     >;
     nameID: Schema.Attribute.UID<'title'>;
     publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'title'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     title: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{

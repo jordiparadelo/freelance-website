@@ -5,5 +5,7 @@ export { default as BusinessMarquee } from "./BusinessMarquee";
 export { default as Footer } from "./Footer";
 export { default as Gallery } from "./Gallery";
 export { default as Hero } from "./Hero";
+export { default as HeroProjects } from "./HeroProjects";
 export { default as Navbar } from "./Navbar";
+export { default as ProjectsList } from "./ProjectsList";
 export { default as ProjectsSection } from "./ProjectsSection";
