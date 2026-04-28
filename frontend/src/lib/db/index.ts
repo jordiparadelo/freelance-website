@@ -1,4 +1,4 @@
-import type { Project } from "./types";
+import type { BusinessInfo, Project } from "./types";
 
 function getDataUrl() {
 	return process.env.STRAPI_BASE_URL || "http://localhost:1337";
@@ -92,12 +92,47 @@ export async function getSocialLinks({ filter }: GetSocialLinksParams = {}) {
 	}
 
 	const query = `/api/social-links?${params.toString()}`;
-	const { data: links } = await getStrapiData(query);
+	const { data: links } = await getStrapiData(query, {
+		tags: ["social-links"],
+	});
 	return links as SocialLink[];
 }
 
-// GET: PROJECTS
+// GET: BUSINESS DATA
+export async function getBusinessInfo() {
+	const params = new URLSearchParams();
 
+	// Fields and populates
+	params.append("fields[0]", "legalName");
+	params.append("fields[1]", "country");
+	params.append("fields[2]", "city");
+	params.append("fields[3]", "timezone");
+	params.append("fields[4]", "isAvailable");
+
+	// Status published
+	params.append("status", "published");
+
+	params.append("populate[social_links][fields][0]", "displayName");
+	params.append("populate[social_links][fields][1]", "nameID");
+	params.append("populate[social_links][fields][2]", "href");
+	params.append("populate[social_links][fields][3]", "type");
+
+	params.append("populate[avatar][fields][0]", "url");
+	params.append("populate[avatar][fields][1]", "width");
+	params.append("populate[avatar][fields][2]", "height");
+	params.append("populate[avatar][fields][3]", "alternativeText");
+
+	params.append("populate[cv][fields][0]", "url");
+	params.append("populate[cv][fields][1]", "alternativeText");
+
+	const query = `/api/business-info?${params.toString()}`;
+
+	const { data: businessInfo } = await getStrapiData(query, {
+		tags: ["business-info"],
+	});
+	return businessInfo as BusinessInfo;
+}
+// GET: PROJECTS
 export async function getProjects(options?: {
 	limit?: number;
 	sortOrder?: "asc" | "desc";
@@ -142,7 +177,9 @@ export async function getProjects(options?: {
 
 	const query = `/api/projects?${params.toString()}`;
 
-	const { data: projects } = await getStrapiData(query);
+	const { data: projects } = await getStrapiData(query, {
+		tags: ["projects"],
+	});
 	return projects as Project[];
 }
 
@@ -185,7 +222,9 @@ export async function getProjectByNameID(nameID: string) {
 export async function getHeroData() {
 	const query =
 		"/api/hero-section?fields[0]=subtitle&fields[1]=title&fields[2]=description&fields[3]=cta_text&populate[fields][0]=id&populate[social_link][fields][0]=href&status=published&locale[0]=en";
-	const { data } = await getStrapiData(query);
+	const { data } = await getStrapiData(query, {
+		tags: ["hero-section"],
+	});
 
 	return data;
 }
@@ -196,7 +235,9 @@ export async function getGalleryImages() {
 		"/api/gallery-section?fields[0]=id&populate[images][populate][src][fields][0]=url&populate[images][populate][src][fields][1]=width&populate[images][populate][src][fields][2]=height&populate[images][populate][src][fields][3]=alternativeText&status=published";
 	const {
 		data: { images },
-	} = await getStrapiData(query);
+	} = await getStrapiData(query, {
+		tags: ["gallery-section"],
+	});
 
 	return images;
 }

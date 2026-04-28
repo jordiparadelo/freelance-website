@@ -501,6 +501,12 @@ export interface ApiBusinessInfoBusinessInfo extends Struct.SingleTypeSchema {
           localized: true;
         };
       }>;
+    avatar: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     city: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {

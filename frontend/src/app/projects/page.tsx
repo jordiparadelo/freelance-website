@@ -1,7 +1,7 @@
 import { ProjectsPage } from "@/components/pages";
 
 const Projects = () => {
-	return <ProjectsPage />;
+  return <ProjectsPage />;
 };
 
 export default Projects;
