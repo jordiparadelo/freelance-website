@@ -212,7 +212,7 @@
 			.project-card_details_block {
 				.project-card_details_title {
 					font-size: var(--font-size--tiny);
-					color: rgba(from currentColor r g b / 45%);
+					color: var(--text-color--gray);
 				}
 				.project-card_details_list {
 					flex-wrap: wrap;
