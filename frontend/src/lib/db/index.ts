@@ -214,8 +214,10 @@ export async function getProjectByNameID(nameID: string) {
   params.append("pagination[pageSize]", "1");
 
   const query = `/api/projects?${params.toString()}`;
-  const { data: projects } = await getStrapiData(query);
-  return (projects as Project[])[0] ?? null;
+  const { data: projects } = await getStrapiData(query, {
+    tags: ["projects"],
+  });
+  return projects as Project;
 }
 
 // GET: HERO SECTION

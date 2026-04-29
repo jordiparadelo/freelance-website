@@ -6,7 +6,7 @@ const ProjectsList = ({ data }: { data: Project[] }) => {
   return (
     <ul className={styles["projects-list"]}>
       {data.map((project) => (
-        <ProjectItem key={project.title} project={project} />
+        <ProjectItem key={project.id} project={project} />
       ))}
     </ul>
   );

@@ -1,4 +1,4 @@
-import { Container, Curves, Section } from "@/components/ui";
+import { Container, Section } from "@/components/ui";
 import styles from "./styles.module.css";
 
 const Hero = () => {

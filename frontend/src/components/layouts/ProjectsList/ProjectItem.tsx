@@ -8,7 +8,7 @@ const ProjectItem = ({ project }: { project: Project }) => {
   const imageSrc = formatStrapiMediaUrl(image.url);
 
   return (
-    <li className={styles["projects-list__item"]} key={project.id}>
+    <li className={styles["projects-list__item"]}>
       <figure className={styles["project-card"]}>
         <a
           href={details.preview}

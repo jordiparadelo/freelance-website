@@ -16,7 +16,7 @@ async function Page({ params }: { params: { id: string } }) {
     redirect("/projects");
   }
 
-  return <main>{project.title}</main>;
+  return <ProjectPage data={project}>;
 }
 
 export default Page;

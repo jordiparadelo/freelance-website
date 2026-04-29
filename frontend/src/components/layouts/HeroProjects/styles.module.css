@@ -40,7 +40,6 @@
     width: fit-content;
 
     border-radius: var(--corners--radius-small);
-    border: var(--border);
 
     padding-inline: 1em;
     padding-block: 0.5em;
