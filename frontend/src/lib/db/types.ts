@@ -59,6 +59,10 @@ export type StrapiFetchOptions = {
 	revalidate?: number;
 };
 
+export type StrapiResponse<T> = {
+	data: T;
+};
+
 export type StrapiFilterOperator = "$eq" | "$in" | "$containsi" | "$ne";
 
 export type StrapiFilter = {
@@ -90,4 +94,10 @@ export type StrapiQueryOptions = {
 export type StrapiFetchConfig = {
 	tags?: string[];
 	revalidate?: number;
+};
+
+export type SocialLink = {
+	displayName: string;
+	href: string;
+	type: string;
 };
