@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { ProjectPage, ProjectsPage } from "@/components/pages";
+import { ProjectPage } from "@/components/pages";
 import { getProjectByNameID, getProjects } from "@/lib/db";
 
 export async function generateStaticParams() {
@@ -13,10 +13,12 @@ export async function generateStaticParams() {
 async function Page({ params }: { params: { id: string } }) {
 	const { id } = await params;
 	const project = await getProjectByNameID(id);
+
 	if (!project) {
 		redirect("/projects");
 	}
 
+	// return <h1>{id}</h1>;
 	return <ProjectPage project={project} />;
 }
 

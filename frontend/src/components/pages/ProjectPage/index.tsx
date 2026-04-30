@@ -1,10 +1,28 @@
 import Image from "next/image";
-import { Container, Curves, Section } from "@/components/ui";
-import { formatStrapiMediaUrl } from "@/lib/db";
+import Link from "next/link";
+import { Container, Section } from "@/components/ui";
+import { formatStrapiMediaUrl, getProjects } from "@/lib/db";
 import type { Project } from "@/lib/db/types";
 import styles from "./styles.module.css";
 
-const ProjectPage = ({ project }: { project: Project }) => {
+const ProjectPage = async ({ project }: { project: Project }) => {
+	console.log({ project });
+	const RELATED_PROJECTS = await getProjects({
+		filters: [
+			{
+				operator: "$ne",
+				value: `${project.id}`,
+				field: "id",
+			},
+		],
+		pagination: {
+			start: 0,
+			limit: 3,
+		},
+	});
+
+	console.log({ RELATED_PROJECTS });
+
 	return (
 		<main>
 			<Section className={styles["hero"]} id="hero">
@@ -69,7 +87,6 @@ const ProjectPage = ({ project }: { project: Project }) => {
 				</Container>
 			</Section>
 			<Section className={styles["project-gallery"]} id="gallery">
-				<Curves orientation="top" fill="var(--background-color--base)" />
 				<Container>
 					<div className={styles["layout"]}>
 						<ul>
@@ -88,6 +105,20 @@ const ProjectPage = ({ project }: { project: Project }) => {
 							})}
 						</ul>
 					</div>
+				</Container>
+			</Section>
+
+			<Section>
+				<Container>
+					<ul>
+						{RELATED_PROJECTS.map((project) => (
+							<li key={project.id}>
+								<Link href={`/projects/${project.nameID}`}>
+									<h3>{project.title}</h3>
+								</Link>
+							</li>
+						))}
+					</ul>
 				</Container>
 			</Section>
 		</main>
