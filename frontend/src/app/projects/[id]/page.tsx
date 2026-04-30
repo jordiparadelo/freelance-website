@@ -18,7 +18,6 @@ async function Page({ params }: { params: { id: string } }) {
     redirect("/projects");
   }
 
-  // return <h1>{id}</h1>;
   return <ProjectPage project={project} />;
 }
 

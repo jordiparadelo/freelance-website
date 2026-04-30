@@ -6,7 +6,6 @@ import type { Project } from "@/lib/db/types";
 import styles from "./styles.module.css";
 
 const ProjectPage = async ({ project }: { project: Project }) => {
-  console.log({ project });
   const RELATED_PROJECTS = await getProjects({
     filters: [
       {
@@ -15,13 +14,17 @@ const ProjectPage = async ({ project }: { project: Project }) => {
         field: "id",
       },
     ],
+    sort: [
+      {
+        field: "details.year",
+        order: "asc",
+      },
+    ],
     pagination: {
       start: 0,
       limit: 3,
     },
   });
-
-  console.log({ RELATED_PROJECTS });
 
   return (
     <main>
