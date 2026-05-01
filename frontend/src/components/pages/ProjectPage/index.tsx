@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
-import { Container, Section } from "@/components/ui";
+import { ProjectsTable } from "@/components/layouts";
+import { Container, Curves, Section } from "@/components/ui";
 import { formatStrapiMediaUrl, getProjects } from "@/lib/db";
 import type { Project } from "@/lib/db/types";
 import styles from "./styles.module.css";
@@ -20,20 +20,16 @@ const ProjectPage = async ({ project }: { project: Project }) => {
         order: "asc",
       },
     ],
-    pagination: {
-      start: 0,
-      limit: 3,
-    },
   });
 
   return (
     <main>
-      <Section className={styles["hero"]} id="hero">
+      <Section className={styles["hero"]} id="hero" tag="header">
         <Container>
           <div className={styles["layout"]}>
             <div className={styles["header"]}>
               <div className={styles["header_description"]}>
-                <h1> {project.title}</h1>
+                <h1 className="heading-style-h1"> {project.title}</h1>
                 <p>{project.challenge}</p>
               </div>
               <div className={styles["header_details"]}>
@@ -92,16 +88,17 @@ const ProjectPage = async ({ project }: { project: Project }) => {
       <Section className={styles["project-gallery"]} id="gallery">
         <Container>
           <div className={styles["layout"]}>
-            <ul>
+            <ul className={styles["gallery-grid"]}>
               {project.gallery?.map((image) => {
                 const src = formatStrapiMediaUrl(image.url);
                 return (
-                  <li key={image.id}>
+                  <li key={image.id} className={styles["gallery-grid_item"]}>
                     <Image
                       src={src}
                       alt={project.title}
                       width={image.width}
                       height={image.height}
+                      className={styles["gallery-image"]}
                     />
                   </li>
                 );
@@ -111,18 +108,22 @@ const ProjectPage = async ({ project }: { project: Project }) => {
         </Container>
       </Section>
 
-      <Section>
+      <Section id="more-projects" className={styles["more-projects"]}>
+        <Curves orientation="top" fill="var(--background-color--base)" />
         <Container>
-          <ul>
-            {RELATED_PROJECTS.map((project) => (
-              <li key={project.id}>
-                <Link href={`/projects/${project.nameID}`}>
-                  <h3>{project.title}</h3>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <div className={styles["layout"]}>
+            <div className={styles["header"]}>
+              <h2 className={styles["title"]}>
+                More Projects
+                <span className={styles["title_subindex"]}>
+                  {RELATED_PROJECTS.length}
+                </span>
+              </h2>
+            </div>
+            <ProjectsTable projects={RELATED_PROJECTS} />
+          </div>
         </Container>
+        <Curves orientation="bottom" fill="var(--background-color--base)" />
       </Section>
     </main>
   );

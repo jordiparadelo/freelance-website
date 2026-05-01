@@ -9,3 +9,4 @@ export { default as HeroProjects } from "./HeroProjects";
 export { default as Navbar } from "./Navbar";
 export { default as ProjectsList } from "./ProjectsList";
 export { default as ProjectsSection } from "./ProjectsSection";
+export { default as ProjectsTable } from "./ProjectsTable";

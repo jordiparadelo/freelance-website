@@ -29,13 +29,19 @@ const AboutSection = async () => {
     }),
   ]);
 
-  if (aboutRes.status === "rejected") {
-    throw aboutRes.reason; // about content is required
+  if (aboutRes.status !== "fulfilled" || !aboutRes.value) {
+    throw aboutRes.status === "rejected"
+      ? aboutRes.reason
+      : new Error("About content not found");
   }
-
   const about = aboutRes.value;
+
   const project =
-    projectsRes.status === "fulfilled" ? (projectsRes.value[0] ?? null) : null;
+    projectsRes.status === "fulfilled" &&
+    Array.isArray(projectsRes.value) &&
+    projectsRes.value.length > 0
+      ? projectsRes.value[0]
+      : null;
 
   const ABOUT_CONTENT: AboutSectionViewModel = {
     id: String(about?.id ?? ""),

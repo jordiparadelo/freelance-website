@@ -3,6 +3,8 @@
   min-height: max(300px, 45vh);
   color: var(--color-text--base);
   padding-block-start: var(--section-padding-block);
+  background-color: var(--background-color--base);
+  position: relative;
 
   .layout {
     display: flex;
@@ -91,7 +93,8 @@
 /* Project Gallery */
 
 .project-gallery {
-  position: relative;
+  padding-block: var(--section-padding-block);
+  background-color: var(--background-color--base);
 
   .layout {
     display: flex;
@@ -102,6 +105,49 @@
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
+    }
+  }
+
+  .gallery-image {
+    border-radius: var(--corners--radius-tiny);
+    object-fit: cover;
+  }
+}
+
+/* More Works */
+.more-projects {
+  background: var(--background-color--alternative);
+  color: var(--text-color--alternative);
+  padding-block: var(--section-padding-block);
+  position: relative;
+
+  .layout {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .title {
+    display: inline-flex;
+    gap: 0.125em;
+    white-space: nowrap;
+    text-align: center;
+    letter-spacing: -0.05em;
+    font-size: 15cqw;
+
+    .title_subindex {
+      aspect-ratio: 1 / 1;
+      border-radius: var(--corners--radius-round);
+      border: 0.1em solid;
+      flex-direction: column;
+      place-content: center;
+      height: fit-content;
+      width: 1.33em;
+      font-size: max(0.5rem, 0.35em);
+      line-height: 1em;
+      flex-shrink: 0;
+      display: flex;
+      text-align: center;
     }
   }
 }
