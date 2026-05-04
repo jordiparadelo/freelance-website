@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Experience } from "@/lib/db/types";
 import { animateYearsScroll } from "./animations";
 import { useExperience } from "./ExperienceProvider";
