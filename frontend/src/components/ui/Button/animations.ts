@@ -3,8 +3,7 @@
 import { useGSAP } from "@gsap/react";
 
 import gsap from "gsap";
-
-import SplitType from "split-type";
+import { SplitText } from "gsap/SplitText";
 
 // Animation constants
 const BUTTON_ANIMATION = {
@@ -31,11 +30,11 @@ export const useButtonAnimation = (
         elementRef.current.querySelectorAll<HTMLElement>(".button__label");
 
       labels.forEach((label, index) => {
-        const splitChars = new SplitType(label, { types: "chars" });
+        const split = new SplitText(label, { type: "chars" });
 
         if (index === 0) {
           timeline.to(
-            splitChars.chars,
+            split.chars,
             {
               ...BUTTON_ANIMATION.defaults,
               transform: "translateY(-100%)",
@@ -45,7 +44,7 @@ export const useButtonAnimation = (
           );
         } else {
           timeline.from(
-            splitChars.chars,
+            split.chars,
             {
               ...BUTTON_ANIMATION.defaults,
               transform: "translateY(100%)",

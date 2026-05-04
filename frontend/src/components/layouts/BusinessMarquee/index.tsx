@@ -4,20 +4,7 @@ import Image from "next/image";
 import { useRef } from "react";
 import { formatStrapiMediaUrl } from "@/lib/db";
 import styles from "./styles.module.css";
-
-type MarqueeData = {
-  id?: number;
-  details: {
-    id: number;
-    preview?: string;
-    client?: string;
-    logo: {
-      url: string;
-      width: number;
-      height: number;
-    };
-  };
-};
+import type { MarqueeData } from "./type";
 
 const BusinessMarquee = ({ business }: { business: MarqueeData[] }) => {
   const componentRef = useRef(null);

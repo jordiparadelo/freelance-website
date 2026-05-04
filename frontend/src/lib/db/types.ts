@@ -117,3 +117,11 @@ export type AboutContent = {
     image: { url: string; alt?: string };
   } | null;
 };
+
+export type Experience = {
+  id: string;
+  role: string;
+  company: string;
+  industry: string;
+  year: number;
+};

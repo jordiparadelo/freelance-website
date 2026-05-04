@@ -575,6 +575,61 @@ export interface ApiBusinessInfoBusinessInfo extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiExperienceExperience extends Struct.CollectionTypeSchema {
+  collectionName: 'experiences';
+  info: {
+    displayName: 'Experience';
+    pluralName: 'experiences';
+    singularName: 'experience';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    company: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    industry: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::experience.experience'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    role: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    year: Schema.Attribute.Integer &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+  };
+}
+
 export interface ApiGallerySectionGallerySection
   extends Struct.SingleTypeSchema {
   collectionName: 'gallery_sections';
@@ -1263,6 +1318,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::about-section.about-section': ApiAboutSectionAboutSection;
       'api::business-info.business-info': ApiBusinessInfoBusinessInfo;
+      'api::experience.experience': ApiExperienceExperience;
       'api::gallery-section.gallery-section': ApiGallerySectionGallerySection;
       'api::hero-section.hero-section': ApiHeroSectionHeroSection;
       'api::project.project': ApiProjectProject;

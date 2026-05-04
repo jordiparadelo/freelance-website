@@ -1,0 +1,43 @@
+.table {
+  display: flex;
+  flex-direction: column;
+
+  .head {
+    text-transform: uppercase;
+    letter-spacing: 0.125em;
+    color: var(--text-color--gray);
+    font-size: 0.675rem;
+  }
+
+  .body {
+    display: grid;
+    grid-auto-flow: row;
+  }
+
+  .list {
+    grid-auto-rows: 1fr;
+    display: grid;
+  }
+  .list_row {
+    grid-template-columns: 2fr 1fr;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+    align-items: center;
+    display: grid;
+    gap: 1.5rem;
+    border-block-end: 1px solid var(--text-color--gray);
+
+    &:before {
+      content: "";
+      z-index: -1;
+      background-color: rgba(from currentColor r g b / 10%);
+      transition: transform var(--anim-duration--sm) var(--anim-easing);
+      position: absolute;
+      inset: 0;
+    }
+  }
+
+  .cell {
+    padding-block: 2rem;
+  }
+}

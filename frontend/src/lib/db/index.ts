@@ -1,6 +1,7 @@
 import type {
   AboutContent,
   BusinessInfo,
+  Experience,
   Project,
   SocialLink,
   StrapiFetchConfig,
@@ -220,14 +221,14 @@ export async function getProjects(options?: StrapiQueryOptions) {
 
   const query = `/api/projects?${params.toString()}`;
 
-  const projects = options
+  const data = options
     ? await getStrapiData(query, {
         options,
         config: { tags: ["projects"] },
       })
     : await getStrapiData(query, { config: { tags: ["projects"] } });
 
-  return projects as Project[];
+  return data as Project[];
 }
 // GET: PROJECT BY ID
 export async function getProjectByNameID(nameID: string) {
@@ -282,4 +283,28 @@ export async function getAboutData() {
   });
 
   return data as AboutContent;
+}
+
+// GET: EXPERIENCES
+export async function getExperiences(options?: StrapiQueryOptions) {
+  const params = new URLSearchParams();
+
+  params.append("fields[0]", "id");
+  params.append("fields[1]", "role");
+  params.append("fields[2]", "company");
+  params.append("fields[3]", "industry");
+  params.append("fields[4]", "year");
+
+  // params.append("status", "published");
+
+  const query = `/api/experiences?${params.toString()}`;
+
+  const data = options
+    ? await getStrapiData(query, {
+        options,
+        config: { tags: ["experience"] },
+      })
+    : await getStrapiData(query, { config: { tags: ["projects"] } });
+
+  return data as Experience[];
 }

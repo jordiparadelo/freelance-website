@@ -18,6 +18,7 @@ export { default as Logo } from "./Logo";
 export { default as ProjectDetailsList } from "./ProjectDetailsList";
 export { default as Section } from "./Section";
 export { default as SectionLabel } from "./SectionLabel";
+export { default as Table } from "./Table";
 export { default as Tabs } from "./Tabs";
 export { default as TagsList } from "./TagsList";
 export { default as TransitionPage } from "./TransitionPage";
