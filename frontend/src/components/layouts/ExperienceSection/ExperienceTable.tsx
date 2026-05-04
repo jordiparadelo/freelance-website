@@ -26,7 +26,10 @@ export const ExperienceTable = ({ data }: { data: Experience[] }) => {
     <Table className={styles["experience_table"]} ref={componentRef}>
       <TableHead>
         {headTitles.map((title) => (
-          <TableCell key={title}> {title}</TableCell>
+          <TableCell key={title} data-category={title}>
+            {" "}
+            {title}
+          </TableCell>
         ))}
       </TableHead>
       <TableBody data-target="body">
@@ -41,7 +44,11 @@ export const ExperienceTable = ({ data }: { data: Experience[] }) => {
               data-selected={index === activeExperience}
             >
               {rowCells.map((value, index) => (
-                <TableCell key={value}>
+                <TableCell
+                  key={value}
+                  data-target="cell"
+                  data-category={headTitles[index]}
+                >
                   {!index ? (
                     <h3 className="heading-style-h4">{value}</h3>
                   ) : (

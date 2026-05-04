@@ -6,7 +6,7 @@
 
   .layout {
     display: flex;
-    flex-direction: column;
+    flex-direction: reverse;
     gap: var(--section-padding--block-tiny);
 
     @media screen and (min-width: 667px) {
@@ -19,9 +19,12 @@
   }
 
   .details {
-    display: flex;
-    flex-direction: column;
-    gap: var(--section-padding-block);
+    display: none;
+    @media screen and (min-width: 667px) {
+      display: flex;
+      flex-direction: column;
+      gap: var(--section-padding-block);
+    }
 
     /* justify-content: space-between; */
 
@@ -31,8 +34,8 @@
       gap: var(--section-padding--block-tiny);
 
       @media screen and (min-width: 667px) {
-        gap: var(--section-padding-block);
         position: sticky;
+        gap: var(--section-padding-block);
         top: calc(50% - 9rem);
         /* padding-block-end: var(--section-padding-block); */
       }
@@ -115,17 +118,27 @@
     gap: var(--section-padding-block);
   }
 
-  [data-target="row"] {
-    position: relative;
-    &:before {
-      content: "";
-      z-index: -1;
-      background-color: rgba(from currentColor r g b / 10%);
-      transition: transform var(--anim-duration--sm) var(--anim-easing);
-      position: absolute;
-      inset: 0;
-      min-height: calc(var(--progress, 0) * 1%);
-      /* transform: translateY(var(--translation)); */
+  /* Experience Table */
+
+  .experience_table {
+    @media screen and (max-width: 667px) {
+      [data-category="industry"] {
+        display: none;
+      }
+    }
+
+    [data-target="row"] {
+      position: relative;
+      &:before {
+        content: "";
+        z-index: -1;
+        background-color: rgba(from currentColor r g b / 10%);
+        transition: transform var(--anim-duration--sm) var(--anim-easing);
+        position: absolute;
+        inset: 0;
+        min-height: calc(var(--progress, 0) * 1%);
+        /* transform: translateY(var(--translation)); */
+      }
     }
   }
 }
