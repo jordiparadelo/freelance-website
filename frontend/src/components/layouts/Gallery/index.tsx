@@ -7,17 +7,13 @@ import { getGalleryImages } from "@/lib/db";
 import GallerySlideShow from "./GallerySlideShow";
 
 const Gallery = async () => {
-  const { images } = await getGalleryImages();
-
-  const GALLERY_IMAGES = images.map(
-    (image: { id: string; src: string }) => image.src,
-  );
+  const images = await getGalleryImages();
 
   return (
     <section id="gallery" className="gallery">
       <Curves fill="var(--background-color--base)" orientation="top" />
 
-      <GallerySlideShow images={GALLERY_IMAGES} />
+      <GallerySlideShow images={images} />
 
       <Curves fill="var(--background-color--base)" orientation="bottom" />
     </section>

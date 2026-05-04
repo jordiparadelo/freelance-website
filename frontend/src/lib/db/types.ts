@@ -125,3 +125,22 @@ export type Experience = {
   industry: string;
   year: number;
 };
+
+export type GalleryImage = {
+  id: number;
+  src: {
+    id: number;
+    url: string;
+    width: number;
+    height: number;
+    alternativeText: string | null;
+  };
+};
+
+export type HeroSection = {
+  title: string;
+  subtitle: string;
+  description: string;
+  social_link: { href: string };
+  cta_text: string;
+};

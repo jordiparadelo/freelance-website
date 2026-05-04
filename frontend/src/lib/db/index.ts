@@ -2,6 +2,8 @@ import type {
   AboutContent,
   BusinessInfo,
   Experience,
+  GalleryImage,
+  HeroSection,
   Project,
   SocialLink,
   StrapiFetchConfig,
@@ -248,22 +250,29 @@ export async function getProjectByNameID(nameID: string) {
 export async function getHeroData() {
   const query =
     "/api/hero-section?fields[0]=subtitle&fields[1]=title&fields[2]=description&fields[3]=cta_text&populate[fields][0]=id&populate[social_link][fields][0]=href&status=published&locale[0]=en";
-  const content = await getStrapiData(query, {
+  const data = await getStrapiData(query, {
     config: { tags: ["hero-section"] },
   });
 
-  return content;
+  return data as HeroSection;
 }
+
+type GalleryImageData = {
+  id: string;
+  images: GalleryImage[];
+};
 
 // GET: GALLERY IMAGES
 export async function getGalleryImages() {
   const query =
     "/api/gallery-section?fields[0]=id&populate[images][populate][src][fields][0]=url&populate[images][populate][src][fields][1]=width&populate[images][populate][src][fields][2]=height&populate[images][populate][src][fields][3]=alternativeText&status=published";
-  const images = await getStrapiData(query, {
+  const data = await getStrapiData(query, {
     config: { tags: ["gallery-section"] },
   });
 
-  return images;
+  const { images } = data as GalleryImageData;
+
+  return images as GalleryImage[];
 }
 
 // GET: ABOUT SECTION
