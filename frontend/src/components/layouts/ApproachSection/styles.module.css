@@ -67,8 +67,6 @@
 		flex-direction: column;
 		gap: 1.5rem;
 		margin-block-start: auto;
-		/* position: sticky;
-		top: 50%; */
 
 		.approach-section_business_header {
 			display: flex;
