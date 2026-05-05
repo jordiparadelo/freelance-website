@@ -33,10 +33,8 @@ const ApproachSection = async () => {
 							design as a solution
 						</AnimatedParagraph>
 						<div className={styles["approach-section_business"]}>
-							{/* <BusinessMarquee /> */}
 							<div className={styles["approach-section_business"]}>
 								<div className={styles["approach-section_business_header"]}>
-									{/* <div className="divider"></div> */}
 									<span>Trusted by</span>
 									<div className="divider"></div>
 								</div>
