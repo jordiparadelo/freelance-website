@@ -1,8 +1,7 @@
 import { AnimatedParagraph, Container, Curves, Section } from "@/components/ui";
-import { getStrapiData } from "@/lib/db";
+import { getProcesses, getStrapiData } from "@/lib/db";
 import BusinessMarquee from "../BusinessMarquee";
 import type { MarqueeData } from "../BusinessMarquee/type";
-import { PROCESS_STEPS } from "./data";
 import ProcessApproach from "./ProcessApproach";
 import styles from "./styles.module.css";
 
@@ -10,6 +9,7 @@ const ApproachSection = async () => {
   const query =
     "/api/projects?sort[0]=details.year:desc&sort[1]=title:asc&fields[0]=id&populate[details][fields][0]=id&populate[details][fields][1]=client&populate[details][fields][2]=preview&populate[details][populate][logo][fields][0]=url&populate[details][populate][logo][fields][1]=width&populate[details][populate][logo][fields][2]=height&status=published";
   const BUSINESS = await getStrapiData(query);
+  const PROCESS_STEPS = await getProcesses();
 
   return (
     <Section id="approach" className={styles["approach-section"]}>

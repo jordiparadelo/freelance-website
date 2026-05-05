@@ -47,6 +47,15 @@ const processAnimation = (
           filter: "blur(5px)",
         })
         .to(
+          '[data-previous="true"] [data-target="step"] > img',
+          {
+            yPercent: 20,
+            opacity: 0,
+            filter: "blur(5px)",
+          },
+          "<",
+        )
+        .to(
           '[data-previous="true"] [data-target="step"] .word',
           {
             opacity: 0,
@@ -95,6 +104,20 @@ const processAnimation = (
         )
         .fromTo(
           '[data-active="true"] [data-target="step"] > h3',
+          {
+            yPercent: 20,
+            opacity: 0,
+            filter: "blur(5px)",
+          },
+          {
+            yPercent: 0,
+            opacity: 1,
+            filter: "blur(0px)",
+          },
+          "<",
+        )
+        .fromTo(
+          '[data-active="true"] [data-target="step"] > img',
           {
             yPercent: 20,
             opacity: 0,

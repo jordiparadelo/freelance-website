@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "processes",
+  "info": {
+    "singularName": "process",
+    "pluralName": "processes",
+    "displayName": "Process"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "order": {
+      "type": "integer"
+    }
+  }
+}

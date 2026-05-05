@@ -164,6 +164,11 @@
             max-width: 40ch;
             flex-flow: column;
           }
+          .project-card_header_brief {
+            @media screen and (max-width: 767px) {
+              display: none;
+            }
+          }
         }
       }
 

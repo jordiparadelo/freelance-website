@@ -700,6 +700,37 @@ export interface ApiHeroSectionHeroSection extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiProcessProcess extends Struct.CollectionTypeSchema {
+  collectionName: 'processes';
+  info: {
+    displayName: 'Process';
+    pluralName: 'processes';
+    singularName: 'process';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::process.process'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    order: Schema.Attribute.Integer;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiProjectProject extends Struct.CollectionTypeSchema {
   collectionName: 'projects';
   info: {
@@ -1321,6 +1352,7 @@ declare module '@strapi/strapi' {
       'api::experience.experience': ApiExperienceExperience;
       'api::gallery-section.gallery-section': ApiGallerySectionGallerySection;
       'api::hero-section.hero-section': ApiHeroSectionHeroSection;
+      'api::process.process': ApiProcessProcess;
       'api::project.project': ApiProjectProject;
       'api::social-link.social-link': ApiSocialLinkSocialLink;
       'plugin::content-releases.release': PluginContentReleasesRelease;

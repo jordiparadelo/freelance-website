@@ -144,3 +144,16 @@ export type HeroSection = {
   social_link: { href: string };
   cta_text: string;
 };
+
+export type Processes = {
+  id: string;
+  name: string;
+  description: string;
+  order?: number;
+  image: {
+    alternativeText?: string;
+    width: number;
+    height: number;
+    url: string;
+  };
+};

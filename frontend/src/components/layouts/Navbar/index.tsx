@@ -1,5 +1,5 @@
 import { ROUTES } from "@/app/site.config";
-import { AvatarDropdown } from "@/components/ui";
+import { AvatarDropdown, Container } from "@/components/ui";
 import { getBusinessInfo } from "@/lib/db";
 
 import NavActions from "./NavActions";
@@ -12,13 +12,13 @@ const Navbar = async () => {
   return (
     <nav className="navbar">
       <div className="padding-global">
-        <div className="container">
+        <Container>
           <div className="navbar__layout">
             <AvatarDropdown data={BUSINESS_INFO} />
             <NavMenu links={ROUTES} />
             <NavActions data={BUSINESS_INFO} />
           </div>
-        </div>
+        </Container>
       </div>
     </nav>
   );

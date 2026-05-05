@@ -4,6 +4,7 @@ import type {
   Experience,
   GalleryImage,
   HeroSection,
+  Processes,
   Project,
   SocialLink,
   StrapiFetchConfig,
@@ -316,4 +317,31 @@ export async function getExperiences(options?: StrapiQueryOptions) {
     : await getStrapiData(query, { config: { tags: ["projects"] } });
 
   return data as Experience[];
+}
+
+// GET: PROCESSES
+export async function getProcesses(options?: StrapiQueryOptions) {
+  const params = new URLSearchParams();
+
+  params.append("fields[0]", "id");
+  params.append("fields[1]", "name");
+  params.append("fields[2]", "description");
+  params.append("fields[3]", "order");
+  params.append("populate[image][fields][0]", "alternativeText");
+  params.append("populate[image][fields][1]", "width");
+  params.append("populate[image][fields][2]", "height");
+  params.append("populate[image][fields][3]", "url");
+
+  params.append("status", "published");
+
+  const query = `/api/processes?${params.toString()}`;
+
+  const data = options
+    ? await getStrapiData(query, {
+        options,
+        config: { tags: ["processes"] },
+      })
+    : await getStrapiData(query, { config: { tags: ["processes"] } });
+
+  return data as Processes[];
 }
