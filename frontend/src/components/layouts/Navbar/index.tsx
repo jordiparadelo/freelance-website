@@ -1,26 +1,24 @@
-"use server";
 import { ROUTES } from "@/app/site.config";
-import { AvatarDropdown } from "@/components/ui";
+import { AvatarDropdown, Container } from "@/components/ui";
+import { getBusinessInfo } from "@/lib/db";
+
 import NavActions from "./NavActions";
 import NavMenu from "./NavMenu";
 import "./styles.scss";
-import { getStrapiData } from "@/lib/db";
 
 const Navbar = async () => {
-  const { data: BUSINESS_INFO } = await getStrapiData(
-    "/api/business-info?fields[0]=legalName&fields[1]=country&fields[2]=city&populate[social_links]=*&populate[cv][fields][0]=url",
-  );
+  const BUSINESS_INFO = await getBusinessInfo();
 
   return (
     <nav className="navbar">
       <div className="padding-global">
-        <div className="container">
+        <Container>
           <div className="navbar__layout">
             <AvatarDropdown data={BUSINESS_INFO} />
             <NavMenu links={ROUTES} />
             <NavActions data={BUSINESS_INFO} />
           </div>
-        </div>
+        </Container>
       </div>
     </nav>
   );

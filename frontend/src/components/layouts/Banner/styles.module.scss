@@ -33,7 +33,9 @@
 			transform: scale(1);
 			border-radius: 999px;
 			background: var(--color-background-light);
-			transition: height 0.2s ease, width 0.2s ease;
+			transition:
+				height 0.2s ease,
+				width 0.2s ease;
 		}
 	}
 
@@ -46,7 +48,7 @@
 	&__location {
 		display: grid;
 		grid-column: 1fr;
-		grid-auto-rows: 1fr;
+		grid-auto-rows: 1fr 1fr;
 		max-height: 1rem;
 		overflow: hidden;
 
@@ -55,11 +57,11 @@
 				transition: transform 0.25s ease;
 			}
 
-			&:hover {
-				span {
-					transform: translateY(-100%);
-				}
-			}
+			// &:hover {
+			// 	span {
+			// 		transform: translateY(-100%);
+			// 	}
+			// }
 		}
 	}
 	&__availability {

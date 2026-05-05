@@ -28,7 +28,12 @@ const ProjectItem = ({ project }: { project: Project }) => {
           <div className={styles["project-card_header"]}>
             <div className={styles["project-card_header_headline"]}>
               <h3 className="heading-style-h4">{title}</h3>
-              <p className="text-size-small text-color-gray">
+              <p
+                className={
+                  `text-size-small text-color-gray` +
+                  styles["project-card_header_brief"]
+                }
+              >
                 {details?.brief}
               </p>
               <a

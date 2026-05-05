@@ -1,30 +1,117 @@
-import type { Project } from "./types";
+import type {
+  AboutContent,
+  BusinessInfo,
+  Experience,
+  GalleryImage,
+  HeroSection,
+  Processes,
+  Project,
+  SocialLink,
+  StrapiFetchConfig,
+  StrapiQueryOptions,
+  StrapiResponse,
+} from "./types";
 
 function getDataUrl() {
   return process.env.STRAPI_BASE_URL || "http://localhost:1337";
 }
 
-// GET: STRAPI DATA
-type StrapiFetchOptions = {
-  tags?: string[];
-  revalidate?: number;
-};
-
-export async function getStrapiData(url: string, options?: StrapiFetchOptions) {
-  const BASE_URL = getDataUrl();
-
-  const response = await fetch(`${BASE_URL}${url}`, {
+// Main Fetch function
+export async function getStrapiData<T>(
+  url: string,
+  params?: { options?: StrapiQueryOptions; config?: StrapiFetchConfig },
+): Promise<T> {
+  const baseUrl = getDataUrl();
+  const query = buildStrapiQuery(params?.options);
+  const finalUrl = query ? `${baseUrl}${url}&${query}` : `${baseUrl}${url}`;
+  const response = await fetch(finalUrl, {
     next: {
-      revalidate: options?.revalidate ?? 86400, // long cache, webhook refreshes earlier
-      tags: options?.tags ?? [],
+      revalidate: params?.config?.revalidate ?? 86400,
+      tags: params?.config?.tags ?? [],
     },
   });
-
   if (!response.ok) {
-    throw new Error(`Network response was not ok: ${response.statusText}`);
+    throw new Error(
+      `Network response was not ok: ${response.status} ${response.statusText} ${response.url}`,
+    );
+  }
+  const payload = (await response.json()) as StrapiResponse<T>;
+  return payload.data;
+}
+
+// Utility functions
+function buildStrapiQuery(options?: StrapiQueryOptions): string {
+  if (!options) return "";
+
+  const params = new URLSearchParams();
+
+  options.filters?.forEach((filter) => {
+    if (filter.operator === "$in") {
+      const values = Array.isArray(filter.value)
+        ? filter.value
+        : [filter.value];
+      values.forEach((v, i) => {
+        params.append(`filters[${filter.field}][$in][${i}]`, String(v));
+      });
+      return;
+    }
+
+    const value = Array.isArray(filter.value) ? filter.value[0] : filter.value;
+    if (value !== undefined) {
+      params.append(
+        `filters[${filter.field}][${filter.operator}]`,
+        String(value),
+      );
+    }
+  });
+
+  options.sort?.forEach((s, i) => {
+    params.append(`sort[${i}]`, `${s.field}:${s.order ?? "desc"}`);
+  });
+
+  if (options.pagination) {
+    options.pagination.page &&
+      params.append("pagination[page]", String(options.pagination.page));
+    options.pagination.pageSize &&
+      params.append(
+        "pagination[pageSize]",
+        String(options.pagination.pageSize),
+      );
+    options.pagination.limit &&
+      params.append("pagination[limit]", String(options.pagination.limit));
+    options.pagination.start &&
+      params.append("pagination[start]", String(options.pagination.start));
   }
 
-  return response.json();
+  if (options.extraParams) {
+    Object.entries(options.extraParams).forEach(([key, value]) => {
+      params.append(key, String(value));
+    });
+  }
+  const serializedQuery = params.toString();
+  // #region agent log
+  fetch("http://127.0.0.1:7646/ingest/10420757-d96e-4bdf-bc87-50b7f563a505", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Debug-Session-Id": "ff43b3",
+    },
+    body: JSON.stringify({
+      sessionId: "ff43b3",
+      runId: "pre-fix",
+      hypothesisId: "H3",
+      location: "frontend/src/lib/db/index.ts:buildStrapiQuery",
+      message: "Serialized Strapi query options",
+      data: {
+        options,
+        serializedQuery,
+      },
+      timestamp: Date.now(),
+    }),
+  }).catch(() => {});
+  // #endregion
+
+  return serializedQuery;
 }
 
 export function formatStrapiMediaUrl(imageUrl?: string | null): string {
@@ -42,32 +129,7 @@ export function formatStrapiMediaUrl(imageUrl?: string | null): string {
 }
 
 // GET: SOCIAL LINKS
-type FilterName = "equal" | "notEqual" | "inList";
-type StrapiFilterOperator = "$eq" | "$ne" | "$in";
-
-const FILTER_OPERATOR_MAP: Record<FilterName, StrapiFilterOperator> = {
-  equal: "$eq",
-  notEqual: "$ne",
-  inList: "$in",
-};
-
-type SocialLinksFilter = {
-  operator: FilterName;
-  value: string | string[];
-  field?: "displayName" | "href" | "type";
-};
-
-type GetSocialLinksParams = {
-  filter?: SocialLinksFilter; // optional
-};
-
-export interface SocialLink {
-  displayName: string;
-  href: string;
-  type: string;
-}
-
-export async function getSocialLinks({ filter }: GetSocialLinksParams = {}) {
+export async function getSocialLinks(options: StrapiQueryOptions) {
   const params = new URLSearchParams();
   params.append("[fields][0]", "displayName");
   params.append("[fields][1]", "href");
@@ -75,38 +137,59 @@ export async function getSocialLinks({ filter }: GetSocialLinksParams = {}) {
   // Status published
   params.append("status", "published");
 
-  // Only add filter params if filter is provided
-  if (filter) {
-    const { operator, value, field = "displayName" } = filter;
-    const strapiOperator = FILTER_OPERATOR_MAP[operator];
-
-    if (strapiOperator === "$in") {
-      const values = Array.isArray(value) ? value : [value];
-      values.forEach((item, index) => {
-        params.append(`filters[${field}][${strapiOperator}][${index}]`, item);
-      });
-    } else {
-      const singleValue = Array.isArray(value) ? (value[0] ?? "") : value;
-      params.append(`filters[${field}][${strapiOperator}]`, singleValue);
-    }
-  }
-
   const query = `/api/social-links?${params.toString()}`;
-  const { data: links } = await getStrapiData(query);
+
+  const links = options
+    ? await getStrapiData(query, {
+        options,
+        config: { tags: ["social-links"] },
+      })
+    : await getStrapiData(query, { config: { tags: ["social-links"] } });
+
   return links as SocialLink[];
 }
 
-// GET: PROJECTS
+// GET: BUSINESS DATA
+export async function getBusinessInfo() {
+  const params = new URLSearchParams();
 
-export async function getProjects(options?: {
-  limit?: number;
-  sortOrder?: "asc" | "desc";
-}) {
-  const { limit, sortOrder = "desc" } = options || {};
+  // Fields and populates
+  params.append("fields[0]", "legalName");
+  params.append("fields[1]", "country");
+  params.append("fields[2]", "city");
+  params.append("fields[3]", "timezone");
+  params.append("fields[4]", "isAvailable");
+
+  // Status published
+  params.append("status", "published");
+
+  params.append("populate[social_links][fields][0]", "displayName");
+  params.append("populate[social_links][fields][1]", "nameID");
+  params.append("populate[social_links][fields][2]", "href");
+  params.append("populate[social_links][fields][3]", "type");
+
+  params.append("populate[avatar][fields][0]", "url");
+  params.append("populate[avatar][fields][1]", "width");
+  params.append("populate[avatar][fields][2]", "height");
+  params.append("populate[avatar][fields][3]", "alternativeText");
+
+  params.append("populate[cv][fields][0]", "url");
+  params.append("populate[cv][fields][1]", "alternativeText");
+
+  const query = `/api/business-info?${params.toString()}`;
+
+  const businessInfo = await getStrapiData(query, {
+    config: { tags: ["business-info"] },
+  });
+  return businessInfo as BusinessInfo;
+}
+// GET: PROJECTS
+export async function getProjects(options?: StrapiQueryOptions) {
+  // const { limit, sortOrder = "desc", filter } = options || {};
   const params = new URLSearchParams();
 
   // Sort by year (default desc)
-  params.append("sort[0]", `details.year:${sortOrder}`);
+  // params.append("sort[0]", `details.year:desc`);
 
   // Fields and populates
   params.append("fields[0]", "nameID");
@@ -121,6 +204,11 @@ export async function getProjects(options?: {
   params.append("populate[image][fields][2]", "height");
   params.append("populate[image][fields][3]", "url");
 
+  params.append("populate[gallery][fields][0]", "alternativeText");
+  params.append("populate[gallery][fields][1]", "width");
+  params.append("populate[gallery][fields][2]", "height");
+  params.append("populate[gallery][fields][3]", "url");
+
   params.append("populate[details][fields][0]", "brief");
   params.append("populate[details][fields][1]", "blob");
   params.append("populate[details][fields][2]", "client");
@@ -134,34 +222,126 @@ export async function getProjects(options?: {
   );
   params.append("populate[details][populate][roles][fields][0]", "label");
 
-  // Apply result limit if provided
-  if (limit !== undefined) {
-    params.append("pagination[page]", "1");
-    params.append("pagination[pageSize]", limit.toString());
-  }
-
   const query = `/api/projects?${params.toString()}`;
 
-  const { data: projects } = await getStrapiData(query);
-  return projects as Project[];
+  const data = options
+    ? await getStrapiData(query, {
+        options,
+        config: { tags: ["projects"] },
+      })
+    : await getStrapiData(query, { config: { tags: ["projects"] } });
+
+  return data as Project[];
+}
+// GET: PROJECT BY ID
+export async function getProjectByNameID(nameID: string) {
+  const project = await getProjects({
+    filters: [
+      {
+        value: nameID,
+        operator: "$eq",
+        field: "nameID",
+      },
+    ],
+  });
+  return project[0] as Project;
 }
 
 // GET: HERO SECTION
 export async function getHeroData() {
   const query =
     "/api/hero-section?fields[0]=subtitle&fields[1]=title&fields[2]=description&fields[3]=cta_text&populate[fields][0]=id&populate[social_link][fields][0]=href&status=published&locale[0]=en";
-  const { data } = await getStrapiData(query);
+  const data = await getStrapiData(query, {
+    config: { tags: ["hero-section"] },
+  });
 
-  return data;
+  return data as HeroSection;
 }
+
+type GalleryImageData = {
+  id: string;
+  images: GalleryImage[];
+};
 
 // GET: GALLERY IMAGES
 export async function getGalleryImages() {
   const query =
     "/api/gallery-section?fields[0]=id&populate[images][populate][src][fields][0]=url&populate[images][populate][src][fields][1]=width&populate[images][populate][src][fields][2]=height&populate[images][populate][src][fields][3]=alternativeText&status=published";
-  const {
-    data: { images },
-  } = await getStrapiData(query);
+  const data = await getStrapiData(query, {
+    config: { tags: ["gallery-section"] },
+  });
 
-  return images;
+  const { images } = data as GalleryImageData;
+
+  return images as GalleryImage[];
+}
+
+// GET: ABOUT SECTION
+export async function getAboutData() {
+  const params = new URLSearchParams();
+
+  params.append("fields[0]", "id");
+  params.append("fields[1]", "title");
+  params.append("fields[2]", "description");
+  params.append("populate[capabilities][fields][0]", "title");
+  params.append("populate[capabilities][fields][1]", "description");
+
+  const query =
+    "/api/about-section?fields[0]=id&fields[1]=title&fields[2]=description&populate[capabilities][fields][0]=title&populate[capabilities][fields][1]=description";
+  const data = await getStrapiData(query, {
+    config: { tags: ["about"] },
+  });
+
+  return data as AboutContent;
+}
+
+// GET: EXPERIENCES
+export async function getExperiences(options?: StrapiQueryOptions) {
+  const params = new URLSearchParams();
+
+  params.append("fields[0]", "id");
+  params.append("fields[1]", "role");
+  params.append("fields[2]", "company");
+  params.append("fields[3]", "industry");
+  params.append("fields[4]", "year");
+
+  // params.append("status", "published");
+
+  const query = `/api/experiences?${params.toString()}`;
+
+  const data = options
+    ? await getStrapiData(query, {
+        options,
+        config: { tags: ["experience"] },
+      })
+    : await getStrapiData(query, { config: { tags: ["projects"] } });
+
+  return data as Experience[];
+}
+
+// GET: PROCESSES
+export async function getProcesses(options?: StrapiQueryOptions) {
+  const params = new URLSearchParams();
+
+  params.append("fields[0]", "id");
+  params.append("fields[1]", "name");
+  params.append("fields[2]", "description");
+  params.append("fields[3]", "order");
+  params.append("populate[image][fields][0]", "alternativeText");
+  params.append("populate[image][fields][1]", "width");
+  params.append("populate[image][fields][2]", "height");
+  params.append("populate[image][fields][3]", "url");
+
+  params.append("status", "published");
+
+  const query = `/api/processes?${params.toString()}`;
+
+  const data = options
+    ? await getStrapiData(query, {
+        options,
+        config: { tags: ["processes"] },
+      })
+    : await getStrapiData(query, { config: { tags: ["processes"] } });
+
+  return data as Processes[];
 }

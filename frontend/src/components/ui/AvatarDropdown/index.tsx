@@ -4,22 +4,24 @@ import Image from "next/image";
 import { type RefObject, useCallback, useRef, useState } from "react";
 import { useEventListener, useOnClickOutside } from "usehooks-ts";
 import ArrowDownIcon from "@/assets/icons/ArrowDownIcon";
-import { ABOUT } from "@/lib/constants";
 import { formatStrapiMediaUrl } from "@/lib/db";
-import type { BusinessType } from "@/lib/types";
-
+import type { BusinessInfo } from "@/lib/db/types";
 import { Button } from "..";
 import useDropdownAnimation from "./animations";
 import styles from "./styles.module.scss";
 
-const AvatarDropdown = ({ data }: { data: BusinessType }) => {
+const AvatarDropdown = ({ data }: { data: BusinessInfo }) => {
   // State to manage dropdown open/close status
+
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(
     null,
   ) as RefObject<HTMLDivElement>;
   const { openMenu, closeMenu } = useDropdownAnimation(dropdownRef);
-  const { legalName, country, city, social_links: links, cv } = data;
+  const { legalName, country, city, social_links: links, cv, avatar } = data;
+
+  const AVATAR_SRC = formatStrapiMediaUrl(avatar.url);
+
   const DOWNLOADABLE_CV = formatStrapiMediaUrl(cv?.url);
 
   // Function to handle clicks outside the dropdown
@@ -72,7 +74,7 @@ const AvatarDropdown = ({ data }: { data: BusinessType }) => {
       >
         <div className={styles["avatar-dropdown__avatar"]}>
           <Image
-            src={ABOUT.avatar}
+            src={AVATAR_SRC}
             height={64}
             width={64}
             alt="Jordi Paradelo - Freelance Designer & Developer"
@@ -93,19 +95,21 @@ const AvatarDropdown = ({ data }: { data: BusinessType }) => {
         <div className={styles["avatar-dropdown__menu-block"]}>
           <p className="heading-style-uppercase">Contact details</p>
           <ul className={styles["avatar-dropdown__menu-list"]}>
-            {ABOUT.contact.map((contact) => (
-              <li
-                key={contact.id}
-                className={styles["avatar-dropdown__menu-list-item"]}
-              >
-                <a
-                  className={styles["avatar-dropdown__menu-link"]}
-                  {...contact.props}
+            {data.social_links
+              .filter((link) => link.type === "email")
+              .map((contact) => (
+                <li
+                  key={contact?.nameID}
+                  className={styles["avatar-dropdown__menu-list-item"]}
                 >
-                  {contact.label}
-                </a>
-              </li>
-            ))}
+                  <a
+                    className={styles["avatar-dropdown__menu-link"]}
+                    href={contact.href}
+                  >
+                    {contact.href}
+                  </a>
+                </li>
+              ))}
           </ul>
         </div>
 

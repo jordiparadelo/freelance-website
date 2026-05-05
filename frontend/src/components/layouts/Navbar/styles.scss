@@ -26,8 +26,18 @@
 		// padding: var(--offset);
 
 		@media screen and (min-width: 675px) {
+			display: grid;
+			grid-auto-flow: column;
+			grid-auto-columns: 1fr;
 			gap: 4rem;
 			max-width: var(--container-size-lg);
+
+			> :first-child {
+				justify-self: flex-start;
+			}
+			> :last-child {
+				justify-self: flex-end;
+			}
 		}
 
 		.container {

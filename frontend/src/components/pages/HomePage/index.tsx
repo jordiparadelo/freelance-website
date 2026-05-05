@@ -1,6 +1,7 @@
 import {
   AboutSection,
   ApproachSection,
+  ExperienceSection,
   Gallery,
   Hero,
   ProjectsSection,
@@ -13,6 +14,7 @@ const HomePage = () => {
       <Gallery />
       <AboutSection />
       <ProjectsSection />
+      <ExperienceSection />
       <ApproachSection />
     </>
   );

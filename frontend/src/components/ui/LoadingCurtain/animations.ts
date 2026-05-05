@@ -1,9 +1,12 @@
 "use client";
 
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { type RefObject, useLayoutEffect, useRef } from "react";
 import { useTransitionPage } from "@/lib/context/TransitionPageContext";
+
+import { useGSAP } from "@gsap/react";
+
+import gsap from "gsap";
+
+import { type RefObject, useLayoutEffect, useRef } from "react";
 
 export function loadingAnimation(selector: RefObject<HTMLElement | null>) {
   const timeline = useRef<gsap.core.Timeline | null>(null);
@@ -18,9 +21,11 @@ export function loadingAnimation(selector: RefObject<HTMLElement | null>) {
         timeline.current = gsap.timeline({
           paused: true,
           onStart: () => setIsTransitioning(true),
-          onComplete: () => setIsTransitioning(false),
+          onComplete: () => {
+            setIsTransitioning(false);
+          },
           defaults: {
-            duration: 0.5,
+            // duration: 0.25,
             ease: "power3.inOut",
           },
         });
@@ -37,6 +42,8 @@ export function loadingAnimation(selector: RefObject<HTMLElement | null>) {
         .to(selector.current, {
           yPercent: -100,
         });
+
+      timeline.current.totalDuration(3.5);
     },
     { scope: selector },
   );

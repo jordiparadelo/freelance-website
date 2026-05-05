@@ -55,6 +55,7 @@ const Banner = () => {
             onMouseLeave={handleClockVisible}
           >
             <span>Based on Spain</span>
+            <span>{currentTime}</span>
             <span>{isClockVisible && currentTime}</span>
           </button>
           <div

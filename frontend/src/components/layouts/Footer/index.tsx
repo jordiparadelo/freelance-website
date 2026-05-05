@@ -9,17 +9,30 @@ import styles from "./styles.module.scss";
 const Footer = async () => {
   const [socialLinks, contactLink] = await Promise.all([
     getSocialLinks({
-      filter: {
-        operator: "equal",
-        field: "type",
-        value: "website",
-      },
+      filters: [
+        {
+          operator: "$eq",
+          field: "type",
+          value: "website",
+        },
+      ],
+      sort: [
+        {
+          field: "displayName",
+          order: "asc",
+        },
+      ],
     }),
     getSocialLinks({
-      filter: {
-        operator: "equal",
-        field: "type",
-        value: "email",
+      filters: [
+        {
+          operator: "$eq",
+          field: "type",
+          value: "email",
+        },
+      ],
+      pagination: {
+        limit: 1,
       },
     }),
   ]);

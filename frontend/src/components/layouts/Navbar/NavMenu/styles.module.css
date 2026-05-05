@@ -4,8 +4,13 @@
   font-size: var(--font-size--small);
   justify-content: center;
   place-self: center;
-  margin-inline-end: auto;
+  margin-inline: auto;
   gap: 1rem;
+  border-radius: var(--corners--radius-round);
+  background-color: rgba(from var(--background-color--base) r g b / 30%);
+  padding-inline: 1rem;
+  min-height: var(--button-size);
+  backdrop-filter: blur(20px);
 
   &:has(.navbar-menu_link:hover) {
     .navbar-menu_link:not(:hover) {

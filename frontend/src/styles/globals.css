@@ -98,7 +98,7 @@ section {
 /* Set heading styles */
 h1,
 .heading-style-h1 {
-  line-height: 1.125;
+  line-height: 1;
   font-size: var(--font-size--heading-style-1);
   font-family: var(--font-family--heading);
   font-weight: 400;
@@ -429,4 +429,29 @@ h6,
   transform-origin: top;
   scale: 1 1.25;
   transform: unset !important;
+}
+
+/* Details Group */
+.details-group {
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  flex-wrap: wrap;
+  align-items: center;
+  display: -webkit-box;
+  gap: 0.25em;
+  overflow: hidden;
+
+  > *:not(:last-child) {
+    align-items: center;
+    gap: 0.25em;
+    display: inline-flex;
+
+    &:after {
+      content: "•";
+      font-size: 0.75em;
+      line-height: 0.5em;
+      display: inline-flex;
+    }
+  }
 }

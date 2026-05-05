@@ -1,5 +1,5 @@
 import { Container, Section } from "@/components/ui";
-import { getStrapiData } from "@/lib/db";
+import { getAboutData, getProjects } from "@/lib/db";
 import type { Capability } from "@/lib/types/index";
 import AboutSectionLayout from "./AboutSectionLayout";
 import styles from "./styles.module.css";
@@ -17,24 +17,30 @@ type AboutSectionViewModel = {
 };
 
 const AboutSection = async () => {
-  const aboutQuery =
-    "/api/about-section?fields[0]=id&fields[1]=title&fields[2]=description&populate[capabilities][fields][0]=title&populate[capabilities][fields][1]=description";
-  const lastProjectQuery =
-    "/api/projects?sort[0]=details.year:desc&populate[image][fields][0]=url&populate[image][fields][1]=alternativeText&fields[0]=id&fields[1]=title&pagination[pageSize]=1&pagination[page]=1&status=published&locale[0]=en";
-
   const [aboutRes, projectsRes] = await Promise.allSettled([
-    getStrapiData(aboutQuery),
-    getStrapiData(lastProjectQuery),
+    getAboutData(),
+    getProjects({
+      sort: [
+        {
+          field: "details.year",
+          order: "desc",
+        },
+      ],
+    }),
   ]);
 
-  if (aboutRes.status === "rejected") {
-    throw aboutRes.reason; // about content is required
+  if (aboutRes.status !== "fulfilled" || !aboutRes.value) {
+    throw aboutRes.status === "rejected"
+      ? aboutRes.reason
+      : new Error("About content not found");
   }
+  const about = aboutRes.value;
 
-  const about = aboutRes.value?.data;
   const project =
-    projectsRes.status === "fulfilled"
-      ? (projectsRes.value?.data?.[0] ?? null)
+    projectsRes.status === "fulfilled" &&
+    Array.isArray(projectsRes.value) &&
+    projectsRes.value.length > 0
+      ? projectsRes.value[0]
       : null;
 
   const ABOUT_CONTENT: AboutSectionViewModel = {
@@ -44,11 +50,11 @@ const AboutSection = async () => {
     capabilities: about?.capabilities ?? [],
     previewProject: project
       ? {
-          id: String(project.id),
+          id: project.id,
           title: project.title ?? "",
           image: {
             url: project.image?.url ?? "",
-            alt: project.image?.alternativeText ?? "",
+            alt: project.title,
           },
         }
       : null,

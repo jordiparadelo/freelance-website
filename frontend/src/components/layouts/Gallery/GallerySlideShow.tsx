@@ -3,36 +3,22 @@
 import Image from "next/image";
 import { useRef } from "react";
 import { formatStrapiMediaUrl } from "@/lib/db";
-
-// import { galleryAnimations } from "./animations";
-
-type GalleryImage = {
-  id: number;
-  documentId: string;
-  url: string;
-  width: number;
-  height: number;
-  alternativeText: string | null;
-};
+import type { GalleryImage } from "@/lib/db/types";
 
 const GallerySlideShow = ({ images }: { images: GalleryImage[] }) => {
   const componentRef = useRef(null);
 
-  // galleryAnimations(componentRef);
-
   return (
     <div className="gallery__slideshow" ref={componentRef}>
       {images.map((image) => {
-        const imageSrc = formatStrapiMediaUrl(image.url);
+        const imageSrc = formatStrapiMediaUrl(image.src.url);
         return (
           <figure className="gallery__slide" key={image.id}>
             <Image
               src={imageSrc}
-              alt={image.alternativeText || ""}
-              width={image.width}
-              height={image.height}
-              priority
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              alt={image.src.alternativeText || ""}
+              width={image.src.width}
+              height={image.src.height}
             />
           </figure>
         );

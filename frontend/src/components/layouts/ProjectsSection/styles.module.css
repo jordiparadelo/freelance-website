@@ -160,12 +160,17 @@
 					text-wrap-style: pretty;
 					flex-grow: 1;
 
-					@media screen and (min-width: 667px) {
-						max-width: 40ch;
-						flex-flow: column;
-					}
-				}
-			}
+          @media screen and (min-width: 667px) {
+            max-width: 40ch;
+            flex-flow: column;
+          }
+          .project-card_header_brief {
+            @media screen and (max-width: 767px) {
+              display: none;
+            }
+          }
+        }
+      }
 
 			/* Preview Link */
 			.project-card_preview-link {

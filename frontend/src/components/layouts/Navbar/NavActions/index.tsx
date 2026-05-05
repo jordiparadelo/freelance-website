@@ -1,10 +1,10 @@
 "use client";
 import { ContactButton } from "@/components/ui";
+import type { BusinessInfo } from "@/lib/db/types";
 import { useColorTheme } from "@/lib/hooks/useColorTheme";
-import type { BusinessType } from "@/lib/types";
 import styles from "./styles.module.scss";
 
-const NavActions = ({ data }: { data: BusinessType }) => {
+const NavActions = ({ data }: { data: BusinessInfo }) => {
   const CONTACT_LINK: string | undefined = data?.social_links.find(
     (link) => link.type === "email",
   )?.href;

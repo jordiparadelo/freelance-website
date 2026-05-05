@@ -5,7 +5,17 @@ import ProjectsList from "./ProjectsList";
 import styles from "./styles.module.css";
 
 const ProjectsSection = async () => {
-  const PROJECTS = await getProjects({ limit: 5 });
+  const PROJECTS = await getProjects({
+    sort: [
+      {
+        field: "details.year",
+        order: "desc",
+      },
+    ],
+    pagination: {
+      limit: 5,
+    },
+  });
 
   return (
     <Section className={styles["projects-section"]} id="selected-works">
