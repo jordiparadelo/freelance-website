@@ -6,7 +6,8 @@
 
   .layout {
     display: flex;
-    flex-direction: reverse;
+    flex-direction: column-reverse;
+    /* flex-direction: reverse; */
     gap: var(--section-padding--block-tiny);
 
     @media screen and (min-width: 667px) {
@@ -19,11 +20,23 @@
   }
 
   .details {
-    display: none;
+    position: sticky;
+    bottom: 50%;
+    display: flex;
+    flex-direction: column;
+    transition: opacity var(--anim-duration--sm) var(--anim-easing);
+    align-items: center;
+
+    /* display: none; */
     @media screen and (min-width: 667px) {
-      display: flex;
-      flex-direction: column;
+      align-items: flex-start;
       gap: var(--section-padding-block);
+    }
+
+    .details_title {
+      @media screen and (max-width: 667px) {
+        display: none;
+      }
     }
 
     /* justify-content: space-between; */
@@ -37,8 +50,6 @@
         position: sticky;
         gap: var(--section-padding-block);
         top: 50%;
-        /* transform: translateY(-25%); */
-        /* padding-block-end: var(--section-padding-block); */
       }
     }
 
@@ -70,6 +81,10 @@
           transparent
         );
         pointer-events: none;
+
+        @media screen and (max-width: 667px) {
+          display: none;
+        }
       }
     }
 
@@ -77,6 +92,11 @@
       display: grid;
       grid-template-columns: 1fr;
       grid-template-rows: 1fr;
+      opacity: 0.06;
+
+      @media screen and (min-width: 667px) {
+        opacity: 1;
+      }
 
       > * {
         grid-area: 1 / 1;
@@ -84,22 +104,33 @@
       }
 
       [data-target="year"] {
-        position: relative;
-
-        &:before {
-          content: attr(data-year);
-          position: absolute;
+        @media screen and (max-width: 667px) {
+          position: relative;
           font-size: 35vw;
-          opacity: 0.03;
           line-height: 1;
-          top: 50%;
-          transform: translateY(-50%);
           mask-image: linear-gradient(
             to bottom,
             rgba(0, 0, 0, 1) 30%,
             transparent
           );
           pointer-events: none;
+        }
+        @media screen and (min-width: 667px) {
+          &:before {
+            content: attr(data-year);
+            position: absolute;
+            font-size: 35vw;
+            opacity: 0.03;
+            line-height: 1;
+            top: 50%;
+            transform: translateY(-50%);
+            mask-image: linear-gradient(
+              to bottom,
+              rgba(0, 0, 0, 1) 30%,
+              transparent
+            );
+            pointer-events: none;
+          }
         }
       }
     }
@@ -128,17 +159,35 @@
       }
     }
 
+    [data-target="body"] {
+      grid-auto-rows: 1fr;
+    }
+
     [data-target="row"] {
       position: relative;
-      &:before {
-        content: "";
-        z-index: -1;
-        background-color: rgba(from currentColor r g b / 10%);
-        transition: transform var(--anim-duration--sm) var(--anim-easing);
-        position: absolute;
-        inset: 0;
-        min-height: calc(var(--progress, 0) * 1%);
-        /* transform: translateY(var(--translation)); */
+
+      @media screen and (max-width: 667px) {
+        &:before {
+          content: "";
+          background-color: rgba(from currentColor r g b / 5%);
+          transition: transform var(--anim-duration--sm) var(--anim-easing);
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+          mask-image: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 1) 30%,
+            transparent
+          );
+          opacity: 0;
+          transition: all var(--anim-duration--sm) var(--anim-easing);
+        }
+        &[data-selected="true"] {
+          &:before {
+            opacity: 1;
+            height: calc(var(--progress, 0) * 1%);
+          }
+        }
       }
     }
   }
@@ -186,6 +235,15 @@
 
       &[data-selected="true"] {
         width: calc(var(--width) * 2);
+      }
+    }
+  }
+
+  /* Responsive Mode */
+  @media screen and (max-width: 667px) {
+    &:not(:has([data-selected="true"])) {
+      .header_details {
+        opacity: 0;
       }
     }
   }

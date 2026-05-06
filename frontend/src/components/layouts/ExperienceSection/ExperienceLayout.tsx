@@ -13,7 +13,9 @@ const ExperienceLayout = ({ data }: { data: Experience[] }) => {
     <ExperienceProvider>
       <div className={styles["layout"]}>
         <aside className={styles["details"]} data-target="details">
-          <h2 className="heading-style-uppercase">Experience</h2>
+          <h2 className={`heading-style-uppercase ${styles["details_title"]}`}>
+            Experience
+          </h2>
           <div className={styles["header_details"]}>
             <ExperienceYears data={data} />
           </div>
