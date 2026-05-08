@@ -89,27 +89,6 @@ function buildStrapiQuery(options?: StrapiQueryOptions): string {
 		});
 	}
 	const serializedQuery = params.toString();
-	// #region agent log
-	fetch("http://127.0.0.1:7646/ingest/10420757-d96e-4bdf-bc87-50b7f563a505", {
-		method: "POST",
-		headers: {
-			"Content-Type": "application/json",
-			"X-Debug-Session-Id": "ff43b3",
-		},
-		body: JSON.stringify({
-			sessionId: "ff43b3",
-			runId: "pre-fix",
-			hypothesisId: "H3",
-			location: "frontend/src/lib/db/index.ts:buildStrapiQuery",
-			message: "Serialized Strapi query options",
-			data: {
-				options,
-				serializedQuery,
-			},
-			timestamp: Date.now(),
-		}),
-	}).catch(() => {});
-	// #endregion
 
 	return serializedQuery;
 }
