@@ -9,47 +9,47 @@ import gsap from "gsap";
 import { type RefObject, useLayoutEffect, useRef } from "react";
 
 export function loadingAnimation(selector: RefObject<HTMLElement | null>) {
-  const timeline = useRef<gsap.core.Timeline | null>(null);
+	const timeline = useRef<gsap.core.Timeline | null>(null);
 
-  const { setIsTransitioning } = useTransitionPage();
+	const { setIsTransitioning } = useTransitionPage();
 
-  useGSAP(
-    () => {
-      timeline.current?.kill();
+	useGSAP(
+		() => {
+			timeline.current?.kill();
 
-      if (!timeline.current) {
-        timeline.current = gsap.timeline({
-          paused: true,
-          onStart: () => setIsTransitioning(true),
-          onComplete: () => {
-            setIsTransitioning(false);
-          },
-          defaults: {
-            // duration: 0.25,
-            ease: "power3.inOut",
-          },
-        });
-      }
+			if (!timeline.current) {
+				timeline.current = gsap.timeline({
+					paused: true,
+					onStart: () => setIsTransitioning(true),
+					onComplete: () => {
+						setIsTransitioning(false);
+					},
+					defaults: {
+						// duration: 0.25,
+						ease: "power3.inOut",
+					},
+				});
+			}
 
-      timeline.current
-        .to('[data-target="loading-bar"]', {
-          "--progress": "100%",
-          duration: 5,
-        })
-        .from('[data-target="text"]', {
-          autoAlpha: 0,
-        })
-        .to(selector.current, {
-          yPercent: -100,
-        });
+			timeline.current
+				.to('[data-target="loading-bar"]', {
+					"--progress": "100%",
+					duration: 5,
+				})
+				.from('[data-target="text"]', {
+					autoAlpha: 0,
+				})
+				.to(selector.current, {
+					yPercent: -100,
+				});
 
-      timeline.current.totalDuration(3.5);
-    },
-    { scope: selector },
-  );
+			timeline.current.totalDuration(3.5);
+		},
+		{ scope: selector },
+	);
 
-  useLayoutEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-    timeline.current?.play();
-  }, []);
+	useLayoutEffect(() => {
+		window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+		timeline.current?.play();
+	}, []);
 }

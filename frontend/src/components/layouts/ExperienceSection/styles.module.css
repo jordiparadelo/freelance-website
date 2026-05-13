@@ -180,7 +180,6 @@
             transparent
           );
           opacity: 0;
-          transition: all var(--anim-duration--sm) var(--anim-easing);
         }
         &[data-selected="true"] {
           &:before {
