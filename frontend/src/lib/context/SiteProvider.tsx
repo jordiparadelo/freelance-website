@@ -8,7 +8,7 @@ const SiteProvider = ({ children }: { children: React.ReactNode }) => {
 	return (
 		<ThemeProvider>
 			<TransitionPageProvider>
-				<LoadingCurtain />
+				{/* <LoadingCurtain /> */}
 				<ScrollProvider>{children}</ScrollProvider>
 			</TransitionPageProvider>
 		</ThemeProvider>
