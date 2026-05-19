@@ -1,6 +1,7 @@
 /** biome-ignore-all lint/a11y/noStaticElementInteractions: <explanation> */
 "use client";
 
+import Image from "next/image";
 import { useRef } from "react";
 import { formatStrapiMediaUrl } from "@/lib/db";
 import type { Processes } from "@/lib/db/types";
@@ -31,12 +32,14 @@ const ProcessApproach = ({ steps }: { steps: Processes[] }) => {
                 <figure className={styles["process_step"]} data-target="step">
                   <h3>{step.name}</h3>
                   {imageSrc && (
-                    <img
+                    <Image
                       className={styles["process_step_image"]}
                       src={imageSrc}
                       width="40"
                       height="40"
                       alt={step.name}
+                      quality={100}
+                      unoptimized={true}
                     />
                   )}
                   <p> {step.description}</p>
