@@ -1,4 +1,4 @@
-import { HeroProjects, ProjectsList } from "@/components/layouts";
+import { HeroProjects, ProjectsGrid } from "@/components/layouts";
 import { Container, Section } from "@/components/ui";
 import { getProjects } from "@/lib/db";
 
@@ -11,7 +11,7 @@ const ProjectsPage = async () => {
       <HeroProjects />
       <Section>
         <Container>
-          <ProjectsList data={PROJECTS} />
+          <ProjectsGrid data={PROJECTS} />
         </Container>
       </Section>
     </main>

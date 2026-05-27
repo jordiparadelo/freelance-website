@@ -1,5 +1,6 @@
 "use client";
 
+import posthog from "posthog-js";
 import { useState } from "react";
 // Assets
 import { CopyIcon } from "@/assets/icons";
@@ -32,7 +33,9 @@ const CopyToClipboard: React.FC<CopyToClipboardProps> = ({ children }) => {
       clipboard: HTMLInputElement;
     };
 
-    copyToClipboard(formElements.clipboard.value);
+    const text = formElements.clipboard.value;
+    copyToClipboard(text);
+    posthog.capture("copy_to_clipboard_clicked", { content: text });
   }
 
   return (

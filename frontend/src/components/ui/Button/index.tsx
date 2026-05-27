@@ -42,7 +42,7 @@ const Button: React.FC<ButtonProps> = ({
   };
 
   return href ? (
-    <a href={href} ref={anchorRef} {...commonProps}>
+    <a href={href} ref={anchorRef} onClick={onClick} {...commonProps}>
       <span className="button__label" aria-hidden>
         {children}
       </span>
@@ -54,9 +54,9 @@ const Button: React.FC<ButtonProps> = ({
     <button
       type={type}
       ref={buttonRef}
+      onClick={onClick}
       {...commonProps}
       {...props}
-      {...onClick}
     >
       <span className="button__label" aria-hidden>
         {children}

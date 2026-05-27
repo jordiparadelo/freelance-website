@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import posthog from "posthog-js";
 import { useRef } from "react";
 import useTabsAnimation from "./animation";
 
@@ -35,7 +36,13 @@ const Tabs = ({ data, className }: { data: TabItem[]; className?: string }) => {
         {data.map((item, index) => (
           <button
             type="button"
-            onClick={() => handleTabChange(index)}
+            onClick={() => {
+              handleTabChange(index);
+              posthog.capture("service_tab_viewed", {
+                tab: item.title,
+                tab_index: index,
+              });
+            }}
             className="tabs__link"
             aria-label={item.title}
             key={item.title}

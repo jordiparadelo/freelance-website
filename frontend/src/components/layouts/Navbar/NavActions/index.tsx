@@ -1,4 +1,5 @@
 "use client";
+import posthog from "posthog-js";
 import { ContactButton } from "@/components/ui";
 import type { BusinessInfo } from "@/lib/db/types";
 import { useColorTheme } from "@/lib/hooks/useColorTheme";
@@ -9,6 +10,10 @@ const NavActions = ({ data }: { data: BusinessInfo }) => {
     (link) => link.type === "email",
   )?.href;
   const { theme, toggleTheme } = useColorTheme();
+
+  function handleContactClick() {
+    posthog.capture("navbar_contact_clicked");
+  }
   return (
     <div className={styles["navbar-actions"]}>
       <button onClick={toggleTheme} type="button">
@@ -47,7 +52,10 @@ const NavActions = ({ data }: { data: BusinessInfo }) => {
         )}
       </button>
       {CONTACT_LINK && (
-        <ContactButton href={`mailto:${CONTACT_LINK}`}>
+        <ContactButton
+          href={`mailto:${CONTACT_LINK}`}
+          onClick={handleContactClick}
+        >
           Get in touch
         </ContactButton>
       )}

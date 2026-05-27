@@ -30,7 +30,7 @@
 			grid-auto-flow: column;
 			grid-auto-columns: 1fr;
 			gap: 4rem;
-			max-width: var(--container-size-lg);
+			width: 100%;
 
 			> :first-child {
 				justify-self: flex-start;
