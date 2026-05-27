@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import posthog from "posthog-js";
 import { formatStrapiMediaUrl } from "@/lib/db";
 import type { Project } from "@/lib/db/types";
 import styles from "./styles.module.css";
@@ -6,6 +9,14 @@ import styles from "./styles.module.css";
 const ProjectItem = ({ project }: { project: Project }) => {
   const { title, image, details } = project;
   const imageSrc = formatStrapiMediaUrl(image.url);
+
+  function handlePreviewClick() {
+    posthog.capture("project_preview_clicked", {
+      project_title: title,
+      project_url: details.preview,
+      year: details?.year,
+    });
+  }
 
   return (
     <li className={styles["projects-list__item"]} key={project.id}>
@@ -15,6 +26,7 @@ const ProjectItem = ({ project }: { project: Project }) => {
           target="_blank"
           rel="noopener noreferrer"
           className={styles["project-card_cover"]}
+          onClick={handlePreviewClick}
         >
           <Image
             src={imageSrc}
@@ -41,6 +53,7 @@ const ProjectItem = ({ project }: { project: Project }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles["project-card_preview-link"]}
+                onClick={handlePreviewClick}
               >
                 Visit Site
               </a>

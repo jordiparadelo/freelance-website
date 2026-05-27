@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import posthog from "posthog-js";
 import { type RefObject, useCallback, useRef, useState } from "react";
 import { useEventListener, useOnClickOutside } from "usehooks-ts";
 import ArrowDownIcon from "@/assets/icons/ArrowDownIcon";
@@ -51,6 +52,21 @@ const AvatarDropdown = ({ data }: { data: BusinessInfo }) => {
 
   useOnClickOutside(dropdownRef, handleClicksOutsideDropdown);
   useEventListener("keydown", handleEscDropdown);
+
+  function handleCvDownload() {
+    posthog.capture("cv_downloaded");
+  }
+
+  function handleEmailClick(href: string) {
+    posthog.capture("contact_email_clicked", { email: href });
+  }
+
+  function handleSocialLinkClick(displayName: string, href: string) {
+    posthog.capture("social_link_clicked", {
+      platform: displayName,
+      url: href,
+    });
+  }
 
   // Function to toggle the dropdown open state
   const toggleDropdownOpen = () => {
@@ -105,6 +121,7 @@ const AvatarDropdown = ({ data }: { data: BusinessInfo }) => {
                   <a
                     className={styles["avatar-dropdown__menu-link"]}
                     href={contact.href}
+                    onClick={() => handleEmailClick(contact.href)}
                   >
                     {contact.href}
                   </a>
@@ -144,6 +161,9 @@ const AvatarDropdown = ({ data }: { data: BusinessInfo }) => {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() =>
+                      handleSocialLinkClick(link.displayName, link.href)
+                    }
                   >
                     {link.displayName}
                   </a>
@@ -158,6 +178,7 @@ const AvatarDropdown = ({ data }: { data: BusinessInfo }) => {
             href={DOWNLOADABLE_CV}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={handleCvDownload}
           >
             Download CV
           </Button>

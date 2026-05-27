@@ -32,7 +32,7 @@
 			display: flex;
 			place-content: center;
 			place-items: center;
-			border-radius: var(--corners--radius-small);
+			border-radius: var(--radius-sm);
 			border: 1px solid transparent;
 			width: var(--button-size);
 			height: var(--button-size);
@@ -92,7 +92,7 @@
 				grid-template-columns: repeat(2, 1fr);
 				margin-block-start: auto;
 				padding: 0.25rem;
-				border-radius: var(--corners--radius-round);
+				border-radius: var(--radius-round);
 				border: 1px solid var(--border-color--base);
 			}
 		}
@@ -133,7 +133,7 @@
 			place-items: center;
 			justify-content: space-between;
 			gap: 0.5rem;
-			border-radius: var(--corners--radius-small);
+			border-radius: var(--radius-sm);
 			color: var(--text-color--font);
 			border: 1px solid transparent;
 			// transition: background-color 0.3s ease;
@@ -171,6 +171,10 @@
 		padding-block-start: var(--section-padding--block-medium);
 		padding-block-end: var(--section-padding-inline-medium);
 		flex-grow: 1;
+
+		@media screen and (min-width: 1440px) {
+			gap: 5vw;
+		}
 	}
 
 	// Layout
@@ -200,7 +204,7 @@
 		place-items: center;
 		align-self: center;
 
-		border-radius: var(--corners--radius-small);
+		border-radius: var(--radius-sm);
 		border: var(--border);
 
 		padding-inline: 1em;

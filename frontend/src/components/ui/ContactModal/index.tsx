@@ -1,8 +1,8 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-
-import { useEffect, useRef } from "react";
+import posthog from "posthog-js";
+import { type FormEvent, useEffect, useRef } from "react";
 import { Button, ContactForm } from "@/components/ui";
 
 import styles from "./styles.module.scss";
@@ -12,6 +12,26 @@ const ContactModal = () => {
   const searchParams = useSearchParams();
   const services = searchParams.get("services");
   const contactModalRef = useRef<HTMLFormElement | null>(null);
+
+  function handleFormSubmit(e: FormEvent<HTMLFormElement>) {
+    const form = e.currentTarget;
+    const elements = form.elements as HTMLFormControlsCollection & {
+      name: HTMLInputElement;
+      email: HTMLInputElement;
+      company: HTMLInputElement;
+      message: HTMLTextAreaElement;
+    };
+    const selectedServices = [
+      ...form.querySelectorAll<HTMLInputElement>(
+        "input[type='checkbox']:checked",
+      ),
+    ].map((el) => el.value);
+    posthog.capture("contact_form_submitted", {
+      services: selectedServices,
+      has_company: elements.company.value.trim().length > 0,
+      has_message: elements.message.value.trim().length > 0,
+    });
+  }
 
   useEffect(() => {
     if (!services) return;
@@ -40,6 +60,7 @@ const ContactModal = () => {
       <ContactForm
         className={styles["contact-modal__form"]}
         ref={contactModalRef}
+        onSubmit={handleFormSubmit}
       >
         <div className="form__row">
           <div className="form__group">
