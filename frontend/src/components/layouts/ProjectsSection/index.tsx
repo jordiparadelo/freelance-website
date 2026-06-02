@@ -1,5 +1,5 @@
 "use server";
-import { Container, Section } from "@/components/ui";
+import { Button, Container, Section } from "@/components/ui";
 import { getProjects } from "@/lib/db";
 import ProjectsList from "./ProjectsList";
 import styles from "./styles.module.css";
@@ -7,18 +7,22 @@ import styles from "./styles.module.css";
 const ProjectsSection = async () => {
   const PROJECTS = await getProjects({
     sort: [{ column: "year", ascending: false }],
+    limit: 5,
   });
 
-  return (
-    <Section className={styles["projects-section"]} id="selected-works">
-      <Container>
-        <div className={styles["projects-section_layout"]}>
-          <h2 className={styles["projects-section_title"]}>Selected Works</h2>
-          <ProjectsList data={PROJECTS} />
-        </div>
-      </Container>
-    </Section>
-  );
+	return (
+		<Section className={styles["projects-section"]} id="selected-works">
+			<Container>
+				<div className={styles["projects-section_layout"]}>
+					<h2 className={styles["projects-section_title"]}>Selected Works</h2>
+					<ProjectsList data={PROJECTS} />
+					<div className={styles["projects-section_actions"]}>
+						<Button href="/projects">View all projects</Button>
+					</div>
+				</div>
+			</Container>
+		</Section>
+	);
 };
 
 export default ProjectsSection;
