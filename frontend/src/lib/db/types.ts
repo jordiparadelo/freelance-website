@@ -120,3 +120,7 @@ export type Processes = {
     url: string;
   };
 };
+
+export type Lead = {
+	data: { id?: string | number; name: string; email: string; message?: string };
+};
