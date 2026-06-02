@@ -343,3 +343,37 @@ export async function getProcesses(options?: StrapiQueryOptions) {
 
 	return data as Processes[];
 }
+
+// GET: LEADS
+export async function getLeads(options?: StrapiQueryOptions) {
+	const params = new URLSearchParams();
+
+	params.append("fields[0]", "id");
+	params.append("fields[1]", "name");
+	params.append("fields[2]", "email");
+	params.append("fields[3]", "message");
+
+	const query = `/api/contacts?${params.toString()}`;
+
+	const data = options
+		? await getStrapiData(query, {
+				options,
+				config: { tags: ["processes"] },
+			})
+		: await getStrapiData(query, { config: { tags: ["processes"] } });
+
+	return data as Processes[];
+}
+
+export async function getLeadByEmail(email: string) {
+	const leads = await getLeads({
+		filters: [
+			{
+				value: email,
+				operator: "$eq",
+				field: "email",
+			},
+		],
+	});
+	return leads[0];
+}
