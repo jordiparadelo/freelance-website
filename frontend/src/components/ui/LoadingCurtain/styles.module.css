@@ -24,7 +24,7 @@
 		position: relative;
 
 		> * {
-			grid-area: 1/1;
+			grid-area: 1 / 1;
 		}
 	}
 
@@ -55,8 +55,7 @@
 	.avatar {
 		aspect-ratio: 1;
 		object-fit: cover;
-		object-size: 120%;
-		background-size: 2200%;
+		background-size: 100%;
 		background-repeat: no-repeat;
 		background-position-y: 30%;
 		background-position-x: 0%;

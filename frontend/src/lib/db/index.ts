@@ -4,6 +4,7 @@ import type {
 	Experience,
 	GalleryImage,
 	HeroSection,
+	Lead,
 	Processes,
 	Project,
 	SocialLink,
@@ -376,4 +377,25 @@ export async function getLeadByEmail(email: string) {
 		],
 	});
 	return leads[0];
+}
+
+export async function createNewLead(newLead: Lead) {
+	try {
+		const baseUrl = getDataUrl();
+		// POST is typical for creation, but as per instruction, using PUT to create/update lead
+		const response = await fetch(`${baseUrl}/api/contacts`, {
+			method: "PUT",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(newLead),
+		});
+
+		if (!response.ok) {
+			throw new Error(`Failed to create new lead: ${response.statusText}`);
+		}
+
+		const result = await response.json();
+		return result;
+	} catch (error) {
+		throw new Error("Error creating new lead: " + error?.message ?? error);
+	}
 }

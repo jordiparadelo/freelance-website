@@ -3,24 +3,24 @@ import { Container, Section } from "@/components/ui";
 import { getProjects } from "@/lib/db";
 
 const ProjectsPage = async () => {
-	const PROJECTS = await getProjects({
-		sort: [
-			{
-				field: "details.year",
-				order: "desc",
-			},
-		],
-	});
-	return (
-		<main>
-			<HeroProjects />
-			<Section>
-				<Container>
-					<ProjectsGrid data={PROJECTS} />
-				</Container>
-			</Section>
-		</main>
-	);
+  const PROJECTS = await getProjects({
+    sort: [
+      {
+        field: "details.year",
+        order: "desc",
+      },
+    ],
+  });
+  return (
+    <main>
+      <HeroProjects />
+      <Section>
+        <Container>
+          <ProjectsGrid data={PROJECTS} />
+        </Container>
+      </Section>
+    </main>
+  );
 };
 
 export default ProjectsPage;

@@ -5,31 +5,31 @@ import ProjectsList from "./ProjectsList";
 import styles from "./styles.module.css";
 
 const ProjectsSection = async () => {
-	const PROJECTS = await getProjects({
-		sort: [
-			{
-				field: "details.year",
-				order: "desc",
-			},
-		],
-		pagination: {
-			limit: 5,
-		},
-	});
+  const PROJECTS = await getProjects({
+    sort: [
+      {
+        field: "details.year",
+        order: "desc",
+      },
+    ],
+    pagination: {
+      limit: 5,
+    },
+  });
 
-	return (
-		<Section className={styles["projects-section"]} id="selected-works">
-			<Container>
-				<div className={styles["projects-section_layout"]}>
-					<h2 className={styles["projects-section_title"]}>Selected Works</h2>
-					<ProjectsList data={PROJECTS} />
-					<div className={styles["projects-section_actions"]}>
-						<Button href="/projects">View all projects</Button>
-					</div>
-				</div>
-			</Container>
-		</Section>
-	);
+  return (
+    <Section className={styles["projects-section"]} id="selected-works">
+      <Container>
+        <div className={styles["projects-section_layout"]}>
+          <h2 className={styles["projects-section_title"]}>Selected Works</h2>
+          <ProjectsList data={PROJECTS} />
+          <div className={styles["projects-section_actions"]}>
+            <Button href="/projects">View all projects</Button>
+          </div>
+        </div>
+      </Container>
+    </Section>
+  );
 };
 
 export default ProjectsSection;

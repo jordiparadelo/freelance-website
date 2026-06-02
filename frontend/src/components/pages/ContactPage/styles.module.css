@@ -1,87 +1,87 @@
 .contact {
-	background: #3f3f3f;
-	min-height: 100dvh;
-	padding-block: 3rem;
+  background: #3f3f3f;
+  min-height: 100dvh;
+  padding-block: 3rem;
 }
 
 .contact__section {
-	padding-block: 0;
+  padding-block: 0;
 }
 
 .contact__panel {
-	background: #101010;
-	color: #f5f5f5;
-	padding: clamp(1.5rem, 4vw, 3rem);
+  background: #101010;
+  color: #f5f5f5;
+  padding: clamp(1.5rem, 4vw, 3rem);
 }
 
 .contact__title {
-	font-size: clamp(2.75rem, 9vw, 7rem);
-	font-weight: 600;
-	line-height: 0.9;
-	letter-spacing: -0.04em;
-	margin-bottom: clamp(2rem, 6vw, 4rem);
+  font-size: clamp(2.75rem, 9vw, 7rem);
+  font-weight: 600;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  margin-bottom: clamp(2rem, 6vw, 4rem);
 }
 
 .contact__layout {
-	display: grid;
-	gap: clamp(1.5rem, 4vw, 3rem);
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 3rem);
 }
 
 .contact__details {
-	display: grid;
-	gap: 0.5rem;
-	font-size: 0.95rem;
-	opacity: 0.8;
-	align-content: start;
+  display: grid;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  opacity: 0.8;
+  align-content: start;
 }
 
 .contact__form {
-	max-width: 100%;
+  max-width: 100%;
 }
 
 .contact__label {
-	font-size: 0.9rem;
-	opacity: 0.9;
+  font-size: 0.9rem;
+  opacity: 0.9;
 }
 
 .contact__input,
 .contact__textarea {
-	background: transparent;
-	border: 0;
-	border-bottom: 1px solid rgba(255, 255, 255, 0.45);
-	border-radius: 0;
-	color: inherit;
-	padding-inline: 0;
-	transition: border-color 0.25s ease;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 0;
+  color: inherit;
+  padding-inline: 0;
+  transition: border-color 0.25s ease;
 }
 
 .contact__input:focus-visible,
 .contact__textarea:focus-visible {
-	outline: none;
-	border-bottom-color: rgba(255, 255, 255, 0.95);
+  outline: none;
+  border-bottom-color: rgba(255, 255, 255, 0.95);
 }
 
 .contact__status {
-	min-height: 1.5rem;
-	font-size: 0.9rem;
+  min-height: 1.5rem;
+  font-size: 0.9rem;
 }
 
 .contact__honeypot {
-	position: absolute;
-	left: -9999px;
-	width: 1px;
-	height: 1px;
-	opacity: 0;
-	pointer-events: none;
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
 }
 
 @media (min-width: 900px) {
-	.contact {
-		padding-block: 4rem;
-	}
+  .contact {
+    padding-block: 4rem;
+  }
 
-	.contact__layout {
-		grid-template-columns: minmax(200px, 1fr) minmax(380px, 1.4fr);
-		align-items: start;
-	}
+  .contact__layout {
+    grid-template-columns: minmax(200px, 1fr) minmax(380px, 1.4fr);
+    align-items: start;
+  }
 }

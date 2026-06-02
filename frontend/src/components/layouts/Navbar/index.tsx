@@ -7,19 +7,19 @@ import NavMenu from "./NavMenu";
 import "./styles.scss";
 
 const Navbar = async () => {
-	const BUSINESS_INFO = await getBusinessInfo();
+  const BUSINESS_INFO = await getBusinessInfo();
 
-	return (
-		<nav className="navbar">
-			<Container>
-				<div className="navbar__layout">
-					<AvatarDropdown data={BUSINESS_INFO} />
-					<NavMenu links={ROUTES} />
-					<NavActions data={BUSINESS_INFO} />
-				</div>
-			</Container>
-		</nav>
-	);
+  return (
+    <nav className="navbar">
+      <Container>
+        <div className="navbar__layout">
+          <AvatarDropdown data={BUSINESS_INFO} />
+          <NavMenu links={ROUTES} />
+          <NavActions data={BUSINESS_INFO} />
+        </div>
+      </Container>
+    </nav>
+  );
 };
 
 export default Navbar;
