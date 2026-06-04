@@ -1,57 +1,44 @@
 "use client";
-import Form from "next/form";
-import React, { type ForwardRefRenderFunction, useActionState } from "react";
-import "./styles.scss";
+
 import { useForm } from "@tanstack/react-form";
-import { z } from "zod";
-import { createNewLead } from "@/lib/db/actions";
-import Button from "../Button";
+import { type ForwardRefRenderFunction, useState } from "react";
+import { Button } from "@/components/ui";
 
-interface ContactFormProps {
-	children: React.ReactNode;
-	className?: string;
-}
-
-type formFields = {
-	name: string;
-	email: string;
-	message: string;
-};
-
-export const contactFormSchema = z.object({
-	name: z
-		.string()
-		.min(2, { message: "Name must be at least 2 characters" })
-		.max(120, { message: "Name must be at most 120 characters" })
-		.regex(/^[a-zA-Z\s]+$/, {
-			message: "Name cannot contain numbers or symbols",
-		}),
-	email: z
-		.string()
-		.email({ message: "Invalid email address" })
-		.max(254, { message: "Email must be at most 254 characters" }),
-	message: z
-		.string()
-		// .min(1, { message: "Message is required" })
-		.max(2000, { message: "Message must be at most 2000 characters" }),
-});
+import { handleLeadSubmit } from "./actions";
+import { contactFormSchema } from "./config";
+import "./styles.scss";
+import type { ContactFormProps, FormStatus, formFields } from "./types";
 
 const ContactForm: ForwardRefRenderFunction<
 	HTMLFormElement,
 	ContactFormProps
-> = ({ children, className }) => {
+> = ({ className }) => {
+	const [status, setStatus] = useState<FormStatus>({
+		success: null,
+		message: "",
+	});
+
 	const formConfig = useForm({
 		defaultValues: {
 			name: "",
 			email: "",
 			message: "",
+			location: "",
 		} as formFields,
 		onSubmit: async ({ value }) => {
-			// do server actions
-			const { success, message } = await createNewLead(value);
-			success ?? alert(JSON.stringify(value, null, 2));
+			// Remove the website property before submit
+			setStatus({ message: "" });
+			const { location: website, ...sanitizedValue } = value;
 
-			console.log({ success, message });
+			if (website?.trim() !== "") {
+				console.warn(
+					"Honeypot triggered: automated/bot submission detected. This kind of behavior is not allowed and will be ignored.",
+				);
+				return;
+			}
+
+			const { success, message } = await handleLeadSubmit(sanitizedValue);
+			setStatus({ success, message, value: sanitizedValue });
 		},
 		validators: {
 			onChange: contactFormSchema,
@@ -59,86 +46,128 @@ const ContactForm: ForwardRefRenderFunction<
 	});
 
 	return (
-		<form
-			onSubmit={async (e) => {
-				e.preventDefault();
-				await formConfig.handleSubmit();
-			}}
-		>
-			<formConfig.Field name="name">
-				{(field) => (
-					<>
-						<label className="form_group">
-							Name
-							<input
-								minLength={2}
-								onBlur={field.handleBlur}
-								type="text"
-								value={field.state.value}
-								onChange={(e) => field.handleChange(e.target.value)}
-								className="form_input"
-							/>
-							{!field.state.meta.isValid && (
-								<em>
-									{field.state.meta.errors
-										?.map((error) => error?.message)
-										.join(",")}
-								</em>
-							)}
-						</label>
-					</>
-				)}
-			</formConfig.Field>
-			<formConfig.Field name="email">
-				{(field) => (
-					<>
-						<label className="form_group">
-							Email
-							<input
-								minLength={4}
-								onBlur={field.handleBlur}
-								type="email"
-								value={field.state.value}
-								onChange={(e) => field.handleChange(e.target.value)}
-								className="form_input"
-							/>
-							{!field.state.meta.isValid && (
-								<em>
-									{field.state.meta.errors
-										?.map((error) => error?.message)
-										.join(",")}
-								</em>
-							)}
-						</label>
-					</>
-				)}
-			</formConfig.Field>
-			<formConfig.Field name="message">
-				{(field) => (
-					<>
-						<label className="form_group">
-							Message
-							<textarea
-								maxLength={256}
-								onBlur={field.handleBlur}
-								value={field.state.value}
-								onChange={(e) => field.handleChange(e.target.value)}
-								className="form_input"
-							/>
-							{!field.state.meta.isValid && (
-								<em>
-									{field.state.meta.errors
-										?.map((error) => error?.message)
-										.join(",")}
-								</em>
-							)}
-						</label>
-					</>
-				)}
-			</formConfig.Field>
-			<Button type="submit">Submit Form</Button>
-		</form>
+		<div className="form_wrapper">
+			{status.success !== true ? (
+				<form
+					className={className}
+					onSubmit={async (e) => {
+						e.preventDefault();
+						await formConfig.handleSubmit();
+					}}
+				>
+					<formConfig.Field name="name">
+						{(field) => (
+							<>
+								<label
+									className="form_group"
+									data-input-valid={field.state.meta.isValid}
+								>
+									Name
+									<input
+										name={field.name}
+										minLength={2}
+										onBlur={field.handleBlur}
+										type="text"
+										autoComplete="true"
+										value={field.state.value}
+										onChange={(e) => field.handleChange(e.target.value)}
+										className="form_input"
+									/>
+									{!field.state.meta.isValid && (
+										<em>
+											{field.state.meta.errors
+												?.map((error) => error?.message)
+												.join(",")}
+										</em>
+									)}
+								</label>
+							</>
+						)}
+					</formConfig.Field>
+					<formConfig.Field name="email">
+						{(field) => (
+							<>
+								<label
+									className="form_group"
+									data-input-valid={field.state.meta.isValid}
+								>
+									Email
+									<input
+										name={field.name}
+										minLength={4}
+										onBlur={field.handleBlur}
+										type="email"
+										autoComplete="true"
+										value={field.state.value}
+										onChange={(e) => field.handleChange(e.target.value)}
+										className="form_input"
+									/>
+									{!field.state.meta.isValid && (
+										<em>
+											{field.state.meta.errors
+												?.map((error) => error?.message)
+												.join(",")}
+										</em>
+									)}
+								</label>
+							</>
+						)}
+					</formConfig.Field>
+					<formConfig.Field name="message">
+						{(field) => (
+							<>
+								<label
+									className="form_group"
+									data-input-valid={field.state.meta.isValid}
+								>
+									Message
+									<textarea
+										name={field.name}
+										maxLength={256}
+										onBlur={field.handleBlur}
+										value={field.state.value}
+										onChange={(e) => field.handleChange(e.target.value)}
+										className="form_input"
+									/>
+									{!field.state.meta.isValid && (
+										<em>
+											{field.state.meta.errors
+												?.map((error) => error?.message)
+												.join(",")}
+										</em>
+									)}
+								</label>
+							</>
+						)}
+					</formConfig.Field>
+					{/* Honeypot input field for spam bot detection */}
+					<formConfig.Field name="location">
+						{(field) => (
+							<>
+								<input
+									name={field.name}
+									type="text"
+									onBlur={field.handleBlur}
+									tabIndex={-1}
+									autoComplete="off"
+									aria-hidden="true"
+									value={field.state.value || ""}
+									onChange={(e) => field.handleChange(e.target.value)}
+								/>
+							</>
+						)}
+					</formConfig.Field>
+					<Button type="submit">Submit Form</Button>
+					{!status.success && <em> {status.message}</em>}
+				</form>
+			) : (
+				<div>
+					Thank {status.value?.name} for reach me, I'll be in touch with you
+					asap!
+				</div>
+			)}
+		</div>
 	);
 };
 
-export default React.forwardRef(ContactForm);
+export default ContactForm;
