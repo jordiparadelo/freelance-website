@@ -9,10 +9,7 @@ import { contactFormSchema } from "./config";
 import "./styles.scss";
 import type { ContactFormProps, FormStatus, formFields } from "./types";
 
-const ContactForm: ForwardRefRenderFunction<
-	HTMLFormElement,
-	ContactFormProps
-> = ({ className }) => {
+const ContactForm = ({ className, props }: ContactFormProps) => {
 	const [status, setStatus] = useState<FormStatus>({
 		success: null,
 		message: "",
@@ -46,10 +43,14 @@ const ContactForm: ForwardRefRenderFunction<
 	});
 
 	return (
-		<div className="form_wrapper">
+		<div
+			className={`form_wrapper ${className}`}
+			{...(props as unknown as
+				| React.HTMLAttributes<HTMLDivElement>
+				| undefined)}
+		>
 			{status.success !== true ? (
 				<form
-					className={className}
 					onSubmit={async (e) => {
 						e.preventDefault();
 						await formConfig.handleSubmit();
