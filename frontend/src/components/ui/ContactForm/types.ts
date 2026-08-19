@@ -1,8 +1,8 @@
 import type { Lead } from "@/lib/db/types";
 
 export type ContactFormProps = {
-	children: React.ReactNode;
 	className?: string;
+	props?: React.HTMLAttributes<HTMLDivElement>;
 };
 
 export type formFields = {
