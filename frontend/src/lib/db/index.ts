@@ -26,7 +26,7 @@ export async function getStrapiData<T>(
   const finalUrl = query ? `${baseUrl}${url}&${query}` : `${baseUrl}${url}`;
   const response = await fetch(finalUrl, {
     next: {
-      revalidate: params?.config?.revalidate ?? 86400,
+      revalidate: params?.config?.revalidate ?? 86400, // Set cache revalidation time (in seconds), default is 24 hours
       tags: params?.config?.tags ?? [],
     },
   });
