@@ -1,25 +1,14 @@
 import Image from "next/image";
 import { ProjectsTable } from "@/components/layouts";
 import { Container, Curves, Section } from "@/components/ui";
-import { formatStrapiMediaUrl, getProjects } from "@/lib/db";
+import { getProjects } from "@/lib/db";
 import type { Project } from "@/lib/db/types";
 import styles from "./styles.module.css";
 
 const ProjectPage = async ({ project }: { project: Project }) => {
   const RELATED_PROJECTS = await getProjects({
-    filters: [
-      {
-        operator: "$ne",
-        value: `${project.id}`,
-        field: "id",
-      },
-    ],
-    sort: [
-      {
-        field: "details.year",
-        order: "asc",
-      },
-    ],
+    filters: [{ column: "id", op: "neq", value: project.id }],
+    sort: [{ column: "year", ascending: true }],
   });
 
   return (
@@ -90,11 +79,10 @@ const ProjectPage = async ({ project }: { project: Project }) => {
           <div className={styles["layout"]}>
             <ul className={styles["gallery-grid"]}>
               {project.gallery?.map((image) => {
-                const src = formatStrapiMediaUrl(image.url);
                 return (
                   <li key={image.id} className={styles["gallery-grid_item"]}>
                     <Image
-                      src={src}
+                      src={image.url}
                       alt={project.title}
                       width={image.width}
                       height={image.height}

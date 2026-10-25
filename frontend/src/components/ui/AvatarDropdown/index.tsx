@@ -4,7 +4,6 @@ import Image from "next/image";
 import { type RefObject, useCallback, useRef, useState } from "react";
 import { useEventListener, useOnClickOutside } from "usehooks-ts";
 import ArrowDownIcon from "@/assets/icons/ArrowDownIcon";
-import { formatStrapiMediaUrl } from "@/lib/db";
 import type { BusinessInfo } from "@/lib/db/types";
 import { Button } from "..";
 import useDropdownAnimation from "./animations";
@@ -20,9 +19,9 @@ const AvatarDropdown = ({ data }: { data: BusinessInfo }) => {
   const { openMenu, closeMenu } = useDropdownAnimation(dropdownRef);
   const { legalName, country, city, social_links: links, cv, avatar } = data;
 
-  const AVATAR_SRC = formatStrapiMediaUrl(avatar.url);
+  const AVATAR_SRC = avatar.url;
 
-  const DOWNLOADABLE_CV = formatStrapiMediaUrl(cv?.url);
+  const DOWNLOADABLE_CV = cv?.url;
 
   // Function to handle clicks outside the dropdown
   const handleClicksOutsideDropdown = useCallback(

@@ -66,8 +66,10 @@
       grid-template-columns: 2fr 1fr;
       grid-auto-columns: 1fr;
       grid-auto-flow: column;
+    }
 
-      &:before {
+    &:before {
+      @media screen and (min-width: 667px) {
         content: "";
         position: absolute;
         inset: 0;
@@ -75,12 +77,12 @@
         background-color: rgba(from currentColor r g b / 10%);
         transition: transform var(--anim-duration--sm) var(--anim-easing);
       }
+    }
 
-      &:not(:hover) {
-        &:before {
-          --translation: calc(100% * var(--orientation, -1));
-          transform: translateY(var(--translation));
-        }
+    &:not(:hover):before {
+      @media screen and (min-width: 667px) {
+        --translation: calc(100% * var(--orientation, -1));
+        transform: translateY(var(--translation));
       }
     }
   }

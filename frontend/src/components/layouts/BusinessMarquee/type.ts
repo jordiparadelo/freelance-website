@@ -1,7 +1,6 @@
 export type MarqueeData = {
-  id?: number;
+  id?: string;
   details: {
-    id: number;
     preview?: string;
     client?: string;
     logo: {

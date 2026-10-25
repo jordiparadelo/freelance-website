@@ -3,7 +3,6 @@
 
 import Image from "next/image";
 import { useRef } from "react";
-import { formatStrapiMediaUrl } from "@/lib/db";
 import type { Processes } from "@/lib/db/types";
 import processAnimation from "./animations";
 import styles from "./styles.module.css";
@@ -21,7 +20,7 @@ const ProcessApproach = ({ steps }: { steps: Processes[] }) => {
         </span>
         <ul className={styles["process_list"]}>
           {steps.map((step, index) => {
-            const imageSrc = formatStrapiMediaUrl(step.image.url);
+            const imageSrc = step.image.url;
             return (
               <li
                 className={styles["process_list_item"]}
@@ -55,6 +54,7 @@ const ProcessApproach = ({ steps }: { steps: Processes[] }) => {
         height="100%"
         viewBox="0 0 300 300"
         className={styles["process-circle"]}
+        role="presentation"
       >
         <title>Process Circle</title>
         <circle

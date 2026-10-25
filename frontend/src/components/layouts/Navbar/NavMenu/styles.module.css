@@ -13,7 +13,6 @@
   backdrop-filter: blur(20px);
   text-wrap: nowrap;
 
-
   &:has(.navbar-menu_link:hover) {
     .navbar-menu_link:not(:hover) {
       opacity: 0.5;

@@ -4,12 +4,7 @@ import { getProjects } from "@/lib/db";
 
 const ProjectsPage = async () => {
   const PROJECTS = await getProjects({
-    sort: [
-      {
-        field: "details.year",
-        order: "desc",
-      },
-    ],
+    sort: [{ column: "year", ascending: false }],
   });
   return (
     <main>
