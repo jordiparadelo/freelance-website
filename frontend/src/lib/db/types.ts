@@ -33,7 +33,6 @@ export type Project = {
 };
 
 export type BusinessInfo = {
-  id: 10;
   legalName: string;
   displayName: string;
   country: string;

@@ -208,7 +208,6 @@ export async function getBusinessInfo() {
       .from("business_infos")
       .select(
         `
-        id,
         legal_name,
         display_name,
         country,
@@ -239,7 +238,6 @@ export async function getBusinessInfo() {
   const cv = one(row.cv);
 
   return {
-    id: 10,
     legalName: row.legal_name ?? "",
     displayName: row.display_name ?? "",
     country: row.country ?? "",
