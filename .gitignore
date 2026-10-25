@@ -30,3 +30,5 @@ id_ed25519
 scripts/.import/
 
 .pnpm-store/
+.vercel
+.env*
