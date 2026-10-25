@@ -5,12 +5,7 @@ import styles from "./styles.module.css";
 
 const ExperienceSection = async () => {
   const experiences = await getExperiences({
-    sort: [
-      {
-        field: "year",
-        order: "desc",
-      },
-    ],
+    sort: [{ column: "year", ascending: false }],
   });
 
   return (

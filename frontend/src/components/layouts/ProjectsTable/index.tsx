@@ -2,7 +2,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState } from "react";
-import { formatStrapiMediaUrl } from "@/lib/db";
 import type { Project } from "@/lib/db/types";
 import { projectsTableAnimations } from "./animations";
 import styles from "./styles.module.css";
@@ -29,9 +28,7 @@ const ProjectsTable = ({ projects }: { projects: Project[] }) => {
           {projects
             .filter((project) => project.id === selected)
             .map((project) => {
-              const imageSrc = formatStrapiMediaUrl(
-                project.image.url as string,
-              );
+              const imageSrc = project.image.url;
               return (
                 <Image
                   key={project.id}

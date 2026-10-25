@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useRef } from "react";
-import { formatStrapiMediaUrl } from "@/lib/db";
 import styles from "./styles.module.css";
 import type { MarqueeData } from "./type";
 
@@ -27,7 +26,7 @@ const BusinessMarquee = ({ business }: { business: MarqueeData[] }) => {
                 >
                   {business?.details?.client && (
                     <Image
-                      src={formatStrapiMediaUrl(business.details?.logo?.url)}
+                      src={business.details?.logo?.url ?? ""}
                       alt={business?.details?.client}
                       width={100}
                       height={100}

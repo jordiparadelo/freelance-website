@@ -1,23 +1,14 @@
 import { BusinessMarquee } from "@/components/layouts";
 import { AnimatedParagraph, Container, Curves, Section } from "@/components/ui";
-import { getProcesses, getStrapiData } from "@/lib/db";
-import type { MarqueeData } from "../BusinessMarquee/type";
+import { getMarqueeProjects, getProcesses } from "@/lib/db";
 import ProcessApproach from "./ProcessApproach";
 import styles from "./styles.module.css";
 
 const ApproachSection = async () => {
-  const query =
-    "/api/projects?sort[0]=details.year:desc&sort[1]=title:asc&fields[0]=id&populate[details][fields][0]=id&populate[details][fields][1]=client&populate[details][fields][2]=preview&populate[details][populate][logo][fields][0]=url&populate[details][populate][logo][fields][1]=width&populate[details][populate][logo][fields][2]=height&status=published";
-
   const [BUSINESS, PROCESS_STEPS] = await Promise.all([
-    getStrapiData(query),
+    getMarqueeProjects(),
     getProcesses({
-      sort: [
-        {
-          field: "order",
-          order: "asc",
-        },
-      ],
+      sort: [{ column: "sort_order", ascending: true }],
     }),
   ]);
 
@@ -43,7 +34,7 @@ const ApproachSection = async () => {
                   <span>Trusted by</span>
                   <div className="divider"></div>
                 </div>
-                <BusinessMarquee business={BUSINESS as MarqueeData[]} />
+                <BusinessMarquee business={BUSINESS} />
               </div>
             </div>
           </aside>

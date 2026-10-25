@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { formatStrapiMediaUrl } from "@/lib/db";
 import type { Capability } from "@/lib/types/index";
 import CapabilityList from "./CapabilityList";
 import ContentDescription from "./ContentDescription";
@@ -22,9 +21,7 @@ type AboutContent = {
 };
 
 const AboutSectionLayout = ({ content }: { content: AboutContent }) => {
-  const imageSrc = content.previewProject
-    ? formatStrapiMediaUrl(content.previewProject.image.url)
-    : null;
+  const imageSrc = content.previewProject?.image.url ?? null;
 
   return (
     <CapabilitiesProvider data={content.capabilities}>

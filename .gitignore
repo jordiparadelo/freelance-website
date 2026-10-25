@@ -25,3 +25,10 @@ id_ed25519
 
 # Cursor IDE local metadata
 .cursor/
+
+# One-off migration payload
+scripts/.import/
+
+.pnpm-store/
+.vercel
+.env*

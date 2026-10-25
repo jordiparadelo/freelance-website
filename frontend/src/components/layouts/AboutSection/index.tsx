@@ -20,12 +20,7 @@ const AboutSection = async () => {
   const [aboutRes, projectsRes] = await Promise.allSettled([
     getAboutData(),
     getProjects({
-      sort: [
-        {
-          field: "details.year",
-          order: "desc",
-        },
-      ],
+      sort: [{ column: "year", ascending: false }],
     }),
   ]);
 
