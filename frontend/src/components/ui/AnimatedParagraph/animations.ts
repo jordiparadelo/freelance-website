@@ -5,7 +5,7 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import SplitText from "gsap/SplitText";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { useWindowSize } from "usehooks-ts";
 
@@ -14,12 +14,19 @@ export const transition = { duration: 1.4, ease: [0.6, 0.01, 0.05, 0.9] };
 const useParagraphAnimation = (
   element: React.RefObject<HTMLElement | null>,
 ) => {
+  const [isReady, setIsReady] = useState(false);
   const splitRef = useRef<SplitText | null>(null);
   const { width: windowWidth } = useWindowSize();
 
+  useEffect(() => {
+    document.fonts.ready.then(() => {
+      setIsReady(true);
+    });
+  }, []);
+
   useGSAP(
     () => {
-      if (!element) return;
+      if (!element || !isReady) return;
 
       const target = element.current;
 
@@ -36,6 +43,7 @@ const useParagraphAnimation = (
       gsap.to(splitRef.current?.words, {
         opacity: 1,
         delay: (index) => 0.1 * index,
+        ease: "none",
         scrollTrigger: {
           scrub: true,
           trigger: target,
@@ -44,7 +52,7 @@ const useParagraphAnimation = (
         },
       });
     },
-    { scope: element, dependencies: [splitRef, windowWidth] },
+    { scope: element, dependencies: [splitRef, windowWidth, isReady] },
   );
 };
 

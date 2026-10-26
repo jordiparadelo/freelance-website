@@ -22,8 +22,9 @@ export const galleryAnimations = (
 
       const animation = gsap.to(element?.current, {
         translateX: 100,
+        ease: "none",
       });
-
+      
       ScrollTrigger.create({
         animation: animation,
         trigger: element.current,

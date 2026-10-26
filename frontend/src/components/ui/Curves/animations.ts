@@ -12,6 +12,7 @@ export function curveAnimation(component: React.RefObject<SVGElement | null>) {
     () => {
       gsap.from("[data-curve='wavy']", {
         morphSVG: "[data-curve='flat']",
+        ease: "none",
         scrollTrigger: {
           trigger: component.current,
           start: "top-=100% bottom",
