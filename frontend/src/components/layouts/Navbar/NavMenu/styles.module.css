@@ -6,7 +6,7 @@
   place-self: center;
   margin-inline: auto;
   gap: 1rem;
-  border-radius: var(--corners--radius-round);
+  border-radius: var(--corners--corners--radius-round);
   background-color: rgba(from var(--background-color--base) r g b / 30%);
   padding-inline: 1rem;
   min-height: var(--button-size);

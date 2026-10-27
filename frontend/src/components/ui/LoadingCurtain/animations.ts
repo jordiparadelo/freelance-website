@@ -1,14 +1,11 @@
 "use client";
 
-import { useTransitionPage } from "@/lib/context/TransitionPageContext";
-
 import { useGSAP } from "@gsap/react";
-
 import gsap from "gsap";
 import MotionPathPlugin from "gsap/MotionPathPlugin";
 import TextPlugin from "gsap/TextPlugin";
-
 import { type RefObject, useLayoutEffect, useRef } from "react";
+import { useTransitionPage } from "@/lib/context/TransitionPageContext";
 
 gsap.registerPlugin(MotionPathPlugin, TextPlugin);
 

@@ -13,7 +13,6 @@ const SELECTORS = {
   cursor: '[data-target="mouse-cursor"]',
 } as const;
 
-const CURSOR_MOTION = { duration: 0.25, ease: "power3" } as const;
 const CURSOR_CONFIG = {
   mouseDistance: 24,
   motion: { duration: 0.25, ease: "power3" },

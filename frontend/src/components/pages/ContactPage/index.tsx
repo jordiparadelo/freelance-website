@@ -11,7 +11,6 @@ const CONTACT_DETAILS = [
 ];
 
 const ContactPage = () => {
-
   return (
     <main className={styles["contact"]}>
       <Section className={styles["contact__section"]}>
@@ -24,7 +23,7 @@ const ContactPage = () => {
                   <p key={line}>{line}</p>
                 ))}
               </div>
-              <ContactForm className={styles["contact__form"]}/>
+              <ContactForm className={styles["contact__form"]} />
             </div>
           </div>
         </Container>

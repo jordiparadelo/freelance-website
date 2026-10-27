@@ -16,12 +16,16 @@ const SOCIAL_LINKS = [
   },
 ];
 
+export const SITE_URL = "https://www.jordiparadelo.com";
+
+const isIndexable = process.env.VERCEL_ENV === "production";
+
 export const ORGANIZATION_DATA = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "Jordi Paradelo",
-  url: process.env.URL,
-  logo: `${process.env.URL}/logo.png`,
+  url: SITE_URL,
+  logo: `${SITE_URL}/logo.png`,
   description:
     "Freelance web developer specialized in React, Next.js, and modern web technologies.",
   sameAs: SOCIAL_LINKS.map((link) => link.url),
@@ -29,11 +33,11 @@ export const ORGANIZATION_DATA = {
 
 export const METADATA = {
   title: {
-    default: "Jordi Paradelo - Freelance Web Developer",
+    default: "Jordi Paradelo | Freelance Web Designer & Developer",
     template: "%s | Jordi Paradelo",
   },
   description:
-    "Freelance web developer specialized in React, Next.js, and modern web technologies. Creating high-performance, scalable web applications with modern tech stack.",
+    "Freelance web developer building high-performance React and Next.js sites. Scalable interfaces, modern stack, and careful front-end craft.",
   keywords: [
     "web development",
     "freelance",
@@ -53,15 +57,12 @@ export const METADATA = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://your-domain.com"), // Replace with your actual domain
-  alternates: {
-    canonical: "/",
-  },
+  metadataBase: new URL(SITE_URL),
   openGraph: {
-    title: "Jordi Paradelo - Freelance Web Developer",
+    title: "Jordi Paradelo | Freelance Web Designer & Developer",
     description:
-      "Freelance web developer specialized in React, Next.js, and modern web technologies. Creating high-performance, scalable web applications with modern tech stack.",
-    url: "https://your-domain.com", // Replace with your actual domain
+      "Freelance web developer building high-performance React and Next.js sites. Scalable interfaces, modern stack, and careful front-end craft.",
+    url: SITE_URL,
     siteName: "Jordi Paradelo",
     images: [
       {
@@ -76,32 +77,39 @@ export const METADATA = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Jordi Paradelo - Freelance Web Developer",
+    title: "Jordi Paradelo | Freelance Web Designer & Developer",
     description:
-      "Freelance web developer specialized in React, Next.js, and modern web technologies. Creating high-performance, scalable web applications with modern tech stack.",
-    images: ["/og-image.jpg"], // Same as OG image
-    creator: "@yourTwitterHandle", // Replace with your Twitter handle
+      "Freelance web developer building high-performance React and Next.js sites. Scalable interfaces, modern stack, and careful front-end craft.",
+    images: ["/og-image.png"],
   },
   robots: {
-    index: true,
-    follow: true,
+    index: isIndexable,
+    follow: isIndexable,
     googleBot: {
-      index: true,
-      follow: true,
+      index: isIndexable,
+      follow: isIndexable,
       maxVideoPreview: -1,
       maxImagePreview: "large",
       maxSnippet: -1,
     },
   },
-  verification: {
-    google: "your-google-site-verification", // Add your Google verification code
-    // other verification codes as needed
-  },
 };
 
 export const HOME_METADATA = {
   ...METADATA,
-  title: "Freelance Web Designer | Webflow & React Developer",
+  title: {
+    absolute: "Freelance Web Designer | Webflow & React Developer",
+  },
   description:
-    "Learn more about Jordi Paradelo, a freelance web developer specialized in React, Next.js, and modern web technologies.",
+    "Jordi Paradelo is a freelance web developer specialized in React, Next.js, and modern web technologies for fast, reliable sites.",
+  alternates: {
+    canonical: SITE_URL,
+  },
+  openGraph: {
+    ...METADATA.openGraph,
+    title: "Freelance Web Designer | Webflow & React Developer",
+    description:
+      "Jordi Paradelo is a freelance web developer specialized in React, Next.js, and modern web technologies for fast, reliable sites.",
+    url: SITE_URL,
+  },
 };

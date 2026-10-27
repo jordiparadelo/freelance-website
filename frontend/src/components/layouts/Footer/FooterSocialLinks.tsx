@@ -1,6 +1,3 @@
-"use client";
-
-import posthog from "posthog-js";
 import styles from "./styles.module.scss";
 
 interface SocialLink {
@@ -9,13 +6,6 @@ interface SocialLink {
 }
 
 const FooterSocialLinks = ({ links }: { links: SocialLink[] }) => {
-  function handleSocialLinkClick(displayName: string, href: string) {
-    posthog.capture("footer_social_link_clicked", {
-      platform: displayName,
-      url: href,
-    });
-  }
-
   return (
     <ul className={styles["footer__social-link-list"]}>
       {links.map((link) => (
@@ -24,7 +14,6 @@ const FooterSocialLinks = ({ links }: { links: SocialLink[] }) => {
             href={link.href}
             target="_blank"
             className={styles["footer__social-link"]}
-            onClick={() => handleSocialLinkClick(link.displayName, link.href)}
           >
             {link.displayName}
           </a>

@@ -482,4 +482,8 @@ export async function getProcesses(options?: QueryOptions) {
   })) as Processes[];
 }
 
-export { ContactEmailTakenError, createContact, getContactByEmail } from "./contacts";
+export {
+  ContactEmailTakenError,
+  createContact,
+  getContactByEmail,
+} from "./contacts";

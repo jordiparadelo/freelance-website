@@ -179,7 +179,7 @@
         padding-inline: 0.875em;
         line-height: 1;
         border: 1px solid currentColor;
-        border-radius: var(--radius-round);
+        border-radius: var(--corners--radius-round);
         height: fit-content;
         width: fit-content;
         display: inline-flex;

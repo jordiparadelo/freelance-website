@@ -1,6 +1,6 @@
 "use client";
 
-import { type MouseEvent,  useState } from "react";
+import { type MouseEvent, useState } from "react";
 import { GlobeIcon } from "@/assets/icons";
 import useLiveClock from "@/lib/hooks/useLiveClock";
 import useMediaQuery from "@/lib/hooks/useMediaQuery";
@@ -14,7 +14,6 @@ const Banner = () => {
   const currentTime = useLiveClock();
   const isSmallDevice = useMediaQuery("only screen and (max-width: 550px)");
 
-
   function handleClockVisible(event: MouseEvent<HTMLButtonElement>) {
     const EVENT_STATES = {
       mouseenter: () => setIsClockVisible(true),
@@ -23,7 +22,6 @@ const Banner = () => {
 
     EVENT_STATES[event.type as keyof typeof EVENT_STATES]();
   }
-
 
   return (
     <section className={styles.banner}>

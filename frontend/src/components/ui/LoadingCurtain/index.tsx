@@ -1,7 +1,5 @@
 "use client";
-import Image, { type StaticImageData } from "next/image";
 import { useRef } from "react";
-import AvatarPic from "../../../../public/images/avatar-stripe.png";
 import Curves from "../Curves";
 import { loadingAnimation } from "./animations";
 import styles from "./styles.module.css";

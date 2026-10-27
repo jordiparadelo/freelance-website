@@ -1,9 +1,9 @@
 // Component
 import {
-	ButtonScrollTop,
-	ContactButton,
-	Container,
-	Section,
+  ButtonScrollTop,
+  ContactButton,
+  Container,
+  Section,
 } from "@/components/ui";
 import { getSocialLinks } from "@/lib/db";
 // Animations
@@ -24,36 +24,36 @@ const Footer = async () => {
     }),
   ]);
 
-	return (
-		<Section tag="footer" className={styles.footer} id="footer">
-			<Container>
-				<div className={styles.footer__layout}>
-					{/* Banner */}
+  return (
+    <Section tag="footer" className={styles.footer} id="footer">
+      <Container>
+        <div className={styles.footer__layout}>
+          {/* Banner */}
 
-					<div className={styles.footer__banner}>
-						<div className={styles.footer__banner__layout}>
-							<h2 className={styles.footer__banner__title}>
-								Let&apos;s create something great together
-							</h2>
-							<ContactButton href={`mailto:${contactLink[0].href}`}>
-								Get in touch
-							</ContactButton>
+          <div className={styles.footer__banner}>
+            <div className={styles.footer__banner__layout}>
+              <h2 className={styles.footer__banner__title}>
+                Let&apos;s create something great together
+              </h2>
+              <ContactButton href={`mailto:${contactLink[0].href}`}>
+                Get in touch
+              </ContactButton>
 
-							{/* Social links */}
-						</div>
-					</div>
+              {/* Social links */}
+            </div>
+          </div>
 
-					{/* Bottom */}
+          {/* Bottom */}
 
-					<div className={styles.footer__bottom}>
-						<FooterCopyright />
-						<FooterSocialLinks links={socialLinks} />
-						<ButtonScrollTop />
-					</div>
-				</div>
-			</Container>
-		</Section>
-	);
+          <div className={styles.footer__bottom}>
+            <FooterCopyright />
+            <FooterSocialLinks links={socialLinks} />
+            <ButtonScrollTop />
+          </div>
+        </div>
+      </Container>
+    </Section>
+  );
 };
 
 export default Footer;

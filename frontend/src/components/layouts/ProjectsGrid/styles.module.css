@@ -56,7 +56,6 @@
       padding: 1.5rem;
       transition: transform var(--anim-duration--md) var(--anim-easing);
       max-width: 999px;
-      transition: all 0.5s ease;
       min-width: 100%;
 
       @media screen and (min-width: 667px) {
@@ -100,7 +99,7 @@
       padding-inline: 0.875em;
       line-height: 1;
       border: 1px solid var(--border-color--alternative);
-      border-radius: var(--radius-round);
+      border-radius: var(--corners--radius-round);
       height: fit-content;
       width: fit-content;
       display: inline-flex;
