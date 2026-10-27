@@ -19,5 +19,4 @@ export const contactFormSchema = z.object({
 // Only what you persist
 export const leadSchema = contactFormSchema.omit({ location: true });
 
-export type ContactFormInput = z.input<typeof contactFormSchema>;
 export type LeadInput = z.infer<typeof leadSchema>;

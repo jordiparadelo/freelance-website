@@ -121,6 +121,13 @@ export type Processes = {
   };
 };
 
-export type Lead = {
-	data: { id?: string | number; name: string; email: string; message?: string };
+/** Row shape for `public.contacts`. Swap the mock store for Supabase without changing callers. */
+export type Contact = {
+  id: string;
+  name: string;
+  email: string;
+  message: string;
+  created_at: string;
 };
+
+export type ContactInsert = Pick<Contact, "name" | "email" | "message">;

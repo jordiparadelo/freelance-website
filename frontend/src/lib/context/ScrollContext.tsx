@@ -6,7 +6,7 @@ import Lenis from "lenis";
 import "lenis/dist/lenis.css";
 
 import type React from "react";
-import { createContext, useContext, useLayoutEffect, useRef } from "react";
+import { createContext, useLayoutEffect, useRef } from "react";
 import { useTransitionPage } from "./TransitionPageContext";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -30,14 +30,6 @@ interface ScrollContextType {
 }
 
 const ScrollContext = createContext<ScrollContextType | null>(null);
-
-export const useScroll = () => {
-  const context = useContext(ScrollContext);
-  if (!context) {
-    throw new Error("useScroll must be used within a ScrollProvider");
-  }
-  return context;
-};
 
 const EASING_FN = {
   lenisDefault: (t: number) => Math.min(1, 1.001 - 2 ** (-10 * t)),

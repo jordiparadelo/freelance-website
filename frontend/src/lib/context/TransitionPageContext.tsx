@@ -14,7 +14,7 @@ interface TransitionPageContextType {
   setIsTransitioning: React.Dispatch<React.SetStateAction<boolean | null>>;
 }
 
-export const TransitionPageContext = createContext<
+const TransitionPageContext = createContext<
   TransitionPageContextType | undefined
 >(undefined);
 

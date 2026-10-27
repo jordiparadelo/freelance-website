@@ -1,6 +1,6 @@
 "use client";
 import posthog from "posthog-js";
-import { useState, ViewTransition } from "react";
+import { type HTMLAttributes, useState, ViewTransition } from "react";
 import { Button, ContactButton, ContactForm } from "@/components/ui";
 import type { BusinessInfo } from "@/lib/db/types";
 import { useColorTheme } from "@/lib/hooks/useColorTheme";
@@ -67,9 +67,11 @@ const NavActions = ({ data }: { data: BusinessInfo }) => {
 
 			<ContactForm
 				className={styles["contact-form"]}
-				props={{
-					"data-open": openModal ? true : false,
-				}}
+				props={
+					{
+						"data-open": openModal ? true : false,
+					} as HTMLAttributes<HTMLDivElement>
+				}
 			/>
 		</div>
 	);

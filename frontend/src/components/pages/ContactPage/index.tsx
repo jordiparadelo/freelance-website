@@ -1,7 +1,6 @@
 "use client";
 
-import { type FormEvent, useState } from "react";
-import { Button, ContactForm, Container, Section } from "@/components/ui";
+import { ContactForm, Container, Section } from "@/components/ui";
 import styles from "./styles.module.css";
 
 const CONTACT_DETAILS = [
@@ -12,7 +11,6 @@ const CONTACT_DETAILS = [
 ];
 
 const ContactPage = () => {
-  const [formError, setFormError] = useState("");
 
   return (
     <main className={styles["contact"]}>
@@ -26,64 +24,7 @@ const ContactPage = () => {
                   <p key={line}>{line}</p>
                 ))}
               </div>
-              <ContactForm className={styles["contact__form"]}>
-                <div className="form__group">
-                  <label
-                    className={styles["contact__label"]}
-                    htmlFor="contact-name"
-                  >
-                    Name (required)
-                  </label>
-                  <input
-                    className={styles["contact__input"]}
-                    id="contact-name"
-                    name="name"
-                    type="text"
-                    autoComplete="name"
-                    required
-                  />
-                </div>
-                <div className="form__group">
-                  <label
-                    className={styles["contact__label"]}
-                    htmlFor="contact-email"
-                  >
-                    Email (required)
-                  </label>
-                  <input
-                    className={styles["contact__input"]}
-                    id="contact-email"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                    required
-                  />
-                </div>
-                <div className="form__group">
-                  <label
-                    className={styles["contact__label"]}
-                    htmlFor="contact-message"
-                  >
-                    Message (required)
-                  </label>
-                  <textarea
-                    className={styles["contact__textarea"]}
-                    id="contact-message"
-                    name="message"
-                    rows={5}
-                    required
-                  />
-                </div>
-                <input
-                  className={styles["contact__honeypot"]}
-                  type="text"
-                  name="website"
-                  tabIndex={-1}
-                  autoComplete="off"
-                  aria-hidden
-                />
-                <Button type="submit">Submit</Button>
-              </ContactForm>
+              <ContactForm className={styles["contact__form"]}/>
             </div>
           </div>
         </Container>

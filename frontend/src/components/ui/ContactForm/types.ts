@@ -1,4 +1,4 @@
-import type { Lead } from "@/lib/db/types";
+import type { LeadInput } from "./config";
 
 export type ContactFormProps = {
 	className?: string;
@@ -15,7 +15,7 @@ export type formFields = {
 export type FormStatus = {
 	success?: boolean | null;
 	message?: string;
-	value?: Lead;
+	value?: LeadInput;
 };
 
 export type CreateNewLeadResult = {

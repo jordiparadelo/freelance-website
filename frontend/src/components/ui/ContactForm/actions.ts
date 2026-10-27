@@ -1,36 +1,42 @@
 "use server";
 
-import { createNewLead, getLeadByEmail } from "@/lib/db";
-import type { Lead } from "@/lib/db/types";
+import {
+  ContactEmailTakenError,
+  createContact,
+  getContactByEmail,
+} from "@/lib/db";
 
 import { leadSchema } from "./config";
 import type { CreateNewLeadResult } from "./types";
 
 export const handleLeadSubmit = async (
-	input: Lead,
+  input: unknown,
 ): Promise<CreateNewLeadResult> => {
-	const parsed = leadSchema.safeParse(input);
+  const parsed = leadSchema.safeParse(input);
 
-	if (!parsed.success) {
-		const firstError = parsed.error.issues[0]?.message ?? "Invalid form data.";
-		return { success: false, message: firstError };
-	}
+  if (!parsed.success) {
+    const firstError = parsed.error.issues[0]?.message ?? "Invalid form data.";
+    return { success: false, message: firstError };
+  }
 
-	// Honeypot already enforced by `location` refine; strip for DB
-	const lead = leadSchema.parse(parsed.data);
+  const lead = parsed.data;
 
-	try {
-		const existing = await getLeadByEmail(lead.email);
-		if (existing !== undefined) {
-			return { success: false, message: "User Already Registered" };
-		}
+  try {
+    const existing = await getContactByEmail(lead.email);
+    if (existing) {
+      return { success: false, message: "User Already Registered" };
+    }
 
-		await createNewLead({ data: lead });
-		return { success: true, message: "Lead created successfully" };
-	} catch {
-		return {
-			success: false,
-			message: "An error occurred while creating the lead",
-		};
-	}
+    await createContact(lead);
+    return { success: true, message: "Lead created successfully" };
+  } catch (error) {
+    if (error instanceof ContactEmailTakenError) {
+      return { success: false, message: "User Already Registered" };
+    }
+
+    return {
+      success: false,
+      message: "An error occurred while creating the lead",
+    };
+  }
 };
