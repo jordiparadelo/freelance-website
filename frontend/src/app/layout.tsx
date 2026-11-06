@@ -20,6 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <JsonLd data={ORGANIZATION_DATA} />
+        <meta name="google-site-verification" content="H_Z2sICdLI7k2srgS_sepTNT9uO9p1bSlJgz1LRcBBM" />
       </head>
       <body className={inter.className}>
         <SiteProvider>
